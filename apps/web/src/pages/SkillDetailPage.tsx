@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import { useSkill } from '../hooks/useSkills';
 import { CATEGORIES } from '../types';
+import { trackStar } from '../utils/tracking';
 import styles from './SkillDetailPage.module.css';
 
 export function SkillDetailPage() {
@@ -30,6 +31,31 @@ export function SkillDetailPage() {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'code' | 'comments'>('code');
   const [commentText, setCommentText] = useState('');
+
+  // Star state
+  const storageKey = `starred-${id}`;
+  const [hasStarred, setHasStarred] = useState(() => localStorage.getItem(storageKey) === 'true');
+  const [starCount, setStarCount] = useState<number | null>(null);
+
+  // Sync star count when skill loads
+  if (skill && starCount === null) {
+    setStarCount(skill.stars);
+  }
+
+  const handleStar = async () => {
+    if (hasStarred || !id) return;
+
+    setHasStarred(true);
+    setStarCount(prev => (prev ?? 0) + 1);
+    localStorage.setItem(storageKey, 'true');
+
+    const success = await trackStar(id);
+    if (!success) {
+      setHasStarred(false);
+      setStarCount(prev => (prev ?? 1) - 1);
+      localStorage.removeItem(storageKey);
+    }
+  };
 
   if (loading) {
     return (
@@ -335,7 +361,7 @@ export function SkillDetailPage() {
                   <Star size={16} />
                   Stars
                 </span>
-                <strong>{skill.stars}</strong>
+                <strong>{starCount ?? skill.stars}</strong>
               </div>
               <div className={styles.statRow}>
                 <span>
@@ -348,9 +374,13 @@ export function SkillDetailPage() {
 
             {/* Actions */}
             <div className={styles.actionsCard}>
-              <button className={styles.actionButton}>
-                <Star size={16} />
-                Star this skill
+              <button
+                className={`${styles.actionButton} ${hasStarred ? styles.starred : ''}`}
+                onClick={handleStar}
+                disabled={hasStarred}
+              >
+                <Star size={16} fill={hasStarred ? 'currentColor' : 'none'} />
+                {hasStarred ? 'Starred!' : 'Star this skill'}
               </button>
               <button className={styles.actionButton}>
                 <Share2 size={16} />

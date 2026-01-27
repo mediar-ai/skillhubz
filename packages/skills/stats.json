@@ -11,6 +11,18 @@
     "screenshot-annotator": 2,
     "expense-logger": 3
   },
+  "stars": {
+    "gmail-reply": 5,
+    "github-pr-review": 3,
+    "slack-automator": 7,
+    "pdf-data-extractor": 2,
+    "form-filler": 1,
+    "linkedin-scraper": 4,
+    "e2e-test-recorder": 2,
+    "notion-sync": 3,
+    "screenshot-annotator": 1,
+    "expense-logger": 1
+  },
   "searches": {},
   "lastUpdated": "2026-01-27T21:53:27.342Z"
 }
