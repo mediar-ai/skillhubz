@@ -3,20 +3,21 @@ import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   Search,
-  Filter,
   X,
   SlidersHorizontal,
   ArrowUpDown,
   CheckCircle,
+  Loader2,
 } from 'lucide-react';
 import { SkillCard } from '../components/SkillCard';
-import { mockSkills } from '../data/skills';
+import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
 import styles from './ExplorePage.module.css';
 
 type SortOption = 'popular' | 'newest' | 'stars' | 'name';
 
 export function ExplorePage() {
+  const { skills, loading } = useSkills();
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState('');
   const [showFilters, setShowFilters] = useState(false);
@@ -27,7 +28,7 @@ export function ExplorePage() {
   const showVerified = searchParams.get('verified') === 'true';
 
   const filteredSkills = useMemo(() => {
-    let result = [...mockSkills];
+    let result = [...skills];
 
     // Search filter
     if (searchQuery) {
@@ -75,7 +76,7 @@ export function ExplorePage() {
     }
 
     return result;
-  }, [searchQuery, selectedCategory, showFeatured, showVerified, sortBy]);
+  }, [skills, searchQuery, selectedCategory, showFeatured, showVerified, sortBy]);
 
   const handleCategoryClick = (category: Category | null) => {
     if (category) {
@@ -102,6 +103,19 @@ export function ExplorePage() {
 
   const hasActiveFilters =
     selectedCategory || showFeatured || showVerified || searchQuery;
+
+  if (loading) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <div className={styles.loading}>
+            <Loader2 size={48} className={styles.spinner} />
+            <p>Loading skills...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.page}>
@@ -215,7 +229,7 @@ export function ExplorePage() {
                   className={`${styles.filterChip} ${showFeatured ? styles.active : ''}`}
                   onClick={() => toggleFilter('featured')}
                 >
-                  ⭐ Featured
+                  Featured
                 </button>
                 <button
                   className={`${styles.filterChip} ${showVerified ? styles.active : ''}`}
