@@ -1,14 +1,15 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   Download,
   Star,
   CheckCircle,
-  Clock,
   User,
 } from 'lucide-react';
 import type { Skill } from '../types';
 import { CATEGORIES } from '../types';
+import { trackStar } from '../utils/tracking';
 import styles from './SkillCard.module.css';
 
 interface SkillCardProps {
@@ -19,7 +20,33 @@ interface SkillCardProps {
 export function SkillCard({ skill, index = 0 }: SkillCardProps) {
   const category = CATEGORIES[skill.category];
   const formattedInstalls = formatNumber(skill.installCount);
-  const formattedStars = formatNumber(skill.stars);
+
+  // Check if user already starred this skill
+  const storageKey = `starred-${skill.id}`;
+  const [hasStarred, setHasStarred] = useState(() => localStorage.getItem(storageKey) === 'true');
+  const [starCount, setStarCount] = useState(skill.stars);
+  const formattedStars = formatNumber(starCount);
+
+  const handleStar = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (hasStarred) return; // Already starred
+
+    // Optimistic update
+    setHasStarred(true);
+    setStarCount(prev => prev + 1);
+    localStorage.setItem(storageKey, 'true');
+
+    // Track the star
+    const success = await trackStar(skill.id);
+    if (!success) {
+      // Revert on failure
+      setHasStarred(false);
+      setStarCount(prev => prev - 1);
+      localStorage.removeItem(storageKey);
+    }
+  };
 
   return (
     <motion.article
@@ -83,10 +110,14 @@ export function SkillCard({ skill, index = 0 }: SkillCardProps) {
               <Download size={14} />
               {formattedInstalls}
             </span>
-            <span className={styles.stat}>
-              <Star size={14} />
+            <button
+              className={`${styles.stat} ${styles.starButton} ${hasStarred ? styles.starred : ''}`}
+              onClick={handleStar}
+              title={hasStarred ? 'You starred this skill' : 'Star this skill'}
+            >
+              <Star size={14} fill={hasStarred ? 'currentColor' : 'none'} />
               {formattedStars}
-            </span>
+            </button>
           </div>
         </div>
 

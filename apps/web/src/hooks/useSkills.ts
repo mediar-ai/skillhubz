@@ -20,12 +20,14 @@ interface RegistrySkill {
 
 interface TrackingStats {
   installs: Record<string, number>;
+  stars: Record<string, number>;
   searches: Record<string, number>;
   lastUpdated: string;
 }
 
-function transformSkill(registrySkill: RegistrySkill, installs: Record<string, number>): Skill {
+function transformSkill(registrySkill: RegistrySkill, installs: Record<string, number>, stars: Record<string, number>): Skill {
   const installCount = installs[registrySkill.name] || 0;
+  const starCount = stars[registrySkill.name] || 0;
   return {
     id: registrySkill.name,
     name: formatName(registrySkill.name),
@@ -40,7 +42,7 @@ function transformSkill(registrySkill: RegistrySkill, installs: Record<string, n
     category: registrySkill.category as Category,
     tags: registrySkill.tags,
     installCount,
-    stars: Math.floor(installCount / 5) + 1, // Derive from installs
+    stars: starCount,
     createdAt: registrySkill.updated,
     updatedAt: registrySkill.updated,
     verified: true,
@@ -75,12 +77,14 @@ export function useSkills() {
 
         // Get stats or default to empty
         let installs: Record<string, number> = {};
+        let stars: Record<string, number> = {};
         if (statsResponse?.ok) {
           const trackingData: TrackingStats = await statsResponse.json();
           installs = trackingData.installs || {};
+          stars = trackingData.stars || {};
         }
 
-        const transformedSkills = registry.map(skill => transformSkill(skill, installs));
+        const transformedSkills = registry.map(skill => transformSkill(skill, installs, stars));
 
         setSkills(transformedSkills);
         setLoading(false);
@@ -127,12 +131,14 @@ export function useSkill(id: string) {
 
         // Get stats or default to empty
         let installs: Record<string, number> = {};
+        let stars: Record<string, number> = {};
         if (statsResponse?.ok) {
           const trackingData: TrackingStats = await statsResponse.json();
           installs = trackingData.installs || {};
+          stars = trackingData.stars || {};
         }
 
-        const transformedSkill = transformSkill(registrySkill, installs);
+        const transformedSkill = transformSkill(registrySkill, installs, stars);
         transformedSkill.code = code;
         transformedSkill.longDescription = code;
 

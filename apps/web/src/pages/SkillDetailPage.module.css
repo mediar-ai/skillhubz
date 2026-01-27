@@ -547,6 +547,20 @@
   color: var(--accent-primary);
 }
 
+.actionButton.starred {
+  color: #f59e0b;
+  cursor: default;
+}
+
+.actionButton.starred:hover {
+  background: transparent;
+  color: #f59e0b;
+}
+
+.actionButton:disabled {
+  opacity: 1;
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    Responsive
    ═══════════════════════════════════════════════════════════════════════════ */

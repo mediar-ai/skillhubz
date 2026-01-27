@@ -5,6 +5,7 @@ const GITHUB_API_URL = 'https://api.github.com/repos/mediar-ai/skillhubz/content
 
 interface Stats {
   installs: Record<string, number>;
+  stars: Record<string, number>;
   searches: Record<string, number>;
   lastUpdated: string;
 }
@@ -12,7 +13,7 @@ interface Stats {
 async function getStats(): Promise<Stats> {
   const response = await fetch(STATS_RAW_URL + `?t=${Date.now()}`); // Cache bust
   if (!response.ok) {
-    return { installs: {}, searches: {}, lastUpdated: new Date().toISOString() };
+    return { installs: {}, stars: {}, searches: {}, lastUpdated: new Date().toISOString() };
   }
   return response.json();
 }
@@ -105,6 +106,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       if (event === 'install' && skill) {
         stats.installs[skill] = (stats.installs[skill] || 0) + 1;
+      } else if (event === 'star' && skill) {
+        stats.stars = stats.stars || {};
+        stats.stars[skill] = (stats.stars[skill] || 0) + 1;
       } else if (event === 'search' && query) {
         stats.searches[query] = (stats.searches[query] || 0) + 1;
       }
