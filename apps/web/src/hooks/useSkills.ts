@@ -3,6 +3,7 @@ import type { Skill, Category } from '../types';
 
 const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/registry.json';
 const SKILLS_BASE_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/skills';
+const TRACKING_URL = 'https://skillhu.bz/api/track';
 
 interface RegistrySkill {
   name: string;
@@ -17,7 +18,12 @@ interface RegistrySkill {
   updated: string;
 }
 
-function transformSkill(registrySkill: RegistrySkill): Skill {
+interface TrackingStats {
+  stats: Record<string, number>;
+}
+
+function transformSkill(registrySkill: RegistrySkill, stats: Record<string, number>): Skill {
+  const installCount = stats[`install:${registrySkill.name}`] || 0;
   return {
     id: registrySkill.name,
     name: formatName(registrySkill.name),
@@ -31,8 +37,8 @@ function transformSkill(registrySkill: RegistrySkill): Skill {
     language: 'yaml',
     category: registrySkill.category as Category,
     tags: registrySkill.tags,
-    installCount: Math.floor(Math.random() * 1000) + 100, // Placeholder
-    stars: Math.floor(Math.random() * 200) + 10, // Placeholder
+    installCount,
+    stars: Math.floor(installCount / 5) + 1, // Derive from installs
     createdAt: registrySkill.updated,
     updatedAt: registrySkill.updated,
     verified: true,
@@ -55,11 +61,24 @@ export function useSkills() {
   useEffect(() => {
     async function fetchSkills() {
       try {
-        const response = await fetch(REGISTRY_URL);
-        if (!response.ok) throw new Error('Failed to fetch registry');
+        // Fetch registry and stats in parallel
+        const [registryResponse, statsResponse] = await Promise.all([
+          fetch(REGISTRY_URL),
+          fetch(TRACKING_URL).catch(() => null), // Don't fail if stats unavailable
+        ]);
 
-        const registry: RegistrySkill[] = await response.json();
-        const transformedSkills = registry.map(transformSkill);
+        if (!registryResponse.ok) throw new Error('Failed to fetch registry');
+
+        const registry: RegistrySkill[] = await registryResponse.json();
+
+        // Get stats or default to empty
+        let stats: Record<string, number> = {};
+        if (statsResponse?.ok) {
+          const trackingData: TrackingStats = await statsResponse.json();
+          stats = trackingData.stats || {};
+        }
+
+        const transformedSkills = registry.map(skill => transformSkill(skill, stats));
 
         setSkills(transformedSkills);
         setLoading(false);
@@ -83,8 +102,13 @@ export function useSkill(id: string) {
   useEffect(() => {
     async function fetchSkill() {
       try {
-        // First fetch registry to get skill metadata
-        const registryResponse = await fetch(REGISTRY_URL);
+        // Fetch registry, skill content, and stats in parallel
+        const [registryResponse, skillResponse, statsResponse] = await Promise.all([
+          fetch(REGISTRY_URL),
+          fetch(`${SKILLS_BASE_URL}/${id}/skill.md`),
+          fetch(TRACKING_URL).catch(() => null),
+        ]);
+
         if (!registryResponse.ok) throw new Error('Failed to fetch registry');
 
         const registry: RegistrySkill[] = await registryResponse.json();
@@ -96,14 +120,17 @@ export function useSkill(id: string) {
           return;
         }
 
-        // Fetch the actual skill.md content
-        const skillUrl = `${SKILLS_BASE_URL}/${id}/skill.md`;
-        const skillResponse = await fetch(skillUrl);
         if (!skillResponse.ok) throw new Error('Failed to fetch skill content');
-
         const code = await skillResponse.text();
 
-        const transformedSkill = transformSkill(registrySkill);
+        // Get stats or default to empty
+        let stats: Record<string, number> = {};
+        if (statsResponse?.ok) {
+          const trackingData: TrackingStats = await statsResponse.json();
+          stats = trackingData.stats || {};
+        }
+
+        const transformedSkill = transformSkill(registrySkill, stats);
         transformedSkill.code = code;
         transformedSkill.longDescription = code;
 
