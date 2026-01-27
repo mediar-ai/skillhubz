@@ -3,6 +3,7 @@ import { join } from 'path';
 import chalk from 'chalk';
 import prompts from 'prompts';
 import { getUser } from './auth.js';
+import { track } from '../utils/tracking.js';
 
 const SKILL_TEMPLATE = `# {{TITLE}}
 
@@ -121,6 +122,9 @@ export async function init(name?: string): Promise<void> {
   };
 
   writeFileSync(join(skillDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+
+  // Track init event
+  track({ event: 'init', skill: skillName });
 
   console.log();
   console.log(chalk.green(`Created skill in ${chalk.cyan(skillDir)}`));

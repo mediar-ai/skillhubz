@@ -3,6 +3,7 @@ import { join } from 'path';
 import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import chalk from 'chalk';
 import ora from 'ora';
+import { track } from '../utils/tracking.js';
 
 const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/registry.json';
 const SKILLS_BASE_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/skills';
@@ -59,6 +60,9 @@ export async function install(name: string, options: InstallOptions): Promise<vo
 
     // Write skill file
     writeFileSync(targetPath, content);
+
+    // Track install event
+    track({ event: 'install', skill: name });
 
     spinner.succeed(
       `Installed ${chalk.cyan(name)} to ${chalk.gray(targetPath)}\n` +
