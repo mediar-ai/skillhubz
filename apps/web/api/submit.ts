@@ -137,7 +137,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Validate category
     const validCategories = [
-      'browser', 'file-management', 'data-entry', 'web-scraping',
+      'browser-automation', 'file-management', 'data-entry', 'web-scraping',
       'testing', 'productivity', 'integrations', 'utilities'
     ];
     if (!validCategories.includes(category)) {
