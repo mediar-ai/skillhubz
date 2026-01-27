@@ -199,7 +199,7 @@ Reply to unread support emails in Gmail.
               <h2>Featured Skills</h2>
               <p>Hand-picked by the community</p>
             </div>
-            <Link to="/explore?featured=true" className="btn btn-ghost">
+            <Link to="/explore" className="btn btn-ghost">
               View all
               <ArrowRight size={16} />
             </Link>
