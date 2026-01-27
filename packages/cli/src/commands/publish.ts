@@ -1,12 +1,9 @@
 import { existsSync, readFileSync } from 'fs';
-import { join, basename } from 'path';
+import { join, basename, dirname } from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
-import { Octokit } from 'octokit';
-import { getToken, getUser, login } from './auth.js';
 
-const REPO_OWNER = 'mediar-ai';
-const REPO_NAME = 'skills';
+const SUBMIT_API_URL = 'https://skillhu.bz/api/submit';
 
 interface Manifest {
   name: string;
@@ -21,193 +18,103 @@ export async function publish(path?: string): Promise<void> {
   // Determine skill directory
   const skillDir = path ? join(process.cwd(), path) : process.cwd();
 
-  // Validate skill structure
+  // Check for skill.md (primary) or manifest.json (legacy)
   const skillPath = join(skillDir, 'skill.md');
   const manifestPath = join(skillDir, 'manifest.json');
 
   if (!existsSync(skillPath)) {
     console.log(chalk.red('skill.md not found'));
     console.log(chalk.gray('Run from a skill directory or specify path: npx skillhu publish ./my-skill'));
-    return;
-  }
-
-  if (!existsSync(manifestPath)) {
-    console.log(chalk.red('manifest.json not found'));
-    console.log(chalk.gray('Create one with: npx skillhu init'));
-    return;
-  }
-
-  // Parse manifest
-  let manifest: Manifest;
-  try {
-    manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
-  } catch {
-    console.log(chalk.red('Invalid manifest.json'));
-    return;
-  }
-
-  // Validate manifest
-  if (!manifest.name || !manifest.description || !manifest.author) {
-    console.log(chalk.red('manifest.json missing required fields: name, description, author'));
-    return;
-  }
-
-  // Check auth
-  let token = getToken();
-  let user = getUser();
-
-  if (!token) {
-    console.log(chalk.yellow('Not logged in. Starting authentication...'));
     console.log();
-    await login();
-    token = getToken();
-    user = getUser();
-
-    if (!token) {
-      return;
-    }
+    console.log(chalk.gray('Create a new skill with: npx skillhu init my-skill'));
+    return;
   }
 
-  // Update manifest author to match logged in user
-  if (manifest.author !== user) {
-    console.log(chalk.yellow(`Updating author from "${manifest.author}" to "${user}"`));
-    manifest.author = user!;
-  }
-
+  // Read skill content
   const skillContent = readFileSync(skillPath, 'utf-8');
-  const manifestContent = JSON.stringify(manifest, null, 2);
 
-  const spinner = ora('Publishing skill...').start();
+  // Extract title from markdown (first # heading)
+  const titleMatch = skillContent.match(/^#\s+(.+)$/m);
+  const title = titleMatch ? titleMatch[1].trim() : basename(skillDir);
+
+  // Extract first paragraph as description
+  const lines = skillContent.split('\n');
+  let description = '';
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (line && !line.startsWith('#')) {
+      description = line;
+      break;
+    }
+  }
+
+  // Try to read manifest for additional metadata (optional)
+  let manifest: Partial<Manifest> = {};
+  if (existsSync(manifestPath)) {
+    try {
+      manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
+    } catch {
+      // Ignore invalid manifest
+    }
+  }
+
+  // Use manifest values or defaults
+  const name = manifest.name || title;
+  const skillDescription = manifest.description || description || 'No description provided';
+  const category = manifest.category || 'utilities';
+  const tags = manifest.tags || [];
+  const author = manifest.author || 'anonymous';
+
+  console.log();
+  console.log(chalk.bold('Publishing skill:'));
+  console.log(`  Name: ${chalk.cyan(name)}`);
+  console.log(`  Category: ${chalk.gray(category)}`);
+  console.log(`  Author: ${chalk.gray(author)}`);
+  if (tags.length > 0) {
+    console.log(`  Tags: ${chalk.gray(tags.join(', '))}`);
+  }
+  console.log();
+
+  const spinner = ora('Publishing to skillhu.bz...').start();
 
   try {
-    const octokit = new Octokit({ auth: token });
+    const response = await fetch(SUBMIT_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        description: skillDescription,
+        category,
+        tags,
+        content: skillContent,
+        authorGithub: author,
+      }),
+    });
 
-    // Check if user has a fork
-    spinner.text = 'Checking repository access...';
+    const data = await response.json();
 
-    let forkOwner = user!;
-    let baseBranch = 'main';
+    if (response.ok && data.success) {
+      spinner.succeed(chalk.green('Skill published!'));
+      console.log();
+      console.log(`  URL: ${chalk.cyan(data.skill.url)}`);
+      console.log();
+      console.log(chalk.gray('Your skill is now live and available to everyone.'));
+    } else {
+      spinner.fail(chalk.red(`Failed to publish: ${data.error || 'Unknown error'}`));
 
-    try {
-      // Try to access main repo directly (for maintainers)
-      await octokit.rest.repos.get({
-        owner: REPO_OWNER,
-        repo: REPO_NAME,
-      });
-
-      // Check if user has write access
-      const { data: permission } = await octokit.rest.repos.getCollaboratorPermissionLevel({
-        owner: REPO_OWNER,
-        repo: REPO_NAME,
-        username: user!,
-      });
-
-      if (['admin', 'write'].includes(permission.permission)) {
-        forkOwner = REPO_OWNER;
+      if (data.error?.includes('already exists')) {
+        console.log();
+        console.log(chalk.gray('A skill with this name already exists. Try a different name.'));
       }
-    } catch {
-      // User doesn't have direct access, need to fork
+
+      process.exit(1);
     }
-
-    // Fork if needed
-    if (forkOwner !== REPO_OWNER) {
-      spinner.text = 'Forking repository...';
-
-      try {
-        await octokit.rest.repos.createFork({
-          owner: REPO_OWNER,
-          repo: REPO_NAME,
-        });
-        // Wait for fork to be ready
-        await sleep(2000);
-      } catch (error: any) {
-        // Fork might already exist
-        if (error.status !== 422) {
-          throw error;
-        }
-      }
-    }
-
-    // Get base branch SHA
-    spinner.text = 'Creating branch...';
-
-    const { data: ref } = await octokit.rest.git.getRef({
-      owner: forkOwner,
-      repo: REPO_NAME,
-      ref: `heads/${baseBranch}`,
-    });
-
-    // Create new branch
-    const branchName = `skill/${manifest.name}-${Date.now()}`;
-
-    await octokit.rest.git.createRef({
-      owner: forkOwner,
-      repo: REPO_NAME,
-      ref: `refs/heads/${branchName}`,
-      sha: ref.object.sha,
-    });
-
-    // Create/update files
-    spinner.text = 'Uploading files...';
-
-    // Upload skill.md
-    await octokit.rest.repos.createOrUpdateFileContents({
-      owner: forkOwner,
-      repo: REPO_NAME,
-      path: `skills/${manifest.name}/skill.md`,
-      message: `Add skill: ${manifest.name}`,
-      content: Buffer.from(skillContent).toString('base64'),
-      branch: branchName,
-    });
-
-    // Upload manifest.json
-    await octokit.rest.repos.createOrUpdateFileContents({
-      owner: forkOwner,
-      repo: REPO_NAME,
-      path: `skills/${manifest.name}/manifest.json`,
-      message: `Add manifest for: ${manifest.name}`,
-      content: Buffer.from(manifestContent).toString('base64'),
-      branch: branchName,
-    });
-
-    // Create PR
-    spinner.text = 'Creating pull request...';
-
-    const { data: pr } = await octokit.rest.pulls.create({
-      owner: REPO_OWNER,
-      repo: REPO_NAME,
-      title: `Add skill: ${manifest.name}`,
-      body: `## New Skill: ${manifest.name}
-
-${manifest.description}
-
-**Category:** ${manifest.category}
-**Tags:** ${manifest.tags.join(', ')}
-**Author:** @${manifest.author}
-
----
-*Submitted via \`npx skillhu publish\`*`,
-      head: forkOwner === REPO_OWNER ? branchName : `${forkOwner}:${branchName}`,
-      base: baseBranch,
-    });
-
-    spinner.succeed(chalk.green('Skill published!'));
-    console.log();
-    console.log(`  PR: ${chalk.cyan(pr.html_url)}`);
-    console.log();
-    console.log(chalk.gray('Your skill will be auto-merged if it passes validation.'));
-
   } catch (error: any) {
-    spinner.fail(`Failed to publish: ${error.message}`);
-
-    if (error.status === 422) {
-      console.log(chalk.gray('A skill with this name may already exist, or a PR is pending.'));
-    }
-
+    spinner.fail(chalk.red(`Network error: ${error.message}`));
+    console.log();
+    console.log(chalk.gray('Please check your internet connection and try again.'));
     process.exit(1);
   }
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }

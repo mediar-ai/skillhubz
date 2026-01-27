@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   Upload,
@@ -10,11 +11,50 @@ import {
   AlertCircle,
   ArrowRight,
   Github,
+  ExternalLink,
 } from 'lucide-react';
 import { CATEGORIES, type Category } from '../types';
 import styles from './SubmitPage.module.css';
 
 type Step = 'info' | 'code' | 'preview';
+
+const SKILL_TEMPLATE = `# Skill Title
+
+Brief one-line description of what this skill does.
+
+## Prerequisites
+
+- List any requirements (apps, login states, etc.)
+- Browser installed
+- Logged into service X
+
+## Instructions
+
+1. First step - be specific about what to do
+   - Include what to look for to confirm success
+   - Mention specific UI elements by name
+
+2. Second step
+   - Provide exact text to type if needed
+   - Describe expected behavior
+
+3. Continue with numbered steps...
+
+4. Final step
+   - Report results to user
+   - Summarize what was accomplished
+
+## Error Handling
+
+- If X happens, do Y
+- If element not found, wait and retry
+- When to stop and ask for help
+
+## Notes
+
+- Any additional context
+- Variations or customization options
+`;
 
 export function SubmitPage() {
   const [currentStep, setCurrentStep] = useState<Step>('info');
@@ -23,16 +63,17 @@ export function SubmitPage() {
     description: '',
     category: '' as Category | '',
     tags: '',
-    language: 'yaml' as 'yaml' | 'typescript' | 'javascript' | 'python',
-    code: '',
+    content: SKILL_TEMPLATE,
     authorName: '',
     authorGithub: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState<{ success: boolean; slug?: string; error?: string } | null>(null);
 
   const steps: { id: Step; label: string; icon: React.ReactNode }[] = [
     { id: 'info', label: 'Basic Info', icon: <FileText size={18} /> },
-    { id: 'code', label: 'Code', icon: <Code size={18} /> },
+    { id: 'code', label: 'Skill Content', icon: <Code size={18} /> },
     { id: 'preview', label: 'Preview', icon: <CheckCircle size={18} /> },
   ];
 
@@ -46,7 +87,10 @@ export function SubmitPage() {
     }
 
     if (step === 'code') {
-      if (!formData.code.trim()) newErrors.code = 'Code is required';
+      if (!formData.content.trim()) newErrors.content = 'Skill content is required';
+      if (formData.content.trim() === SKILL_TEMPLATE.trim()) {
+        newErrors.content = 'Please customize the skill template';
+      }
     }
 
     setErrors(newErrors);
@@ -65,10 +109,81 @@ export function SubmitPage() {
     else if (currentStep === 'preview') setCurrentStep('code');
   };
 
-  const handleSubmit = () => {
-    // TODO: Submit to backend
-    alert('Skill submitted successfully! (Demo)');
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    setSubmitResult(null);
+
+    try {
+      const response = await fetch('https://skillhu.bz/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          description: formData.description.trim(),
+          category: formData.category,
+          tags: formData.tags.split(',').map(t => t.trim()).filter(Boolean),
+          content: formData.content,
+          authorName: formData.authorName.trim() || undefined,
+          authorGithub: formData.authorGithub.trim() || undefined,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitResult({ success: true, slug: data.skill.slug });
+      } else {
+        setSubmitResult({ success: false, error: data.error || 'Failed to submit skill' });
+      }
+    } catch (error) {
+      setSubmitResult({ success: false, error: 'Network error. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  // Success state
+  if (submitResult?.success) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <motion.div
+            className={styles.successCard}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <CheckCircle size={64} className={styles.successIcon} />
+            <h1>Skill Published!</h1>
+            <p>Your skill is now live on skillhu.bz</p>
+            <div className={styles.successActions}>
+              <Link to={`/skill/${submitResult.slug}`} className="btn btn-primary">
+                View Your Skill
+                <ExternalLink size={16} />
+              </Link>
+              <button
+                className="btn btn-secondary"
+                onClick={() => {
+                  setSubmitResult(null);
+                  setCurrentStep('info');
+                  setFormData({
+                    name: '',
+                    description: '',
+                    category: '' as Category | '',
+                    tags: '',
+                    content: SKILL_TEMPLATE,
+                    authorName: formData.authorName,
+                    authorGithub: formData.authorGithub,
+                  });
+                }}
+              >
+                Submit Another
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.page}>
@@ -80,7 +195,7 @@ export function SubmitPage() {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1>Submit a Skill</h1>
-          <p>Share your automation with the community</p>
+          <p>Share your automation with the community - published instantly</p>
         </motion.div>
 
         {/* Progress Steps */}
@@ -154,52 +269,31 @@ export function SubmitPage() {
                 )}
               </div>
 
-              <div className={styles.formRow}>
-                <div className={styles.formGroup}>
-                  <label htmlFor="category">
-                    Category <span className={styles.required}>*</span>
-                  </label>
-                  <select
-                    id="category"
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value as Category })}
-                    className={errors.category ? styles.inputError : ''}
-                  >
-                    <option value="">Select a category</option>
-                    {(Object.entries(CATEGORIES) as [Category, typeof CATEGORIES[Category]][]).map(
-                      ([key, value]) => (
-                        <option key={key} value={key}>
-                          {value.label}
-                        </option>
-                      )
-                    )}
-                  </select>
-                  {errors.category && (
-                    <span className={styles.error}>
-                      <AlertCircle size={14} />
-                      {errors.category}
-                    </span>
+              <div className={styles.formGroup}>
+                <label htmlFor="category">
+                  Category <span className={styles.required}>*</span>
+                </label>
+                <select
+                  id="category"
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value as Category })}
+                  className={errors.category ? styles.inputError : ''}
+                >
+                  <option value="">Select a category</option>
+                  {(Object.entries(CATEGORIES) as [Category, typeof CATEGORIES[Category]][]).map(
+                    ([key, value]) => (
+                      <option key={key} value={key}>
+                        {value.label}
+                      </option>
+                    )
                   )}
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="language">Language</label>
-                  <select
-                    id="language"
-                    value={formData.language}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        language: e.target.value as typeof formData.language,
-                      })
-                    }
-                  >
-                    <option value="yaml">YAML</option>
-                    <option value="typescript">TypeScript</option>
-                    <option value="javascript">JavaScript</option>
-                    <option value="python">Python</option>
-                  </select>
-                </div>
+                </select>
+                {errors.category && (
+                  <span className={styles.error}>
+                    <AlertCircle size={14} />
+                    {errors.category}
+                  </span>
+                )}
               </div>
 
               <div className={styles.formGroup}>
@@ -249,44 +343,36 @@ export function SubmitPage() {
             </div>
           )}
 
-          {/* Step 2: Code */}
+          {/* Step 2: Skill Content */}
           {currentStep === 'code' && (
             <div className={styles.stepContent}>
               <div className={styles.formGroup}>
-                <label htmlFor="code">
-                  Skill Code <span className={styles.required}>*</span>
+                <label htmlFor="content">
+                  Skill Instructions (Markdown) <span className={styles.required}>*</span>
                 </label>
                 <div className={styles.codeInputWrapper}>
                   <div className={styles.codeHeader}>
-                    <span
-                      className={styles.languageDot}
-                      data-language={formData.language}
-                    />
-                    <span>{formData.language}</span>
+                    <span className={styles.languageDot} data-language="markdown" />
+                    <span>Markdown</span>
                   </div>
                   <textarea
-                    id="code"
-                    placeholder={getCodePlaceholder(formData.language)}
-                    rows={20}
-                    value={formData.code}
-                    onChange={(e) => setFormData({ ...formData, code: e.target.value })}
-                    className={`${styles.codeInput} ${errors.code ? styles.inputError : ''}`}
+                    id="content"
+                    rows={25}
+                    value={formData.content}
+                    onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                    className={`${styles.codeInput} ${errors.content ? styles.inputError : ''}`}
                   />
                 </div>
-                {errors.code && (
+                {errors.content && (
                   <span className={styles.error}>
                     <AlertCircle size={14} />
-                    {errors.code}
+                    {errors.content}
                   </span>
                 )}
-              </div>
-
-              <div className={styles.uploadSection}>
-                <div className={styles.uploadBox}>
-                  <Upload size={32} />
-                  <p>Or drag & drop a file here</p>
-                  <span>Supports .yaml, .ts, .js, .py files</span>
-                </div>
+                <span className={styles.hint}>
+                  Write clear, step-by-step instructions that an AI agent can follow.
+                  Include prerequisites, numbered steps, and error handling.
+                </span>
               </div>
             </div>
           )}
@@ -324,30 +410,33 @@ export function SubmitPage() {
                 </div>
                 <div className={styles.previewAuthor}>
                   <User size={16} />
-                  <span>{formData.authorName || 'Anonymous'}</span>
+                  <span>{formData.authorGithub || formData.authorName || 'Anonymous'}</span>
                 </div>
               </div>
 
               <div className={styles.previewCode}>
                 <div className={styles.codeHeader}>
-                  <span
-                    className={styles.languageDot}
-                    data-language={formData.language}
-                  />
-                  <span>{formData.language}</span>
+                  <span className={styles.languageDot} data-language="markdown" />
+                  <span>Markdown</span>
                 </div>
                 <pre className={styles.codePreview}>
-                  <code>{formData.code || '// No code provided'}</code>
+                  <code>{formData.content || '// No content provided'}</code>
                 </pre>
               </div>
+
+              {submitResult?.error && (
+                <div className={styles.submitError}>
+                  <AlertCircle size={20} />
+                  <span>{submitResult.error}</span>
+                </div>
+              )}
 
               <div className={styles.submitNotice}>
                 <CheckCircle size={20} />
                 <div>
-                  <strong>Ready to submit</strong>
+                  <strong>Ready to publish</strong>
                   <p>
-                    Your skill will be reviewed by our team before being published.
-                    This usually takes 24-48 hours.
+                    Your skill will be published instantly and available to everyone.
                   </p>
                 </div>
               </div>
@@ -357,7 +446,7 @@ export function SubmitPage() {
           {/* Actions */}
           <div className={styles.actions}>
             {currentStep !== 'info' && (
-              <button className="btn btn-secondary" onClick={handleBack}>
+              <button className="btn btn-secondary" onClick={handleBack} disabled={isSubmitting}>
                 Back
               </button>
             )}
@@ -368,9 +457,9 @@ export function SubmitPage() {
                 <ArrowRight size={16} />
               </button>
             ) : (
-              <button className="btn btn-primary" onClick={handleSubmit}>
+              <button className="btn btn-primary" onClick={handleSubmit} disabled={isSubmitting}>
                 <Upload size={16} />
-                Submit Skill
+                {isSubmitting ? 'Publishing...' : 'Publish Skill'}
               </button>
             )}
           </div>
@@ -378,30 +467,4 @@ export function SubmitPage() {
       </div>
     </div>
   );
-}
-
-function getCodePlaceholder(language: string): string {
-  if (language === 'yaml') {
-    return `name: my-skill
-description: What this skill does
-
-steps:
-  - id: step_1
-    tool: navigate_browser
-    args:
-      url: "https://example.com"
-      process: chrome`;
-  }
-  if (language === 'typescript' || language === 'javascript') {
-    return `import { Desktop } from 'terminator-sdk';
-
-const desktop = new Desktop();
-
-async function mySkill() {
-  // Your automation code here
-}
-
-export { mySkill };`;
-  }
-  return `# Your code here`;
 }
