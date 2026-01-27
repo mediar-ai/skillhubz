@@ -195,5 +195,22 @@
     "lines": 47,
     "size": 1480,
     "updated": "2026-01-27T22:38:47.036Z"
+  },
+  {
+    "name": "screenshot-to-clipboard",
+    "description": "Take a screenshot of a specific window or screen region and copy it to the clipboard for easy pasting",
+    "author": "anthropics",
+    "version": "1.0.0",
+    "tags": [
+      "screenshot",
+      "clipboard",
+      "windows",
+      "productivity"
+    ],
+    "category": "productivity",
+    "excerpt": "Take a screenshot of a specific window or screen region and copy it to the clipboard for easy pasting.",
+    "lines": 39,
+    "size": 1367,
+    "updated": "2026-01-27T22:42:31.404Z"
   }
 ]
