@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
+import { track } from '../utils/tracking.js';
 
 const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/registry.json';
 
@@ -20,6 +21,9 @@ interface Skill {
 
 export async function search(query: string, options: SearchOptions): Promise<void> {
   const spinner = ora('Searching skills...').start();
+
+  // Track search event
+  track({ event: 'search', query });
 
   try {
     const res = await fetch(REGISTRY_URL);
