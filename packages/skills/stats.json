@@ -1,0 +1,16 @@
+{
+  "installs": {
+    "gmail-reply": 12,
+    "github-pr-review": 8,
+    "slack-automator": 15,
+    "pdf-data-extractor": 5,
+    "form-filler": 3,
+    "linkedin-scraper": 7,
+    "e2e-test-recorder": 4,
+    "notion-sync": 6,
+    "screenshot-annotator": 2,
+    "expense-logger": 3
+  },
+  "searches": {},
+  "lastUpdated": "2026-01-27T00:00:00Z"
+}

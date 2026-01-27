@@ -19,11 +19,13 @@ interface RegistrySkill {
 }
 
 interface TrackingStats {
-  stats: Record<string, number>;
+  installs: Record<string, number>;
+  searches: Record<string, number>;
+  lastUpdated: string;
 }
 
-function transformSkill(registrySkill: RegistrySkill, stats: Record<string, number>): Skill {
-  const installCount = stats[`install:${registrySkill.name}`] || 0;
+function transformSkill(registrySkill: RegistrySkill, installs: Record<string, number>): Skill {
+  const installCount = installs[registrySkill.name] || 0;
   return {
     id: registrySkill.name,
     name: formatName(registrySkill.name),
@@ -72,13 +74,13 @@ export function useSkills() {
         const registry: RegistrySkill[] = await registryResponse.json();
 
         // Get stats or default to empty
-        let stats: Record<string, number> = {};
+        let installs: Record<string, number> = {};
         if (statsResponse?.ok) {
           const trackingData: TrackingStats = await statsResponse.json();
-          stats = trackingData.stats || {};
+          installs = trackingData.installs || {};
         }
 
-        const transformedSkills = registry.map(skill => transformSkill(skill, stats));
+        const transformedSkills = registry.map(skill => transformSkill(skill, installs));
 
         setSkills(transformedSkills);
         setLoading(false);
@@ -124,13 +126,13 @@ export function useSkill(id: string) {
         const code = await skillResponse.text();
 
         // Get stats or default to empty
-        let stats: Record<string, number> = {};
+        let installs: Record<string, number> = {};
         if (statsResponse?.ok) {
           const trackingData: TrackingStats = await statsResponse.json();
-          stats = trackingData.stats || {};
+          installs = trackingData.installs || {};
         }
 
-        const transformedSkill = transformSkill(registrySkill, stats);
+        const transformedSkill = transformSkill(registrySkill, installs);
         transformedSkill.code = code;
         transformedSkill.longDescription = code;
 
