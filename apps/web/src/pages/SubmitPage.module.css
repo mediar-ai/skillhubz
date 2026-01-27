@@ -218,6 +218,7 @@
 .languageDot[data-language="typescript"] { background: #3178c6; }
 .languageDot[data-language="javascript"] { background: #f7df1e; }
 .languageDot[data-language="python"] { background: #3776ab; }
+.languageDot[data-language="markdown"] { background: #083fa1; }
 
 .codeInput {
   width: 100%;
@@ -425,4 +426,57 @@
     width: 100%;
     justify-content: center;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Success Card
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  min-height: 400px;
+}
+
+.successIcon {
+  color: var(--accent-green);
+  margin-bottom: var(--space-xl);
+}
+
+.successCard h1 {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+.successCard p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.successActions {
+  display: flex;
+  gap: var(--space-md);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Submit Error
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.submitError {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius-lg);
+  color: #f87171;
+  margin-bottom: var(--space-lg);
 }
