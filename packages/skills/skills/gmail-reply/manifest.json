@@ -1,0 +1,9 @@
+{
+  "name": "gmail-reply",
+  "description": "Auto-reply to unread support emails in Gmail with acknowledgment messages",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["email", "gmail", "automation", "support", "auto-reply"],
+  "category": "productivity",
+  "license": "MIT"
+}

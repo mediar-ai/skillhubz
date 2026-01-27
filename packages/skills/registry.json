@@ -1,0 +1,56 @@
+[
+  {
+    "name": "github-pr-review",
+    "description": "Review open pull requests on GitHub, analyze code changes, and leave review comments",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": [
+      "github",
+      "code-review",
+      "pull-request",
+      "development",
+      "git"
+    ],
+    "category": "productivity",
+    "excerpt": "Review open pull requests in a GitHub repository, checking code changes and leaving review comments.  ## Prerequisites  - Chrome browser installed - Logged into GitHub - Repository URL provided by use",
+    "lines": 70,
+    "size": 2440,
+    "updated": "2026-01-22T00:57:04Z"
+  },
+  {
+    "name": "gmail-reply",
+    "description": "Auto-reply to unread support emails in Gmail with acknowledgment messages",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": [
+      "email",
+      "gmail",
+      "automation",
+      "support",
+      "auto-reply"
+    ],
+    "category": "productivity",
+    "excerpt": "Automatically reply to unread support emails in Gmail with an acknowledgment message.  ## Prerequisites  - Chrome browser installed - Logged into Gmail  ## Instructions ",
+    "lines": 62,
+    "size": 1898,
+    "updated": "2026-01-22T00:57:04Z"
+  },
+  {
+    "name": "notion-daily-note",
+    "description": "Create a structured daily note in Notion with tasks, schedule, and reflection sections",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": [
+      "notion",
+      "daily-notes",
+      "planning",
+      "productivity",
+      "templates"
+    ],
+    "category": "productivity",
+    "excerpt": "Create a daily note in Notion with a structured template for planning your day.  ## Prerequisites  - Chrome browser installed - Logged into Notion - A workspace with a \"Daily Notes\" page or database  ",
+    "lines": 91,
+    "size": 2226,
+    "updated": "2026-01-22T00:57:04Z"
+  }
+]

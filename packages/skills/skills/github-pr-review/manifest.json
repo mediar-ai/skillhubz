@@ -1,0 +1,9 @@
+{
+  "name": "github-pr-review",
+  "description": "Review open pull requests on GitHub, analyze code changes, and leave review comments",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["github", "code-review", "pull-request", "development", "git"],
+  "category": "productivity",
+  "license": "MIT"
+}

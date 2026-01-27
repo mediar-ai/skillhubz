@@ -1,0 +1,49 @@
+{
+  "name": "skillhu",
+  "version": "0.1.0",
+  "description": "CLI for skillhu.bz - Install, search, and publish Claude Code skills",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "skillhu": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "dev": "tsup src/index.ts --format esm --watch",
+    "start": "node dist/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "skills",
+    "automation",
+    "computer-use",
+    "cli"
+  ],
+  "author": "mediar-ai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mediar-ai/skillhu.git"
+  },
+  "homepage": "https://skillhu.bz",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "conf": "^12.0.0",
+    "octokit": "^3.1.2",
+    "open": "^10.0.0",
+    "ora": "^8.0.1",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

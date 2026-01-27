@@ -1,0 +1,118 @@
+name: Validate Skill PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'skills/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v41
+        with:
+          files: skills/**
+
+      - name: Validate skill structure
+        run: |
+          for dir in $(find skills -mindepth 1 -maxdepth 1 -type d); do
+            skill_name=$(basename "$dir")
+            echo "Validating skill: $skill_name"
+
+            # Check skill.md exists
+            if [ ! -f "$dir/skill.md" ]; then
+              echo "❌ Missing skill.md in $skill_name"
+              exit 1
+            fi
+
+            # Check manifest.json exists
+            if [ ! -f "$dir/manifest.json" ]; then
+              echo "❌ Missing manifest.json in $skill_name"
+              exit 1
+            fi
+
+            # Validate manifest.json is valid JSON
+            if ! jq empty "$dir/manifest.json" 2>/dev/null; then
+              echo "❌ Invalid JSON in $skill_name/manifest.json"
+              exit 1
+            fi
+
+            # Check required fields in manifest
+            name=$(jq -r '.name' "$dir/manifest.json")
+            description=$(jq -r '.description' "$dir/manifest.json")
+            author=$(jq -r '.author' "$dir/manifest.json")
+
+            if [ "$name" = "null" ] || [ -z "$name" ]; then
+              echo "❌ Missing 'name' in $skill_name/manifest.json"
+              exit 1
+            fi
+
+            if [ "$description" = "null" ] || [ -z "$description" ]; then
+              echo "❌ Missing 'description' in $skill_name/manifest.json"
+              exit 1
+            fi
+
+            if [ "$author" = "null" ] || [ -z "$author" ]; then
+              echo "❌ Missing 'author' in $skill_name/manifest.json"
+              exit 1
+            fi
+
+            # Check folder name matches manifest name
+            if [ "$name" != "$skill_name" ]; then
+              echo "❌ Folder name '$skill_name' doesn't match manifest name '$name'"
+              exit 1
+            fi
+
+            # Check skill.md has a title (starts with #)
+            if ! head -1 "$dir/skill.md" | grep -q "^# "; then
+              echo "❌ skill.md must start with a title (# Title)"
+              exit 1
+            fi
+
+            # Check file size (max 50KB)
+            size=$(stat -f%z "$dir/skill.md" 2>/dev/null || stat -c%s "$dir/skill.md")
+            if [ "$size" -gt 51200 ]; then
+              echo "❌ skill.md exceeds 50KB limit"
+              exit 1
+            fi
+
+            echo "✅ $skill_name is valid"
+          done
+
+      - name: Check for duplicates
+        run: |
+          # Get all skill names
+          names=$(find skills -name "manifest.json" -exec jq -r '.name' {} \;)
+
+          # Check for duplicates
+          duplicates=$(echo "$names" | sort | uniq -d)
+          if [ -n "$duplicates" ]; then
+            echo "❌ Duplicate skill names found: $duplicates"
+            exit 1
+          fi
+
+          echo "✅ No duplicate skill names"
+
+  auto-merge:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Auto-merge valid PRs
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_LABELS: ""
+          MERGE_METHOD: squash
+          MERGE_COMMIT_MESSAGE: "pull-request-title"
+          MERGE_FORKS: "true"
+          MERGE_RETRIES: "3"
+          MERGE_RETRY_SLEEP: "10000"

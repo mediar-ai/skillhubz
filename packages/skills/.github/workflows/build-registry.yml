@@ -1,0 +1,86 @@
+name: Build Registry
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build registry.json
+        run: |
+          echo "Building skills registry..."
+
+          # Start JSON array
+          echo '[' > registry.json
+
+          first=true
+          for dir in skills/*/; do
+            if [ -f "$dir/manifest.json" ]; then
+              skill_name=$(basename "$dir")
+
+              # Get manifest data
+              manifest=$(cat "$dir/manifest.json")
+
+              # Get skill.md stats
+              skill_file="$dir/skill.md"
+              lines=$(wc -l < "$skill_file" | tr -d ' ')
+              size=$(stat -f%z "$skill_file" 2>/dev/null || stat -c%s "$skill_file")
+
+              # Get first paragraph as excerpt (skip title)
+              excerpt=$(sed -n '3,10p' "$skill_file" | head -c 200 | tr '\n' ' ')
+
+              # Add comma if not first
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo ',' >> registry.json
+              fi
+
+              # Build entry
+              jq -n \
+                --argjson manifest "$manifest" \
+                --arg excerpt "$excerpt" \
+                --arg lines "$lines" \
+                --arg size "$size" \
+                --arg updated "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+                '{
+                  name: $manifest.name,
+                  description: $manifest.description,
+                  author: $manifest.author,
+                  version: $manifest.version,
+                  tags: $manifest.tags,
+                  category: $manifest.category,
+                  excerpt: $excerpt,
+                  lines: ($lines | tonumber),
+                  size: ($size | tonumber),
+                  updated: $updated
+                }' >> registry.json
+            fi
+          done
+
+          # Close JSON array
+          echo '' >> registry.json
+          echo ']' >> registry.json
+
+          # Pretty print
+          jq '.' registry.json > registry.tmp && mv registry.tmp registry.json
+
+          echo "Registry built with $(jq length registry.json) skills"
+          cat registry.json
+
+      - name: Commit registry
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add registry.json
+          git diff --staged --quiet || git commit -m "Update registry.json"
+          git push
