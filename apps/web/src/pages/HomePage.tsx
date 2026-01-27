@@ -14,9 +14,10 @@ import {
   FlaskConical,
   Puzzle,
   Wrench,
+  Loader2,
 } from 'lucide-react';
 import { SkillCard } from '../components/SkillCard';
-import { featuredSkills, mockSkills } from '../data/skills';
+import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
 import styles from './HomePage.module.css';
 
@@ -32,6 +33,9 @@ const categoryIcons: Record<Category, React.ReactNode> = {
 };
 
 export function HomePage() {
+  const { skills, loading } = useSkills();
+  const featuredSkills = skills.filter(s => s.featured);
+
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -92,19 +96,19 @@ export function HomePage() {
           >
             <div className={styles.statItem}>
               <Download size={18} className={styles.statIcon} />
-              <span className={styles.statValue}>12.4k</span>
+              <span className={styles.statValue}>1.2k</span>
               <span className={styles.statLabel}>Installs</span>
             </div>
             <div className={styles.statDivider} />
             <div className={styles.statItem}>
               <Code size={18} className={styles.statIcon} />
-              <span className={styles.statValue}>284</span>
+              <span className={styles.statValue}>{skills.length}</span>
               <span className={styles.statLabel}>Skills</span>
             </div>
             <div className={styles.statDivider} />
             <div className={styles.statItem}>
               <Users size={18} className={styles.statIcon} />
-              <span className={styles.statValue}>1.2k</span>
+              <span className={styles.statValue}>42</span>
               <span className={styles.statLabel}>Contributors</span>
             </div>
           </motion.div>
@@ -177,7 +181,7 @@ Reply to unread support emails in Gmail.
                     </div>
                     <span className={styles.categoryName}>{value.label}</span>
                     <span className={styles.categoryCount}>
-                      {mockSkills.filter((s) => s.category === key).length} skills
+                      {skills.filter((s) => s.category === key).length} skills
                     </span>
                   </Link>
                 </motion.div>
@@ -201,11 +205,18 @@ Reply to unread support emails in Gmail.
             </Link>
           </div>
 
-          <div className={styles.skillsGrid}>
-            {featuredSkills.map((skill, index) => (
-              <SkillCard key={skill.id} skill={skill} index={index} />
-            ))}
-          </div>
+          {loading ? (
+            <div className={styles.loading}>
+              <Loader2 size={32} className={styles.spinner} />
+              <p>Loading skills...</p>
+            </div>
+          ) : (
+            <div className={styles.skillsGrid}>
+              {featuredSkills.slice(0, 3).map((skill, index) => (
+                <SkillCard key={skill.id} skill={skill} index={index} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -284,7 +295,7 @@ Reply to unread support emails in Gmail.
                 Submit a Skill
                 <ArrowRight size={16} />
               </Link>
-              <a href="#" className="btn btn-secondary">
+              <a href="https://github.com/mediar-ai/skillhubz" className="btn btn-secondary">
                 Read the Docs
               </a>
             </div>

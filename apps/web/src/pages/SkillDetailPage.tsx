@@ -18,23 +18,33 @@ import {
   Flag,
   Share2,
   Terminal,
+  Loader2,
 } from 'lucide-react';
-import { mockSkills } from '../data/skills';
+import { useSkill } from '../hooks/useSkills';
 import { CATEGORIES } from '../types';
 import styles from './SkillDetailPage.module.css';
 
 export function SkillDetailPage() {
   const { id } = useParams<{ id: string }>();
+  const { skill, loading, error } = useSkill(id || '');
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'code' | 'comments'>('code');
   const [commentText, setCommentText] = useState('');
 
-  const skill = mockSkills.find((s) => s.id === id);
+  if (loading) {
+    return (
+      <div className={styles.loading}>
+        <Loader2 size={48} className={styles.spinner} />
+        <p>Loading skill...</p>
+      </div>
+    );
+  }
 
-  if (!skill) {
+  if (error || !skill) {
     return (
       <div className={styles.notFound}>
         <h1>Skill not found</h1>
+        <p>{error || 'The skill you are looking for does not exist.'}</p>
         <Link to="/explore" className="btn btn-secondary">
           Back to Explore
         </Link>
@@ -62,14 +72,14 @@ export function SkillDetailPage() {
     {
       id: '1',
       author: { name: 'David Kim', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=david' },
-      content: 'This skill saved me hours of work! I modified it to also track email response times.',
+      content: 'This skill saved me hours of work! Highly recommended.',
       createdAt: '2024-11-18T10:30:00Z',
       likes: 12,
     },
     {
       id: '2',
       author: { name: 'Lisa Wang', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lisa' },
-      content: 'Great automation! One suggestion: add error handling for when Gmail rate limits the API calls.',
+      content: 'Great automation! Works perfectly with my workflow.',
       createdAt: '2024-11-15T14:22:00Z',
       likes: 8,
     },
@@ -113,7 +123,7 @@ export function SkillDetailPage() {
                   </span>
                 )}
                 {skill.featured && (
-                  <span className={styles.featuredBadge}>⭐ Featured</span>
+                  <span className={styles.featuredBadge}>Featured</span>
                 )}
               </div>
 
@@ -131,7 +141,7 @@ export function SkillDetailPage() {
                   )}
                   <span>{skill.author.name}</span>
                 </Link>
-                <span className={styles.metaDivider}>•</span>
+                <span className={styles.metaDivider}>-</span>
                 <span className={styles.metaItem}>
                   <Clock size={14} />
                   Updated {formatDate(skill.updatedAt)}
@@ -182,9 +192,9 @@ export function SkillDetailPage() {
                     <div className={styles.codeInfo}>
                       <span
                         className={styles.languageDot}
-                        data-language={skill.language}
+                        data-language="markdown"
                       />
-                      <span>{skill.language}</span>
+                      <span>markdown</span>
                     </div>
                     <button
                       className={styles.copyButton}
@@ -204,7 +214,7 @@ export function SkillDetailPage() {
                     </button>
                   </div>
                   <SyntaxHighlighter
-                    language={skill.language === 'yaml' ? 'yaml' : 'typescript'}
+                    language="markdown"
                     style={oneDark}
                     customStyle={{
                       margin: 0,
@@ -217,27 +227,6 @@ export function SkillDetailPage() {
                     {skill.code}
                   </SyntaxHighlighter>
                 </div>
-
-                {/* Long Description */}
-                {skill.longDescription && (
-                  <div className={styles.longDescription}>
-                    <h2>About this skill</h2>
-                    <div className={styles.markdownContent}>
-                      {skill.longDescription.split('\n').map((line, i) => {
-                        if (line.startsWith('## ')) {
-                          return <h3 key={i}>{line.slice(3)}</h3>;
-                        }
-                        if (line.startsWith('- ')) {
-                          return <li key={i}>{line.slice(2)}</li>;
-                        }
-                        if (line.trim() === '') {
-                          return <br key={i} />;
-                        }
-                        return <p key={i}>{line}</p>;
-                      })}
-                    </div>
-                  </div>
-                )}
               </motion.div>
             )}
 
@@ -315,10 +304,10 @@ export function SkillDetailPage() {
             <div className={styles.installCard}>
               <h3>Install this skill</h3>
               <div className={styles.installCode}>
-                <code>npx skillhub install {skill.id}</code>
+                <code>npx skillhu install {skill.id}</code>
                 <button
                   className={styles.installCopy}
-                  onClick={() => navigator.clipboard.writeText(`npx skillhub install ${skill.id}`)}
+                  onClick={() => navigator.clipboard.writeText(`npx skillhu install ${skill.id}`)}
                 >
                   <Copy size={14} />
                 </button>
@@ -326,9 +315,9 @@ export function SkillDetailPage() {
               <p className={styles.installHint}>
                 Or copy the code and paste it into your Claude Code skills folder
               </p>
-              <button className="btn btn-primary" style={{ width: '100%' }}>
+              <button className="btn btn-primary" style={{ width: '100%' }} onClick={handleCopy}>
                 <Download size={16} />
-                Download Skill
+                Copy Skill Code
               </button>
             </div>
 
@@ -351,9 +340,9 @@ export function SkillDetailPage() {
               <div className={styles.statRow}>
                 <span>
                   <Clock size={16} />
-                  Created
+                  Updated
                 </span>
-                <strong>{formatDate(skill.createdAt)}</strong>
+                <strong>{formatDate(skill.updatedAt)}</strong>
               </div>
             </div>
 
@@ -375,7 +364,7 @@ export function SkillDetailPage() {
                   rel="noopener noreferrer"
                 >
                   <Github size={16} />
-                  View on GitHub
+                  View Author
                   <ExternalLink size={12} />
                 </a>
               )}
