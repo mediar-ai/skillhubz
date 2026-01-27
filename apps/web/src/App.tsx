@@ -5,10 +5,11 @@ import { ExplorePage } from './pages/ExplorePage';
 import { SkillDetailPage } from './pages/SkillDetailPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { CrispChat } from './components/CrispChat';
+import { PostHogProvider } from './components/PostHogProvider';
 
 function App() {
   return (
-    <>
+    <PostHogProvider>
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -18,7 +19,7 @@ function App() {
         </Routes>
       </Layout>
       <CrispChat />
-    </>
+    </PostHogProvider>
   );
 }
 
