@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 declare global {
   interface Window {
@@ -8,8 +9,11 @@ declare global {
 }
 
 const CRISP_WEBSITE_ID = '8fab9831-32f1-4479-a7ac-a2ba55eddee0';
+const SITE_NAME = 'skillhu.bz';
 
 export function CrispChat() {
+  const location = useLocation();
+
   useEffect(() => {
     // Initialize Crisp
     window.$crisp = [];
@@ -30,6 +34,13 @@ export function CrispChat() {
         // Black theme
         window.$crisp.push(['config', 'color:theme', ['black']]);
 
+        // Set session data to identify site and page
+        window.$crisp.push(['set', 'session:data', [[
+          ['site', SITE_NAME],
+          ['page', window.location.pathname],
+          ['url', window.location.href],
+        ]]]);
+
         // Show preview message after 10 seconds (once per session)
         window.$crisp.push(['on', 'session:loaded', () => {
           if (!sessionStorage.getItem('crisp_preview_shown')) {
@@ -49,6 +60,17 @@ export function CrispChat() {
       clearInterval(configInterval);
     };
   }, []);
+
+  // Update Crisp session data when page changes
+  useEffect(() => {
+    if (window.$crisp && window.$crisp.push) {
+      window.$crisp.push(['set', 'session:data', [[
+        ['site', SITE_NAME],
+        ['page', location.pathname],
+        ['url', window.location.origin + location.pathname],
+      ]]]);
+    }
+  }, [location.pathname]);
 
   // Suppress Crisp errors
   useEffect(() => {
