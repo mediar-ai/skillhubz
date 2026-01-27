@@ -1,0 +1,9 @@
+{
+  "name": "form-filler",
+  "description": "Intelligently fill web forms using AI-powered field detection and data mapping",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["forms", "automation", "ai", "web", "data-entry"],
+  "category": "data-entry",
+  "license": "MIT"
+}

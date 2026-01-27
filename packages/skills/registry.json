@@ -4,15 +4,9 @@
     "description": "Review open pull requests on GitHub, analyze code changes, and leave review comments",
     "author": "mediar-ai",
     "version": "1.0.0",
-    "tags": [
-      "github",
-      "code-review",
-      "pull-request",
-      "development",
-      "git"
-    ],
+    "tags": ["github", "code-review", "pull-request", "development", "git"],
     "category": "productivity",
-    "excerpt": "Review open pull requests in a GitHub repository, checking code changes and leaving review comments.  ## Prerequisites  - Chrome browser installed - Logged into GitHub - Repository URL provided by use",
+    "excerpt": "Review open pull requests in a GitHub repository, checking code changes and leaving review comments.",
     "lines": 70,
     "size": 2440,
     "updated": "2026-01-22T00:57:04Z"
@@ -22,15 +16,9 @@
     "description": "Auto-reply to unread support emails in Gmail with acknowledgment messages",
     "author": "mediar-ai",
     "version": "1.0.0",
-    "tags": [
-      "email",
-      "gmail",
-      "automation",
-      "support",
-      "auto-reply"
-    ],
+    "tags": ["email", "gmail", "automation", "support", "auto-reply"],
     "category": "productivity",
-    "excerpt": "Automatically reply to unread support emails in Gmail with an acknowledgment message.  ## Prerequisites  - Chrome browser installed - Logged into Gmail  ## Instructions ",
+    "excerpt": "Automatically reply to unread support emails in Gmail with an acknowledgment message.",
     "lines": 62,
     "size": 1898,
     "updated": "2026-01-22T00:57:04Z"
@@ -40,17 +28,95 @@
     "description": "Create a structured daily note in Notion with tasks, schedule, and reflection sections",
     "author": "mediar-ai",
     "version": "1.0.0",
-    "tags": [
-      "notion",
-      "daily-notes",
-      "planning",
-      "productivity",
-      "templates"
-    ],
+    "tags": ["notion", "daily-notes", "planning", "productivity", "templates"],
     "category": "productivity",
-    "excerpt": "Create a daily note in Notion with a structured template for planning your day.  ## Prerequisites  - Chrome browser installed - Logged into Notion - A workspace with a \"Daily Notes\" page or database  ",
+    "excerpt": "Create a daily note in Notion with a structured template for planning your day.",
     "lines": 91,
     "size": 2226,
     "updated": "2026-01-22T00:57:04Z"
+  },
+  {
+    "name": "pdf-data-extractor",
+    "description": "Extract structured data from PDF documents using OCR and pattern matching",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["pdf", "ocr", "data-extraction", "documents"],
+    "category": "file-management",
+    "excerpt": "Extract structured data from PDF documents using OCR and pattern matching.",
+    "lines": 65,
+    "size": 1850,
+    "updated": "2026-01-27T20:45:00Z"
+  },
+  {
+    "name": "form-filler",
+    "description": "Intelligently fill web forms using AI-powered field detection and data mapping",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["forms", "automation", "ai", "web", "data-entry"],
+    "category": "data-entry",
+    "excerpt": "Intelligently fill web forms using AI-powered field detection and data mapping.",
+    "lines": 78,
+    "size": 2200,
+    "updated": "2026-01-27T20:45:00Z"
+  },
+  {
+    "name": "linkedin-scraper",
+    "description": "Ethically scrape public LinkedIn profiles for lead generation and research",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["linkedin", "scraping", "lead-gen", "sales", "research"],
+    "category": "web-scraping",
+    "excerpt": "Ethically scrape public LinkedIn profiles for lead generation and research.",
+    "lines": 85,
+    "size": 2400,
+    "updated": "2026-01-27T20:45:00Z"
+  },
+  {
+    "name": "e2e-test-recorder",
+    "description": "Record user interactions and generate Playwright/Cypress test scripts automatically",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["testing", "e2e", "playwright", "cypress", "automation"],
+    "category": "testing",
+    "excerpt": "Record user interactions and generate Playwright/Cypress test scripts automatically.",
+    "lines": 90,
+    "size": 2600,
+    "updated": "2026-01-27T20:45:00Z"
+  },
+  {
+    "name": "notion-sync",
+    "description": "Bi-directional sync between Notion databases and local files or other services",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["notion", "sync", "database", "productivity", "backup"],
+    "category": "integrations",
+    "excerpt": "Bi-directional sync between Notion databases and local files or other services.",
+    "lines": 88,
+    "size": 2500,
+    "updated": "2026-01-27T20:45:00Z"
+  },
+  {
+    "name": "screenshot-annotator",
+    "description": "Capture screenshots and automatically annotate UI elements with descriptions",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["screenshots", "documentation", "ui", "annotation", "accessibility"],
+    "category": "utilities",
+    "excerpt": "Capture screenshots and automatically annotate UI elements with descriptions.",
+    "lines": 75,
+    "size": 2100,
+    "updated": "2026-01-27T20:45:00Z"
+  },
+  {
+    "name": "slack-automator",
+    "description": "Schedule and automate Slack messages with rich formatting and attachments",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": ["slack", "messaging", "scheduling", "team", "automation"],
+    "category": "productivity",
+    "excerpt": "Schedule and automate Slack messages with rich formatting and attachments.",
+    "lines": 82,
+    "size": 2300,
+    "updated": "2026-01-27T20:45:00Z"
   }
 ]

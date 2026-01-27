@@ -1,0 +1,9 @@
+{
+  "name": "pdf-data-extractor",
+  "description": "Extract structured data from PDF documents using OCR and pattern matching",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["pdf", "ocr", "data-extraction", "documents"],
+  "category": "file-management",
+  "license": "MIT"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "screenshot-annotator",
+  "description": "Capture screenshots and automatically annotate UI elements with descriptions",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["screenshots", "documentation", "ui", "annotation", "accessibility"],
+  "category": "utilities",
+  "license": "MIT"
+}
