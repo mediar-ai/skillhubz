@@ -4,8 +4,8 @@ import { existsSync, mkdirSync, writeFileSync, readFileSync } from 'fs';
 import chalk from 'chalk';
 import ora from 'ora';
 
-const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skills/main/registry.json';
-const SKILLS_BASE_URL = 'https://raw.githubusercontent.com/mediar-ai/skills/main/skills';
+const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/registry.json';
+const SKILLS_BASE_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/skills';
 
 interface InstallOptions {
   local?: boolean;
