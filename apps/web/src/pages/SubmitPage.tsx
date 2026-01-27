@@ -14,6 +14,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import { CATEGORIES, type Category } from '../types';
+import { trackSkillSubmitted, trackFormStepChanged } from '../utils/analytics';
 import styles from './SubmitPage.module.css';
 
 type Step = 'info' | 'code' | 'preview';
@@ -99,14 +100,24 @@ export function SubmitPage() {
 
   const handleNext = () => {
     if (validateStep(currentStep)) {
-      if (currentStep === 'info') setCurrentStep('code');
-      else if (currentStep === 'code') setCurrentStep('preview');
+      if (currentStep === 'info') {
+        trackFormStepChanged('info', 'code');
+        setCurrentStep('code');
+      } else if (currentStep === 'code') {
+        trackFormStepChanged('code', 'preview');
+        setCurrentStep('preview');
+      }
     }
   };
 
   const handleBack = () => {
-    if (currentStep === 'code') setCurrentStep('info');
-    else if (currentStep === 'preview') setCurrentStep('code');
+    if (currentStep === 'code') {
+      trackFormStepChanged('code', 'info');
+      setCurrentStep('info');
+    } else if (currentStep === 'preview') {
+      trackFormStepChanged('preview', 'code');
+      setCurrentStep('code');
+    }
   };
 
   const handleSubmit = async () => {
@@ -132,8 +143,10 @@ export function SubmitPage() {
 
       if (response.ok && data.success) {
         setSubmitResult({ success: true, slug: data.skill.slug });
+        trackSkillSubmitted(data.skill.slug, formData.category, true);
       } else {
         setSubmitResult({ success: false, error: data.error || 'Failed to submit skill' });
+        trackSkillSubmitted('', formData.category, false);
       }
     } catch (error) {
       setSubmitResult({ success: false, error: 'Network error. Please try again.' });

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
@@ -12,6 +12,14 @@ import {
 import { SkillCard } from '../components/SkillCard';
 import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
+import {
+  trackSearchPerformed,
+  trackCategorySelected,
+  trackFilterApplied,
+  trackSortChanged,
+  trackFiltersCleared,
+  trackFilterToggled,
+} from '../utils/analytics';
 import styles from './ExplorePage.module.css';
 
 type SortOption = 'popular' | 'newest' | 'stars' | 'name';
@@ -26,6 +34,18 @@ export function ExplorePage() {
   const selectedCategory = searchParams.get('category') as Category | null;
   const showFeatured = searchParams.get('featured') === 'true';
   const showVerified = searchParams.get('verified') === 'true';
+
+  // Debounced search tracking
+  const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  useEffect(() => {
+    if (searchQuery) {
+      clearTimeout(searchTimeoutRef.current);
+      searchTimeoutRef.current = setTimeout(() => {
+        trackSearchPerformed(searchQuery, filteredSkills.length);
+      }, 500);
+    }
+    return () => clearTimeout(searchTimeoutRef.current);
+  }, [searchQuery, filteredSkills.length]);
 
   const filteredSkills = useMemo(() => {
     let result = [...skills];
@@ -81,6 +101,8 @@ export function ExplorePage() {
   const handleCategoryClick = (category: Category | null) => {
     if (category) {
       searchParams.set('category', category);
+      trackCategorySelected(category, 'explore');
+      trackFilterApplied('category', category);
     } else {
       searchParams.delete('category');
     }
@@ -88,17 +110,20 @@ export function ExplorePage() {
   };
 
   const toggleFilter = (key: 'featured' | 'verified') => {
-    if (searchParams.get(key) === 'true') {
-      searchParams.delete(key);
-    } else {
+    const newValue = searchParams.get(key) !== 'true';
+    if (newValue) {
       searchParams.set(key, 'true');
+    } else {
+      searchParams.delete(key);
     }
+    trackFilterApplied(key, newValue);
     setSearchParams(searchParams);
   };
 
   const clearFilters = () => {
     setSearchParams({});
     setSearchQuery('');
+    trackFiltersCleared();
   };
 
   const hasActiveFilters =
@@ -161,7 +186,7 @@ export function ExplorePage() {
           {/* Filter Toggle */}
           <button
             className={`${styles.filterToggle} ${showFilters ? styles.active : ''}`}
-            onClick={() => setShowFilters(!showFilters)}
+            onClick={() => { const newState = !showFilters; setShowFilters(newState); trackFilterToggled(newState); }}
           >
             <SlidersHorizontal size={18} />
             Filters
@@ -173,7 +198,7 @@ export function ExplorePage() {
             <ArrowUpDown size={16} />
             <select
               value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              onChange={(e) => { const value = e.target.value as SortOption; setSortBy(value); trackSortChanged(value); }}
               className={styles.sortSelect}
             >
               <option value="popular">Most Popular</option>

@@ -11,6 +11,7 @@ import {
   X,
 } from 'lucide-react';
 import { useState } from 'react';
+import { trackMobileMenuToggled } from '../utils/analytics';
 import styles from './Layout.module.css';
 
 interface LayoutProps {
@@ -80,7 +81,7 @@ export function Layout({ children }: LayoutProps) {
             </Link>
             <button
               className={styles.mobileMenuBtn}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              onClick={() => { const newState = !mobileMenuOpen; setMobileMenuOpen(newState); trackMobileMenuToggled(newState); }}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
