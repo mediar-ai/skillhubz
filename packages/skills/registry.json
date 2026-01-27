@@ -212,5 +212,22 @@
     "lines": 39,
     "size": 1367,
     "updated": "2026-01-27T22:42:31.404Z"
+  },
+  {
+    "name": "quick-note-taker",
+    "description": "Quickly create and save a timestamped note to a local file",
+    "author": "anthropics",
+    "version": "1.0.0",
+    "tags": [
+      "notes",
+      "productivity",
+      "file",
+      "text"
+    ],
+    "category": "productivity",
+    "excerpt": "Quickly create and save a timestamped note to a local file.",
+    "lines": 40,
+    "size": 971,
+    "updated": "2026-01-27T22:53:44.026Z"
   }
 ]
