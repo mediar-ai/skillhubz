@@ -21,6 +21,7 @@ import {
   Loader2,
 } from 'lucide-react';
 import { useSkill } from '../hooks/useSkills';
+import { useComments } from '../hooks/useComments';
 import { CATEGORIES } from '../types';
 import { trackStar } from '../utils/tracking';
 import styles from './SkillDetailPage.module.css';
@@ -28,9 +29,12 @@ import styles from './SkillDetailPage.module.css';
 export function SkillDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { skill, loading, error } = useSkill(id || '');
+  const { comments, loading: commentsLoading, addComment, likeComment, hasLiked } = useComments(id || '');
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState<'code' | 'comments'>('code');
   const [commentText, setCommentText] = useState('');
+  const [authorName, setAuthorName] = useState(() => localStorage.getItem('comment-author') || '');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Star state
   const storageKey = `starred-${id}`;
@@ -94,22 +98,22 @@ export function SkillDetailPage() {
     });
   };
 
-  const mockComments = [
-    {
-      id: '1',
-      author: { name: 'David Kim', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=david' },
-      content: 'This skill saved me hours of work! Highly recommended.',
-      createdAt: '2024-11-18T10:30:00Z',
-      likes: 12,
-    },
-    {
-      id: '2',
-      author: { name: 'Lisa Wang', avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lisa' },
-      content: 'Great automation! Works perfectly with my workflow.',
-      createdAt: '2024-11-15T14:22:00Z',
-      likes: 8,
-    },
-  ];
+  const handlePostComment = async () => {
+    if (!commentText.trim() || !authorName.trim()) return;
+
+    setIsSubmitting(true);
+    localStorage.setItem('comment-author', authorName.trim());
+
+    const success = await addComment(authorName.trim(), commentText.trim());
+    if (success) {
+      setCommentText('');
+    }
+    setIsSubmitting(false);
+  };
+
+  const handleLike = async (commentId: string) => {
+    await likeComment(commentId);
+  };
 
   return (
     <div className={styles.page}>
@@ -201,7 +205,7 @@ export function SkillDetailPage() {
                 onClick={() => setActiveTab('comments')}
               >
                 <MessageSquare size={16} />
-                Comments ({mockComments.length})
+                Comments ({comments.length})
               </button>
             </div>
 
@@ -265,55 +269,80 @@ export function SkillDetailPage() {
               >
                 {/* Comment Form */}
                 <div className={styles.commentForm}>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    value={authorName}
+                    onChange={(e) => setAuthorName(e.target.value)}
+                    className={styles.authorInput}
+                    maxLength={50}
+                  />
                   <textarea
                     placeholder="Share your thoughts, improvements, or ask questions..."
                     value={commentText}
                     onChange={(e) => setCommentText(e.target.value)}
                     className={styles.commentInput}
+                    maxLength={500}
                   />
                   <div className={styles.commentFormActions}>
-                    <button className="btn btn-primary" disabled={!commentText.trim()}>
-                      Post Comment
+                    <button
+                      className="btn btn-primary"
+                      disabled={!commentText.trim() || !authorName.trim() || isSubmitting}
+                      onClick={handlePostComment}
+                    >
+                      {isSubmitting ? 'Posting...' : 'Post Comment'}
                     </button>
                   </div>
                 </div>
 
                 {/* Comments List */}
                 <div className={styles.commentsList}>
-                  {mockComments.map((comment) => (
-                    <div key={comment.id} className={styles.comment}>
-                      <img
-                        src={comment.author.avatar}
-                        alt={comment.author.name}
-                        className={styles.commentAvatar}
-                      />
-                      <div className={styles.commentContent}>
-                        <div className={styles.commentHeader}>
-                          <span className={styles.commentAuthor}>
-                            {comment.author.name}
-                          </span>
-                          <span className={styles.commentDate}>
-                            {formatDate(comment.createdAt)}
-                          </span>
-                        </div>
-                        <p className={styles.commentText}>{comment.content}</p>
-                        <div className={styles.commentActions}>
-                          <button className={styles.commentAction}>
-                            <Heart size={14} />
-                            {comment.likes}
-                          </button>
-                          <button className={styles.commentAction}>
-                            <MessageSquare size={14} />
-                            Reply
-                          </button>
-                          <button className={styles.commentAction}>
-                            <Flag size={14} />
-                            Report
-                          </button>
+                  {commentsLoading ? (
+                    <div className={styles.loading}>
+                      <Loader2 size={24} className={styles.spinner} />
+                      <p>Loading comments...</p>
+                    </div>
+                  ) : comments.length === 0 ? (
+                    <div className={styles.noComments}>
+                      <MessageSquare size={32} />
+                      <p>No comments yet. Be the first to share your thoughts!</p>
+                    </div>
+                  ) : (
+                    comments.map((comment) => (
+                      <div key={comment.id} className={styles.comment}>
+                        <img
+                          src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(comment.author)}`}
+                          alt={comment.author}
+                          className={styles.commentAvatar}
+                        />
+                        <div className={styles.commentContent}>
+                          <div className={styles.commentHeader}>
+                            <span className={styles.commentAuthor}>
+                              {comment.author}
+                            </span>
+                            <span className={styles.commentDate}>
+                              {formatDate(comment.createdAt)}
+                            </span>
+                          </div>
+                          <p className={styles.commentText}>{comment.content}</p>
+                          <div className={styles.commentActions}>
+                            <button
+                              className={`${styles.commentAction} ${hasLiked(comment.id) ? styles.liked : ''}`}
+                              onClick={() => handleLike(comment.id)}
+                              disabled={hasLiked(comment.id)}
+                            >
+                              <Heart size={14} fill={hasLiked(comment.id) ? 'currentColor' : 'none'} />
+                              {comment.likes}
+                            </button>
+                            <button className={styles.commentAction}>
+                              <Flag size={14} />
+                              Report
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </motion.div>
             )}

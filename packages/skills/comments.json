@@ -1,0 +1,36 @@
+{
+  "gmail-reply": [
+    {
+      "id": "c1",
+      "author": "David Kim",
+      "content": "This skill saved me hours of work! Highly recommended.",
+      "createdAt": "2026-01-20T10:30:00Z",
+      "likes": 12
+    },
+    {
+      "id": "c2",
+      "author": "Lisa Wang",
+      "content": "Great automation! Works perfectly with my workflow.",
+      "createdAt": "2026-01-18T14:22:00Z",
+      "likes": 8
+    }
+  ],
+  "slack-automator": [
+    {
+      "id": "c3",
+      "author": "Alex Chen",
+      "content": "Perfect for scheduling daily standups!",
+      "createdAt": "2026-01-22T09:15:00Z",
+      "likes": 5
+    }
+  ],
+  "github-pr-review": [
+    {
+      "id": "c4",
+      "author": "Sarah Miller",
+      "content": "Makes code reviews so much faster.",
+      "createdAt": "2026-01-19T16:45:00Z",
+      "likes": 3
+    }
+  ]
+}
