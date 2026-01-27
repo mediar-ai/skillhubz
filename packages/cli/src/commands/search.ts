@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import ora from 'ora';
 
-const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skills/main/registry.json';
+const REGISTRY_URL = 'https://raw.githubusercontent.com/mediar-ai/skillhubz/master/packages/skills/registry.json';
 
 interface SearchOptions {
   category?: string;
