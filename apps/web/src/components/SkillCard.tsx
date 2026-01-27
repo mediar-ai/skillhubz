@@ -10,6 +10,7 @@ import {
 import type { Skill } from '../types';
 import { CATEGORIES } from '../types';
 import { trackStar } from '../utils/tracking';
+import { trackSkillStarred, trackSkillCardClicked } from '../utils/analytics';
 import styles from './SkillCard.module.css';
 
 interface SkillCardProps {
@@ -39,6 +40,7 @@ export function SkillCard({ skill, index = 0 }: SkillCardProps) {
     localStorage.setItem(storageKey, 'true');
 
     // Track the star
+    trackSkillStarred(skill.id, 'card');
     const success = await trackStar(skill.id);
     if (!success) {
       // Revert on failure
@@ -56,7 +58,7 @@ export function SkillCard({ skill, index = 0 }: SkillCardProps) {
       transition={{ delay: index * 0.05, duration: 0.4 }}
       whileHover={{ y: -4 }}
     >
-      <Link to={`/skill/${skill.id}`} className={styles.cardLink}>
+      <Link to={`/skill/${skill.id}`} className={styles.cardLink} onClick={() => trackSkillCardClicked(skill.id, index, 'explore')}>
         {/* Header */}
         <div className={styles.header}>
           <div

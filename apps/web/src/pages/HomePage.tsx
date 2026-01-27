@@ -19,6 +19,7 @@ import {
 import { SkillCard } from '../components/SkillCard';
 import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
+import { trackCategorySelected, trackCtaClicked, trackExternalLinkClicked } from '../utils/analytics';
 import styles from './HomePage.module.css';
 
 const categoryIcons: Record<Category, React.ReactNode> = {
@@ -78,11 +79,11 @@ export function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Link to="/explore" className="btn btn-primary">
+            <Link to="/explore" className="btn btn-primary" onClick={() => trackCtaClicked('explore_skills', 'hero')}>
               Explore Skills
               <ArrowRight size={16} />
             </Link>
-            <Link to="/submit" className="btn btn-secondary">
+            <Link to="/submit" className="btn btn-secondary" onClick={() => trackCtaClicked('submit_skill', 'hero')}>
               Submit Your Skill
             </Link>
           </motion.div>
@@ -175,6 +176,7 @@ Reply to unread support emails in Gmail.
                     to={`/explore?category=${key}`}
                     className={styles.categoryCard}
                     style={{ '--category-color': value.color } as React.CSSProperties}
+                    onClick={() => trackCategorySelected(key, 'home')}
                   >
                     <div className={styles.categoryIcon}>
                       {categoryIcons[key]}
@@ -199,7 +201,7 @@ Reply to unread support emails in Gmail.
               <h2>Featured Skills</h2>
               <p>Hand-picked by the community</p>
             </div>
-            <Link to="/explore" className="btn btn-ghost">
+            <Link to="/explore" className="btn btn-ghost" onClick={() => trackCtaClicked('view_all', 'featured_skills')}>
               View all
               <ArrowRight size={16} />
             </Link>
@@ -291,11 +293,11 @@ Reply to unread support emails in Gmail.
               help others automate their workflows.
             </p>
             <div className={styles.ctaActions}>
-              <Link to="/submit" className="btn btn-primary">
+              <Link to="/submit" className="btn btn-primary" onClick={() => trackCtaClicked('submit_skill', 'cta_section')}>
                 Submit a Skill
                 <ArrowRight size={16} />
               </Link>
-              <a href="https://github.com/mediar-ai/skillhubz" className="btn btn-secondary">
+              <a href="https://github.com/mediar-ai/skillhubz" className="btn btn-secondary" onClick={() => trackExternalLinkClicked('https://github.com/mediar-ai/skillhubz', 'docs')}>
                 Read the Docs
               </a>
             </div>

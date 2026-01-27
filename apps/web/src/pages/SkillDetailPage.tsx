@@ -24,6 +24,15 @@ import { useSkill } from '../hooks/useSkills';
 import { useComments } from '../hooks/useComments';
 import { CATEGORIES } from '../types';
 import { trackStar } from '../utils/tracking';
+import {
+  trackSkillViewed,
+  trackCodeCopied,
+  trackInstallCommandCopied,
+  trackSkillStarred,
+  trackCommentPosted,
+  trackCommentLiked,
+  trackTabSwitched,
+} from '../utils/analytics';
 import styles from './SkillDetailPage.module.css';
 
 export function SkillDetailPage() {
@@ -35,6 +44,7 @@ export function SkillDetailPage() {
   const [commentText, setCommentText] = useState('');
   const [authorName, setAuthorName] = useState(() => localStorage.getItem('comment-author') || '');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasTrackedView, setHasTrackedView] = useState(false);
 
   // Star state
   const storageKey = `starred-${id}`;
@@ -46,12 +56,19 @@ export function SkillDetailPage() {
     setStarCount(skill.stars);
   }
 
+  // Track skill view
+  if (skill && !hasTrackedView) {
+    trackSkillViewed(skill.id, skill.category, skill.author.name);
+    setHasTrackedView(true);
+  }
+
   const handleStar = async () => {
     if (hasStarred || !id) return;
 
     setHasStarred(true);
     setStarCount(prev => (prev ?? 0) + 1);
     localStorage.setItem(storageKey, 'true');
+    trackSkillStarred(id, 'detail');
 
     const success = await trackStar(id);
     if (!success) {
@@ -84,9 +101,10 @@ export function SkillDetailPage() {
 
   const category = CATEGORIES[skill.category];
 
-  const handleCopy = async () => {
+  const handleCopy = async (source: 'main' | 'sidebar' = 'main') => {
     await navigator.clipboard.writeText(skill.code);
     setCopied(true);
+    trackCodeCopied(skill.id, source);
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -99,7 +117,7 @@ export function SkillDetailPage() {
   };
 
   const handlePostComment = async () => {
-    if (!commentText.trim() || !authorName.trim()) return;
+    if (!commentText.trim() || !authorName.trim() || !id) return;
 
     setIsSubmitting(true);
     localStorage.setItem('comment-author', authorName.trim());
@@ -107,11 +125,13 @@ export function SkillDetailPage() {
     const success = await addComment(authorName.trim(), commentText.trim());
     if (success) {
       setCommentText('');
+      trackCommentPosted(id);
     }
     setIsSubmitting(false);
   };
 
   const handleLike = async (commentId: string) => {
+    if (id) trackCommentLiked(commentId, id);
     await likeComment(commentId);
   };
 
@@ -195,14 +215,14 @@ export function SkillDetailPage() {
             <div className={styles.tabs}>
               <button
                 className={`${styles.tab} ${activeTab === 'code' ? styles.active : ''}`}
-                onClick={() => setActiveTab('code')}
+                onClick={() => { setActiveTab('code'); if (id) trackTabSwitched('code', id); }}
               >
                 <Terminal size={16} />
                 Code
               </button>
               <button
                 className={`${styles.tab} ${activeTab === 'comments' ? styles.active : ''}`}
-                onClick={() => setActiveTab('comments')}
+                onClick={() => { setActiveTab('comments'); if (id) trackTabSwitched('comments', id); }}
               >
                 <MessageSquare size={16} />
                 Comments ({comments.length})
@@ -362,7 +382,7 @@ export function SkillDetailPage() {
                 <code>npx skillhu install {skill.id}</code>
                 <button
                   className={styles.installCopy}
-                  onClick={() => navigator.clipboard.writeText(`npx skillhu install ${skill.id}`)}
+                  onClick={() => { navigator.clipboard.writeText(`npx skillhu install ${skill.id}`); trackInstallCommandCopied(skill.id); }}
                 >
                   <Copy size={14} />
                 </button>
@@ -370,7 +390,7 @@ export function SkillDetailPage() {
               <p className={styles.installHint}>
                 Or copy the code and paste it into your Claude Code skills folder
               </p>
-              <button className="btn btn-primary" style={{ width: '100%' }} onClick={handleCopy}>
+              <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => handleCopy('sidebar')}>
                 <Download size={16} />
                 Copy Skill Code
               </button>
