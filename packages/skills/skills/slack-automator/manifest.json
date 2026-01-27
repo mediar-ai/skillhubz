@@ -1,0 +1,9 @@
+{
+  "name": "slack-automator",
+  "description": "Schedule and automate Slack messages with rich formatting and attachments",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["slack", "messaging", "scheduling", "team", "automation"],
+  "category": "productivity",
+  "license": "MIT"
+}

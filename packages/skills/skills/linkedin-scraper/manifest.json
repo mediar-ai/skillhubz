@@ -1,0 +1,9 @@
+{
+  "name": "linkedin-scraper",
+  "description": "Ethically scrape public LinkedIn profiles for lead generation and research",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["linkedin", "scraping", "lead-gen", "sales", "research"],
+  "category": "web-scraping",
+  "license": "MIT"
+}

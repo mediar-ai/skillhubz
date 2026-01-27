@@ -1,0 +1,9 @@
+{
+  "name": "notion-sync",
+  "description": "Bi-directional sync between Notion databases and local files or other services",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["notion", "sync", "database", "productivity", "backup"],
+  "category": "integrations",
+  "license": "MIT"
+}

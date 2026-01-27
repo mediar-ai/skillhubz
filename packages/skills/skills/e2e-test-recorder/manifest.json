@@ -1,0 +1,9 @@
+{
+  "name": "e2e-test-recorder",
+  "description": "Record user interactions and generate Playwright/Cypress test scripts automatically",
+  "author": "mediar-ai",
+  "version": "1.0.0",
+  "tags": ["testing", "e2e", "playwright", "cypress", "automation"],
+  "category": "testing",
+  "license": "MIT"
+}
