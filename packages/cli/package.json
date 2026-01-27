@@ -1,6 +1,6 @@
 {
   "name": "skillhu",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "CLI for skillhu.bz - Install, search, and publish Claude Code skills",
   "type": "module",
   "main": "dist/index.js",
