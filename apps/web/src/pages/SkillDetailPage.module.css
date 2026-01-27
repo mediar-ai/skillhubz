@@ -321,6 +321,31 @@
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.authorInput {
+  width: 100%;
+  max-width: 300px;
+  padding: var(--space-sm) var(--space-md);
+  font-family: inherit;
+  font-size: 0.9375rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast);
+}
+
+.authorInput:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.authorInput::placeholder {
+  color: var(--text-tertiary);
 }
 
 .commentInput {
@@ -419,8 +444,28 @@
   transition: color var(--transition-fast);
 }
 
-.commentAction:hover {
+.commentAction:hover:not(.liked) {
   color: var(--accent-primary);
+}
+
+.commentAction.liked {
+  color: #ef4444;
+  cursor: default;
+}
+
+.commentAction:disabled {
+  cursor: default;
+}
+
+.noComments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4xl);
+  gap: var(--space-md);
+  color: var(--text-tertiary);
+  text-align: center;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
