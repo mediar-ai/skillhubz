@@ -53,7 +53,10 @@ export async function init(name?: string): Promise<void> {
       type: 'text',
       name: 'title',
       message: 'Title:',
-      initial: (prev: string) => prev.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      initial: (prev: string) => {
+        const n = prev || name || '';
+        return n.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      },
     },
     {
       type: 'text',
