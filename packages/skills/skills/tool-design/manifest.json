@@ -1,0 +1,9 @@
+{
+  "name": "tool-design",
+  "description": "Design agent tools with clear descriptions, consolidated workflows, and architectural reduction patterns",
+  "author": "muratcankoylan",
+  "version": "1.1.0",
+  "tags": ["tools", "api", "design", "mcp", "agents"],
+  "category": "development",
+  "license": "MIT"
+}
