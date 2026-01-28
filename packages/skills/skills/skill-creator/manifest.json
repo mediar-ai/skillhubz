@@ -1,0 +1,9 @@
+{
+  "name": "skill-creator",
+  "description": "Guide for creating effective skills that extend Claude's capabilities with specialized knowledge, workflows, and tool integrations",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["skills", "claude", "development", "automation", "tools", "meta"],
+  "category": "development",
+  "license": "MIT"
+}
