@@ -1,0 +1,9 @@
+{
+  "name": "context-degradation",
+  "description": "Patterns for recognizing and mitigating context failures including lost-in-middle, poisoning, and attention issues",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["context", "degradation", "attention", "lost-in-middle", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
