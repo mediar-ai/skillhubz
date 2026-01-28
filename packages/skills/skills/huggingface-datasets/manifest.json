@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-datasets",
+  "description": "Create and manage datasets on Hugging Face Hub with SQL-based querying, transformation, and streaming updates using DuckDB",
+  "author": "huggingface",
+  "version": "2.1.0",
+  "tags": ["huggingface", "datasets", "sql", "duckdb", "data", "ml", "hub"],
+  "category": "data",
+  "license": "Apache-2.0"
+}
