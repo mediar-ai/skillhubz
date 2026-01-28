@@ -77,6 +77,32 @@
   color: var(--accent-primary);
 }
 
+.logoGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.openSourceBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.openSourceBadge:hover {
+  color: var(--text-primary);
+  border-color: var(--border-default);
+  background: var(--bg-secondary);
+}
+
 /* Navigation */
 .nav {
   display: flex;
@@ -309,6 +335,10 @@
 
   .mobileNav {
     display: flex;
+  }
+
+  .openSourceBadge {
+    display: none;
   }
 
   .footerInner {

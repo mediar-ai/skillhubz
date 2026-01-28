@@ -36,18 +36,29 @@ export function Layout({ children }: LayoutProps) {
       {/* Header */}
       <header className={styles.header}>
         <div className={styles.headerInner}>
-          <Link to="/" className={styles.logo}>
-            <motion.div
-              className={styles.logoIcon}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+          <div className={styles.logoGroup}>
+            <Link to="/" className={styles.logo}>
+              <motion.div
+                className={styles.logoIcon}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Terminal size={24} />
+              </motion.div>
+              <span className={styles.logoText}>
+                skill<span className={styles.logoAccent}>hu.bz</span>
+              </span>
+            </Link>
+            <a
+              href="https://github.com/mediar-ai/skillhubz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.openSourceBadge}
             >
-              <Terminal size={24} />
-            </motion.div>
-            <span className={styles.logoText}>
-              skill<span className={styles.logoAccent}>hu.bz</span>
-            </span>
-          </Link>
+              <Github size={14} />
+              <span>Open Source</span>
+            </a>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className={styles.nav}>
