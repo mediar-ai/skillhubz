@@ -1,0 +1,9 @@
+{
+  "name": "pptx-toolkit",
+  "description": "Presentation creation, editing, and analysis for PowerPoint files with support for layouts, templates, and visual design",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["powerpoint", "pptx", "presentations", "slides", "office", "design"],
+  "category": "content",
+  "license": "MIT"
+}
