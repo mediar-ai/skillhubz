@@ -208,7 +208,7 @@ export function SubmitPage() {
           animate={{ opacity: 1, y: 0 }}
         >
           <h1>Submit a Skill</h1>
-          <p>Share your automation with the community - published instantly</p>
+          <p>Share your skill with the community - published instantly</p>
         </motion.div>
 
         {/* Progress Steps */}

@@ -122,7 +122,7 @@ export function Layout({ children }: LayoutProps) {
               <span>skillhu.bz</span>
             </Link>
             <p className={styles.footerTagline}>
-              The community marketplace for computer use automation skills.
+              The community marketplace for AI-powered cloud skills.
             </p>
           </div>
 
@@ -149,7 +149,7 @@ export function Layout({ children }: LayoutProps) {
         </div>
 
         <div className={styles.footerBottom}>
-          <p>© 2024 skillhu.bz. Built for the automation community.</p>
+          <p>© 2025 skillhu.bz. Built for the AI community.</p>
           <div className={styles.socialLinks}>
             <a href="#" aria-label="GitHub">
               <Github size={18} />
