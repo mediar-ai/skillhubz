@@ -1,0 +1,9 @@
+{
+  "name": "brand-guidelines",
+  "description": "Apply official brand colors and typography to artifacts for consistent visual identity across presentations and documents",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["branding", "design", "colors", "typography", "styling"],
+  "category": "creative",
+  "license": "MIT"
+}
