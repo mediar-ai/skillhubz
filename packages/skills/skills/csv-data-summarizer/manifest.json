@@ -1,0 +1,9 @@
+{
+  "name": "csv-data-summarizer",
+  "description": "Analyze CSV files automatically with summary statistics, insights, and visualizations using Python and pandas",
+  "author": "coffeefuelbump",
+  "version": "2.1.0",
+  "tags": ["csv", "data", "analysis", "pandas", "visualization", "statistics"],
+  "category": "data",
+  "license": "MIT"
+}
