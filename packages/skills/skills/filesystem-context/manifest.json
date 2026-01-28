@@ -1,0 +1,9 @@
+{
+  "name": "filesystem-context",
+  "description": "Use the filesystem for dynamic context discovery, scratch pads, and agent memory to extend context capacity",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["filesystem", "context", "scratch-pad", "memory", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
