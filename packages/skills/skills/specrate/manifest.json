@@ -1,0 +1,9 @@
+{
+  "name": "specrate",
+  "description": "Manage specs and changes in a structured workflow with proposals, planning, implementation, and archiving",
+  "author": "rickygao",
+  "version": "1.0.0",
+  "tags": ["specs", "workflow", "changes", "planning", "documentation", "management"],
+  "category": "development",
+  "license": "Apache-2.0"
+}
