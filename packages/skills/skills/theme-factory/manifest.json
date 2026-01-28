@@ -1,0 +1,9 @@
+{
+  "name": "theme-factory",
+  "description": "Toolkit for styling artifacts with professional themes including colors and fonts for slides, docs, and landing pages",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["themes", "styling", "design", "colors", "fonts", "branding"],
+  "category": "creative",
+  "license": "MIT"
+}
