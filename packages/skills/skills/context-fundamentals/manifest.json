@@ -1,0 +1,9 @@
+{
+  "name": "context-fundamentals",
+  "description": "Foundational understanding of context engineering for AI agent systems, covering context components, attention mechanics, and progressive disclosure",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["context", "ai", "agents", "llm", "context-engineering", "attention"],
+  "category": "research",
+  "license": "MIT"
+}
