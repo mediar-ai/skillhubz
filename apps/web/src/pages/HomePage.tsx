@@ -50,8 +50,8 @@ export function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            A curated collection of skills for AI assistants. Browse, copy, and
-            customize prompts and workflows built by the community.
+            Supercharge Claude Code with community-built skills. Install with one command,
+            use instantly. From frontend design to data analysis.
           </motion.p>
 
           <motion.div
@@ -96,7 +96,7 @@ export function HomePage() {
           </motion.div>
         </div>
 
-        {/* Animated code preview */}
+        {/* Quick Start Terminal */}
         <motion.div
           className={styles.heroVisual}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -110,26 +110,22 @@ export function HomePage() {
                 <span />
                 <span />
               </div>
-              <span className={styles.codeFilename}>gmail-reply.md</span>
+              <span className={styles.codeFilename}>Terminal</span>
             </div>
             <pre className={styles.codeContent}>
-              <code>{`# Gmail Auto-Reply Skill
-
-Reply to unread support emails in Gmail.
-
-## Instructions
-
-1. Open Chrome and navigate to mail.google.com
-2. Wait for the inbox to fully load - look for
-   the compose button to confirm
-3. Click the search bar and type "is:unread
-   from:support" then press Enter
-4. For each unread email in results:
-   - Click to open the email thread
-   - Click "Reply" button (arrow icon)
-   - Type a response acknowledging receipt
-   - Click Send, wait for confirmation
-5. Return to inbox before next email`}</code>
+              <code>
+                <span className={styles.terminalComment}># Install any skill with one command</span>{'\n'}
+                <span className={styles.terminalPrompt}>$ </span><span className={styles.terminalCommand}>npx skillhu install frontend-design</span>{'\n'}
+                {'\n'}
+                <span className={styles.terminalOutput}>Installing frontend-design...</span>{'\n'}
+                <span className={styles.terminalSuccess}>Skill installed to ~/.claude/skills/frontend-design</span>{'\n'}
+                {'\n'}
+                <span className={styles.terminalComment}># Now use it with Claude Code</span>{'\n'}
+                <span className={styles.terminalPrompt}>$ </span><span className={styles.terminalCommand}>claude "create a landing page for my startup"</span>{'\n'}
+                {'\n'}
+                <span className={styles.terminalOutput}>Using skill: frontend-design</span>{'\n'}
+                <span className={styles.terminalOutput}>Creating landing page with hero section...</span>
+              </code>
             </pre>
             <div className={styles.codeGlow} />
           </div>
