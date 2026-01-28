@@ -1,0 +1,9 @@
+{
+  "name": "ios-simulator",
+  "description": "21 production-ready scripts for iOS app testing with semantic UI navigation, build automation, and accessibility testing",
+  "author": "conorluddy",
+  "version": "1.3.0",
+  "tags": ["ios", "simulator", "testing", "xcode", "mobile", "accessibility", "automation"],
+  "category": "testing",
+  "license": "MIT"
+}
