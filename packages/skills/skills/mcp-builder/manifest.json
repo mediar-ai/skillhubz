@@ -1,0 +1,9 @@
+{
+  "name": "mcp-builder",
+  "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["mcp", "model-context-protocol", "servers", "api", "typescript", "python"],
+  "category": "development",
+  "license": "MIT"
+}
