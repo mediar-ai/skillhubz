@@ -1,0 +1,9 @@
+{
+  "name": "context-compression",
+  "description": "Strategies for compressing agent context while preserving critical information for long-running sessions",
+  "author": "muratcankoylan",
+  "version": "1.1.0",
+  "tags": ["context", "compression", "summarization", "tokens", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
