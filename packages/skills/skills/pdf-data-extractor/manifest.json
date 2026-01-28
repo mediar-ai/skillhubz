@@ -4,6 +4,6 @@
   "author": "mediar-ai",
   "version": "1.0.0",
   "tags": ["pdf", "ocr", "data-extraction", "documents"],
-  "category": "file-management",
+  "category": "data",
   "license": "MIT"
 }

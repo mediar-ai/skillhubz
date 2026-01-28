@@ -4,6 +4,6 @@
   "author": "mediar-ai",
   "version": "1.0.0",
   "tags": ["slack", "messaging", "scheduling", "team", "automation"],
-  "category": "productivity",
+  "category": "communication",
   "license": "MIT"
 }

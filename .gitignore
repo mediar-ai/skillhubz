@@ -32,3 +32,4 @@ coverage/
 .vercel
 
 .vercel
+.env*.local
