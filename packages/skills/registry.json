@@ -229,5 +229,25 @@
     "lines": 40,
     "size": 971,
     "updated": "2026-01-27T22:53:44.026Z"
+  },
+  {
+    "name": "abm-landing-page",
+    "description": "Create personalized ABM (Account-Based Marketing) landing pages for specific prospects with SEO/AEO optimization",
+    "author": "mediar-ai",
+    "version": "1.0.0",
+    "tags": [
+      "marketing",
+      "seo",
+      "abm",
+      "landing-page",
+      "content",
+      "personalization",
+      "aeo"
+    ],
+    "category": "marketing",
+    "excerpt": "Create personalized landing pages for prospects with anti-AI detection copy and SEO/AEO optimization.",
+    "lines": 408,
+    "size": 12500,
+    "updated": "2026-01-28T00:10:00Z"
   }
 ]

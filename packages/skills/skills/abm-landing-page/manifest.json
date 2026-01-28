@@ -1,0 +1,33 @@
+{
+  "name": "abm-landing-page",
+  "description": "Create personalized ABM (Account-Based Marketing) landing pages for specific prospects with SEO/AEO optimization",
+  "version": "1.0.0",
+  "author": "mediar-ai",
+  "tags": [
+    "marketing",
+    "seo",
+    "abm",
+    "landing-page",
+    "content",
+    "personalization",
+    "aeo"
+  ],
+  "category": "marketing",
+  "language": "markdown",
+  "triggers": [
+    "create landing page",
+    "personalized page",
+    "abm",
+    "prospect page",
+    "target page for"
+  ],
+  "allowed-tools": [
+    "Bash",
+    "Read",
+    "Write",
+    "Edit",
+    "WebFetch",
+    "WebSearch",
+    "Task"
+  ]
+}

@@ -394,6 +394,84 @@ steps:
     updatedAt: '2024-11-21T09:15:00Z',
     verified: true,
   },
+  {
+    id: 'abm-landing-page',
+    name: 'ABM Landing Page Creator',
+    description: 'Create personalized Account-Based Marketing landing pages for specific prospects with SEO/AEO optimization.',
+    longDescription: `A comprehensive skill for creating highly personalized landing pages that maximize conversion while avoiding AI detection patterns.
+
+## Features
+- LinkedIn profile analysis for prospect insights
+- Segment-based URL generation (never uses personal names)
+- Anti-AI detection copy guidelines
+- SEO & AI Search Optimization (AEO) best practices
+- JSON-LD schema implementation
+- Semantic HTML structure for AI crawlers
+
+## Use Cases
+- Account-Based Marketing campaigns
+- Personalized prospect outreach
+- High-conversion landing pages
+- SEO-optimized marketing content`,
+    author: {
+      id: 'mediar-ai',
+      name: 'Mediar AI',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=mediar',
+      github: 'mediar-ai',
+    },
+    code: `---
+name: abm-landing-page
+description: Create personalized ABM landing pages
+allowed-tools: Bash, Read, Write, Edit, WebFetch, WebSearch, Task
+---
+
+# ABM Landing Page Skill
+
+Create highly personalized landing pages for specific prospects.
+
+## Workflow
+
+### Step 1: Profile Analysis
+Given a LinkedIn URL, extract:
+- Current role & company
+- Past experience & tools used
+- Pain points based on job descriptions
+- Industry jargon they would use
+
+### Step 2: Create Segment-Based URL
+NEVER use the person's name in the URL:
+| Bad | Good |
+|-----|------|
+| /for/jon | /for/uipath-certified |
+| /for/sarah-smith | /for/rpa-consultants |
+
+### Step 3: Content Guidelines
+DO:
+- Use industry-specific jargon
+- Reference specific tools they've used
+- Write conversational, slightly imperfect copy
+- Vary sentence length and structure
+
+DON'T:
+- Use emojis or icon grids
+- Use buzzwords like "10x", "revolutionary"
+- Use the person's name anywhere on the page
+
+### Step 4: SEO/AEO Optimization
+- Add JSON-LD schema (Article + FAQPage)
+- Use semantic HTML (<article>, <section>, <time>)
+- Include visible "Updated: [date]" near title
+- Add TL;DR section at top`,
+    language: 'yaml',
+    category: 'marketing',
+    tags: ['marketing', 'seo', 'abm', 'landing-page', 'content', 'personalization'],
+    installCount: 234,
+    stars: 67,
+    createdAt: '2026-01-20T10:00:00Z',
+    updatedAt: '2026-01-28T00:10:00Z',
+    featured: true,
+    verified: true,
+  },
 ];
 
 export const featuredSkills = mockSkills.filter(s => s.featured);

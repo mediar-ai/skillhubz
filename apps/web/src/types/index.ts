@@ -41,7 +41,8 @@ export type Category =
   | 'testing'
   | 'productivity'
   | 'integrations'
-  | 'utilities';
+  | 'utilities'
+  | 'marketing';
 
 export const CATEGORIES: Record<Category, { label: string; icon: string; color: string }> = {
   'browser-automation': { label: 'Browser Automation', icon: 'Globe', color: '#00ffc8' },
@@ -52,4 +53,5 @@ export const CATEGORIES: Record<Category, { label: string; icon: string; color: 
   'productivity': { label: 'Productivity', icon: 'Zap', color: '#34d399' },
   'integrations': { label: 'Integrations', icon: 'Puzzle', color: '#60a5fa' },
   'utilities': { label: 'Utilities', icon: 'Wrench', color: '#f87171' },
+  'marketing': { label: 'Marketing & SEO', icon: 'Megaphone', color: '#ec4899' },
 };
