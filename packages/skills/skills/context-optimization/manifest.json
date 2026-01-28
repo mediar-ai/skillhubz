@@ -1,0 +1,9 @@
+{
+  "name": "context-optimization",
+  "description": "Techniques for extending effective context capacity through compression, masking, caching, and partitioning",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["context", "optimization", "kv-cache", "tokens", "efficiency"],
+  "category": "research",
+  "license": "MIT"
+}
