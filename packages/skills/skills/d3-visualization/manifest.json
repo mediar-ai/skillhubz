@@ -1,0 +1,9 @@
+{
+  "name": "d3-visualization",
+  "description": "Create interactive data visualizations using D3.js including charts, network diagrams, geographic maps, and custom SVG graphics",
+  "author": "chrisvoncsefalvay",
+  "version": "1.0.0",
+  "tags": ["d3", "visualization", "charts", "svg", "data", "interactive", "graphics"],
+  "category": "creative",
+  "license": "MIT"
+}
