@@ -13,6 +13,8 @@ A curated list of websites and GitHub projects that curate Claude Code skills.
 | [jqueryscript/awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | - | Tools, IDE integrations, frameworks |
 | [karanb192/awesome-claude-skills](https://github.com/karanb192/awesome-claude-skills) | - | 50+ verified skills |
 | [BehiSecc/awesome-claude-skills](https://github.com/BehiSecc/awesome-claude-skills) | - | Curated skills list |
+| [heilcheng/awesome-agent-skills](https://github.com/heilcheng/awesome-agent-skills) | - | Curated agent skills collection |
+| [muratcankoylan/Agent-Skills-for-Context-Engineering](https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering) | - | Skills for context engineering |
 
 ## Marketplaces (GitHub)
 

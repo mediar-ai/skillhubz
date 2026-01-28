@@ -1,6 +1,6 @@
 # skillhubz
 
-Computer Use Skills Marketplace — browse, share, and install automation skills.
+Discover and share Claude Skills — a community marketplace for AI assistant skills, prompts, and workflows.
 
 ## Structure
 
@@ -37,3 +37,11 @@ npx skillhu install gmail-reply
 - Website: https://skillhu.bz
 - CLI: https://www.npmjs.com/package/skillhu
 - GitHub: https://github.com/mediar-ai/skillhubz
+
+## Related Resources
+
+See [claude-skills-resources.md](./claude-skills-resources.md) for a curated list of other skill marketplaces, awesome lists, and resources.
+
+## License
+
+MIT
