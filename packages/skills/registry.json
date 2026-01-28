@@ -736,5 +736,101 @@
     "lines": 82,
     "size": 2150,
     "updated": "2026-01-28T05:00:00Z"
+  },
+  {
+    "name": "d3-visualization",
+    "description": "Create interactive data visualizations using D3.js including charts, network diagrams, geographic maps, and custom SVG graphics",
+    "author": "chrisvoncsefalvay",
+    "version": "1.0.0",
+    "tags": ["d3", "visualization", "charts", "svg", "data", "interactive", "graphics"],
+    "category": "creative",
+    "excerpt": "Create interactive D3.js visualizations: charts, networks, maps, custom SVG.",
+    "lines": 72,
+    "size": 1850,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "specrate",
+    "description": "Manage specs and changes in a structured workflow with proposals, planning, implementation, and archiving",
+    "author": "rickygao",
+    "version": "1.0.0",
+    "tags": ["specs", "workflow", "changes", "planning", "documentation", "management"],
+    "category": "development",
+    "excerpt": "Structured workflow for managing specs: propose, plan, implement, archive.",
+    "lines": 58,
+    "size": 1520,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "stream-coding",
+    "description": "Documentation-first development methodology where clear docs enable automatic code generation with 10-20x velocity",
+    "author": "frmoretto",
+    "version": "3.4.0",
+    "tags": ["methodology", "documentation", "development", "ai-assisted", "workflow"],
+    "category": "development",
+    "excerpt": "Documentation-first development for 10-20x velocity with AI code generation.",
+    "lines": 68,
+    "size": 1780,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "csv-data-summarizer",
+    "description": "Analyze CSV files automatically with summary statistics, insights, and visualizations using Python and pandas",
+    "author": "coffeefuelbump",
+    "version": "2.1.0",
+    "tags": ["csv", "data", "analysis", "pandas", "visualization", "statistics"],
+    "category": "data",
+    "excerpt": "Automatic CSV analysis with statistics, insights, and visualizations.",
+    "lines": 62,
+    "size": 1650,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "sheets-cli",
+    "description": "Read, write, and update Google Sheets data via CLI with support for key-based updates, appending, and batch operations",
+    "author": "gmickel",
+    "version": "1.0.0",
+    "tags": ["google-sheets", "cli", "spreadsheet", "data", "automation"],
+    "category": "integrations",
+    "excerpt": "Google Sheets CLI for reading, writing, and updating spreadsheet data.",
+    "lines": 65,
+    "size": 1720,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "ios-simulator",
+    "description": "21 production-ready scripts for iOS app testing with semantic UI navigation, build automation, and accessibility testing",
+    "author": "conorluddy",
+    "version": "1.3.0",
+    "tags": ["ios", "simulator", "testing", "xcode", "mobile", "accessibility", "automation"],
+    "category": "testing",
+    "excerpt": "21 scripts for iOS testing: semantic navigation, builds, accessibility.",
+    "lines": 78,
+    "size": 2050,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "obsidian-plugin",
+    "description": "Comprehensive Obsidian.md plugin development guidelines with ESLint rules, TypeScript best practices, and submission requirements",
+    "author": "gapmiss",
+    "version": "1.1.0",
+    "tags": ["obsidian", "plugin", "development", "typescript", "eslint", "markdown"],
+    "category": "development",
+    "excerpt": "Obsidian.md plugin development with ESLint rules and best practices.",
+    "lines": 85,
+    "size": 2280,
+    "updated": "2026-01-28T06:00:00Z"
+  },
+  {
+    "name": "playwright-automation",
+    "description": "Complete browser automation with Playwright for testing pages, filling forms, screenshots, responsive design, and any browser task",
+    "author": "lackeyjb",
+    "version": "1.0.0",
+    "tags": ["playwright", "browser", "automation", "testing", "e2e", "screenshots"],
+    "category": "testing",
+    "excerpt": "Playwright browser automation for testing, forms, screenshots, responsive design.",
+    "lines": 82,
+    "size": 2150,
+    "updated": "2026-01-28T06:00:00Z"
   }
 ]
