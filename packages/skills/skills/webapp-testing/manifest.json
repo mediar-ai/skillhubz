@@ -1,0 +1,9 @@
+{
+  "name": "webapp-testing",
+  "description": "Toolkit for testing local web applications using Playwright with support for screenshots, browser logs, and UI verification",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["testing", "playwright", "webapp", "automation", "qa", "browser"],
+  "category": "testing",
+  "license": "MIT"
+}
