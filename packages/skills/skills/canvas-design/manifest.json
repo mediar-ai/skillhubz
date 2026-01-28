@@ -1,0 +1,9 @@
+{
+  "name": "canvas-design",
+  "description": "Create beautiful visual art in PNG and PDF documents using design philosophy for posters, artwork, and static visual pieces",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["design", "art", "visual", "pdf", "png", "canvas", "poster"],
+  "category": "creative",
+  "license": "MIT"
+}
