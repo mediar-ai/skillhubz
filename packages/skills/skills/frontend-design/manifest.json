@@ -1,0 +1,9 @@
+{
+  "name": "frontend-design",
+  "description": "Create distinctive, production-grade frontend interfaces with high design quality that avoid generic AI aesthetics",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["frontend", "design", "ui", "web", "css", "react", "html"],
+  "category": "creative",
+  "license": "MIT"
+}
