@@ -1,0 +1,78 @@
+{
+  "source": "https://github.com/heilcheng/awesome-agent-skills",
+  "fetched_at": "2026-01-28",
+  "description": "A curated list of skills, tools, and capabilities for AI coding agents",
+  "official_skills": {
+    "anthropic": [
+      { "name": "docx", "description": "Create, edit, analyze Word documents with tracked changes", "repo": "https://github.com/anthropics/skills" },
+      { "name": "xlsx", "description": "Spreadsheet manipulation: formulas, charts, data transformations", "repo": "https://github.com/anthropics/skills" },
+      { "name": "pptx", "description": "Read, generate, and adjust slides, layouts, templates", "repo": "https://github.com/anthropics/skills" },
+      { "name": "pdf", "description": "Extract text, tables, metadata from PDFs", "repo": "https://github.com/anthropics/skills" }
+    ],
+    "huggingface": [
+      { "name": "hf_dataset_creator", "description": "Prompts, templates, and scripts for creating structured training datasets", "repo": "https://github.com/huggingface/skills" },
+      { "name": "hf_model_evaluation", "description": "Instructions plus utilities for orchestrating evaluation jobs", "repo": "https://github.com/huggingface/skills" },
+      { "name": "hf-llm-trainer", "description": "Comprehensive training skill with guidance, helper scripts, cost estimators", "repo": "https://github.com/huggingface/skills" },
+      { "name": "hf-paper-publisher", "description": "Tools for publishing and managing research papers on Hugging Face Hub", "repo": "https://github.com/huggingface/skills" }
+    ]
+  },
+  "skill_collections": [
+    { "repo": "https://github.com/anthropics/skills", "description": "Official Anthropic collection (document editing, data analysis)" },
+    { "repo": "https://github.com/openai/skills", "description": "Official OpenAI Codex skills catalog" },
+    { "repo": "https://github.com/huggingface/skills", "description": "HuggingFace skills (compatible with Claude, Codex, Gemini)" },
+    { "repo": "https://github.com/skillcreatorai/Ai-Agent-Skills", "description": "SkillCreator.ai collection with CLI installer" },
+    { "repo": "https://github.com/karanb192/awesome-claude-skills", "description": "50+ verified skills for Claude Code and Claude.ai" },
+    { "repo": "https://github.com/shajith003/awesome-claude-skills", "description": "Skills for specialized capabilities" },
+    { "repo": "https://github.com/GuDaStudio/skills", "description": "Multi-agent collaboration skills" },
+    { "repo": "https://github.com/DougTrajano/pydantic-ai-skills", "description": "Pydantic AI integration" },
+    { "repo": "https://github.com/OmidZamani/dspy-skills", "description": "Skills for DSPy framework" },
+    { "repo": "https://github.com/hikanner/agent-skills", "description": "Curated Claude Agent Skills collection" },
+    { "repo": "https://github.com/gradion-ai/freeact-skills", "description": "Freeact agent library skills" },
+    { "repo": "https://github.com/gotalab/skillport", "description": "Skills distribution via CLI or MCP" },
+    { "repo": "https://github.com/mhattingpete/claude-skills-marketplace", "description": "Git, code review, and testing skills" },
+    { "repo": "https://github.com/kukapay/crypto-skills", "description": "Cryptocurrency, web3 and blockchain skills" }
+  ],
+  "individual_skills": {
+    "document_processing": [
+      { "name": "Markdown to EPUB", "repo": "https://github.com/smerchek/claude-epub-skill", "description": "Converts markdown documents into professional EPUB ebook files" }
+    ],
+    "development": [
+      { "name": "aws-skills", "repo": "https://github.com/zxkane/aws-skills", "description": "AWS development with CDK best practices" },
+      { "name": "D3.js Visualization", "repo": "https://github.com/chrisvoncsefalvay/claude-d3js-skill", "description": "D3 charts and interactive data visualizations" },
+      { "name": "Playwright Automation", "repo": "https://github.com/lackeyjb/playwright-skill", "description": "Browser automation for testing web apps" },
+      { "name": "Specrate", "repo": "https://github.com/rickygao/specrate", "description": "Manage specs and changes in a structured workflow" },
+      { "name": "iOS Simulator", "repo": "https://github.com/conorluddy/ios-simulator-skill", "description": "Interact with iOS Simulator for testing" },
+      { "name": "Swift Concurrency Migration", "repo": "https://github.com/kylehughes/the-unofficial-swift-concurrency-migration-skill", "description": "Swift Concurrency Migration guide" },
+      { "name": "Obsidian Plugin", "repo": "https://github.com/gapmiss/obsidian-plugin-skill", "description": "Obsidian.md plugin development" },
+      { "name": "Stream Coding", "repo": "https://github.com/frmoretto/stream-coding", "description": "Stream Coding methodology" },
+      { "name": "SwiftUI Skills", "repo": "https://github.com/ameyalambat128/swiftui-skills", "description": "Apple-authored SwiftUI and platform guidance extracted from Xcode" }
+    ],
+    "data_analysis": [
+      { "name": "CSV Summarizer", "repo": "https://github.com/coffeefuelbump/csv-data-summarizer-claude-skill", "description": "Analyze CSV files and generate insights with visualizations" }
+    ],
+    "integration": [
+      { "name": "Dev Browser", "repo": "https://github.com/SawyerHood/dev-browser", "description": "Web browser capability for agents" },
+      { "name": "Vectorize MCP Worker", "repo": "https://github.com/dannwaneri/vectorize-mcp-worker", "description": "Edge-native MCP server patterns for production RAG" },
+      { "name": "Agent Manager", "repo": "https://github.com/fractalmind-ai/agent-manager-skill", "description": "Manage local CLI AI agents via tmux" },
+      { "name": "HOL Claude Skills", "repo": "https://github.com/hashgraph-online/hol-claude-skills", "description": "AI agent discovery via Registry Broker" },
+      { "name": "Sheets CLI", "repo": "https://github.com/gmickel/sheets-cli", "description": "Google Sheets CLI automation" },
+      { "name": "Notification Skill", "repo": "https://github.com/caopulan/Notification-Skill", "description": "Send message notifications for agent workflows" },
+      { "name": "Spotify Skill", "repo": "https://github.com/fabioc-aloha/spotify-skill", "description": "Spotify API integration" }
+    ],
+    "collaboration": [
+      { "name": "git-pushing", "repo": "https://github.com/mhattingpete/claude-skills-marketplace", "description": "Automate git operations and repository interactions" },
+      { "name": "review-implementing", "repo": "https://github.com/mhattingpete/claude-skills-marketplace", "description": "Evaluate code implementation plans" },
+      { "name": "test-fixing", "repo": "https://github.com/mhattingpete/claude-skills-marketplace", "description": "Detect failing tests and propose fixes" }
+    ],
+    "security": [
+      { "name": "computer-forensics", "repo": "https://github.com/mhattingpete/claude-skills-marketplace", "description": "Digital forensics analysis and investigation" },
+      { "name": "Threat Hunting", "repo": "https://github.com/jthack/threat-hunting-with-sigma-rules-skill", "description": "Hunt for threats using Sigma detection rules" }
+    ],
+    "research": [
+      { "name": "Context Engineering", "repo": "https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering", "description": "Context engineering techniques" },
+      { "name": "Pomodoro System Skill", "repo": "https://github.com/jakedahn/pomodoro", "description": "System Skill Pattern (skills that remember & improve)" },
+      { "name": "Mind Cloning", "repo": "https://github.com/yzfly/Mind-Cloning-Engineering", "description": "Mind cloning with LLM skills" }
+    ]
+  },
+  "total_skills_count": 45
+}
