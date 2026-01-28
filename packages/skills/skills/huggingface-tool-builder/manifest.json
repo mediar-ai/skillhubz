@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-tool-builder",
+  "description": "Build reusable command-line scripts and utilities for the Hugging Face API with support for chaining, piping, and automation",
+  "author": "huggingface",
+  "version": "1.0.0",
+  "tags": ["huggingface", "api", "cli", "scripts", "automation", "tools"],
+  "category": "development",
+  "license": "Apache-2.0"
+}
