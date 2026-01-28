@@ -1,0 +1,9 @@
+{
+  "name": "slack-gif-creator",
+  "description": "Create animated GIFs optimized for Slack with proper dimensions, frame rates, and file sizes",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["gif", "slack", "animation", "images", "visual", "emoji"],
+  "category": "creative",
+  "license": "MIT"
+}
