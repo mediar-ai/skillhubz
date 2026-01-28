@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-trackio",
+  "description": "Track and visualize ML training experiments with real-time dashboards and HF Space syncing",
+  "author": "huggingface",
+  "version": "1.0.0",
+  "tags": ["huggingface", "tracking", "experiments", "metrics", "visualization", "ml"],
+  "category": "devops",
+  "license": "Apache-2.0"
+}
