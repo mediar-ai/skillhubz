@@ -249,5 +249,120 @@
     "lines": 408,
     "size": 12500,
     "updated": "2026-01-28T00:10:00Z"
+  },
+  {
+    "name": "frontend-design",
+    "description": "Create distinctive, production-grade frontend interfaces with high design quality that avoid generic AI aesthetics",
+    "author": "anthropic",
+    "version": "1.0.0",
+    "tags": [
+      "frontend",
+      "design",
+      "ui",
+      "web",
+      "css",
+      "react",
+      "html"
+    ],
+    "category": "creative",
+    "excerpt": "Create distinctive, production-grade frontend interfaces with high design quality.",
+    "lines": 68,
+    "size": 3108,
+    "updated": "2026-01-28T03:00:00Z"
+  },
+  {
+    "name": "pdf-toolkit",
+    "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms",
+    "author": "anthropic",
+    "version": "1.0.0",
+    "tags": [
+      "pdf",
+      "documents",
+      "extraction",
+      "data",
+      "ocr",
+      "python"
+    ],
+    "category": "data",
+    "excerpt": "Comprehensive PDF manipulation toolkit for extracting text, tables, merging, splitting, and OCR.",
+    "lines": 86,
+    "size": 2370,
+    "updated": "2026-01-28T03:15:00Z"
+  },
+  {
+    "name": "xlsx-toolkit",
+    "description": "Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization",
+    "author": "anthropic",
+    "version": "1.0.0",
+    "tags": [
+      "excel",
+      "spreadsheet",
+      "data",
+      "formulas",
+      "analysis",
+      "python"
+    ],
+    "category": "data",
+    "excerpt": "Spreadsheet creation, editing, and analysis with formulas, formatting, and data visualization.",
+    "lines": 76,
+    "size": 2095,
+    "updated": "2026-01-28T03:15:00Z"
+  },
+  {
+    "name": "mcp-builder",
+    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services",
+    "author": "anthropic",
+    "version": "1.0.0",
+    "tags": [
+      "mcp",
+      "model-context-protocol",
+      "servers",
+      "api",
+      "typescript",
+      "python"
+    ],
+    "category": "development",
+    "excerpt": "Create MCP servers that enable LLMs to interact with external services through well-designed tools.",
+    "lines": 87,
+    "size": 2501,
+    "updated": "2026-01-28T03:15:00Z"
+  },
+  {
+    "name": "huggingface-cli",
+    "description": "Execute Hugging Face Hub operations using the hf CLI for downloading models/datasets, uploading, and managing repositories",
+    "author": "huggingface",
+    "version": "1.0.0",
+    "tags": [
+      "huggingface",
+      "cli",
+      "models",
+      "datasets",
+      "ml",
+      "deployment"
+    ],
+    "category": "devops",
+    "excerpt": "HuggingFace CLI for downloading models/datasets, uploading files, and managing ML infrastructure.",
+    "lines": 80,
+    "size": 2797,
+    "updated": "2026-01-28T03:15:00Z"
+  },
+  {
+    "name": "context-fundamentals",
+    "description": "Foundational understanding of context engineering for AI agent systems, covering context components, attention mechanics, and progressive disclosure",
+    "author": "muratcankoylan",
+    "version": "1.0.0",
+    "tags": [
+      "context",
+      "ai",
+      "agents",
+      "llm",
+      "context-engineering",
+      "attention"
+    ],
+    "category": "research",
+    "excerpt": "Context engineering fundamentals for AI agents: attention mechanics, progressive disclosure, context budgeting.",
+    "lines": 84,
+    "size": 2720,
+    "updated": "2026-01-28T03:15:00Z"
   }
 ]
