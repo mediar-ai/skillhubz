@@ -1,0 +1,9 @@
+{
+  "name": "multi-agent-patterns",
+  "description": "Architecture patterns for multi-agent systems including supervisor, swarm, and hierarchical coordination",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["multi-agent", "supervisor", "swarm", "coordination", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
