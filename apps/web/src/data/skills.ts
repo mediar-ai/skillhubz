@@ -60,7 +60,7 @@ steps:
         return { count: emails.length };
       process: chrome`,
     language: 'yaml',
-    category: 'browser-automation',
+    category: 'communication',
     tags: ['gmail', 'email', 'automation', 'productivity'],
     installCount: 2847,
     stars: 342,
@@ -107,7 +107,7 @@ steps:
       process: acrobat
       include_ocr: true`,
     language: 'yaml',
-    category: 'file-management',
+    category: 'data',
     tags: ['pdf', 'ocr', 'data-extraction', 'documents'],
     installCount: 1523,
     stars: 187,
@@ -154,7 +154,7 @@ async function fillForm(data: FormData) {
 
 export { fillForm };`,
     language: 'typescript',
-    category: 'data-entry',
+    category: 'operations',
     tags: ['forms', 'automation', 'ai', 'web'],
     installCount: 3201,
     stars: 456,
@@ -202,7 +202,7 @@ steps:
           location: document.querySelector('.text-body-small')?.textContent,
         };`,
     language: 'yaml',
-    category: 'web-scraping',
+    category: 'sales',
     tags: ['linkedin', 'scraping', 'lead-gen', 'sales'],
     installCount: 892,
     stars: 134,
@@ -386,7 +386,7 @@ steps:
       selector: "role:ComboBox"
       text: "{{channel}}"`,
     language: 'yaml',
-    category: 'productivity',
+    category: 'communication',
     tags: ['slack', 'messaging', 'scheduling', 'team'],
     installCount: 1567,
     stars: 203,

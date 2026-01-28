@@ -11,7 +11,7 @@
       "development",
       "git"
     ],
-    "category": "productivity",
+    "category": "development",
     "excerpt": "Review open pull requests in a GitHub repository, checking code changes and leaving review comments.",
     "lines": 70,
     "size": 2440,
@@ -29,7 +29,7 @@
       "support",
       "auto-reply"
     ],
-    "category": "productivity",
+    "category": "communication",
     "excerpt": "Automatically reply to unread support emails in Gmail with an acknowledgment message.",
     "lines": 62,
     "size": 1898,
@@ -64,7 +64,7 @@
       "data-extraction",
       "documents"
     ],
-    "category": "file-management",
+    "category": "data",
     "excerpt": "Extract structured data from PDF documents using OCR and pattern matching.",
     "lines": 65,
     "size": 1850,
@@ -82,7 +82,7 @@
       "web",
       "data-entry"
     ],
-    "category": "data-entry",
+    "category": "operations",
     "excerpt": "Intelligently fill web forms using AI-powered field detection and data mapping.",
     "lines": 78,
     "size": 2200,
@@ -100,7 +100,7 @@
       "sales",
       "research"
     ],
-    "category": "web-scraping",
+    "category": "sales",
     "excerpt": "Ethically scrape public LinkedIn profiles for lead generation and research.",
     "lines": 85,
     "size": 2400,
@@ -172,7 +172,7 @@
       "team",
       "automation"
     ],
-    "category": "productivity",
+    "category": "communication",
     "excerpt": "Schedule and automate Slack messages with rich formatting and attachments.",
     "lines": 82,
     "size": 2300,
@@ -190,7 +190,7 @@
       "productivity",
       "cleanup"
     ],
-    "category": "browser-automation",
+    "category": "productivity",
     "excerpt": "Automatically organize Chrome tabs by grouping related tabs, closing duplicates, and sorting by domain.",
     "lines": 47,
     "size": 1480,
@@ -207,7 +207,7 @@
       "windows",
       "productivity"
     ],
-    "category": "productivity",
+    "category": "utilities",
     "excerpt": "Take a screenshot of a specific window or screen region and copy it to the clipboard for easy pasting.",
     "lines": 39,
     "size": 1367,
