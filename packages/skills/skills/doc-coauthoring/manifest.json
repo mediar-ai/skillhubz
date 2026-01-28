@@ -1,0 +1,9 @@
+{
+  "name": "doc-coauthoring",
+  "description": "Structured workflow for co-authoring documentation including proposals, technical specs, decision docs, and PRDs",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["documentation", "writing", "collaboration", "proposals", "specs", "workflow"],
+  "category": "content",
+  "license": "MIT"
+}
