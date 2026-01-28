@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-model-trainer",
+  "description": "Train and fine-tune language models using TRL (SFT, DPO, GRPO) on Hugging Face Jobs infrastructure with GGUF conversion support",
+  "author": "huggingface",
+  "version": "1.0.0",
+  "tags": ["huggingface", "training", "fine-tuning", "trl", "sft", "dpo", "grpo", "gguf", "ml"],
+  "category": "devops",
+  "license": "Apache-2.0"
+}
