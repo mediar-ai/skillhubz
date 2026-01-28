@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-paper-publisher",
+  "description": "Publish and manage research papers on Hugging Face Hub with arXiv integration, model/dataset linking, and authorship management",
+  "author": "huggingface",
+  "version": "1.0.0",
+  "tags": ["huggingface", "papers", "research", "arxiv", "publishing", "citations"],
+  "category": "content",
+  "license": "Apache-2.0"
+}
