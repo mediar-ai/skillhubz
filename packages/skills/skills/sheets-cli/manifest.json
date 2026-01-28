@@ -1,0 +1,9 @@
+{
+  "name": "sheets-cli",
+  "description": "Read, write, and update Google Sheets data via CLI with support for key-based updates, appending, and batch operations",
+  "author": "gmickel",
+  "version": "1.0.0",
+  "tags": ["google-sheets", "cli", "spreadsheet", "data", "automation"],
+  "category": "integrations",
+  "license": "MIT"
+}
