@@ -6,20 +6,6 @@ import {
   Download,
   Code,
   Users,
-  Zap,
-  GitBranch,
-  BarChart,
-  FileText,
-  Palette,
-  Megaphone,
-  DollarSign,
-  Briefcase,
-  Search,
-  MessageSquare,
-  Puzzle,
-  FlaskConical,
-  Shield,
-  Wrench,
   Loader2,
 } from 'lucide-react';
 import { SkillCard } from '../components/SkillCard';
@@ -27,24 +13,6 @@ import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
 import { trackCategorySelected, trackCtaClicked, trackExternalLinkClicked } from '../utils/analytics';
 import styles from './HomePage.module.css';
-
-const categoryIcons: Record<Category, React.ReactNode> = {
-  'development': <Code size={20} />,
-  'devops': <GitBranch size={20} />,
-  'data': <BarChart size={20} />,
-  'content': <FileText size={20} />,
-  'creative': <Palette size={20} />,
-  'marketing': <Megaphone size={20} />,
-  'sales': <DollarSign size={20} />,
-  'operations': <Briefcase size={20} />,
-  'research': <Search size={20} />,
-  'communication': <MessageSquare size={20} />,
-  'integrations': <Puzzle size={20} />,
-  'productivity': <Zap size={20} />,
-  'testing': <FlaskConical size={20} />,
-  'security': <Shield size={20} />,
-  'utilities': <Wrench size={20} />,
-};
 
 export function HomePage() {
   const { skills, loading } = useSkills();
@@ -73,7 +41,7 @@ export function HomePage() {
           >
             Discover & Share
             <br />
-            <span className="text-gradient">Cloud Skills</span>
+            <span className="text-gradient">Claude Skills</span>
           </motion.h1>
 
           <motion.p
@@ -171,33 +139,38 @@ Reply to unread support emails in Gmail.
       {/* Categories Section */}
       <section className={styles.section}>
         <div className={styles.container}>
-          <div className={styles.sectionHeader}>
-            <h2>Browse by Category</h2>
-            <p>Find the perfect skill for your workflow</p>
-          </div>
+          <motion.div
+            className={styles.categoriesHeader}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+            <span className={styles.categoriesLabel}>Browse by category</span>
+          </motion.div>
 
-          <div className={styles.categoriesGrid}>
+          <div className={styles.categoriesFlow}>
             {(Object.entries(CATEGORIES) as [Category, typeof CATEGORIES[Category]][]).map(
               ([key, value], index) => (
                 <motion.div
                   key={key}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.05 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: index * 0.03,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25
+                  }}
                 >
                   <Link
                     to={`/explore?category=${key}`}
-                    className={styles.categoryCard}
+                    className={styles.categoryPill}
                     style={{ '--category-color': value.color } as React.CSSProperties}
                     onClick={() => trackCategorySelected(key, 'home')}
                   >
-                    <div className={styles.categoryIcon}>
-                      {categoryIcons[key]}
-                    </div>
-                    <span className={styles.categoryName}>{value.label}</span>
-                    <span className={styles.categoryCount}>
-                      {skills.filter((s) => s.category === key).length} skills
-                    </span>
+                    <span className={styles.categoryText}>{value.label}</span>
+                    <span className={styles.categoryDot} />
                   </Link>
                 </motion.div>
               )
@@ -253,7 +226,7 @@ Reply to unread support emails in Gmail.
               <div className={styles.stepNumber}>01</div>
               <h3>Browse Skills</h3>
               <p>
-                Explore our curated collection of cloud skills. Filter by
+                Explore our curated collection of Claude skills. Filter by
                 category, popularity, or search for specific use cases.
               </p>
             </motion.div>
