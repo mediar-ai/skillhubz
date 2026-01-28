@@ -1,0 +1,9 @@
+{
+  "name": "advanced-evaluation",
+  "description": "Production-grade techniques for evaluating LLM outputs using LLM-as-judge, pairwise comparison, and bias mitigation",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["evaluation", "llm-as-judge", "pairwise", "bias", "rubrics", "quality"],
+  "category": "research",
+  "license": "MIT"
+}
