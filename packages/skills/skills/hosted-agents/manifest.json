@@ -1,0 +1,9 @@
+{
+  "name": "hosted-agents",
+  "description": "Build background agents in remote sandboxed environments with unlimited concurrency and multiplayer support",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["agents", "sandbox", "infrastructure", "background", "multiplayer"],
+  "category": "devops",
+  "license": "MIT"
+}
