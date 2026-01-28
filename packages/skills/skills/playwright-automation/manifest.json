@@ -1,0 +1,9 @@
+{
+  "name": "playwright-automation",
+  "description": "Complete browser automation with Playwright for testing pages, filling forms, screenshots, responsive design, and any browser task",
+  "author": "lackeyjb",
+  "version": "1.0.0",
+  "tags": ["playwright", "browser", "automation", "testing", "e2e", "screenshots"],
+  "category": "testing",
+  "license": "MIT"
+}
