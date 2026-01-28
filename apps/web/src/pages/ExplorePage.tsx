@@ -152,7 +152,7 @@ export function ExplorePage() {
             animate={{ opacity: 1, y: 0 }}
           >
             <h1>Explore Skills</h1>
-            <p>Discover cloud skills built by the community</p>
+            <p>Discover Claude skills built by the community</p>
           </motion.div>
         </div>
 

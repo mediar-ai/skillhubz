@@ -122,7 +122,7 @@ export function Layout({ children }: LayoutProps) {
               <span>skillhu.bz</span>
             </Link>
             <p className={styles.footerTagline}>
-              The community marketplace for AI-powered cloud skills.
+              The community marketplace for AI-powered Claude skills.
             </p>
           </div>
 

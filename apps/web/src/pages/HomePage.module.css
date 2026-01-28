@@ -198,53 +198,82 @@
    Categories Section
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.categoriesGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-md);
+.categoriesHeader {
+  margin-bottom: var(--space-xl);
 }
 
-.categoryCard {
+.categoriesLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.categoriesFlow {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+}
+
+.categoryPill {
+  position: relative;
+  display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: var(--space-xl) var(--space-lg);
-  background: var(--bg-card);
+  padding: var(--space-sm) var(--space-lg);
+  background: transparent;
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-full);
   text-decoration: none;
-  transition: all var(--transition-base);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
 }
 
-.categoryCard:hover {
+.categoryPill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--category-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.categoryPill:hover {
   border-color: var(--category-color);
-  transform: translateY(-4px);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--category-color) 20%, transparent);
+  transform: translateY(-2px);
 }
 
-.categoryIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: color-mix(in srgb, var(--category-color) 15%, transparent);
-  border-radius: var(--radius-md);
+.categoryPill:hover::before {
+  opacity: 0.1;
+}
+
+.categoryPill:hover .categoryDot {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.categoryText {
+  position: relative;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.categoryPill:hover .categoryText {
   color: var(--category-color);
 }
 
-.categoryName {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  text-align: center;
-}
-
-.categoryCount {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-tertiary);
+.categoryDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--category-color);
+  transform: scale(0);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -363,8 +392,8 @@
 }
 
 @media (max-width: 968px) {
-  .categoriesGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .categoriesFlow {
+    gap: var(--space-xs);
   }
 
   .stepsGrid {
@@ -398,8 +427,12 @@
     display: none;
   }
 
-  .categoriesGrid {
-    grid-template-columns: 1fr;
+  .categoryPill {
+    padding: var(--space-xs) var(--space-md);
+  }
+
+  .categoryText {
+    font-size: 0.8125rem;
   }
 
   .skillsGrid {
