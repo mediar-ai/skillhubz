@@ -181,6 +181,33 @@
 
 .codeContent code {
   font-family: inherit;
+  white-space: pre-wrap;
+}
+
+/* Terminal syntax highlighting */
+.terminalLine {
+  display: block;
+}
+
+.terminalComment {
+  color: var(--text-tertiary);
+}
+
+.terminalCommand {
+  color: var(--accent-primary);
+}
+
+.terminalOutput {
+  color: var(--text-secondary);
+}
+
+.terminalSuccess {
+  color: #28c840;
+}
+
+.terminalPrompt {
+  color: var(--accent-primary);
+  user-select: none;
 }
 
 .codeGlow {
