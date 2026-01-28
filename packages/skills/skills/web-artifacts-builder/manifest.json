@@ -1,0 +1,9 @@
+{
+  "name": "web-artifacts-builder",
+  "description": "Suite of tools for creating elaborate HTML artifacts using React, Tailwind CSS, and shadcn/ui components",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["react", "frontend", "artifacts", "web", "development", "tailwind", "shadcn"],
+  "category": "development",
+  "license": "MIT"
+}
