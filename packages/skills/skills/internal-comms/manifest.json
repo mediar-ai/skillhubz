@@ -1,0 +1,9 @@
+{
+  "name": "internal-comms",
+  "description": "Resources for writing internal communications including status reports, newsletters, FAQs, and leadership updates",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["communications", "internal", "reports", "newsletters", "updates", "business"],
+  "category": "communication",
+  "license": "MIT"
+}
