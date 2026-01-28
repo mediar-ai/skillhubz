@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-cli",
+  "description": "Execute Hugging Face Hub operations using the hf CLI for downloading models/datasets, uploading, and managing repositories",
+  "author": "huggingface",
+  "version": "1.0.0",
+  "tags": ["huggingface", "cli", "models", "datasets", "ml", "deployment"],
+  "category": "devops",
+  "license": "MIT"
+}
