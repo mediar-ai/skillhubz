@@ -1,0 +1,9 @@
+{
+  "name": "docx-toolkit",
+  "description": "Comprehensive Word document creation, editing, and analysis with support for tracked changes, comments, and formatting preservation",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["word", "docx", "documents", "editing", "office", "tracked-changes"],
+  "category": "content",
+  "license": "MIT"
+}
