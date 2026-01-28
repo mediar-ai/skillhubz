@@ -1,0 +1,9 @@
+{
+  "name": "evaluation",
+  "description": "Methods for evaluating agent systems with multi-dimensional rubrics, LLM-as-judge, and quality gates",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["evaluation", "testing", "quality", "rubrics", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
