@@ -114,17 +114,31 @@ export function HomePage() {
             </div>
             <pre className={styles.codeContent}>
               <code>
-                <span className={styles.terminalComment}># Install any skill with one command</span>{'\n'}
-                <span className={styles.terminalPrompt}>$ </span><span className={styles.terminalCommand}>npx skillhu install frontend-design</span>{'\n'}
-                {'\n'}
-                <span className={styles.terminalOutput}>Installing frontend-design...</span>{'\n'}
-                <span className={styles.terminalSuccess}>Skill installed to ~/.claude/skills/frontend-design</span>{'\n'}
-                {'\n'}
-                <span className={styles.terminalComment}># Now use it with Claude Code</span>{'\n'}
-                <span className={styles.terminalPrompt}>$ </span><span className={styles.terminalCommand}>claude "create a landing page for my startup"</span>{'\n'}
-                {'\n'}
-                <span className={styles.terminalOutput}>Using skill: frontend-design</span>{'\n'}
-                <span className={styles.terminalOutput}>Creating landing page with hero section...</span>
+                <span className={`${styles.terminalLine} ${styles.line1}`}>
+                  <span className={styles.terminalComment}># Install any skill with one command</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line2}`}>
+                  <span className={styles.terminalPrompt}>$ </span><span className={styles.terminalCommand}>npx skillhu install frontend-design</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line3}`}>
+                  <span className={styles.terminalOutput}>Installing frontend-design...</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line4}`}>
+                  <span className={styles.terminalSuccess}>Skill installed to ~/.claude/skills/frontend-design</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line5}`}>&nbsp;</span>
+                <span className={`${styles.terminalLine} ${styles.line6}`}>
+                  <span className={styles.terminalComment}># Now use it with Claude Code</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line7}`}>
+                  <span className={styles.terminalPrompt}>$ </span><span className={styles.terminalCommand}>claude "create a landing page for my startup"</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line8}`}>
+                  <span className={styles.terminalOutput}>Using skill: frontend-design</span>
+                </span>
+                <span className={`${styles.terminalLine} ${styles.line9}`}>
+                  <span className={styles.terminalOutput}>Creating landing page with hero section...</span>
+                </span>
               </code>
             </pre>
             <div className={styles.codeGlow} />
