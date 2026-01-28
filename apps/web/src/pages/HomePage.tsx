@@ -7,12 +7,18 @@ import {
   Code,
   Users,
   Zap,
-  Globe,
-  Folder,
-  FormInput,
-  Database,
-  FlaskConical,
+  GitBranch,
+  BarChart,
+  FileText,
+  Palette,
+  Megaphone,
+  DollarSign,
+  Briefcase,
+  Search,
+  MessageSquare,
   Puzzle,
+  FlaskConical,
+  Shield,
   Wrench,
   Loader2,
 } from 'lucide-react';
@@ -23,13 +29,20 @@ import { trackCategorySelected, trackCtaClicked, trackExternalLinkClicked } from
 import styles from './HomePage.module.css';
 
 const categoryIcons: Record<Category, React.ReactNode> = {
-  'browser-automation': <Globe size={20} />,
-  'file-management': <Folder size={20} />,
-  'data-entry': <FormInput size={20} />,
-  'web-scraping': <Database size={20} />,
-  'testing': <FlaskConical size={20} />,
-  'productivity': <Zap size={20} />,
+  'development': <Code size={20} />,
+  'devops': <GitBranch size={20} />,
+  'data': <BarChart size={20} />,
+  'content': <FileText size={20} />,
+  'creative': <Palette size={20} />,
+  'marketing': <Megaphone size={20} />,
+  'sales': <DollarSign size={20} />,
+  'operations': <Briefcase size={20} />,
+  'research': <Search size={20} />,
+  'communication': <MessageSquare size={20} />,
   'integrations': <Puzzle size={20} />,
+  'productivity': <Zap size={20} />,
+  'testing': <FlaskConical size={20} />,
+  'security': <Shield size={20} />,
   'utilities': <Wrench size={20} />,
 };
 
@@ -49,7 +62,7 @@ export function HomePage() {
             transition={{ duration: 0.5 }}
           >
             <Sparkles size={14} />
-            <span>Community-driven automation</span>
+            <span>Community-powered AI skills</span>
           </motion.div>
 
           <motion.h1
@@ -60,7 +73,7 @@ export function HomePage() {
           >
             Discover & Share
             <br />
-            <span className="text-gradient">Computer Use Skills</span>
+            <span className="text-gradient">Cloud Skills</span>
           </motion.h1>
 
           <motion.p
@@ -69,8 +82,8 @@ export function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            A curated collection of automation skills for Claude Code and desktop
-            agents. Copy, install, and customize workflows built by the community.
+            A curated collection of skills for AI assistants. Browse, copy, and
+            customize prompts and workflows built by the community.
           </motion.p>
 
           <motion.div
@@ -160,7 +173,7 @@ Reply to unread support emails in Gmail.
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2>Browse by Category</h2>
-            <p>Find the perfect automation skill for your workflow</p>
+            <p>Find the perfect skill for your workflow</p>
           </div>
 
           <div className={styles.categoriesGrid}>
@@ -240,8 +253,8 @@ Reply to unread support emails in Gmail.
               <div className={styles.stepNumber}>01</div>
               <h3>Browse Skills</h3>
               <p>
-                Explore our curated collection of automation skills. Filter by
-                category, popularity, or search for specific workflows.
+                Explore our curated collection of cloud skills. Filter by
+                category, popularity, or search for specific use cases.
               </p>
             </motion.div>
 
@@ -255,8 +268,8 @@ Reply to unread support emails in Gmail.
               <div className={styles.stepNumber}>02</div>
               <h3>Copy or Install</h3>
               <p>
-                Copy the skill code directly to your clipboard or use our CLI to
-                install it to your Claude Code environment.
+                Copy skills directly to your clipboard or use our CLI to
+                install them into your AI assistant's environment.
               </p>
             </motion.div>
 
@@ -270,7 +283,7 @@ Reply to unread support emails in Gmail.
               <div className={styles.stepNumber}>03</div>
               <h3>Customize & Run</h3>
               <p>
-                Modify the skill to fit your needs, then run it with your AI
+                Modify skills to fit your needs, then use them with your AI
                 assistant. Share improvements back to the community.
               </p>
             </motion.div>
@@ -287,10 +300,10 @@ Reply to unread support emails in Gmail.
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2>Ready to share your automation?</h2>
+            <h2>Ready to share your skills?</h2>
             <p>
-              Join our community of automation enthusiasts. Submit your skills and
-              help others automate their workflows.
+              Join our community of AI enthusiasts. Submit your skills and
+              help others supercharge their workflows.
             </p>
             <div className={styles.ctaActions}>
               <Link to="/submit" className="btn btn-primary" onClick={() => trackCtaClicked('submit_skill', 'cta_section')}>
