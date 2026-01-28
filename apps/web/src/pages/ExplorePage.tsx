@@ -35,18 +35,6 @@ export function ExplorePage() {
   const showFeatured = searchParams.get('featured') === 'true';
   const showVerified = searchParams.get('verified') === 'true';
 
-  // Debounced search tracking
-  const searchTimeoutRef = useRef<NodeJS.Timeout>();
-  useEffect(() => {
-    if (searchQuery) {
-      clearTimeout(searchTimeoutRef.current);
-      searchTimeoutRef.current = setTimeout(() => {
-        trackSearchPerformed(searchQuery, filteredSkills.length);
-      }, 500);
-    }
-    return () => clearTimeout(searchTimeoutRef.current);
-  }, [searchQuery, filteredSkills.length]);
-
   const filteredSkills = useMemo(() => {
     let result = [...skills];
 
@@ -97,6 +85,18 @@ export function ExplorePage() {
 
     return result;
   }, [skills, searchQuery, selectedCategory, showFeatured, showVerified, sortBy]);
+
+  // Debounced search tracking
+  const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  useEffect(() => {
+    if (searchQuery) {
+      clearTimeout(searchTimeoutRef.current);
+      searchTimeoutRef.current = setTimeout(() => {
+        trackSearchPerformed(searchQuery, filteredSkills.length);
+      }, 500);
+    }
+    return () => clearTimeout(searchTimeoutRef.current);
+  }, [searchQuery, filteredSkills.length]);
 
   const handleCategoryClick = (category: Category | null) => {
     if (category) {
