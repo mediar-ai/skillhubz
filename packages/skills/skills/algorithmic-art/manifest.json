@@ -1,0 +1,9 @@
+{
+  "name": "algorithmic-art",
+  "description": "Create algorithmic art using p5.js with seeded randomness and interactive parameter exploration for generative art",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["art", "generative", "p5js", "algorithmic", "creative-coding", "javascript"],
+  "category": "creative",
+  "license": "MIT"
+}
