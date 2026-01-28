@@ -1,0 +1,9 @@
+{
+  "name": "obsidian-plugin",
+  "description": "Comprehensive Obsidian.md plugin development guidelines with ESLint rules, TypeScript best practices, and submission requirements",
+  "author": "gapmiss",
+  "version": "1.1.0",
+  "tags": ["obsidian", "plugin", "development", "typescript", "eslint", "markdown"],
+  "category": "development",
+  "license": "MIT"
+}
