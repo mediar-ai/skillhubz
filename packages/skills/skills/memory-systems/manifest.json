@@ -1,0 +1,9 @@
+{
+  "name": "memory-systems",
+  "description": "Design memory architectures for agents with vector stores, knowledge graphs, and temporal knowledge graphs",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["memory", "knowledge-graph", "vector-store", "persistence", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
