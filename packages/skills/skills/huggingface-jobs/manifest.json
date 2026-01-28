@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-jobs",
+  "description": "Run workloads on Hugging Face Jobs infrastructure including data processing, batch inference, experiments, and scheduled tasks",
+  "author": "huggingface",
+  "version": "1.0.0",
+  "tags": ["huggingface", "jobs", "cloud", "gpu", "compute", "batch", "inference"],
+  "category": "devops",
+  "license": "Apache-2.0"
+}
