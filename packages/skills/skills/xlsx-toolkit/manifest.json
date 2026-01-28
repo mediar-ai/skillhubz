@@ -1,0 +1,9 @@
+{
+  "name": "xlsx-toolkit",
+  "description": "Comprehensive spreadsheet creation, editing, and analysis with support for formulas, formatting, data analysis, and visualization",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["excel", "spreadsheet", "data", "formulas", "analysis", "python"],
+  "category": "data",
+  "license": "MIT"
+}
