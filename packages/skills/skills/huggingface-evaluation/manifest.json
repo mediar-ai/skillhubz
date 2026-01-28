@@ -1,0 +1,9 @@
+{
+  "name": "huggingface-evaluation",
+  "description": "Add and manage evaluation results in Hugging Face model cards with support for vLLM, lighteval, and inspect-ai frameworks",
+  "author": "huggingface",
+  "version": "1.3.0",
+  "tags": ["huggingface", "evaluation", "benchmarks", "model-cards", "vllm", "lighteval", "ml"],
+  "category": "devops",
+  "license": "Apache-2.0"
+}
