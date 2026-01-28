@@ -1,0 +1,9 @@
+{
+  "name": "pdf-toolkit",
+  "description": "Comprehensive PDF manipulation toolkit for extracting text and tables, creating new PDFs, merging/splitting documents, and handling forms",
+  "author": "anthropic",
+  "version": "1.0.0",
+  "tags": ["pdf", "documents", "extraction", "data", "ocr", "python"],
+  "category": "data",
+  "license": "MIT"
+}
