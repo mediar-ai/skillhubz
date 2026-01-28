@@ -1,0 +1,9 @@
+{
+  "name": "stream-coding",
+  "description": "Documentation-first development methodology where clear docs enable automatic code generation with 10-20x velocity",
+  "author": "frmoretto",
+  "version": "3.4.0",
+  "tags": ["methodology", "documentation", "development", "ai-assisted", "workflow"],
+  "category": "development",
+  "license": "MIT"
+}
