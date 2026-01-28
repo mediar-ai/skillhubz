@@ -1,0 +1,9 @@
+{
+  "name": "project-development",
+  "description": "Methodology for identifying LLM-suited tasks, designing pipelines, and agent-assisted development",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["project", "methodology", "pipeline", "development", "llm"],
+  "category": "development",
+  "license": "MIT"
+}
