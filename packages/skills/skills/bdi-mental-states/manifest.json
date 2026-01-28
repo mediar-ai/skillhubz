@@ -1,0 +1,9 @@
+{
+  "name": "bdi-mental-states",
+  "description": "Transform RDF context into agent mental states using Belief-Desire-Intention ontology for cognitive architecture",
+  "author": "muratcankoylan",
+  "version": "1.0.0",
+  "tags": ["bdi", "mental-states", "cognitive", "rdf", "ontology", "agents"],
+  "category": "research",
+  "license": "MIT"
+}
