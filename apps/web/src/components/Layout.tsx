@@ -131,19 +131,18 @@ export function Layout({ children }: LayoutProps) {
               <h4>Product</h4>
               <Link to="/explore">Explore Skills</Link>
               <Link to="/submit">Submit Skill</Link>
-              <a href="#">Documentation</a>
+              <Link to="/docs">Documentation</Link>
             </div>
             <div className={styles.footerColumn}>
               <h4>Community</h4>
-              <a href="#">Discord</a>
-              <a href="#">GitHub</a>
-              <a href="#">Twitter</a>
+              <a href="https://github.com/mediar-ai/skillhubz" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://x.com/m13v_" target="_blank" rel="noopener noreferrer">Twitter</a>
             </div>
             <div className={styles.footerColumn}>
               <h4>Legal</h4>
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
-              <a href="#">License</a>
+              <Link to="/privacy">Privacy</Link>
+              <Link to="/terms">Terms</Link>
+              <Link to="/license">License</Link>
             </div>
           </div>
         </div>
@@ -151,10 +150,10 @@ export function Layout({ children }: LayoutProps) {
         <div className={styles.footerBottom}>
           <p>© 2025 skillhu.bz. Built for the AI community.</p>
           <div className={styles.socialLinks}>
-            <a href="#" aria-label="GitHub">
+            <a href="https://github.com/mediar-ai/skillhubz" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <Github size={18} />
             </a>
-            <a href="#" aria-label="Twitter">
+            <a href="https://x.com/m13v_" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
               <Twitter size={18} />
             </a>
           </div>
