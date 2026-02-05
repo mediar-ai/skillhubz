@@ -1,0 +1,8 @@
+{
+  "name": "tmux-background-agents",
+  "description": "Manage background Claude Code sessions using tmux. Start agents, send prompts, read responses, and hand off to Terminal windows.",
+  "author": "m13v",
+  "version": "1.0.0",
+  "tags": ["tmux", "background", "agents", "automation", "terminal", "sessions"],
+  "category": "utilities"
+}
