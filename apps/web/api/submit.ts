@@ -135,14 +135,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Missing required fields: name, description, category, content' });
     }
 
-    // Validate category
-    const validCategories = [
-      'browser-automation', 'file-management', 'data-entry', 'web-scraping',
-      'testing', 'productivity', 'integrations', 'utilities'
-    ];
-    if (!validCategories.includes(category)) {
-      return res.status(400).json({ error: `Invalid category. Must be one of: ${validCategories.join(', ')}` });
-    }
+    // Normalize category (lowercase, hyphenated)
+    const normalizedCategory = category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
     // Generate slug from name
     const slug = slugify(name);
@@ -172,7 +166,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       author,
       version: '1.0.0',
       tags: Array.isArray(tags) ? tags.slice(0, 10) : [],
-      category,
+      category: normalizedCategory,
       excerpt: extractExcerpt(content),
       lines: content.split('\n').length,
       size: content.length,

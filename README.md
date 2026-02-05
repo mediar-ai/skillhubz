@@ -2,6 +2,37 @@
 
 Discover and share Claude Skills — a community marketplace for AI assistant skills, prompts, and workflows.
 
+## Submit Skills (No Authentication Required)
+
+You can submit skills **without logging in or creating an account**:
+
+### Via CLI (Recommended)
+
+```bash
+# From your skill directory containing skill.md
+npx skillhu publish
+
+# Or specify a path
+npx skillhu publish ./my-skill
+```
+
+### Via Website
+
+Visit [skillhu.bz/submit](https://skillhu.bz/submit) and fill out the form — no login required.
+
+### Via Git (Direct)
+
+1. Fork this repo
+2. Add your skill to `packages/skills/skills/your-skill-name/`
+3. Create `skill.md` (required) and `manifest.json` (optional)
+4. Submit a PR
+
+## Install Skills
+
+```bash
+npx skillhu install gmail-reply
+```
+
 ## Structure
 
 ```
@@ -13,7 +44,7 @@ skillhubz/
 │   └── skills/           # Skill definitions registry
 ```
 
-## Quick Start
+## Development
 
 ```bash
 # Install dependencies
@@ -24,12 +55,6 @@ npm run dev
 
 # Build website
 npm run build
-```
-
-## CLI Usage
-
-```bash
-npx skillhu install gmail-reply
 ```
 
 ## Links
