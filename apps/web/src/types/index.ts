@@ -33,24 +33,11 @@ export interface Comment {
   replies?: Comment[];
 }
 
-export type Category =
-  | 'development'
-  | 'devops'
-  | 'data'
-  | 'content'
-  | 'creative'
-  | 'marketing'
-  | 'sales'
-  | 'operations'
-  | 'research'
-  | 'communication'
-  | 'integrations'
-  | 'productivity'
-  | 'testing'
-  | 'security'
-  | 'utilities';
+// Category is free-form - any string is valid
+export type Category = string;
 
-export const CATEGORIES: Record<Category, { label: string; icon: string; color: string }> = {
+// Suggested categories with their display properties
+export const CATEGORIES: Record<string, { label: string; icon: string; color: string }> = {
   'development': { label: 'Development', icon: 'Code', color: '#06b6d4' },
   'devops': { label: 'DevOps', icon: 'GitBranch', color: '#f97316' },
   'data': { label: 'Data & Analytics', icon: 'BarChart', color: '#a78bfa' },
@@ -67,3 +54,17 @@ export const CATEGORIES: Record<Category, { label: string; icon: string; color: 
   'security': { label: 'Security', icon: 'Shield', color: '#ef4444' },
   'utilities': { label: 'Utilities', icon: 'Wrench', color: '#71717a' },
 };
+
+// Default styling for custom categories
+export const DEFAULT_CATEGORY_STYLE = { label: '', icon: 'Folder', color: '#6b7280' };
+
+// Helper to get category display properties (works for both predefined and custom categories)
+export function getCategoryStyle(category: string): { label: string; icon: string; color: string } {
+  const normalized = category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  if (CATEGORIES[normalized]) {
+    return CATEGORIES[normalized];
+  }
+  // Return custom category with title-cased label
+  const label = category.split(/[-_\s]+/).map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+  return { ...DEFAULT_CATEGORY_STYLE, label };
+}

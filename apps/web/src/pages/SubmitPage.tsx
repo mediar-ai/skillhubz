@@ -13,7 +13,7 @@ import {
   Github,
   ExternalLink,
 } from 'lucide-react';
-import { CATEGORIES, type Category } from '../types';
+import { CATEGORIES, getCategoryStyle, type Category } from '../types';
 import { trackSkillSubmitted, trackFormStepChanged } from '../utils/analytics';
 import styles from './SubmitPage.module.css';
 
@@ -286,21 +286,21 @@ export function SubmitPage() {
                 <label htmlFor="category">
                   Category <span className={styles.required}>*</span>
                 </label>
-                <select
+                <input
+                  type="text"
                   id="category"
+                  list="category-suggestions"
+                  placeholder="e.g., Development, DevOps, or your own category"
                   value={formData.category}
-                  onChange={(e) => setFormData({ ...formData, category: e.target.value as Category })}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                   className={errors.category ? styles.inputError : ''}
-                >
-                  <option value="">Select a category</option>
-                  {(Object.entries(CATEGORIES) as [Category, typeof CATEGORIES[Category]][]).map(
-                    ([key, value]) => (
-                      <option key={key} value={key}>
-                        {value.label}
-                      </option>
-                    )
-                  )}
-                </select>
+                />
+                <datalist id="category-suggestions">
+                  {Object.entries(CATEGORIES).map(([key, value]) => (
+                    <option key={key} value={value.label} />
+                  ))}
+                </datalist>
+                <span className={styles.hint}>Choose from suggestions or enter your own category</span>
                 {errors.category && (
                   <span className={styles.error}>
                     <AlertCircle size={14} />
@@ -399,12 +399,12 @@ export function SubmitPage() {
                     className={styles.previewCategory}
                     style={{
                       '--category-color': formData.category
-                        ? CATEGORIES[formData.category].color
+                        ? getCategoryStyle(formData.category).color
                         : 'var(--text-tertiary)',
                     } as React.CSSProperties}
                   >
                     {formData.category
-                      ? CATEGORIES[formData.category].label
+                      ? getCategoryStyle(formData.category).label
                       : 'No category'}
                   </span>
                 </div>
