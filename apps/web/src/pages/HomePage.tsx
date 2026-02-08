@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useState, useMemo, useEffect, useRef } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import {
   ArrowRight,
@@ -7,16 +8,136 @@ import {
   Code,
   Users,
   Loader2,
+  Search,
+  X,
+  SlidersHorizontal,
+  ArrowUpDown,
+  CheckCircle,
+  Copy,
+  Check,
 } from 'lucide-react';
 import { SkillCard } from '../components/SkillCard';
 import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
-import { trackCategorySelected, trackCtaClicked, trackExternalLinkClicked } from '../utils/analytics';
+import {
+  trackCategorySelected,
+  trackCtaClicked,
+  trackSearchPerformed,
+  trackFilterApplied,
+  trackSortChanged,
+  trackFiltersCleared,
+  trackFilterToggled,
+} from '../utils/analytics';
 import styles from './HomePage.module.css';
+
+type SortOption = 'popular' | 'newest' | 'stars' | 'name';
 
 export function HomePage() {
   const { skills, loading } = useSkills();
-  const featuredSkills = skills.filter(s => s.featured);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>('popular');
+  const [copied, setCopied] = useState(false);
+
+  const selectedCategory = searchParams.get('category') as Category | null;
+  const showFeatured = searchParams.get('featured') === 'true';
+  const showVerified = searchParams.get('verified') === 'true';
+
+  const filteredSkills = useMemo(() => {
+    let result = [...skills];
+
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(
+        (skill) =>
+          skill.name.toLowerCase().includes(query) ||
+          skill.description.toLowerCase().includes(query) ||
+          skill.tags.some((tag) => tag.toLowerCase().includes(query))
+      );
+    }
+
+    if (selectedCategory) {
+      result = result.filter((skill) => skill.category === selectedCategory);
+    }
+
+    if (showFeatured) {
+      result = result.filter((skill) => skill.featured);
+    }
+
+    if (showVerified) {
+      result = result.filter((skill) => skill.verified);
+    }
+
+    switch (sortBy) {
+      case 'popular':
+        result.sort((a, b) => b.installCount - a.installCount);
+        break;
+      case 'newest':
+        result.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        break;
+      case 'stars':
+        result.sort((a, b) => b.stars - a.stars);
+        break;
+      case 'name':
+        result.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+    }
+
+    return result;
+  }, [skills, searchQuery, selectedCategory, showFeatured, showVerified, sortBy]);
+
+  // Debounced search tracking
+  const searchTimeoutRef = useRef<NodeJS.Timeout>();
+  useEffect(() => {
+    if (searchQuery) {
+      clearTimeout(searchTimeoutRef.current);
+      searchTimeoutRef.current = setTimeout(() => {
+        trackSearchPerformed(searchQuery, filteredSkills.length);
+      }, 500);
+    }
+    return () => clearTimeout(searchTimeoutRef.current);
+  }, [searchQuery, filteredSkills.length]);
+
+  const handleCategoryClick = (category: Category | null) => {
+    if (category) {
+      searchParams.set('category', category);
+      trackCategorySelected(category, 'home');
+      trackFilterApplied('category', category);
+    } else {
+      searchParams.delete('category');
+    }
+    setSearchParams(searchParams);
+  };
+
+  const toggleFilter = (key: 'featured' | 'verified') => {
+    const newValue = searchParams.get(key) !== 'true';
+    if (newValue) {
+      searchParams.set(key, 'true');
+    } else {
+      searchParams.delete(key);
+    }
+    trackFilterApplied(key, newValue);
+    setSearchParams(searchParams);
+  };
+
+  const clearFilters = () => {
+    setSearchParams({});
+    setSearchQuery('');
+    trackFiltersCleared();
+  };
+
+  const hasActiveFilters =
+    selectedCategory || showFeatured || showVerified || searchQuery;
+
+  const handleCopyInstall = () => {
+    navigator.clipboard.writeText('npx skillhu install <skill-name>');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className={styles.page}>
@@ -60,10 +181,10 @@ export function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <Link to="/explore" className="btn btn-primary" onClick={() => trackCtaClicked('explore_skills', 'hero')}>
+            <a href="#skills" className="btn btn-primary" onClick={() => trackCtaClicked('explore_skills', 'hero')}>
               Explore Skills
               <ArrowRight size={16} />
-            </Link>
+            </a>
             <Link to="/submit" className="btn btn-secondary" onClick={() => trackCtaClicked('submit_skill', 'hero')}>
               Submit Your Skill
             </Link>
@@ -159,6 +280,25 @@ export function HomePage() {
           </motion.div>
 
           <div className={styles.categoriesFlow}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25
+              }}
+            >
+              <button
+                className={`${styles.categoryPill} ${!selectedCategory ? styles.categoryPillActive : ''}`}
+                style={{ '--category-color': 'var(--accent-primary)' } as React.CSSProperties}
+                onClick={() => handleCategoryClick(null)}
+              >
+                <span className={styles.categoryText}>All</span>
+                <span className={styles.categoryDot} />
+              </button>
+            </motion.div>
             {(Object.entries(CATEGORIES) as [Category, typeof CATEGORIES[Category]][]).map(
               ([key, value], index) => (
                 <motion.div
@@ -167,21 +307,20 @@ export function HomePage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{
-                    delay: index * 0.03,
+                    delay: (index + 1) * 0.03,
                     type: "spring",
                     stiffness: 400,
                     damping: 25
                   }}
                 >
-                  <Link
-                    to={`/explore?category=${key}`}
-                    className={styles.categoryPill}
+                  <button
+                    className={`${styles.categoryPill} ${selectedCategory === key ? styles.categoryPillActive : ''}`}
                     style={{ '--category-color': value.color } as React.CSSProperties}
-                    onClick={() => trackCategorySelected(key, 'home')}
+                    onClick={() => handleCategoryClick(key)}
                   >
                     <span className={styles.categoryText}>{value.label}</span>
                     <span className={styles.categoryDot} />
-                  </Link>
+                  </button>
                 </motion.div>
               )
             )}
@@ -189,30 +328,160 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Featured Skills Section */}
-      <section className={styles.section}>
+      {/* Skills Section */}
+      <section className={styles.section} id="skills">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <div>
-              <h2>Featured Skills</h2>
-              <p>Hand-picked by the community</p>
+              <h2>All Skills</h2>
+              <p>Discover Claude skills built by the community</p>
             </div>
-            <Link to="/explore" className="btn btn-ghost" onClick={() => trackCtaClicked('view_all', 'featured_skills')}>
-              View all
-              <ArrowRight size={16} />
-            </Link>
           </div>
 
+          {/* Search and Filters Bar */}
+          <div className={styles.toolbar}>
+            <div className={styles.searchWrapper}>
+              <Search size={18} className={styles.searchIcon} />
+              <input
+                type="text"
+                placeholder="Search skills, tags, or authors..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className={styles.searchInput}
+              />
+              {searchQuery && (
+                <button
+                  className={styles.clearSearch}
+                  onClick={() => setSearchQuery('')}
+                >
+                  <X size={16} />
+                </button>
+              )}
+            </div>
+
+            <button
+              className={`${styles.filterToggle} ${showFilters ? styles.active : ''}`}
+              onClick={() => { const newState = !showFilters; setShowFilters(newState); trackFilterToggled(newState); }}
+            >
+              <SlidersHorizontal size={18} />
+              Filters
+              {hasActiveFilters && <span className={styles.filterBadge} />}
+            </button>
+
+            <div className={styles.sortWrapper}>
+              <ArrowUpDown size={16} />
+              <select
+                value={sortBy}
+                onChange={(e) => { const value = e.target.value as SortOption; setSortBy(value); trackSortChanged(value); }}
+                className={styles.sortSelect}
+              >
+                <option value="popular">Most Popular</option>
+                <option value="newest">Newest</option>
+                <option value="stars">Most Stars</option>
+                <option value="name">Name A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Expanded Filters */}
+          {showFilters && (
+            <motion.div
+              className={styles.filtersPanel}
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+            >
+              <div className={styles.filterGroup}>
+                <h3>Category</h3>
+                <div className={styles.filterOptions}>
+                  <button
+                    className={`${styles.filterChip} ${!selectedCategory ? styles.active : ''}`}
+                    onClick={() => handleCategoryClick(null)}
+                  >
+                    All
+                  </button>
+                  {(Object.entries(CATEGORIES) as [Category, typeof CATEGORIES[Category]][]).map(
+                    ([key, value]) => (
+                      <button
+                        key={key}
+                        className={`${styles.filterChip} ${selectedCategory === key ? styles.active : ''}`}
+                        onClick={() => handleCategoryClick(key)}
+                        style={
+                          {
+                            '--chip-color': value.color,
+                          } as React.CSSProperties
+                        }
+                      >
+                        {value.label}
+                      </button>
+                    )
+                  )}
+                </div>
+              </div>
+
+              <div className={styles.filterGroup}>
+                <h3>Quick Filters</h3>
+                <div className={styles.filterOptions}>
+                  <button
+                    className={`${styles.filterChip} ${showFeatured ? styles.active : ''}`}
+                    onClick={() => toggleFilter('featured')}
+                  >
+                    Featured
+                  </button>
+                  <button
+                    className={`${styles.filterChip} ${showVerified ? styles.active : ''}`}
+                    onClick={() => toggleFilter('verified')}
+                  >
+                    <CheckCircle size={14} />
+                    Verified
+                  </button>
+                </div>
+              </div>
+
+              {hasActiveFilters && (
+                <button className={styles.clearFilters} onClick={clearFilters}>
+                  <X size={14} />
+                  Clear all filters
+                </button>
+              )}
+            </motion.div>
+          )}
+
+          {/* Results Info */}
+          <div className={styles.resultsInfo}>
+            <span>
+              Showing <strong>{filteredSkills.length}</strong> skill
+              {filteredSkills.length !== 1 ? 's' : ''}
+            </span>
+            {hasActiveFilters && (
+              <button className={styles.clearLink} onClick={clearFilters}>
+                Clear filters
+              </button>
+            )}
+          </div>
+
+          {/* Skills Grid */}
           {loading ? (
             <div className={styles.loading}>
               <Loader2 size={32} className={styles.spinner} />
               <p>Loading skills...</p>
             </div>
-          ) : (
+          ) : filteredSkills.length > 0 ? (
             <div className={styles.skillsGrid}>
-              {featuredSkills.slice(0, 3).map((skill, index) => (
+              {filteredSkills.map((skill, index) => (
                 <SkillCard key={skill.id} skill={skill} index={index} />
               ))}
+            </div>
+          ) : (
+            <div className={styles.emptyState}>
+              <div className={styles.emptyIcon}>
+                <Search size={48} />
+              </div>
+              <h3>No skills found</h3>
+              <p>Try adjusting your search or filters</p>
+              <button className="btn btn-secondary" onClick={clearFilters}>
+                Clear filters
+              </button>
             </div>
           )}
         </div>
@@ -234,10 +503,9 @@ export function HomePage() {
               viewport={{ once: true }}
             >
               <div className={styles.stepNumber}>01</div>
-              <h3>Browse Skills</h3>
+              <h3>Find a Skill</h3>
               <p>
-                Explore our curated collection of Claude skills. Filter by
-                category, popularity, or search for specific use cases.
+                Search or filter the skills above by category, popularity, or keyword.
               </p>
             </motion.div>
 
@@ -249,11 +517,16 @@ export function HomePage() {
               transition={{ delay: 0.1 }}
             >
               <div className={styles.stepNumber}>02</div>
-              <h3>Copy or Install</h3>
+              <h3>Install with One Command</h3>
               <p>
-                Copy skills directly to your clipboard or use our CLI to
-                install them into your AI assistant's environment.
+                Run the install command in your terminal, or copy the skill code directly from the skill page.
               </p>
+              <div className={styles.stepCode}>
+                <code>npx skillhu install &lt;skill-name&gt;</code>
+                <button className={styles.copyBtn} onClick={handleCopyInstall}>
+                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                </button>
+              </div>
             </motion.div>
 
             <motion.div
@@ -264,10 +537,9 @@ export function HomePage() {
               transition={{ delay: 0.2 }}
             >
               <div className={styles.stepNumber}>03</div>
-              <h3>Customize & Run</h3>
+              <h3>Use with Claude</h3>
               <p>
-                Modify skills to fit your needs, then use them with your AI
-                assistant. Share improvements back to the community.
+                The skill is now available in Claude Code. Just ask Claude to do anything the skill covers — it handles the rest.
               </p>
             </motion.div>
           </div>
@@ -283,19 +555,19 @@ export function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2>Ready to share your skills?</h2>
+            <h2>Create & Share Your Own Skill</h2>
             <p>
-              Join our community of AI enthusiasts. Submit your skills and
-              help others supercharge their workflows.
+              Skills are markdown files that teach Claude new capabilities. Write one, submit it,
+              and the community can install it instantly.
             </p>
             <div className={styles.ctaActions}>
               <Link to="/submit" className="btn btn-primary" onClick={() => trackCtaClicked('submit_skill', 'cta_section')}>
                 Submit a Skill
                 <ArrowRight size={16} />
               </Link>
-              <a href="https://github.com/mediar-ai/skillhubz" className="btn btn-secondary" onClick={() => trackExternalLinkClicked('https://github.com/mediar-ai/skillhubz', 'docs')}>
+              <Link to="/docs" className="btn btn-secondary" onClick={() => trackCtaClicked('read_docs', 'cta_section')}>
                 Read the Docs
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

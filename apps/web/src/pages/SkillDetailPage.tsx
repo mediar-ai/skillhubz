@@ -92,7 +92,7 @@ export function SkillDetailPage() {
       <div className={styles.notFound}>
         <h1>Skill not found</h1>
         <p>{error || 'The skill you are looking for does not exist.'}</p>
-        <Link to="/explore" className="btn btn-secondary">
+        <Link to="/#skills" className="btn btn-secondary">
           Back to Explore
         </Link>
       </div>
@@ -143,7 +143,7 @@ export function SkillDetailPage() {
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <Link to="/explore" className={styles.backLink}>
+          <Link to="/#skills" className={styles.backLink}>
             <ArrowLeft size={16} />
             Back to Explore
           </Link>
@@ -160,7 +160,7 @@ export function SkillDetailPage() {
             >
               <div className={styles.headerTop}>
                 <Link
-                  to={`/explore?category=${skill.category}`}
+                  to={`/?category=${skill.category}#skills`}
                   className={styles.categoryBadge}
                   style={{ '--category-color': category.color } as React.CSSProperties}
                 >
@@ -202,7 +202,7 @@ export function SkillDetailPage() {
                 {skill.tags.map((tag) => (
                   <Link
                     key={tag}
-                    to={`/explore?search=${tag}`}
+                    to={`/#skills`}
                     className={styles.tag}
                   >
                     #{tag}
