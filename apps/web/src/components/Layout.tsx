@@ -24,7 +24,7 @@ export function Layout({ children }: LayoutProps) {
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/explore', label: 'Explore' },
+    { path: '/#skills', label: 'Explore' },
     { path: '/submit', label: 'Submit Skill' },
   ];
 
@@ -62,28 +62,31 @@ export function Layout({ children }: LayoutProps) {
 
           {/* Desktop Navigation */}
           <nav className={styles.nav}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`${styles.navLink} ${
-                  location.pathname === link.path ? styles.navLinkActive : ''
-                }`}
-              >
-                {link.label}
-                {location.pathname === link.path && (
-                  <motion.div
-                    className={styles.navIndicator}
-                    layoutId="nav-indicator"
-                  />
-                )}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = link.path.startsWith('/#')
+                ? location.pathname === '/' && location.hash === link.path.slice(1)
+                : location.pathname === link.path;
+              return (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <motion.div
+                      className={styles.navIndicator}
+                      layoutId="nav-indicator"
+                    />
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Actions */}
           <div className={styles.actions}>
-            <Link to="/explore" className={styles.searchButton}>
+            <Link to="/#skills" className={styles.searchButton}>
               <Search size={18} />
             </Link>
             <Link to="/submit" className="btn btn-primary">
@@ -140,7 +143,7 @@ export function Layout({ children }: LayoutProps) {
           <div className={styles.footerLinks}>
             <div className={styles.footerColumn}>
               <h4>Product</h4>
-              <Link to="/explore">Explore Skills</Link>
+              <Link to="/#skills">Explore Skills</Link>
               <Link to="/submit">Submit Skill</Link>
               <Link to="/docs">Documentation</Link>
             </div>

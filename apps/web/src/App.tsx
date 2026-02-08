@@ -1,7 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
-import { ExplorePage } from './pages/ExplorePage';
 import { SkillDetailPage } from './pages/SkillDetailPage';
 import { SubmitPage } from './pages/SubmitPage';
 import { DocsPage } from './pages/DocsPage';
@@ -17,7 +16,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/explore" element={<Navigate to="/#skills" replace />} />
           <Route path="/skill/:id" element={<SkillDetailPage />} />
           <Route path="/submit" element={<SubmitPage />} />
           <Route path="/docs" element={<DocsPage />} />
