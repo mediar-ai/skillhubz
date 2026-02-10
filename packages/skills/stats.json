@@ -3,8 +3,8 @@
     "gmail-reply": 13,
     "github-pr-review": 8,
     "slack-automator": 15,
-    "pdf-data-extractor": 6,
-    "form-filler": 3,
+    "pdf-data-extractor": 5,
+    "form-filler": 4,
     "linkedin-scraper": 7,
     "e2e-test-recorder": 4,
     "notion-sync": 6,
@@ -24,5 +24,5 @@
     "expense-logger": 1
   },
   "searches": {},
-  "lastUpdated": "2026-02-10T15:25:22.324Z"
+  "lastUpdated": "2026-02-10T15:25:28.729Z"
 }
