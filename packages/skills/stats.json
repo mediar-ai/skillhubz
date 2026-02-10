@@ -1,7 +1,7 @@
 {
   "installs": {
     "gmail-reply": 13,
-    "github-pr-review": 8,
+    "github-pr-review": 9,
     "slack-automator": 15,
     "pdf-data-extractor": 5,
     "form-filler": 3,
@@ -24,5 +24,5 @@
     "expense-logger": 1
   },
   "searches": {},
-  "lastUpdated": "2026-02-10T15:24:46.519Z"
+  "lastUpdated": "2026-02-10T15:25:14.142Z"
 }
