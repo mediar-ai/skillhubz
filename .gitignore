@@ -33,3 +33,17 @@ coverage/
 
 .vercel
 .env*.local
+
+# Playwright MCP cache
+.playwright-mcp/
+
+# Local scripts
+/scripts/
+
+# Stray screenshots and images in repo root
+/*.png
+/*.jpeg
+/*.jpg
+
+# Claude Code temp files
+tmpclaude-*
