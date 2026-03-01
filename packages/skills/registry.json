@@ -3326,5 +3326,21 @@
     "updated": "2026-03-01T22:45:19.058Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4587
+  },
+  {
+    "name": "character-design-sheet",
+    "description": "\"Character consistency across AI-generated images with reference sheets and LoRA techniques. Covers turnaround views, expression sheets, color palettes, and style consistency tricks. Use for: characte",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 278,
+    "size": 10695,
+    "updated": "2026-03-01T22:45:22.889Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4587
   }
 ]
