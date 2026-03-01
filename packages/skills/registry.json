@@ -6143,5 +6143,21 @@
     "updated": "2026-03-01T22:59:41.688Z",
     "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
     "installs": 983
+  },
+  {
+    "name": "tanstack-query-best-practices",
+    "description": "TanStack Query (React Query) best practices for data fetching, caching, mutations, and server state management. Activate when building data-driven React applications with server state.",
+    "author": "deckardger",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 115,
+    "size": 4838,
+    "updated": "2026-03-01T22:59:49.113Z",
+    "sourceUrl": "https://github.com/deckardger/tanstack-agent-skills",
+    "installs": 979
   }
 ]
