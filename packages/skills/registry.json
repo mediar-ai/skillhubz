@@ -4146,5 +4146,21 @@
     "updated": "2026-03-01T22:48:30.885Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2589
+  },
+  {
+    "name": "clean-code",
+    "description": "\"Applies principles from Robert C. Martin's 'Clean Code'. Use this skill when writing, reviewing, or refactoring code to ensure high quality, readability, and maintainability. Covers naming, functio..",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 95,
+    "size": 4386,
+    "updated": "2026-03-01T22:48:33.869Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 2588
   }
 ]
