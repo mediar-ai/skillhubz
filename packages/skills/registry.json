@@ -1621,5 +1621,19 @@
     "lines": 310,
     "size": 8098,
     "updated": "2026-03-01T22:34:59.256Z"
+  },
+  {
+    "name": "launch-strategy",
+    "description": "\"When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement,' 'go-to-market,' '",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 354,
+    "size": 12586,
+    "updated": "2026-03-01T22:35:02.675Z"
   }
 ]
