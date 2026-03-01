@@ -3198,5 +3198,21 @@
     "updated": "2026-03-01T22:44:51.764Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4616
+  },
+  {
+    "name": "youtube-thumbnail-design",
+    "description": "\"YouTube thumbnail design with specific dimensions, contrast rules, and mobile preview optimization. Covers safe zones, text placement, face expression psychology, and A/B testing. Use for: YouTube th",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 250,
+    "size": 9475,
+    "updated": "2026-03-01T22:44:55.184Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4615
   }
 ]
