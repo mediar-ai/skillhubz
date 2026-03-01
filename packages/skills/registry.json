@@ -4642,5 +4642,21 @@
     "updated": "2026-03-01T22:51:38.870Z",
     "sourceUrl": "https://github.com/vuejs-ai/skills",
     "installs": 1861
+  },
+  {
+    "name": "logging-best-practices",
+    "description": "Logging best practices focused on wide events (canonical log lines) for powerful debugging and analytics",
+    "author": "boristane",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 128,
+    "size": 4657,
+    "updated": "2026-03-01T22:51:41.992Z",
+    "sourceUrl": "https://github.com/boristane/agent-skills",
+    "installs": 1857
   }
 ]
