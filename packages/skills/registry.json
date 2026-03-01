@@ -5074,5 +5074,21 @@
     "updated": "2026-03-01T22:55:24.474Z",
     "sourceUrl": "https://github.com/github/awesome-copilot",
     "installs": 1532
+  },
+  {
+    "name": "first-ask",
+    "description": "'Interactive, input-tool powered, task refinement workflow: interrogates scope, deliverables, constraints before carrying out the task; Requires the Joyride extension.'",
+    "author": "github",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "productivity",
+    "excerpt": "---",
+    "lines": 31,
+    "size": 1576,
+    "updated": "2026-03-01T22:55:28.840Z",
+    "sourceUrl": "https://github.com/github/awesome-copilot",
+    "installs": 1529
   }
 ]
