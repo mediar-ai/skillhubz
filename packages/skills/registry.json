@@ -4434,5 +4434,21 @@
     "updated": "2026-03-01T22:50:26.528Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 2132
+  },
+  {
+    "name": "clerk-nextjs-patterns",
+    "description": "Advanced Next.js patterns - middleware, Server Actions, caching with Clerk.",
+    "author": "clerk",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 70,
+    "size": 1970,
+    "updated": "2026-03-01T22:50:40.700Z",
+    "sourceUrl": "https://github.com/clerk/skills",
+    "installs": 2122
   }
 ]
