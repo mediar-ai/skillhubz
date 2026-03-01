@@ -3842,5 +3842,21 @@
     "updated": "2026-03-01T22:47:10.116Z",
     "sourceUrl": "https://github.com/google-gemini/gemini-skills",
     "installs": 2997
+  },
+  {
+    "name": "skill-judge",
+    "description": "Evaluate Agent Skill design quality against official specifications and best practices. Use when reviewing, auditing, or improving SKILL.md files and skill packages. Provides multi-dimensional scoring",
+    "author": "softaworks",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 753,
+    "size": 29859,
+    "updated": "2026-03-01T22:47:13.171Z",
+    "sourceUrl": "https://github.com/softaworks/agent-toolkit",
+    "installs": 2980
   }
 ]
