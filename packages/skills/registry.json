@@ -3570,5 +3570,21 @@
     "updated": "2026-03-01T22:46:15.118Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 3774
+  },
+  {
+    "name": "vitepress",
+    "description": "VitePress static site generator powered by Vite and Vue. Use when building documentation sites, configuring themes, or writing Markdown with Vue components.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 66,
+    "size": 3179,
+    "updated": "2026-03-01T22:46:18.575Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 3741
   }
 ]
