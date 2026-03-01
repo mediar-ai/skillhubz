@@ -1845,5 +1845,19 @@
     "lines": 454,
     "size": 11501,
     "updated": "2026-03-01T22:36:05.166Z"
+  },
+  {
+    "name": "ab-test-setup",
+    "description": "When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions \"A/B test,\" \"split test,\" \"experiment,\" \"test this change,\" \"variant copy,\" \"multivariate t",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 267,
+    "size": 7144,
+    "updated": "2026-03-01T22:36:08.501Z"
   }
 ]
