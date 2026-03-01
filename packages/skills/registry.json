@@ -2480,5 +2480,19 @@
     "lines": 293,
     "size": 8755,
     "updated": "2026-03-01T22:39:04.937Z"
+  },
+  {
+    "name": "product-changelog",
+    "description": "\"Product changelog and release notes that users actually read. Covers categorization, user-facing language, visuals, and distribution. Use for: release notes, changelogs, product updates, feature anno",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 269,
+    "size": 8587,
+    "updated": "2026-03-01T22:39:08.498Z"
   }
 ]
