@@ -5138,5 +5138,21 @@
     "updated": "2026-03-01T22:55:40.345Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1482
+  },
+  {
+    "name": "sql-pro",
+    "description": "Use when optimizing SQL queries, designing database schemas, or tuning database performance. Invoke for complex queries, window functions, CTEs, indexing strategies, query plan analysis.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 87,
+    "size": 3822,
+    "updated": "2026-03-01T22:55:44.806Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 1469
   }
 ]
