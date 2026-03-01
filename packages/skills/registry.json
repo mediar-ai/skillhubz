@@ -4882,5 +4882,21 @@
     "updated": "2026-03-01T22:54:39.705Z",
     "sourceUrl": "https://github.com/zhanghandong/rust-skills",
     "installs": 1661
+  },
+  {
+    "name": "threejs-fundamentals",
+    "description": "Three.js scene setup, cameras, renderer, Object3D hierarchy, coordinate systems. Use when setting up 3D scenes, creating cameras, configuring renderers, managing object hierarchies, or working with tr",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 489,
+    "size": 11520,
+    "updated": "2026-03-01T22:54:42.914Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1661
   }
 ]
