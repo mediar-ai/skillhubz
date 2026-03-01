@@ -5218,5 +5218,21 @@
     "updated": "2026-03-01T22:55:57.689Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 1421
+  },
+  {
+    "name": "trade",
+    "description": "Swap or trade tokens on Base network. Use when you or the user want to trade, swap, exchange, buy, sell, or convert between tokens like USDC, ETH, and WETH. Covers phrases like \"buy ETH\", \"sell ETH fo",
+    "author": "coinbase",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 118,
+    "size": 4837,
+    "updated": "2026-03-01T22:56:00.984Z",
+    "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
+    "installs": 1414
   }
 ]
