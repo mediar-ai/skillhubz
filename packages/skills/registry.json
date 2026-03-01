@@ -3358,5 +3358,21 @@
     "updated": "2026-03-01T22:45:26.148Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4582
+  },
+  {
+    "name": "image-upscaling",
+    "description": "\"Upscale and enhance images with Real-ESRGAN, Thera, Topaz, FLUX Upscaler via inference.sh CLI. Models: Real-ESRGAN, Thera (any size), FLUX Dev Upscaler, Topaz Image Upscaler. Use for: enhance low-res",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 78,
+    "size": 2836,
+    "updated": "2026-03-01T22:45:32.140Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4557
   }
 ]
