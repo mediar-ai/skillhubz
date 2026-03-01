@@ -1761,5 +1761,19 @@
     "lines": 430,
     "size": 10762,
     "updated": "2026-03-01T22:35:34.821Z"
+  },
+  {
+    "name": "referral-program",
+    "description": "\"When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use when the user mentions 'referral,' 'affiliate,' 'ambassador,' 'word of m",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 256,
+    "size": 7082,
+    "updated": "2026-03-01T22:35:40.906Z"
   }
 ]
