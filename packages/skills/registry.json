@@ -2522,5 +2522,19 @@
     "lines": 290,
     "size": 8158,
     "updated": "2026-03-01T22:39:15.702Z"
+  },
+  {
+    "name": "app-store-screenshots",
+    "description": "\"App Store and Google Play screenshot creation with exact platform specs. Covers iOS/Android dimensions, gallery ordering, device mockups, and preview videos. Use for: app store optimization, ASO, app",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 267,
+    "size": 8921,
+    "updated": "2026-03-01T22:39:19.213Z"
   }
 ]
