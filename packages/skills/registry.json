@@ -2200,5 +2200,19 @@
     "lines": 198,
     "size": 6892,
     "updated": "2026-03-01T22:37:55.949Z"
+  },
+  {
+    "name": "baoyu-slide-deck",
+    "description": "Generates professional slide deck images from content. Creates outlines with style instructions, then generates individual slide images. Use when user asks to \"create slides\", \"make a presentation\", \"",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 699,
+    "size": 22497,
+    "updated": "2026-03-01T22:37:59.193Z"
   }
 ]
