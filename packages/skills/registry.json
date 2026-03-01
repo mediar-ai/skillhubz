@@ -3182,5 +3182,21 @@
     "updated": "2026-03-01T22:44:48.186Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4617
+  },
+  {
+    "name": "social-media-carousel",
+    "description": "\"Multi-slide carousel design for Instagram, LinkedIn, and Twitter/X with layout rules and hooks. Covers slide structure, text hierarchy, swipe psychology, and platform-specific specs. Use for: carouse",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 216,
+    "size": 8840,
+    "updated": "2026-03-01T22:44:51.764Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4616
   }
 ]
