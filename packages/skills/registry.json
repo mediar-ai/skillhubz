@@ -3970,5 +3970,21 @@
     "updated": "2026-03-01T22:47:49.234Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2721
+  },
+  {
+    "name": "llm-council",
+    "description": "> Orchestrate a configurable, multi-member CLI planning council (Codex, Claude Code, Gemini, OpenCode, or custom) to produce independent implementation plans, anonymize and randomize them, then judge ",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 69,
+    "size": 4850,
+    "updated": "2026-03-01T22:47:54.241Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2700
   }
 ]
