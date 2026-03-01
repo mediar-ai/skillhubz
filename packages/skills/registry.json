@@ -5426,5 +5426,21 @@
     "updated": "2026-03-01T22:56:53.118Z",
     "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
     "installs": 1316
+  },
+  {
+    "name": "clerk-setup",
+    "description": "Add Clerk authentication to any project by following the official quickstart guides.",
+    "author": "clerk",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 171,
+    "size": 6660,
+    "updated": "2026-03-01T22:56:57.717Z",
+    "sourceUrl": "https://github.com/clerk/skills",
+    "installs": 1314
   }
 ]
