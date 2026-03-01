@@ -1140,5 +1140,19 @@
     "lines": 66,
     "size": 2786,
     "updated": "2026-03-01T22:14:08.996Z"
+  },
+  {
+    "name": "find-skills",
+    "description": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This sk",
+    "author": "vercel-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 134,
+    "size": 4627,
+    "updated": "2026-03-01T22:32:46.770Z"
   }
 ]
