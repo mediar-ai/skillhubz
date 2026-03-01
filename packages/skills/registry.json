@@ -3666,5 +3666,21 @@
     "updated": "2026-03-01T22:46:36.020Z",
     "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
     "installs": 3485
+  },
+  {
+    "name": "laravel-specialist",
+    "description": "Use when building Laravel 10+ applications requiring Eloquent ORM, API resources, or queue systems. Invoke for Laravel models, Livewire components, Sanctum authentication, Horizon queues.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 90,
+    "size": 3621,
+    "updated": "2026-03-01T22:46:39.289Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 3385
   }
 ]
