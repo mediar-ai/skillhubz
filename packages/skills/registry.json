@@ -1453,5 +1453,19 @@
     "lines": 233,
     "size": 9128,
     "updated": "2026-03-01T22:34:07.784Z"
+  },
+  {
+    "name": "docx",
+    "description": "\"Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx files). Triggers include: any mention of 'Word doc', 'word document', '.docx', or requests to produce",
+    "author": "anthropics",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 591,
+    "size": 20056,
+    "updated": "2026-03-01T22:34:11.307Z"
   }
 ]
