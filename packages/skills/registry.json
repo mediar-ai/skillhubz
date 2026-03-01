@@ -5330,5 +5330,21 @@
     "updated": "2026-03-01T22:56:28.738Z",
     "sourceUrl": "https://github.com/yusukebe/hono-skill",
     "installs": 1363
+  },
+  {
+    "name": "x402",
+    "description": "Search for new services and make paid API requests using the x402 payment protocol. Use when you don't have a clear tool to choose, search the bazaar. You can also use this tool if you or the user wan",
+    "author": "coinbase",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 126,
+    "size": 4471,
+    "updated": "2026-03-01T22:56:33.513Z",
+    "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
+    "installs": 1352
   }
 ]
