@@ -4850,5 +4850,21 @@
     "updated": "2026-03-01T22:54:31.342Z",
     "sourceUrl": "https://github.com/pleaseprompto/notebooklm-skill",
     "installs": 1687
+  },
+  {
+    "name": "angular-testing",
+    "description": "Write unit and integration tests for Angular v20+ applications using Vitest or Jasmine with TestBed and modern testing patterns. Use for testing components with signals, OnPush change detection, servi",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 458,
+    "size": 11409,
+    "updated": "2026-03-01T22:54:36.734Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 1662
   }
 ]
