@@ -2704,5 +2704,19 @@
     "lines": 244,
     "size": 10018,
     "updated": "2026-03-01T22:40:02.494Z"
+  },
+  {
+    "name": "email-design",
+    "description": "\"Email marketing design with layout patterns, subject line formulas, and deliverability rules. Covers welcome sequences, promotional emails, transactional templates, and mobile optimization. Use for: ",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 241,
+    "size": 10340,
+    "updated": "2026-03-01T22:40:05.893Z"
   }
 ]
