@@ -1425,5 +1425,19 @@
     "lines": 253,
     "size": 7171,
     "updated": "2026-03-01T22:34:00.239Z"
+  },
+  {
+    "name": "sleek-design-mobile-apps",
+    "description": "Use when the user wants to design a mobile app, create screens, build UI, or interact with their Sleek projects. Covers high-level requests (\"design an app that does X\") and specific ones (\"list my pr",
+    "author": "sleekdotdesign",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 435,
+    "size": 15031,
+    "updated": "2026-03-01T22:34:04.373Z"
   }
 ]
