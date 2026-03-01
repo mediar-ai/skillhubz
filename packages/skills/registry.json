@@ -5490,5 +5490,21 @@
     "updated": "2026-03-01T22:57:12.276Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1275
+  },
+  {
+    "name": "file-name-wizard",
+    "description": "Audit all filename and naming conventions in the codebase against AGENTS.md standards and common patterns. Use when user asks to check naming conventions, audit filenames, find naming inconsistencies,",
+    "author": "cygnusfear",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 353,
+    "size": 9746,
+    "updated": "2026-03-01T22:57:16.712Z",
+    "sourceUrl": "https://github.com/cygnusfear/agent-skills",
+    "installs": 1273
   }
 ]
