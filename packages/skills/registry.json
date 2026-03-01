@@ -3150,5 +3150,21 @@
     "updated": "2026-03-01T22:44:41.316Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4623
+  },
+  {
+    "name": "ai-avatar-video",
+    "description": "\"Create AI avatar and talking head videos with OmniHuman, Fabric, PixVerse via inference.sh CLI. Models: OmniHuman 1.5, OmniHuman 1.0, Fabric 1.0, PixVerse Lipsync. Capabilities: audio-driven avatars,",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 151,
+    "size": 4898,
+    "updated": "2026-03-01T22:44:44.738Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4619
   }
 ]
