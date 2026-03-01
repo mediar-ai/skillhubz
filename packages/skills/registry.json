@@ -3422,5 +3422,21 @@
     "updated": "2026-03-01T22:45:42.300Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4542
+  },
+  {
+    "name": "logo-design-guide",
+    "description": "\"Logo design principles and AI image generation best practices for creating logos. Covers logo types, prompting techniques, scalability rules, and iteration workflows. Use for: brand identity, startup",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 188,
+    "size": 7254,
+    "updated": "2026-03-01T22:45:45.823Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4540
   }
 ]
