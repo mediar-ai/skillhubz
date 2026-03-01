@@ -3714,5 +3714,21 @@
     "updated": "2026-03-01T22:46:45.344Z",
     "sourceUrl": "https://github.com/kepano/obsidian-skills",
     "installs": 3223
+  },
+  {
+    "name": "baoyu-format-markdown",
+    "description": "Formats plain text or markdown files with frontmatter, titles, summaries, headings, bold, lists, and code blocks. Use when user asks to \"format markdown\", \"beautify article\", \"add formatting\", or impr",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 299,
+    "size": 9741,
+    "updated": "2026-03-01T22:46:48.557Z",
+    "sourceUrl": "https://github.com/jimliu/baoyu-skills",
+    "installs": 3209
   }
 ]
