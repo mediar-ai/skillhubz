@@ -4194,5 +4194,21 @@
     "updated": "2026-03-01T22:48:39.749Z",
     "sourceUrl": "https://github.com/ibelick/ui-skills",
     "installs": 2566
+  },
+  {
+    "name": "fixing-accessibility",
+    "description": "Audit and fix HTML accessibility issues including ARIA labels, keyboard navigation, focus management, color contrast, and form errors. Use when adding interactive controls, forms, dialogs, or reviewin",
+    "author": "ibelick",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 136,
+    "size": 4714,
+    "updated": "2026-03-01T22:48:44.921Z",
+    "sourceUrl": "https://github.com/ibelick/ui-skills",
+    "installs": 2467
   }
 ]
