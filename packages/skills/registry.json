@@ -2578,5 +2578,19 @@
     "lines": 267,
     "size": 7984,
     "updated": "2026-03-01T22:39:31.043Z"
+  },
+  {
+    "name": "ai-rag-pipeline",
+    "description": "\"Build RAG (Retrieval Augmented Generation) pipelines with web search and LLMs. Tools: Tavily Search, Exa Search, Exa Answer, Claude, GPT-4, Gemini via OpenRouter. Capabilities: research, fact-checkin",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 311,
+    "size": 8229,
+    "updated": "2026-03-01T22:39:35.439Z"
   }
 ]
