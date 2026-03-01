@@ -4754,5 +4754,21 @@
     "updated": "2026-03-01T22:54:12.182Z",
     "sourceUrl": "https://github.com/currents-dev/playwright-best-practices-skill",
     "installs": 1719
+  },
+  {
+    "name": "api-security-best-practices",
+    "description": "\"Implement secure API design patterns including authentication, authorization, input validation, rate limiting, and protection against common API vulnerabilities\"",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 911,
+    "size": 23420,
+    "updated": "2026-03-01T22:54:15.160Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 1719
   }
 ]
