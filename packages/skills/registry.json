@@ -3586,5 +3586,21 @@
     "updated": "2026-03-01T22:46:18.575Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 3741
+  },
+  {
+    "name": "obsidian-bases",
+    "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, ta",
+    "author": "kepano",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 498,
+    "size": 12887,
+    "updated": "2026-03-01T22:46:22.147Z",
+    "sourceUrl": "https://github.com/kepano/obsidian-skills",
+    "installs": 3730
   }
 ]
