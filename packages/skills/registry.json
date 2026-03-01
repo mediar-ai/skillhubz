@@ -1663,5 +1663,19 @@
     "lines": 656,
     "size": 22379,
     "updated": "2026-03-01T22:35:09.412Z"
+  },
+  {
+    "name": "agent-email-cli",
+    "description": "Operate the agent-email CLI to create disposable inboxes, poll for new mail, retrieve full message details, and manage local mailbox profiles. Use when the user needs terminal-based email inbox access",
+    "author": "zaddy6",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 106,
+    "size": 2809,
+    "updated": "2026-03-01T22:35:12.782Z"
   }
 ]
