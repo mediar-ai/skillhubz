@@ -1313,5 +1313,19 @@
     "lines": 144,
     "size": 4425,
     "updated": "2026-03-01T22:33:28.231Z"
+  },
+  {
+    "name": "nano-banana-2",
+    "description": "\"Generate images with Google Gemini 3.1 Flash Image Preview (Nano Banana 2) via inference.sh CLI. Capabilities: text-to-image, image editing, multi-image input (up to 14 images), Google Search groundi",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 166,
+    "size": 5013,
+    "updated": "2026-03-01T22:33:33.896Z"
   }
 ]
