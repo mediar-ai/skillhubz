@@ -3054,5 +3054,21 @@
     "updated": "2026-03-01T22:44:21.743Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4653
+  },
+  {
+    "name": "talking-head-production",
+    "description": "\"Talking head video production with AI avatars, lipsync, and voiceover. Covers portrait requirements, audio quality, OmniHuman, PixVerse lipsync, Dia TTS. Use for: spokesperson videos, course content,",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 207,
+    "size": 7625,
+    "updated": "2026-03-01T22:44:24.959Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4647
   }
 ]
