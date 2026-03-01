@@ -5822,5 +5822,21 @@
     "updated": "2026-03-01T22:58:26.957Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 1157
+  },
+  {
+    "name": "vueuse",
+    "description": "Use when working with VueUse composables - track mouse position with useMouse, manage localStorage with useStorage, detect network status with useNetwork, debounce values with refDebounced, and access",
+    "author": "onmax",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 162,
+    "size": 4341,
+    "updated": "2026-03-01T22:58:29.883Z",
+    "sourceUrl": "https://github.com/onmax/nuxt-skills",
+    "installs": 1142
   }
 ]
