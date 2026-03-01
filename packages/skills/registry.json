@@ -6313,5 +6313,21 @@
     "updated": "2026-03-01T23:00:17.056Z",
     "sourceUrl": "https://github.com/czlonkowski/n8n-skills",
     "installs": 954
+  },
+  {
+    "name": "fastapi-expert",
+    "description": "Use when building high-performance async Python APIs with FastAPI and Pydantic V2. Invoke for async SQLAlchemy, JWT authentication, WebSockets, OpenAPI documentation.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 85,
+    "size": 3292,
+    "updated": "2026-03-01T23:00:21.569Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 945
   }
 ]
