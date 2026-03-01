@@ -3086,5 +3086,21 @@
     "updated": "2026-03-01T22:44:28.073Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4646
+  },
+  {
+    "name": "content-repurposing",
+    "description": "\"Content atomization — turn one piece of content into many formats. Covers blog-to-thread, blog-to-carousel, podcast-to-blog, video-to-quotes, and more. Use for: content marketing, social media, multi",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 251,
+    "size": 8550,
+    "updated": "2026-03-01T22:44:31.481Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4640
   }
 ]
