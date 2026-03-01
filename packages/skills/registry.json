@@ -3634,5 +3634,21 @@
     "updated": "2026-03-01T22:46:28.755Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 3604
+  },
+  {
+    "name": "cold-email",
+    "description": "Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting emails, cold email campaigns, sales development emails, or SDR emails",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 159,
+    "size": 6736,
+    "updated": "2026-03-01T22:46:32.487Z",
+    "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
+    "installs": 3490
   }
 ]
