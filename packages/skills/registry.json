@@ -6297,5 +6297,21 @@
     "updated": "2026-03-01T23:00:14.152Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 957
+  },
+  {
+    "name": "n8n-node-configuration",
+    "description": "Operation-aware node configuration guidance. Use when configuring nodes, understanding property dependencies, determining required fields, choosing between get_node detail levels, or learning common c",
+    "author": "czlonkowski",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 786,
+    "size": 16381,
+    "updated": "2026-03-01T23:00:17.056Z",
+    "sourceUrl": "https://github.com/czlonkowski/n8n-skills",
+    "installs": 954
   }
 ]
