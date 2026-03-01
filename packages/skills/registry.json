@@ -4226,5 +4226,21 @@
     "updated": "2026-03-01T22:48:50.092Z",
     "sourceUrl": "https://github.com/vuejs-ai/skills",
     "installs": 2439
+  },
+  {
+    "name": "cloudflare",
+    "description": "Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS), and infrastructure-a",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 229,
+    "size": 7833,
+    "updated": "2026-03-01T22:48:52.835Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 2418
   }
 ]
