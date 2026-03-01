@@ -1789,5 +1789,19 @@
     "lines": 173,
     "size": 7644,
     "updated": "2026-03-01T22:35:46.690Z"
+  },
+  {
+    "name": "free-tool-strategy",
+    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 179,
+    "size": 5630,
+    "updated": "2026-03-01T22:35:52.607Z"
   }
 ]
