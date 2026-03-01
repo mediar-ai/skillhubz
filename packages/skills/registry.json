@@ -3038,5 +3038,21 @@
     "updated": "2026-03-01T22:44:18.609Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4654
+  },
+  {
+    "name": "dialogue-audio",
+    "description": "\"Multi-speaker dialogue audio creation with Dia TTS. Covers speaker tags, emotion control, pacing, conversation flow, and post-production. Use for: podcasts, audiobooks, explainers, character dialogue",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 222,
+    "size": 8223,
+    "updated": "2026-03-01T22:44:21.743Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4653
   }
 ]
