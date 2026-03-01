@@ -4338,5 +4338,21 @@
     "updated": "2026-03-01T22:49:19.194Z",
     "sourceUrl": "https://github.com/calm-north/seojuice-skills",
     "installs": 2242
+  },
+  {
+    "name": "fixing-metadata",
+    "description": "> Audit and fix HTML metadata including page titles, meta descriptions, canonical URLs, Open Graph tags, Twitter cards, favicons, JSON-LD structured data, and robots directives. Use when adding SEO me",
+    "author": "ibelick",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 113,
+    "size": 4435,
+    "updated": "2026-03-01T22:49:22.170Z",
+    "sourceUrl": "https://github.com/ibelick/ui-skills",
+    "installs": 2229
   }
 ]
