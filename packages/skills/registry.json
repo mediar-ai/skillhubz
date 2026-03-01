@@ -4162,5 +4162,21 @@
     "updated": "2026-03-01T22:48:33.869Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 2588
+  },
+  {
+    "name": "wrangler",
+    "description": "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running ",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 888,
+    "size": 16154,
+    "updated": "2026-03-01T22:48:36.675Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 2578
   }
 ]
