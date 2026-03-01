@@ -2326,5 +2326,19 @@
     "lines": 251,
     "size": 7533,
     "updated": "2026-03-01T22:38:26.542Z"
+  },
+  {
+    "name": "baoyu-comic",
+    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"知识漫画\", ",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 307,
+    "size": 12690,
+    "updated": "2026-03-01T22:38:30.177Z"
   }
 ]
