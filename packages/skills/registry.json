@@ -4786,5 +4786,21 @@
     "updated": "2026-03-01T22:54:18.215Z",
     "sourceUrl": "https://github.com/openrouterteam/agent-skills",
     "installs": 1711
+  },
+  {
+    "name": "convex-best-practices",
+    "description": "Guidelines for building production-ready Convex apps covering function organization, query patterns, validation, TypeScript usage, error handling, and the Zen of Convex design philosophy",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 370,
+    "size": 9679,
+    "updated": "2026-03-01T22:54:21.029Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 1702
   }
 ]
