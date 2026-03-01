@@ -1565,5 +1565,19 @@
     "lines": 279,
     "size": 8410,
     "updated": "2026-03-01T22:34:43.202Z"
+  },
+  {
+    "name": "copy-editing",
+    "description": "\"When the user wants to edit, review, or improve existing marketing copy. Also use when the user mentions 'edit this copy,' 'review my copy,' 'copy feedback,' 'proofread,' 'polish this,' 'make this be",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 448,
+    "size": 13271,
+    "updated": "2026-03-01T22:34:46.803Z"
   }
 ]
