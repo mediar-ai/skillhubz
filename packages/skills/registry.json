@@ -4290,5 +4290,21 @@
     "updated": "2026-03-01T22:49:04.395Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 2322
+  },
+  {
+    "name": "prisma-expert",
+    "description": "\"Prisma ORM expert for schema design, migrations, query optimization, relations modeling, and database operations. Use PROACTIVELY for Prisma schema issues, migration problems, query performance, re..",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 362,
+    "size": 10365,
+    "updated": "2026-03-01T22:49:13.328Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 2265
   }
 ]
