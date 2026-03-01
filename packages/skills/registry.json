@@ -6191,5 +6191,26 @@
     "updated": "2026-03-01T22:59:55.192Z",
     "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
     "installs": 974
+  },
+  {
+    "name": "convex-security-check",
+    "description": "Quick security audit checklist covering authentication, function exposure, argument validation, row-level access control, and environment variable handling",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "security",
+      "authentication",
+      "authorization",
+      "checklist]",
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 379,
+    "size": 9822,
+    "updated": "2026-03-01T22:59:58.063Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 972
   }
 ]
