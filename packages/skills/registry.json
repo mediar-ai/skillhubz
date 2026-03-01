@@ -3134,5 +3134,21 @@
     "updated": "2026-03-01T22:44:38.125Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4628
+  },
+  {
+    "name": "press-release-writing",
+    "description": "\"Press release writing in AP style with inverted pyramid structure. Covers formatting, datelines, quotes, boilerplates, and fact-checking. Use for: product launches, funding announcements, partnership",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 288,
+    "size": 8974,
+    "updated": "2026-03-01T22:44:41.316Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4623
   }
 ]
