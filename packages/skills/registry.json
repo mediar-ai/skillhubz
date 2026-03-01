@@ -5634,5 +5634,27 @@
     "updated": "2026-03-01T22:57:44.907Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1248
+  },
+  {
+    "name": "convex-functions",
+    "description": "Writing queries, mutations, actions, and HTTP actions with proper argument validation, error handling, internal functions, and runtime considerations",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "functions",
+      "queries",
+      "mutations",
+      "actions",
+      "http]",
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 459,
+    "size": 12008,
+    "updated": "2026-03-01T22:57:47.809Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 1247
   }
 ]
