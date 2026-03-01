@@ -2354,5 +2354,19 @@
     "lines": 60,
     "size": 2719,
     "updated": "2026-03-01T22:38:33.521Z"
+  },
+  {
+    "name": "speech-to-text",
+    "description": "\"Transcribe audio to text with Whisper models via inference.sh CLI. Models: Fast Whisper Large V3, Whisper V3 Large. Capabilities: transcription, translation, multi-language, timestamps. Use for: meet",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 130,
+    "size": 4003,
+    "updated": "2026-03-01T22:38:37.083Z"
   }
 ]
