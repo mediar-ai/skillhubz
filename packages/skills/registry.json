@@ -4562,5 +4562,21 @@
     "updated": "2026-03-01T22:51:22.344Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 1968
+  },
+  {
+    "name": "angular-routing",
+    "description": "Implement routing in Angular v20+ applications with lazy loading, functional guards, resolvers, and route parameters. Use for navigation setup, protected routes, route-based data loading, and nested r",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 396,
+    "size": 8623,
+    "updated": "2026-03-01T22:51:25.315Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 1962
   }
 ]
