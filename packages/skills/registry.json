@@ -5346,5 +5346,21 @@
     "updated": "2026-03-01T22:56:33.513Z",
     "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
     "installs": 1352
+  },
+  {
+    "name": "frontend-testing-best-practices",
+    "description": "Testing best practices for the frontend. Emphasizes E2E tests over unit tests, minimal mocking, and testing behavior over implementation details. Use when writing tests or reviewing test code.",
+    "author": "sergiodxa",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 161,
+    "size": 4720,
+    "updated": "2026-03-01T22:56:36.843Z",
+    "sourceUrl": "https://github.com/sergiodxa/agent-skills",
+    "installs": 1345
   }
 ]
