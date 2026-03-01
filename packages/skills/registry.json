@@ -3826,5 +3826,21 @@
     "updated": "2026-03-01T22:47:07.246Z",
     "sourceUrl": "https://github.com/neondatabase/agent-skills",
     "installs": 3063
+  },
+  {
+    "name": "gemini-api-dev",
+    "description": "Use this skill when building applications with Gemini models, Gemini API, working with multimodal content (text, images, audio, video), implementing function calling, using structured outputs, or need",
+    "author": "google-gemini",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 163,
+    "size": 5998,
+    "updated": "2026-03-01T22:47:10.116Z",
+    "sourceUrl": "https://github.com/google-gemini/gemini-skills",
+    "installs": 2997
   }
 ]
