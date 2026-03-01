@@ -3246,5 +3246,21 @@
     "updated": "2026-03-01T22:45:02.178Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4612
+  },
+  {
+    "name": "book-cover-design",
+    "description": "\"Book cover design with genre-specific conventions, typography rules, and AI image generation. Covers fiction and non-fiction genres, sizing, thumbnail testing, and iteration workflows. Use for: self-",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 218,
+    "size": 9050,
+    "updated": "2026-03-01T22:45:05.731Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4609
   }
 ]
