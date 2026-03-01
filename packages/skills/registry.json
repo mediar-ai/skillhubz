@@ -1719,5 +1719,19 @@
     "lines": 221,
     "size": 6337,
     "updated": "2026-03-01T22:35:23.436Z"
+  },
+  {
+    "name": "paid-ads",
+    "description": "\"When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC,' 'paid media,' 'RO",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 316,
+    "size": 9927,
+    "updated": "2026-03-01T22:35:26.885Z"
   }
 ]
