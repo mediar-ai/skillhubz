@@ -4034,5 +4034,21 @@
     "updated": "2026-03-01T22:48:09.715Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 2666
+  },
+  {
+    "name": "markdown-url",
+    "description": "| Route any website you need to visit through markdown.new by prefixing the URL. **WHEN TO USE:** - You would normally open a website link to read content (docs, blog posts, changelogs, GitHub issues,",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 83,
+    "size": 3474,
+    "updated": "2026-03-01T22:48:12.393Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2658
   }
 ]
