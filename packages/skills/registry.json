@@ -3730,5 +3730,21 @@
     "updated": "2026-03-01T22:46:48.557Z",
     "sourceUrl": "https://github.com/jimliu/baoyu-skills",
     "installs": 3209
+  },
+  {
+    "name": "ai-pdf-filler-cli",
+    "description": "Use simplicity-cli to autofill PDF forms from local files or URLs, monitor async task execution, and download filled PDFs. Use when a user asks to fill forms with AI, run form autofill from context/so",
+    "author": "askyourpdf",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 107,
+    "size": 3685,
+    "updated": "2026-03-01T22:46:51.944Z",
+    "sourceUrl": "https://github.com/askyourpdf/ai-pdf-filler",
+    "installs": 3160
   }
 ]
