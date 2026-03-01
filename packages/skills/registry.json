@@ -2256,5 +2256,19 @@
     "lines": 209,
     "size": 7331,
     "updated": "2026-03-01T22:38:09.046Z"
+  },
+  {
+    "name": "baoyu-post-to-wechat",
+    "description": "Posts content to WeChat Official Account (微信公众号) via API or Chrome CDP. Supports article posting (文章) with HTML, markdown, or plain text input, and image-text posting (贴图, formerly 图文) with multiple i",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 378,
+    "size": 13634,
+    "updated": "2026-03-01T22:38:12.419Z"
   }
 ]
