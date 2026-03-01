@@ -5586,5 +5586,21 @@
     "updated": "2026-03-01T22:57:32.758Z",
     "sourceUrl": "https://github.com/b-mendoza/agent-skills",
     "installs": 1268
+  },
+  {
+    "name": "devops-engineer",
+    "description": "Use when setting up CI/CD pipelines, containerizing applications, or managing infrastructure as code. Invoke for pipelines, Docker, Kubernetes, cloud platforms, GitOps.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 87,
+    "size": 3628,
+    "updated": "2026-03-01T22:57:37.205Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 1252
   }
 ]
