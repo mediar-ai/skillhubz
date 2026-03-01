@@ -5768,5 +5768,21 @@
     "updated": "2026-03-01T22:58:15.308Z",
     "sourceUrl": "https://github.com/clerk/skills",
     "installs": 1183
+  },
+  {
+    "name": "code-simplifier",
+    "description": "Simplifies and refines code for clarity, consistency, and maintainability while preserving all functionality. Focuses on recently modified code unless instructed otherwise.",
+    "author": "simonwong",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 56,
+    "size": 3140,
+    "updated": "2026-03-01T22:58:19.644Z",
+    "sourceUrl": "https://github.com/simonwong/agent-skills",
+    "installs": 1165
   }
 ]
