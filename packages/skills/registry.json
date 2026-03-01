@@ -3454,5 +3454,21 @@
     "updated": "2026-03-01T22:45:49.303Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4517
+  },
+  {
+    "name": "baoyu-url-to-markdown",
+    "description": "Fetch any URL and convert to markdown using Chrome CDP. Supports two modes - auto-capture on page load, or wait for user signal (for pages requiring login). Use when user wants to save a webpage as ma",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 121,
+    "size": 4430,
+    "updated": "2026-03-01T22:45:52.823Z",
+    "sourceUrl": "https://github.com/jimliu/baoyu-skills",
+    "installs": 4468
   }
 ]
