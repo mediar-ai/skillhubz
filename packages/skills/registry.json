@@ -5752,5 +5752,21 @@
     "updated": "2026-03-01T22:58:08.920Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1210
+  },
+  {
+    "name": "clerk-testing",
+    "description": "E2E testing for Clerk apps. Use with Playwright or Cypress for auth flow tests.",
+    "author": "clerk",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 58,
+    "size": 1792,
+    "updated": "2026-03-01T22:58:15.308Z",
+    "sourceUrl": "https://github.com/clerk/skills",
+    "installs": 1183
   }
 ]
