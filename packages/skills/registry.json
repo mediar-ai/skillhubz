@@ -2508,5 +2508,19 @@
     "lines": 296,
     "size": 12444,
     "updated": "2026-03-01T22:39:12.197Z"
+  },
+  {
+    "name": "ai-podcast-creation",
+    "description": "\"Create AI-powered podcasts with text-to-speech, music, and audio editing. Tools: Kokoro TTS, DIA TTS, Chatterbox, AI music generation, media merger. Capabilities: multi-voice conversations, backgroun",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "productivity",
+    "excerpt": "---",
+    "lines": 290,
+    "size": 8158,
+    "updated": "2026-03-01T22:39:15.702Z"
   }
 ]
