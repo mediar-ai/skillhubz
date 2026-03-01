@@ -6244,5 +6244,21 @@
     "updated": "2026-03-01T23:00:05.361Z",
     "sourceUrl": "https://github.com/apify/agent-skills",
     "installs": 964
+  },
+  {
+    "name": "payload",
+    "description": "Use when working with Payload projects (payload.config.ts, collections, fields, hooks, access control, Payload API). Use when debugging validation errors, security issues, relationship queries, transa",
+    "author": "payloadcms",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 410,
+    "size": 15627,
+    "updated": "2026-03-01T23:00:08.180Z",
+    "sourceUrl": "https://github.com/payloadcms/skills",
+    "installs": 961
   }
 ]
