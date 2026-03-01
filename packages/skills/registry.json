@@ -2620,5 +2620,19 @@
     "lines": 280,
     "size": 11238,
     "updated": "2026-03-01T22:39:42.427Z"
+  },
+  {
+    "name": "flux-image",
+    "description": "\"Generate images with FLUX models (Black Forest Labs) via inference.sh CLI. Models: FLUX Dev LoRA, FLUX.2 Klein LoRA with custom style adaptation. Capabilities: text-to-image, image-to-image, LoRA fin",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 94,
+    "size": 2984,
+    "updated": "2026-03-01T22:39:45.778Z"
   }
 ]
