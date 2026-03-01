@@ -3554,5 +3554,21 @@
     "updated": "2026-03-01T22:46:11.489Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 3861
+  },
+  {
+    "name": "flutter-expert",
+    "description": "Use when building cross-platform applications with Flutter 3+ and Dart. Invoke for widget development, Riverpod/Bloc state management, GoRouter navigation, platform-specific implementations, performan",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 83,
+    "size": 3032,
+    "updated": "2026-03-01T22:46:15.118Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 3774
   }
 ]
