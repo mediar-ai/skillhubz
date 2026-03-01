@@ -5800,5 +5800,27 @@
     "updated": "2026-03-01T22:58:24.212Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 1158
+  },
+  {
+    "name": "convex-schema-validator",
+    "description": "Defining and validating database schemas with proper typing, index configuration, optional fields, unions, and migration strategies for schema changes",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "schema",
+      "validation",
+      "typescript",
+      "indexes",
+      "migrations]",
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 401,
+    "size": 10130,
+    "updated": "2026-03-01T22:58:26.957Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 1157
   }
 ]
