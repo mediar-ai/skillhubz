@@ -2102,5 +2102,19 @@
     "lines": 238,
     "size": 10343,
     "updated": "2026-03-01T22:37:25.416Z"
+  },
+  {
+    "name": "vue",
+    "description": "Vue 3 Composition API, script setup macros, reactivity system, and built-in components. Use when writing Vue SFCs, defineProps/defineEmits/defineModel, watchers, or using Transition/Teleport/Suspense/",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 85,
+    "size": 2448,
+    "updated": "2026-03-01T22:37:28.676Z"
   }
 ]
