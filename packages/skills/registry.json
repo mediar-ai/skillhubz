@@ -3890,5 +3890,21 @@
     "updated": "2026-03-01T22:47:19.107Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 2962
+  },
+  {
+    "name": "churn-prevention",
+    "description": "\"When the user wants to reduce churn, build cancellation flows, set up save offers, recover failed payments, or implement retention strategies. Also use when the user mentions 'churn,' 'cancel flow,' ",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 425,
+    "size": 17677,
+    "updated": "2026-03-01T22:47:23.320Z",
+    "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
+    "installs": 2920
   }
 ]
