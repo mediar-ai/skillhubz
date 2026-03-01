@@ -5266,5 +5266,21 @@
     "updated": "2026-03-01T22:56:09.528Z",
     "sourceUrl": "https://github.com/intellectronica/agent-skills",
     "installs": 1390
+  },
+  {
+    "name": "accessibility",
+    "description": "Audit and improve web accessibility following WCAG 2.1 guidelines. Use when asked to \"improve accessibility\", \"a11y audit\", \"WCAG compliance\", \"screen reader support\", \"keyboard navigation\", or \"make ",
+    "author": "addyosmani",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 523,
+    "size": 12310,
+    "updated": "2026-03-01T22:56:14.097Z",
+    "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
+    "installs": 1390
   }
 ]
