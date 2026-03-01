@@ -3294,5 +3294,21 @@
     "updated": "2026-03-01T22:45:12.422Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 4602
+  },
+  {
+    "name": "product-photography",
+    "description": "\"AI product photography with studio lighting, lifestyle shots, and packshot conventions. Covers angles, backgrounds, shadow types, hero shots, and e-commerce image requirements. Use for: product photo",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 290,
+    "size": 11768,
+    "updated": "2026-03-01T22:45:15.708Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4596
   }
 ]
