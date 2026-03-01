@@ -1439,5 +1439,19 @@
     "lines": 435,
     "size": 15031,
     "updated": "2026-03-01T22:34:04.373Z"
+  },
+  {
+    "name": "pptx",
+    "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
+    "author": "anthropics",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 233,
+    "size": 9128,
+    "updated": "2026-03-01T22:34:07.784Z"
   }
 ]
