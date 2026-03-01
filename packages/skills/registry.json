@@ -1733,5 +1733,19 @@
     "lines": 316,
     "size": 9927,
     "updated": "2026-03-01T22:35:26.885Z"
+  },
+  {
+    "name": "react-components",
+    "description": "Converts Stitch designs into modular Vite and React components using system-level networking and AST-based validation.",
+    "author": "google-labs-code",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 47,
+    "size": 2790,
+    "updated": "2026-03-01T22:35:31.415Z"
   }
 ]
