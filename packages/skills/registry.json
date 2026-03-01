@@ -6350,5 +6350,21 @@
     "updated": "2026-03-01T23:00:24.370Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 943
+  },
+  {
+    "name": "apollo-client",
+    "description": "> Guide for building React applications with Apollo Client 4.x. Use this skill when: (1) setting up Apollo Client in a React project, (2) writing GraphQL queries or mutations with hooks, (3) configuri",
+    "author": "apollographql",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 169,
+    "size": 7397,
+    "updated": "2026-03-01T23:00:28.617Z",
+    "sourceUrl": "https://github.com/apollographql/skills",
+    "installs": 940
   }
 ]
