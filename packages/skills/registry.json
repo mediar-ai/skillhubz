@@ -2424,5 +2424,19 @@
     "lines": 405,
     "size": 10447,
     "updated": "2026-03-01T22:38:51.024Z"
+  },
+  {
+    "name": "ai-voice-cloning",
+    "description": "\"AI voice generation, text-to-speech, and voice synthesis via inference.sh CLI. Models: Kokoro TTS, DIA, Chatterbox, Higgs, VibeVoice for natural speech. Capabilities: multiple voices, emotions, accen",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 274,
+    "size": 7535,
+    "updated": "2026-03-01T22:38:54.453Z"
   }
 ]
