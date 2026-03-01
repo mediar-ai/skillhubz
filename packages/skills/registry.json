@@ -1154,5 +1154,19 @@
     "lines": 134,
     "size": 4627,
     "updated": "2026-03-01T22:32:46.770Z"
+  },
+  {
+    "name": "vercel-react-best-practices",
+    "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patter",
+    "author": "vercel-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 137,
+    "size": 6165,
+    "updated": "2026-03-01T22:32:50.479Z"
   }
 ]
