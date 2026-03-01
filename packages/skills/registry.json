@@ -3858,5 +3858,21 @@
     "updated": "2026-03-01T22:47:13.171Z",
     "sourceUrl": "https://github.com/softaworks/agent-toolkit",
     "installs": 2980
+  },
+  {
+    "name": "turborepo",
+    "description": "| Turborepo monorepo build system guidance. Triggers on: turbo.json, task pipelines, dependsOn, caching, remote cache, the \"turbo\" CLI, --filter, --affected, CI optimization, environment variables, in",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 915,
+    "size": 26729,
+    "updated": "2026-03-01T22:47:16.309Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 2976
   }
 ]
