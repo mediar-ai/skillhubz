@@ -3342,5 +3342,21 @@
     "updated": "2026-03-01T22:45:22.889Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4587
+  },
+  {
+    "name": "related-skill",
+    "description": "\"Discover and install related skills from inference.sh skill registry. Helps find complementary skills for your AI workflow. Use for: skill discovery, workflow expansion, capability exploration. Trigg",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 123,
+    "size": 3958,
+    "updated": "2026-03-01T22:45:26.148Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4582
   }
 ]
