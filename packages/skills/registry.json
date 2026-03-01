@@ -5602,5 +5602,21 @@
     "updated": "2026-03-01T22:57:37.205Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 1252
+  },
+  {
+    "name": "clerk-custom-ui",
+    "description": "Customize Clerk component appearance - themes, layout, colors, fonts, CSS. Use for appearance styling, visual customization, branding.",
+    "author": "clerk",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 93,
+    "size": 2832,
+    "updated": "2026-03-01T22:57:42.088Z",
+    "sourceUrl": "https://github.com/clerk/skills",
+    "installs": 1248
   }
 ]
