@@ -2242,5 +2242,19 @@
     "lines": 394,
     "size": 12776,
     "updated": "2026-03-01T22:38:05.622Z"
+  },
+  {
+    "name": "baoyu-danger-x-to-markdown",
+    "description": "Converts X (Twitter) tweets and articles to markdown with YAML front matter. Uses reverse-engineered API requiring user consent. Use when user mentions \"X to markdown\", \"tweet to markdown\", \"save twee",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 209,
+    "size": 7331,
+    "updated": "2026-03-01T22:38:09.046Z"
   }
 ]
