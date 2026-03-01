@@ -5838,5 +5838,27 @@
     "updated": "2026-03-01T22:58:29.883Z",
     "sourceUrl": "https://github.com/onmax/nuxt-skills",
     "installs": 1142
+  },
+  {
+    "name": "github",
+    "description": "GitHub patterns using gh CLI for pull requests, stacked PRs, code review, branching strategies, and repository automation. Use when working with GitHub PRs, merging strategies, or repository managemen",
+    "author": "callstackincubator",
+    "version": "1.0.0",
+    "tags": [
+      "github",
+      "gh-cli",
+      "pull-request",
+      "stacked-pr",
+      "squash",
+      "rebase",
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 61,
+    "size": 2112,
+    "updated": "2026-03-01T22:58:33.788Z",
+    "sourceUrl": "https://github.com/callstackincubator/agent-skills",
+    "installs": 1126
   }
 ]
