@@ -1523,5 +1523,19 @@
     "lines": 360,
     "size": 11631,
     "updated": "2026-03-01T22:34:28.615Z"
+  },
+  {
+    "name": "product-marketing-context",
+    "description": "\"When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' or wants to ",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 242,
+    "size": 7255,
+    "updated": "2026-03-01T22:34:35.976Z"
   }
 ]
