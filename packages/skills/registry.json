@@ -5688,5 +5688,21 @@
     "updated": "2026-03-01T22:57:53.800Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1233
+  },
+  {
+    "name": "apify-ultimate-scraper",
+    "description": "Universal AI-powered web scraper for any platform. Scrape data from Instagram, Facebook, TikTok, YouTube, Google Maps, Google Search, Google Trends, Booking.com, and TripAdvisor. Use for lead generati",
+    "author": "apify",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 231,
+    "size": 9584,
+    "updated": "2026-03-01T22:57:59.184Z",
+    "sourceUrl": "https://github.com/apify/agent-skills",
+    "installs": 1226
   }
 ]
