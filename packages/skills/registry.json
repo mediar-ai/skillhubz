@@ -3102,5 +3102,21 @@
     "updated": "2026-03-01T22:44:31.481Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4640
+  },
+  {
+    "name": "baoyu-infographic",
+    "description": "Generates professional infographics with 21 layout types and 20 visual styles. Analyzes content, recommends layout×style combinations, and generates publication-ready infographics. Use when user asks ",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 251,
+    "size": 10315,
+    "updated": "2026-03-01T22:44:34.813Z",
+    "sourceUrl": "https://github.com/jimliu/baoyu-skills",
+    "installs": 4638
   }
 ]
