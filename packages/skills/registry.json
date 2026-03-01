@@ -4770,5 +4770,21 @@
     "updated": "2026-03-01T22:54:15.160Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 1719
+  },
+  {
+    "name": "create-agent",
+    "description": "Bootstrap a modular AI agent with OpenRouter SDK, extensible hooks, and optional Ink TUI",
+    "author": "openrouterteam",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 853,
+    "size": 25816,
+    "updated": "2026-03-01T22:54:18.215Z",
+    "sourceUrl": "https://github.com/openrouterteam/agent-skills",
+    "installs": 1711
   }
 ]
