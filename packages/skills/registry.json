@@ -5538,5 +5538,21 @@
     "updated": "2026-03-01T22:57:22.841Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 1271
+  },
+  {
+    "name": "clerk-webhooks",
+    "description": "Clerk webhooks for real-time events and data syncing. Listen for user creation, updates, deletion, and organization events. Build event-driven features like database sync, notifications, integrations.",
+    "author": "clerk",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 132,
+    "size": 4199,
+    "updated": "2026-03-01T22:57:27.015Z",
+    "sourceUrl": "https://github.com/clerk/skills",
+    "installs": 1270
   }
 ]
