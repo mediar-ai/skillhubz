@@ -4402,5 +4402,21 @@
     "updated": "2026-03-01T22:49:34.070Z",
     "sourceUrl": "https://github.com/calm-north/seojuice-skills",
     "installs": 2212
+  },
+  {
+    "name": "find-keywords",
+    "description": "> Build a prioritized keyword list for a website, topic, or campaign. Use when the user asks about keyword research, finding keywords to target, building a keyword list, search demand, keyword difficu",
+    "author": "calm-north",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 207,
+    "size": 8275,
+    "updated": "2026-03-01T22:49:37.147Z",
+    "sourceUrl": "https://github.com/calm-north/seojuice-skills",
+    "installs": 2210
   }
 ]
