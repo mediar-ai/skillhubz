@@ -2564,5 +2564,19 @@
     "lines": 255,
     "size": 10024,
     "updated": "2026-03-01T22:39:27.438Z"
+  },
+  {
+    "name": "ai-product-photography",
+    "description": "\"Generate professional AI product photography and commercial images. Models: FLUX, Imagen 3, Grok, Seedream for product shots, lifestyle images, mockups. Capabilities: studio lighting, lifestyle scene",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 267,
+    "size": 7984,
+    "updated": "2026-03-01T22:39:31.043Z"
   }
 ]
