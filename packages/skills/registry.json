@@ -2041,5 +2041,19 @@
     "lines": 73,
     "size": 2463,
     "updated": "2026-03-01T22:37:08.274Z"
+  },
+  {
+    "name": "shadcn-ui",
+    "description": "Expert guidance for integrating and building applications with shadcn/ui components, including component discovery, installation, customization, and best practices.",
+    "author": "google-labs-code",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 327,
+    "size": 9117,
+    "updated": "2026-03-01T22:37:11.507Z"
   }
 ]
