@@ -4050,5 +4050,21 @@
     "updated": "2026-03-01T22:48:12.393Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2658
+  },
+  {
+    "name": "gemini-computer-use",
+    "description": "Build and run Gemini 2.5 Computer Use browser-control agents with Playwright. Use when a user wants to automate web browser tasks via the Gemini Computer Use model, needs an agent loop (screenshot → f",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 64,
+    "size": 2076,
+    "updated": "2026-03-01T22:48:15.251Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2657
   }
 ]
