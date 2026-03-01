@@ -5876,5 +5876,21 @@
     "updated": "2026-03-01T22:58:39.218Z",
     "sourceUrl": "https://github.com/kepano/obsidian-skills",
     "installs": 1115
+  },
+  {
+    "name": "browser-automation",
+    "description": "\"Browser automation powers web testing, scraping, and AI agent interactions. The difference between a flaky script and a reliable system comes down to understanding selectors, waiting strategies, an..",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 76,
+    "size": 2120,
+    "updated": "2026-03-01T22:58:41.976Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 1104
   }
 ]
