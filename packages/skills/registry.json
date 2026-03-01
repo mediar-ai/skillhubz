@@ -5314,5 +5314,21 @@
     "updated": "2026-03-01T22:56:25.468Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1370
+  },
+  {
+    "name": "hono",
+    "description": "Efficiently develop Hono applications using Hono CLI. Supports documentation search, API reference lookup, request testing, and bundle optimization.",
+    "author": "yusukebe",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 91,
+    "size": 1998,
+    "updated": "2026-03-01T22:56:28.738Z",
+    "sourceUrl": "https://github.com/yusukebe/hono-skill",
+    "installs": 1363
   }
 ]
