@@ -5298,5 +5298,21 @@
     "updated": "2026-03-01T22:56:19.755Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1376
+  },
+  {
+    "name": "threejs-interaction",
+    "description": "Three.js interaction - raycasting, controls, mouse/touch input, object selection. Use when handling user input, implementing click detection, adding camera controls, or creating interactive 3D experie",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 661,
+    "size": 16318,
+    "updated": "2026-03-01T22:56:25.468Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1370
   }
 ]
