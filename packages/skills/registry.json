@@ -6057,5 +6057,21 @@
     "updated": "2026-03-01T22:59:27.399Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 1011
+  },
+  {
+    "name": "websocket-engineer",
+    "description": "Use when building real-time communication systems with WebSockets or Socket.IO. Invoke for bidirectional messaging, horizontal scaling with Redis, presence tracking, room management.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 86,
+    "size": 3806,
+    "updated": "2026-03-01T22:59:30.200Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 999
   }
 ]
