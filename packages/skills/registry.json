@@ -5908,5 +5908,21 @@
     "updated": "2026-03-01T22:58:45.065Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 1099
+  },
+  {
+    "name": "apify-market-research",
+    "description": "Analyze market conditions, geographic opportunities, pricing, consumer behavior, and product validation across Google Maps, Facebook, Instagram, Booking.com, and TripAdvisor.",
+    "author": "apify",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 120,
+    "size": 4059,
+    "updated": "2026-03-01T22:58:48.269Z",
+    "sourceUrl": "https://github.com/apify/agent-skills",
+    "installs": 1096
   }
 ]
