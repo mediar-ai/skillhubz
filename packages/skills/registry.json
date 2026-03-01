@@ -5186,5 +5186,21 @@
     "updated": "2026-03-01T22:55:50.552Z",
     "sourceUrl": "https://github.com/enzed/r3f-skills",
     "installs": 1431
+  },
+  {
+    "name": "astro",
+    "description": "Skill for using Astro projects. Includes CLI commands, project structure, core config options, and adapters. Use this skill when the user needs to work with Astro or when the user mentions Astro.",
+    "author": "astrolicious",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "operations",
+    "excerpt": "---",
+    "lines": 89,
+    "size": 3631,
+    "updated": "2026-03-01T22:55:53.589Z",
+    "sourceUrl": "https://github.com/astrolicious/agent-skills",
+    "installs": 1428
   }
 ]
