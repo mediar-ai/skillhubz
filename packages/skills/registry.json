@@ -1579,5 +1579,19 @@
     "lines": 448,
     "size": 13271,
     "updated": "2026-03-01T22:34:46.803Z"
+  },
+  {
+    "name": "pricing-strategy",
+    "description": "\"When the user wants help with pricing decisions, packaging, or monetization strategy. Also use when the user mentions 'pricing,' 'pricing tiers,' 'freemium,' 'free trial,' 'packaging,' 'price increas",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 232,
+    "size": 6805,
+    "updated": "2026-03-01T22:34:52.497Z"
   }
 ]
