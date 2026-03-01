@@ -3390,5 +3390,21 @@
     "updated": "2026-03-01T22:45:35.509Z",
     "sourceUrl": "https://github.com/jimliu/baoyu-skills",
     "installs": 4546
+  },
+  {
+    "name": "antfu",
+    "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects. Use when setting up new projects, configuring ESLint/Prettier alternatives, monorepos, library publishing, or when ",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 131,
+    "size": 3945,
+    "updated": "2026-03-01T22:45:38.902Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 4545
   }
 ]
