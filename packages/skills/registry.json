@@ -4978,5 +4978,21 @@
     "updated": "2026-03-01T22:55:03.349Z",
     "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
     "installs": 1600
+  },
+  {
+    "name": "rust-best-practices",
+    "description": "> Guide for writing idiomatic Rust code based on Apollo GraphQL's best practices handbook. Use this skill when: (1) writing new Rust code or functions, (2) reviewing or refactoring existing Rust code,",
+    "author": "apollographql",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 95,
+    "size": 4339,
+    "updated": "2026-03-01T22:55:07.948Z",
+    "sourceUrl": "https://github.com/apollographql/skills",
+    "installs": 1596
   }
 ]
