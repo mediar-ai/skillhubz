@@ -1999,5 +1999,19 @@
     "lines": 205,
     "size": 6620,
     "updated": "2026-03-01T22:36:51.512Z"
+  },
+  {
+    "name": "vue-best-practices",
+    "description": "MUST be used for Vue.js tasks. Strongly recommends Composition API with `<script setup>` and TypeScript as the standard approach. Covers Vue 3, SSR, Volar, vue-tsc. Load for any Vue, .vue files, Vue R",
+    "author": "hyf0",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 155,
+    "size": 8795,
+    "updated": "2026-03-01T22:37:01.849Z"
   }
 ]
