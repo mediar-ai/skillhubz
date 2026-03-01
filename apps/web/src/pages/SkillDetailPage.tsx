@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { useSkill } from '../hooks/useSkills';
 import { useComments } from '../hooks/useComments';
-import { CATEGORIES } from '../types';
+import { getCategoryStyle } from '../types';
 import { trackStar } from '../utils/tracking';
 import {
   trackSkillViewed,
@@ -99,7 +99,7 @@ export function SkillDetailPage() {
     );
   }
 
-  const category = CATEGORIES[skill.category];
+  const category = getCategoryStyle(skill.category);
 
   const handleCopy = async (source: 'main' | 'sidebar' = 'main') => {
     await navigator.clipboard.writeText(skill.code);

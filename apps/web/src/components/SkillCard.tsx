@@ -8,7 +8,7 @@ import {
   User,
 } from 'lucide-react';
 import type { Skill } from '../types';
-import { CATEGORIES } from '../types';
+import { getCategoryStyle } from '../types';
 import { trackStar } from '../utils/tracking';
 import { trackSkillStarred, trackSkillCardClicked } from '../utils/analytics';
 import styles from './SkillCard.module.css';
@@ -19,7 +19,7 @@ interface SkillCardProps {
 }
 
 export function SkillCard({ skill, index = 0 }: SkillCardProps) {
-  const category = CATEGORIES[skill.category];
+  const category = getCategoryStyle(skill.category);
   const formattedInstalls = formatNumber(skill.installCount);
 
   // Check if user already starred this skill
