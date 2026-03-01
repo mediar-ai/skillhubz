@@ -4002,5 +4002,21 @@
     "updated": "2026-03-01T22:47:57.095Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2700
+  },
+  {
+    "name": "nextjs-supabase-auth",
+    "description": "\"Expert integration of Supabase Auth with Next.js App Router Use when: supabase auth next, authentication next.js, login supabase, auth middleware, protected route.\"",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 62,
+    "size": 1527,
+    "updated": "2026-03-01T22:48:00.004Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 2700
   }
 ]
