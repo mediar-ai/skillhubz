@@ -2662,5 +2662,19 @@
     "lines": 233,
     "size": 8870,
     "updated": "2026-03-01T22:39:52.401Z"
+  },
+  {
+    "name": "text-to-speech",
+    "description": "\"Convert text to natural speech with DIA TTS, Kokoro, Chatterbox, and more via inference.sh CLI. Models: DIA TTS (conversational), Kokoro TTS, Chatterbox, Higgs Audio, VibeVoice (podcasts). Capabiliti",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 135,
+    "size": 4174,
+    "updated": "2026-03-01T22:39:55.790Z"
   }
 ]
