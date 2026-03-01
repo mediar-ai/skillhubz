@@ -3166,5 +3166,21 @@
     "updated": "2026-03-01T22:44:44.738Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4619
+  },
+  {
+    "name": "video-ad-specs",
+    "description": "\"Video ad creation with exact platform-specific specs for TikTok, Instagram, YouTube, Facebook, LinkedIn. Covers dimensions, duration limits, AIDA framework, and caption requirements. Use for: video a",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 253,
+    "size": 8869,
+    "updated": "2026-03-01T22:44:48.186Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4617
   }
 ]
