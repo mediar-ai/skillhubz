@@ -5977,5 +5977,21 @@
     "updated": "2026-03-01T22:58:59.873Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 1065
+  },
+  {
+    "name": "clerk-orgs",
+    "description": "Clerk Organizations for B2B SaaS - create multi-tenant apps with org switching, role-based access, verified domains, and enterprise SSO. Use for team workspaces, RBAC, org-based routing, member manage",
+    "author": "clerk",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "operations",
+    "excerpt": "---",
+    "lines": 174,
+    "size": 4837,
+    "updated": "2026-03-01T22:59:03.531Z",
+    "sourceUrl": "https://github.com/clerk/skills",
+    "installs": 1061
   }
 ]
