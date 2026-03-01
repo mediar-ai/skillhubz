@@ -1168,5 +1168,19 @@
     "lines": 137,
     "size": 6165,
     "updated": "2026-03-01T22:32:50.479Z"
+  },
+  {
+    "name": "web-design-guidelines",
+    "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+    "author": "vercel-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 40,
+    "size": 1231,
+    "updated": "2026-03-01T22:32:53.687Z"
   }
 ]
