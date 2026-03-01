@@ -4530,5 +4530,21 @@
     "updated": "2026-03-01T22:51:16.485Z",
     "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
     "installs": 1995
+  },
+  {
+    "name": "angular-forms",
+    "description": "Build signal-based forms in Angular v21+ using the new Signal Forms API. Use for form creation with automatic two-way binding, schema-based validation, field state management, and dynamic forms. Trigg",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 435,
+    "size": 10942,
+    "updated": "2026-03-01T22:51:19.487Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 1980
   }
 ]
