@@ -1495,5 +1495,19 @@
     "lines": 456,
     "size": 21570,
     "updated": "2026-03-01T22:34:19.622Z"
+  },
+  {
+    "name": "programmatic-seo",
+    "description": "When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions \"programmatic SEO,\" \"template pages,\" \"pages at scale,\" \"directory pages,\" \"location p",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 239,
+    "size": 6773,
+    "updated": "2026-03-01T22:34:25.240Z"
   }
 ]
