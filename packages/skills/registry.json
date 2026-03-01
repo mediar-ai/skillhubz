@@ -2494,5 +2494,19 @@
     "lines": 269,
     "size": 8587,
     "updated": "2026-03-01T22:39:08.498Z"
+  },
+  {
+    "name": "technical-blog-writing",
+    "description": "\"Technical blog post writing with structure, code examples, and developer audience conventions. Covers post types, code formatting, explanation depth, and developer-specific engagement patterns. Use f",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 296,
+    "size": 12444,
+    "updated": "2026-03-01T22:39:12.197Z"
   }
 ]
