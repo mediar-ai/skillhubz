@@ -5892,5 +5892,21 @@
     "updated": "2026-03-01T22:58:41.976Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 1104
+  },
+  {
+    "name": "agents-sdk",
+    "description": "Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, or chat applications. Covers ",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 156,
+    "size": 5509,
+    "updated": "2026-03-01T22:58:45.065Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 1099
   }
 ]
