@@ -4514,5 +4514,21 @@
     "updated": "2026-03-01T22:51:13.270Z",
     "sourceUrl": "https://github.com/onmax/nuxt-skills",
     "installs": 2017
+  },
+  {
+    "name": "performance",
+    "description": "Optimize web performance for faster loading and better user experience. Use when asked to \"speed up my site\", \"optimize performance\", \"reduce load time\", \"fix slow loading\", \"improve page speed\", or \"",
+    "author": "addyosmani",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 362,
+    "size": 9209,
+    "updated": "2026-03-01T22:51:16.485Z",
+    "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
+    "installs": 1995
   }
 ]
