@@ -4178,5 +4178,21 @@
     "updated": "2026-03-01T22:48:36.675Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 2578
+  },
+  {
+    "name": "fixing-motion-performance",
+    "description": "Audit and fix animation performance issues including layout thrashing, compositor properties, scroll-linked motion, and blur effects. Use when animations stutter, transitions jank, or reviewing CSS/JS",
+    "author": "ibelick",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 152,
+    "size": 5561,
+    "updated": "2026-03-01T22:48:39.749Z",
+    "sourceUrl": "https://github.com/ibelick/ui-skills",
+    "installs": 2566
   }
 ]
