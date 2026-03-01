@@ -2536,5 +2536,19 @@
     "lines": 267,
     "size": 8921,
     "updated": "2026-03-01T22:39:19.213Z"
+  },
+  {
+    "name": "storyboard-creation",
+    "description": "\"Film and video storyboarding with shot vocabulary, continuity rules, and panel layout. Covers shot types, camera angles, movement, 180-degree rule, and annotation format. Use for: video planning, fil",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 266,
+    "size": 10291,
+    "updated": "2026-03-01T22:39:22.863Z"
   }
 ]
