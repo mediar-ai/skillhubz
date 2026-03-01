@@ -5202,5 +5202,21 @@
     "updated": "2026-03-01T22:55:53.589Z",
     "sourceUrl": "https://github.com/astrolicious/agent-skills",
     "installs": 1428
+  },
+  {
+    "name": "durable-objects",
+    "description": "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 187,
+    "size": 5745,
+    "updated": "2026-03-01T22:55:57.689Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 1421
   }
 ]
