@@ -1481,5 +1481,19 @@
     "lines": 292,
     "size": 11455,
     "updated": "2026-03-01T22:34:14.890Z"
+  },
+  {
+    "name": "marketing-psychology",
+    "description": "\"When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive bias,' 'persuasion,",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 456,
+    "size": 21570,
+    "updated": "2026-03-01T22:34:19.622Z"
   }
 ]
