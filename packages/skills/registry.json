@@ -4898,5 +4898,21 @@
     "updated": "2026-03-01T22:54:42.914Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1661
+  },
+  {
+    "name": "angular-tooling",
+    "description": "Use Angular CLI and development tools effectively in Angular v20+ projects. Use for project setup, code generation, building, testing, and configuration. Triggers on creating new projects, generating ",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 353,
+    "size": 6457,
+    "updated": "2026-03-01T22:54:47.402Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 1658
   }
 ]
