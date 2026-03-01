@@ -1929,5 +1929,19 @@
     "lines": 120,
     "size": 3529,
     "updated": "2026-03-01T22:36:30.464Z"
+  },
+  {
+    "name": "chat-ui",
+    "description": "\"Chat UI building blocks for React/Next.js from ui.inference.sh. Components: container, messages, input, typing indicators, avatars. Capabilities: chat interfaces, message lists, input handling, strea",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 140,
+    "size": 3291,
+    "updated": "2026-03-01T22:36:33.808Z"
   }
 ]
