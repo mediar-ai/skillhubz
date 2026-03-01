@@ -5570,5 +5570,21 @@
     "updated": "2026-03-01T22:57:29.900Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 1270
+  },
+  {
+    "name": "validate-implementation-plan",
+    "description": "Audit and annotate an AI-generated implementation plan for requirements traceability, YAGNI compliance, and assumption risks. Use when reviewing, validating, or auditing an implementation plan or desi",
+    "author": "b-mendoza",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 177,
+    "size": 7752,
+    "updated": "2026-03-01T22:57:32.758Z",
+    "sourceUrl": "https://github.com/b-mendoza/agent-skills",
+    "installs": 1268
   }
 ]
