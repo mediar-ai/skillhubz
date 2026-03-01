@@ -2634,5 +2634,19 @@
     "lines": 94,
     "size": 2984,
     "updated": "2026-03-01T22:39:45.778Z"
+  },
+  {
+    "name": "image-to-video",
+    "description": "\"Still-to-video conversion guide: model selection, motion prompting, and camera movement. Covers Wan 2.5 i2v, Seedance, Fabric, Grok Video with when to use each. Use for: animating images, creating vi",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 239,
+    "size": 9268,
+    "updated": "2026-03-01T22:39:48.989Z"
   }
 ]
