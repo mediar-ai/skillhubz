@@ -3602,5 +3602,21 @@
     "updated": "2026-03-01T22:46:22.147Z",
     "sourceUrl": "https://github.com/kepano/obsidian-skills",
     "installs": 3730
+  },
+  {
+    "name": "angular-component",
+    "description": "Create modern Angular standalone components following v20+ best practices. Use for building UI components with signal-based inputs/outputs, OnPush change detection, host bindings, content projection, ",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 289,
+    "size": 6661,
+    "updated": "2026-03-01T22:46:25.431Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 3710
   }
 ]
