@@ -6089,5 +6089,27 @@
     "updated": "2026-03-01T22:59:33.076Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 996
+  },
+  {
+    "name": "convex-http-actions",
+    "description": "External API integration and webhook handling including HTTP endpoint routing, request/response handling, authentication, CORS configuration, and webhook signature validation",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "http",
+      "actions",
+      "webhooks",
+      "api",
+      "endpoints]",
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 734,
+    "size": 18515,
+    "updated": "2026-03-01T22:59:35.984Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 993
   }
 ]
