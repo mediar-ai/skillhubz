@@ -2312,5 +2312,19 @@
     "lines": 419,
     "size": 36952,
     "updated": "2026-03-01T22:38:23.053Z"
+  },
+  {
+    "name": "ai-social-media-content",
+    "description": "\"Create AI-powered social media content for TikTok, Instagram, YouTube, Twitter/X. Generate: images, videos, reels, shorts, thumbnails, captions, hashtags. Tools: FLUX, Veo, Seedance, Wan, Kokoro TTS,",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 251,
+    "size": 7533,
+    "updated": "2026-03-01T22:38:26.542Z"
   }
 ]
