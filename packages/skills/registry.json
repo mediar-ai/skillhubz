@@ -1341,5 +1341,19 @@
     "lines": 122,
     "size": 4439,
     "updated": "2026-03-01T22:33:38.416Z"
+  },
+  {
+    "name": "ui-ux-pro-max",
+    "description": "\"UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 20 charts, 9 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui). Actions: plan, build, crea",
+    "author": "nextlevelbuilder",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 387,
+    "size": 14374,
+    "updated": "2026-03-01T22:33:42.040Z"
   }
 ]
