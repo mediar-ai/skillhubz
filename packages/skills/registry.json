@@ -3906,5 +3906,21 @@
     "updated": "2026-03-01T22:47:23.320Z",
     "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
     "installs": 2920
+  },
+  {
+    "name": "parallel-task",
+    "description": "> Only to be triggered by explicit /parallel-task commands.",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 149,
+    "size": 4505,
+    "updated": "2026-03-01T22:47:32.645Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2812
   }
 ]
