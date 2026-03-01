@@ -3682,5 +3682,21 @@
     "updated": "2026-03-01T22:46:39.289Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 3385
+  },
+  {
+    "name": "baoyu-markdown-to-html",
+    "description": "Converts Markdown to styled HTML with WeChat-compatible themes. Supports code highlighting, math, PlantUML, footnotes, alerts, and infographics. Use when user asks for \"markdown to html\", \"convert md ",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 235,
+    "size": 7801,
+    "updated": "2026-03-01T22:46:42.511Z",
+    "sourceUrl": "https://github.com/jimliu/baoyu-skills",
+    "installs": 3288
   }
 ]
