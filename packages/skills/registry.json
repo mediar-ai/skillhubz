@@ -3438,5 +3438,21 @@
     "updated": "2026-03-01T22:45:45.823Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4540
+  },
+  {
+    "name": "ai-music-generation",
+    "description": "\"Generate AI music and songs with Diffrythm, Tencent Song Generation via inference.sh CLI. Models: Diffrythm (fast song generation), Tencent Song Generation (full songs with vocals). Capabilities: tex",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 128,
+    "size": 3885,
+    "updated": "2026-03-01T22:45:49.303Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4517
   }
 ]
