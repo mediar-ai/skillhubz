@@ -4242,5 +4242,21 @@
     "updated": "2026-03-01T22:48:52.835Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 2418
+  },
+  {
+    "name": "resend",
+    "description": "Use when working with Resend email platform - routes to specific sub-skills for sending, receiving, audiences, or broadcasts.",
+    "author": "resend",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 87,
+    "size": 3628,
+    "updated": "2026-03-01T22:48:55.973Z",
+    "sourceUrl": "https://github.com/resend/resend-skills",
+    "installs": 2382
   }
 ]
