@@ -4546,5 +4546,21 @@
     "updated": "2026-03-01T22:51:19.487Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1980
+  },
+  {
+    "name": "kubernetes-specialist",
+    "description": "Use when deploying or managing Kubernetes workloads requiring cluster configuration, security hardening, or troubleshooting. Invoke for Helm charts, RBAC policies, NetworkPolicies, storage configurati",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 94,
+    "size": 4816,
+    "updated": "2026-03-01T22:51:22.344Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 1968
   }
 ]
