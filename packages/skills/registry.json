@@ -4418,5 +4418,21 @@
     "updated": "2026-03-01T22:49:37.147Z",
     "sourceUrl": "https://github.com/calm-north/seojuice-skills",
     "installs": 2210
+  },
+  {
+    "name": "threejs-animation",
+    "description": "Three.js animation - keyframe animation, skeletal animation, morph targets, animation mixing. Use when animating objects, playing GLTF animations, creating procedural motion, or blending animations.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 553,
+    "size": 12557,
+    "updated": "2026-03-01T22:50:26.528Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 2132
   }
 ]
