@@ -6260,5 +6260,21 @@
     "updated": "2026-03-01T23:00:08.180Z",
     "sourceUrl": "https://github.com/payloadcms/skills",
     "installs": 961
+  },
+  {
+    "name": "postgres",
+    "description": "PostgreSQL best practices, query optimization, connection troubleshooting, and performance improvement. Load when working with Postgres databases.",
+    "author": "planetscale",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 47,
+    "size": 6493,
+    "updated": "2026-03-01T23:00:11.104Z",
+    "sourceUrl": "https://github.com/planetscale/database-skills",
+    "installs": 960
   }
 ]
