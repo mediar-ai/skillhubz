@@ -5010,5 +5010,21 @@
     "updated": "2026-03-01T22:55:10.891Z",
     "sourceUrl": "https://github.com/rivet-dev/skills",
     "installs": 1593
+  },
+  {
+    "name": "ui-animation",
+    "description": "Guidelines and examples for UI motion and animation. Use when designing, implementing, or reviewing motion, easing, timing, reduced-motion behaviour, CSS transitions, keyframes, framer-motion, or spri",
+    "author": "mblode",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 52,
+    "size": 2309,
+    "updated": "2026-03-01T22:55:13.981Z",
+    "sourceUrl": "https://github.com/mblode/agent-skills",
+    "installs": 1591
   }
 ]
