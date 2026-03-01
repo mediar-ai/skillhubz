@@ -3278,5 +3278,21 @@
     "updated": "2026-03-01T22:45:08.911Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4607
+  },
+  {
+    "name": "nuxt",
+    "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing. Use when working with Nuxt apps, server routes, useFetch, middleware, or hybrid rendering.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 56,
+    "size": 3516,
+    "updated": "2026-03-01T22:45:12.422Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 4602
   }
 ]
