@@ -4706,5 +4706,21 @@
     "updated": "2026-03-01T22:51:51.131Z",
     "sourceUrl": "https://github.com/superdesigndev/superdesign-skill",
     "installs": 1816
+  },
+  {
+    "name": "angular-directives",
+    "description": "Create custom directives in Angular v20+ for DOM manipulation and behavior extension. Use for attribute directives that modify element behavior/appearance, structural directives for portals/overlays, ",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 438,
+    "size": 10902,
+    "updated": "2026-03-01T22:51:54.240Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 1798
   }
 ]
