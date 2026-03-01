@@ -4306,5 +4306,21 @@
     "updated": "2026-03-01T22:49:13.328Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 2265
+  },
+  {
+    "name": "create-adaptable-composable",
+    "description": "Create a library-grade Vue composable that accepts maybe-reactive inputs (MaybeRef / MaybeRefOrGetter) so callers can pass a plain value, ref, or getter. Normalize inputs with toValue()/toRef() inside",
+    "author": "vuejs-ai",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 77,
+    "size": 2672,
+    "updated": "2026-03-01T22:49:16.280Z",
+    "sourceUrl": "https://github.com/vuejs-ai/skills",
+    "installs": 2252
   }
 ]
