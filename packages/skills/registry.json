@@ -2648,5 +2648,19 @@
     "lines": 239,
     "size": 9268,
     "updated": "2026-03-01T22:39:48.989Z"
+  },
+  {
+    "name": "explainer-video-guide",
+    "description": "\"Explainer video production guide: scripting, voiceover, visuals, and assembly. Covers script formulas, pacing rules, scene planning, and multi-tool pipelines. Use for: product demos, how-it-works vid",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 233,
+    "size": 8870,
+    "updated": "2026-03-01T22:39:52.401Z"
   }
 ]
