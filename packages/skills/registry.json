@@ -1182,5 +1182,24 @@
     "lines": 40,
     "size": 1231,
     "updated": "2026-03-01T22:32:53.687Z"
+  },
+  {
+    "name": "remotion-best-practices",
+    "description": "Best practices for Remotion - Video creation in React",
+    "author": "remotion-dev",
+    "version": "1.0.0",
+    "tags": [
+      "remotion",
+      "video",
+      "react",
+      "animation",
+      "composition",
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 62,
+    "size": 4240,
+    "updated": "2026-03-01T22:32:57.225Z"
   }
 ]
