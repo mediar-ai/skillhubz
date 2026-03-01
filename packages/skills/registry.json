@@ -15,7 +15,9 @@
     "excerpt": "Review open pull requests in a GitHub repository, checking code changes and leaving review comments.",
     "lines": 70,
     "size": 2440,
-    "updated": "2026-01-22T00:57:04Z"
+    "updated": "2026-01-22T00:57:04Z",
+    "sourceUrl": "https://github.com/aidankinzett/claude-git-pr-skill",
+    "installs": 9
   },
   {
     "name": "gmail-reply",
@@ -33,7 +35,9 @@
     "excerpt": "Automatically reply to unread support emails in Gmail with an acknowledgment message.",
     "lines": 62,
     "size": 1898,
-    "updated": "2026-01-22T00:57:04Z"
+    "updated": "2026-01-22T00:57:04Z",
+    "sourceUrl": "https://github.com/shmlaiq/task-managment-api",
+    "installs": 3
   },
   {
     "name": "notion-daily-note",
@@ -86,7 +90,9 @@
     "excerpt": "Intelligently fill web forms using AI-powered field detection and data mapping.",
     "lines": 78,
     "size": 2200,
-    "updated": "2026-01-27T20:45:00Z"
+    "updated": "2026-01-27T20:45:00Z",
+    "sourceUrl": "https://github.com/dkyazzentwatwa/chatgpt-skills",
+    "installs": 33
   },
   {
     "name": "linkedin-scraper",
@@ -104,7 +110,9 @@
     "excerpt": "Ethically scrape public LinkedIn profiles for lead generation and research.",
     "lines": 85,
     "size": 2400,
-    "updated": "2026-01-27T20:45:00Z"
+    "updated": "2026-01-27T20:45:00Z",
+    "sourceUrl": "https://github.com/aspenas/ironclaw-skills",
+    "installs": 4
   },
   {
     "name": "e2e-test-recorder",
@@ -268,7 +276,9 @@
     "excerpt": "Create distinctive, production-grade frontend interfaces with high design quality.",
     "lines": 68,
     "size": 3108,
-    "updated": "2026-01-28T03:00:00Z"
+    "updated": "2026-01-28T03:00:00Z",
+    "sourceUrl": "https://github.com/zaaakher/public-skills-test-1",
+    "installs": 1
   },
   {
     "name": "pdf-toolkit",
@@ -287,7 +297,9 @@
     "excerpt": "Comprehensive PDF manipulation toolkit for extracting text, tables, merging, splitting, and OCR.",
     "lines": 86,
     "size": 2370,
-    "updated": "2026-01-28T03:15:00Z"
+    "updated": "2026-01-28T03:15:00Z",
+    "sourceUrl": "https://github.com/dkyazzentwatwa/chatgpt-skills",
+    "installs": 32
   },
   {
     "name": "xlsx-toolkit",
@@ -325,7 +337,9 @@
     "excerpt": "Create MCP servers that enable LLMs to interact with external services through well-designed tools.",
     "lines": 87,
     "size": 2501,
-    "updated": "2026-01-28T03:15:00Z"
+    "updated": "2026-01-28T03:15:00Z",
+    "sourceUrl": "https://github.com/adyngom/awesome-claude-skillss",
+    "installs": 1
   },
   {
     "name": "huggingface-cli",
@@ -363,7 +377,9 @@
     "excerpt": "Context engineering fundamentals for AI agents: attention mechanics, progressive disclosure, context budgeting.",
     "lines": 84,
     "size": 2720,
-    "updated": "2026-01-28T03:15:00Z"
+    "updated": "2026-01-28T03:15:00Z",
+    "sourceUrl": "https://github.com/xfstudio/skills",
+    "installs": 5
   },
   {
     "name": "algorithmic-art",
@@ -382,7 +398,9 @@
     "excerpt": "Create algorithmic art using p5.js with seeded randomness and interactive parameter exploration.",
     "lines": 62,
     "size": 2036,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "brand-guidelines",
@@ -400,7 +418,9 @@
     "excerpt": "Apply official brand colors and typography to artifacts for consistent visual identity.",
     "lines": 47,
     "size": 1425,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/adyngom/awesome-claude-skillss",
+    "installs": 1
   },
   {
     "name": "canvas-design",
@@ -420,7 +440,9 @@
     "excerpt": "Create beautiful visual art in PNG and PDF using design philosophy.",
     "lines": 53,
     "size": 1903,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/frostant/awesome-claude-skills",
+    "installs": 1
   },
   {
     "name": "doc-coauthoring",
@@ -439,7 +461,9 @@
     "excerpt": "Structured workflow for co-authoring documentation, proposals, and technical specs.",
     "lines": 66,
     "size": 1871,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/kang-chen/agent-skills",
+    "installs": 1
   },
   {
     "name": "docx-toolkit",
@@ -477,7 +501,9 @@
     "excerpt": "Resources for writing internal communications, status reports, and newsletters.",
     "lines": 52,
     "size": 1527,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/cam10001110101/claude-skills-base",
+    "installs": 1
   },
   {
     "name": "pptx-toolkit",
@@ -515,7 +541,9 @@
     "excerpt": "Guide for creating effective skills that extend Claude's capabilities.",
     "lines": 80,
     "size": 1877,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/mrgoonie/xxxnaper",
+    "installs": 1
   },
   {
     "name": "slack-gif-creator",
@@ -534,7 +562,9 @@
     "excerpt": "Create animated GIFs optimized for Slack with proper dimensions and file sizes.",
     "lines": 75,
     "size": 2161,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/billylui/skills",
+    "installs": 2
   },
   {
     "name": "theme-factory",
@@ -553,7 +583,9 @@
     "excerpt": "Toolkit for styling artifacts with professional color and font themes.",
     "lines": 67,
     "size": 2027,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "webapp-testing",
@@ -572,7 +604,9 @@
     "excerpt": "Toolkit for testing web applications using Playwright with screenshots and logs.",
     "lines": 85,
     "size": 2242,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/teamily-ai/skill-creator",
+    "installs": 1
   },
   {
     "name": "web-artifacts-builder",
@@ -592,7 +626,9 @@
     "excerpt": "Create elaborate HTML artifacts using React, Tailwind CSS, and shadcn/ui.",
     "lines": 76,
     "size": 1661,
-    "updated": "2026-01-28T03:30:00Z"
+    "updated": "2026-01-28T03:30:00Z",
+    "sourceUrl": "https://github.com/qdbin/ai-skills",
+    "installs": 1
   },
   {
     "name": "huggingface-datasets",
@@ -750,7 +786,9 @@
     "excerpt": "LLM-as-judge evaluation with pairwise comparison and bias mitigation techniques.",
     "lines": 69,
     "size": 1850,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "bdi-mental-states",
@@ -769,7 +807,9 @@
     "excerpt": "BDI ontology patterns for modeling agent beliefs, desires, and intentions.",
     "lines": 72,
     "size": 1720,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/muratcankoylan/agent-skills-for-context-engineering",
+    "installs": 4
   },
   {
     "name": "context-compression",
@@ -787,7 +827,9 @@
     "excerpt": "Compress agent context while preserving critical information for long sessions.",
     "lines": 75,
     "size": 1980,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/yonatangross/skillforge-claude-plugin",
+    "installs": 5
   },
   {
     "name": "context-degradation",
@@ -805,7 +847,9 @@
     "excerpt": "Recognize and mitigate context failures: lost-in-middle, poisoning, distraction.",
     "lines": 64,
     "size": 1750,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/xfstudio/skills",
+    "installs": 5
   },
   {
     "name": "context-optimization",
@@ -823,7 +867,9 @@
     "excerpt": "Extend context capacity with compression, masking, caching, and partitioning.",
     "lines": 67,
     "size": 1820,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "evaluation",
@@ -841,7 +887,9 @@
     "excerpt": "Evaluate agent systems with multi-dimensional rubrics and LLM-as-judge.",
     "lines": 67,
     "size": 1680,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "filesystem-context",
@@ -859,7 +907,9 @@
     "excerpt": "Use filesystem for dynamic context discovery and agent memory.",
     "lines": 91,
     "size": 2350,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/muratcankoylan/agent-skills-for-context-engineering",
+    "installs": 5
   },
   {
     "name": "hosted-agents",
@@ -877,7 +927,9 @@
     "excerpt": "Build background agents in sandboxed environments with multiplayer support.",
     "lines": 78,
     "size": 2050,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/muratcankoylan/agent-skills-for-context-engineering",
+    "installs": 5
   },
   {
     "name": "memory-systems",
@@ -895,7 +947,9 @@
     "excerpt": "Design agent memory with vector stores, knowledge graphs, and temporal KGs.",
     "lines": 74,
     "size": 1920,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/schoi80/antigravity-awesome-skills",
+    "installs": 2
   },
   {
     "name": "multi-agent-patterns",
@@ -913,7 +967,9 @@
     "excerpt": "Multi-agent patterns: supervisor, swarm, and hierarchical coordination.",
     "lines": 79,
     "size": 2100,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/schoi80/antigravity-awesome-skills",
+    "installs": 2
   },
   {
     "name": "project-development",
@@ -931,7 +987,9 @@
     "excerpt": "Identify LLM-suited tasks, design pipelines, iterate with agent-assisted dev.",
     "lines": 86,
     "size": 2280,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/muratcankoylan/agent-skills-for-context-engineering",
+    "installs": 4
   },
   {
     "name": "tool-design",
@@ -949,7 +1007,9 @@
     "excerpt": "Design agent tools with consolidation and architectural reduction patterns.",
     "lines": 82,
     "size": 2150,
-    "updated": "2026-01-28T05:00:00Z"
+    "updated": "2026-01-28T05:00:00Z",
+    "sourceUrl": "https://github.com/muratcankoylan/agent-skills-for-context-engineering",
+    "installs": 5
   },
   {
     "name": "d3-visualization",
@@ -1025,7 +1085,9 @@
     "excerpt": "Automatic CSV analysis with statistics, insights, and visualizations.",
     "lines": 62,
     "size": 1650,
-    "updated": "2026-01-28T06:00:00Z"
+    "updated": "2026-01-28T06:00:00Z",
+    "sourceUrl": "https://github.com/ajbcoding/claude-skill-eval",
+    "installs": 2
   },
   {
     "name": "sheets-cli",
@@ -1063,7 +1125,9 @@
     "excerpt": "21 scripts for iOS testing: semantic navigation, builds, accessibility.",
     "lines": 78,
     "size": 2050,
-    "updated": "2026-01-28T06:00:00Z"
+    "updated": "2026-01-28T06:00:00Z",
+    "sourceUrl": "https://github.com/tristanmanchester/agent-skills",
+    "installs": 14
   },
   {
     "name": "obsidian-plugin",
@@ -1101,7 +1165,9 @@
     "excerpt": "Playwright browser automation for testing, forms, screenshots, responsive design.",
     "lines": 82,
     "size": 2150,
-    "updated": "2026-01-28T06:00:00Z"
+    "updated": "2026-01-28T06:00:00Z",
+    "sourceUrl": "https://github.com/aaaaqwq/claude-code-skills",
+    "installs": 18
   },
   {
     "name": "tmux-background-agents",
@@ -1136,7 +1202,7 @@
       "multi-agent"
     ],
     "category": "developer-tools",
-    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts — only one agent can use",
+    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts \u2014 only one agent can use",
     "lines": 66,
     "size": 2786,
     "updated": "2026-03-01T22:14:08.996Z"
@@ -1153,7 +1219,9 @@
     "excerpt": "---",
     "lines": 134,
     "size": 4627,
-    "updated": "2026-03-01T22:32:46.770Z"
+    "updated": "2026-03-01T22:32:46.770Z",
+    "sourceUrl": "https://github.com/pkb-code/ai-driven-dev-system",
+    "installs": 1
   },
   {
     "name": "vercel-react-best-practices",
@@ -1167,7 +1235,9 @@
     "excerpt": "---",
     "lines": 137,
     "size": 6165,
-    "updated": "2026-03-01T22:32:50.479Z"
+    "updated": "2026-03-01T22:32:50.479Z",
+    "sourceUrl": "https://github.com/jgarrison929/openclaw-skills",
+    "installs": 1
   },
   {
     "name": "web-design-guidelines",
@@ -1181,7 +1251,9 @@
     "excerpt": "---",
     "lines": 40,
     "size": 1231,
-    "updated": "2026-03-01T22:32:53.687Z"
+    "updated": "2026-03-01T22:32:53.687Z",
+    "sourceUrl": "https://github.com/tyk-lab/my-ai-skill",
+    "installs": 1
   },
   {
     "name": "remotion-best-practices",
@@ -1200,7 +1272,9 @@
     "excerpt": "---",
     "lines": 62,
     "size": 4240,
-    "updated": "2026-03-01T22:32:57.225Z"
+    "updated": "2026-03-01T22:32:57.225Z",
+    "sourceUrl": "https://github.com/zacdcook/remotion-skill",
+    "installs": 2
   },
   {
     "name": "agent-tools",
@@ -1214,7 +1288,9 @@
     "excerpt": "---",
     "lines": 127,
     "size": 5451,
-    "updated": "2026-03-01T22:33:02.870Z"
+    "updated": "2026-03-01T22:33:02.870Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 2
   },
   {
     "name": "remotion-render",
@@ -1228,7 +1304,9 @@
     "excerpt": "---",
     "lines": 210,
     "size": 8176,
-    "updated": "2026-03-01T22:33:06.033Z"
+    "updated": "2026-03-01T22:33:06.033Z",
+    "sourceUrl": "https://github.com/inference-sh-1/skills",
+    "installs": 1
   },
   {
     "name": "agent-browser",
@@ -1242,7 +1320,9 @@
     "excerpt": "---",
     "lines": 285,
     "size": 9956,
-    "updated": "2026-03-01T22:33:10.148Z"
+    "updated": "2026-03-01T22:33:10.148Z",
+    "sourceUrl": "https://github.com/bjesuiter/skills",
+    "installs": 2
   },
   {
     "name": "ai-image-generation",
@@ -1256,7 +1336,9 @@
     "excerpt": "---",
     "lines": 140,
     "size": 4554,
-    "updated": "2026-03-01T22:33:14.016Z"
+    "updated": "2026-03-01T22:33:14.016Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 3
   },
   {
     "name": "ai-video-generation",
@@ -1270,7 +1352,9 @@
     "excerpt": "---",
     "lines": 178,
     "size": 5354,
-    "updated": "2026-03-01T22:33:17.444Z"
+    "updated": "2026-03-01T22:33:17.444Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "twitter-automation",
@@ -1284,7 +1368,9 @@
     "excerpt": "---",
     "lines": 155,
     "size": 4405,
-    "updated": "2026-03-01T22:33:20.698Z"
+    "updated": "2026-03-01T22:33:20.698Z",
+    "sourceUrl": "https://github.com/1nfsh-s0/skills",
+    "installs": 3
   },
   {
     "name": "vercel-composition-patterns",
@@ -1298,7 +1384,9 @@
     "excerpt": "---",
     "lines": 90,
     "size": 2882,
-    "updated": "2026-03-01T22:33:24.787Z"
+    "updated": "2026-03-01T22:33:24.787Z",
+    "sourceUrl": "https://github.com/clawdioioioioio/skills",
+    "installs": 2
   },
   {
     "name": "nano-banana",
@@ -1312,7 +1400,9 @@
     "excerpt": "---",
     "lines": 144,
     "size": 4425,
-    "updated": "2026-03-01T22:33:28.231Z"
+    "updated": "2026-03-01T22:33:28.231Z",
+    "sourceUrl": "https://github.com/kkoppenhaver/cc-skills",
+    "installs": 1
   },
   {
     "name": "nano-banana-2",
@@ -1326,7 +1416,9 @@
     "excerpt": "---",
     "lines": 166,
     "size": 5013,
-    "updated": "2026-03-01T22:33:33.896Z"
+    "updated": "2026-03-01T22:33:33.896Z",
+    "sourceUrl": "https://github.com/1nfsh-s0/skills",
+    "installs": 1
   },
   {
     "name": "vercel-react-native-skills",
@@ -1340,7 +1432,9 @@
     "excerpt": "---",
     "lines": 122,
     "size": 4439,
-    "updated": "2026-03-01T22:33:38.416Z"
+    "updated": "2026-03-01T22:33:38.416Z",
+    "sourceUrl": "https://github.com/pm-minji/agent-skills",
+    "installs": 1
   },
   {
     "name": "ui-ux-pro-max",
@@ -1354,7 +1448,9 @@
     "excerpt": "---",
     "lines": 387,
     "size": 14374,
-    "updated": "2026-03-01T22:33:42.040Z"
+    "updated": "2026-03-01T22:33:42.040Z",
+    "sourceUrl": "https://github.com/pachoroa/mis_skills",
+    "installs": 1
   },
   {
     "name": "seo-audit",
@@ -1368,7 +1464,9 @@
     "excerpt": "---",
     "lines": 413,
     "size": 10279,
-    "updated": "2026-03-01T22:33:46.760Z"
+    "updated": "2026-03-01T22:33:46.760Z",
+    "sourceUrl": "https://github.com/johnkmcleod9/antigravity-skills-workflows",
+    "installs": 2
   },
   {
     "name": "supabase-postgres-best-practices",
@@ -1382,7 +1480,9 @@
     "excerpt": "---",
     "lines": 65,
     "size": 2577,
-    "updated": "2026-03-01T22:33:50.300Z"
+    "updated": "2026-03-01T22:33:50.300Z",
+    "sourceUrl": "https://github.com/automindtechnologie-jpg/ultimate-skill.md",
+    "installs": 2
   },
   {
     "name": "pdf",
@@ -1396,7 +1496,9 @@
     "excerpt": "---",
     "lines": 315,
     "size": 8035,
-    "updated": "2026-03-01T22:33:53.772Z"
+    "updated": "2026-03-01T22:33:53.772Z",
+    "sourceUrl": "https://github.com/daerdai/my-colletion-skills",
+    "installs": 1
   },
   {
     "name": "next-best-practices",
@@ -1410,11 +1512,13 @@
     "excerpt": "---",
     "lines": 154,
     "size": 4002,
-    "updated": "2026-03-01T22:33:56.963Z"
+    "updated": "2026-03-01T22:33:56.963Z",
+    "sourceUrl": "https://github.com/jackiexiao/jackie-skills-cn-top50",
+    "installs": 3
   },
   {
     "name": "copywriting",
-    "description": "When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
+    "description": "When the user wants to write, rewrite, or improve marketing copy for any page \u2014 including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1424,7 +1528,9 @@
     "excerpt": "---",
     "lines": 253,
     "size": 7171,
-    "updated": "2026-03-01T22:34:00.239Z"
+    "updated": "2026-03-01T22:34:00.239Z",
+    "sourceUrl": "https://github.com/science-of-people/marketingskills",
+    "installs": 2
   },
   {
     "name": "sleek-design-mobile-apps",
@@ -1438,11 +1544,13 @@
     "excerpt": "---",
     "lines": 435,
     "size": 15031,
-    "updated": "2026-03-01T22:34:04.373Z"
+    "updated": "2026-03-01T22:34:04.373Z",
+    "sourceUrl": "https://github.com/sleekdotdesign/agent-skills",
+    "installs": 21307
   },
   {
     "name": "pptx",
-    "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
+    "description": "\"Use this skill any time a .pptx file is involved in any way \u2014 as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
     "author": "anthropics",
     "version": "1.0.0",
     "tags": [
@@ -1452,7 +1560,9 @@
     "excerpt": "---",
     "lines": 233,
     "size": 9128,
-    "updated": "2026-03-01T22:34:07.784Z"
+    "updated": "2026-03-01T22:34:07.784Z",
+    "sourceUrl": "https://github.com/daerdai/my-colletion-skills",
+    "installs": 1
   },
   {
     "name": "docx",
@@ -1466,7 +1576,9 @@
     "excerpt": "---",
     "lines": 591,
     "size": 20056,
-    "updated": "2026-03-01T22:34:11.307Z"
+    "updated": "2026-03-01T22:34:11.307Z",
+    "sourceUrl": "https://github.com/cam10001110101/claude-skills-base",
+    "installs": 1
   },
   {
     "name": "xlsx",
@@ -1480,7 +1592,9 @@
     "excerpt": "---",
     "lines": 292,
     "size": 11455,
-    "updated": "2026-03-01T22:34:14.890Z"
+    "updated": "2026-03-01T22:34:14.890Z",
+    "sourceUrl": "https://github.com/yamato-snow/skills",
+    "installs": 2
   },
   {
     "name": "marketing-psychology",
@@ -1494,7 +1608,9 @@
     "excerpt": "---",
     "lines": 456,
     "size": 21570,
-    "updated": "2026-03-01T22:34:19.622Z"
+    "updated": "2026-03-01T22:34:19.622Z",
+    "sourceUrl": "https://github.com/bonnierwemalika/marketingskills",
+    "installs": 2
   },
   {
     "name": "programmatic-seo",
@@ -1508,7 +1624,9 @@
     "excerpt": "---",
     "lines": 239,
     "size": 6773,
-    "updated": "2026-03-01T22:34:25.240Z"
+    "updated": "2026-03-01T22:34:25.240Z",
+    "sourceUrl": "https://github.com/aaaaqwq/claude-code-skills",
+    "installs": 1
   },
   {
     "name": "content-strategy",
@@ -1522,7 +1640,9 @@
     "excerpt": "---",
     "lines": 360,
     "size": 11631,
-    "updated": "2026-03-01T22:34:28.615Z"
+    "updated": "2026-03-01T22:34:28.615Z",
+    "sourceUrl": "https://github.com/bonnierwemalika/marketingskills",
+    "installs": 2
   },
   {
     "name": "product-marketing-context",
@@ -1536,7 +1656,9 @@
     "excerpt": "---",
     "lines": 242,
     "size": 7255,
-    "updated": "2026-03-01T22:34:35.976Z"
+    "updated": "2026-03-01T22:34:35.976Z",
+    "sourceUrl": "https://github.com/digitalquokka/marketingskills",
+    "installs": 2
   },
   {
     "name": "marketing-ideas",
@@ -1550,7 +1672,9 @@
     "excerpt": "---",
     "lines": 168,
     "size": 4877,
-    "updated": "2026-03-01T22:34:39.382Z"
+    "updated": "2026-03-01T22:34:39.382Z",
+    "sourceUrl": "https://github.com/vladimirbrejcha/ios-ai-skills",
+    "installs": 2
   },
   {
     "name": "social-content",
@@ -1564,7 +1688,9 @@
     "excerpt": "---",
     "lines": 279,
     "size": 8410,
-    "updated": "2026-03-01T22:34:43.202Z"
+    "updated": "2026-03-01T22:34:43.202Z",
+    "sourceUrl": "https://github.com/jwtappert/marketingskills",
+    "installs": 2
   },
   {
     "name": "copy-editing",
@@ -1578,7 +1704,9 @@
     "excerpt": "---",
     "lines": 448,
     "size": 13271,
-    "updated": "2026-03-01T22:34:46.803Z"
+    "updated": "2026-03-01T22:34:46.803Z",
+    "sourceUrl": "https://github.com/adam-tntgrowth/marketingskills",
+    "installs": 2
   },
   {
     "name": "pricing-strategy",
@@ -1592,11 +1720,13 @@
     "excerpt": "---",
     "lines": 232,
     "size": 6805,
-    "updated": "2026-03-01T22:34:52.497Z"
+    "updated": "2026-03-01T22:34:52.497Z",
+    "sourceUrl": "https://github.com/aaaaqwq/claude-code-skills",
+    "installs": 1
   },
   {
     "name": "page-cro",
-    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
+    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page \u2014 including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1606,7 +1736,9 @@
     "excerpt": "---",
     "lines": 183,
     "size": 5776,
-    "updated": "2026-03-01T22:34:55.892Z"
+    "updated": "2026-03-01T22:34:55.892Z",
+    "sourceUrl": "https://github.com/bentinson-contentology/marketingskills",
+    "installs": 2
   },
   {
     "name": "analytics-tracking",
@@ -1620,7 +1752,9 @@
     "excerpt": "---",
     "lines": 310,
     "size": 8098,
-    "updated": "2026-03-01T22:34:59.256Z"
+    "updated": "2026-03-01T22:34:59.256Z",
+    "sourceUrl": "https://github.com/jmsktm/claude-settings",
+    "installs": 2
   },
   {
     "name": "launch-strategy",
@@ -1634,7 +1768,9 @@
     "excerpt": "---",
     "lines": 354,
     "size": 12586,
-    "updated": "2026-03-01T22:35:02.675Z"
+    "updated": "2026-03-01T22:35:02.675Z",
+    "sourceUrl": "https://github.com/automindtechnologie-jpg/ultimate-skill.md",
+    "installs": 2
   },
   {
     "name": "schema-markup",
@@ -1648,7 +1784,9 @@
     "excerpt": "---",
     "lines": 180,
     "size": 5004,
-    "updated": "2026-03-01T22:35:06.204Z"
+    "updated": "2026-03-01T22:35:06.204Z",
+    "sourceUrl": "https://github.com/adam-tntgrowth/marketingskills",
+    "installs": 2
   },
   {
     "name": "writing-skills",
@@ -1662,7 +1800,9 @@
     "excerpt": "---",
     "lines": 656,
     "size": 22379,
-    "updated": "2026-03-01T22:35:09.412Z"
+    "updated": "2026-03-01T22:35:09.412Z",
+    "sourceUrl": "https://github.com/techdufus/oh-my-claude",
+    "installs": 1
   },
   {
     "name": "agent-email-cli",
@@ -1676,7 +1816,9 @@
     "excerpt": "---",
     "lines": 106,
     "size": 2809,
-    "updated": "2026-03-01T22:35:12.782Z"
+    "updated": "2026-03-01T22:35:12.782Z",
+    "sourceUrl": "https://github.com/zaddy6/agent-email-skill",
+    "installs": 10934
   },
   {
     "name": "competitor-alternatives",
@@ -1690,7 +1832,9 @@
     "excerpt": "---",
     "lines": 257,
     "size": 8213,
-    "updated": "2026-03-01T22:35:16.195Z"
+    "updated": "2026-03-01T22:35:16.195Z",
+    "sourceUrl": "https://github.com/aaaaqwq/claude-code-skills",
+    "installs": 1
   },
   {
     "name": "email-sequence",
@@ -1704,7 +1848,9 @@
     "excerpt": "---",
     "lines": 310,
     "size": 8124,
-    "updated": "2026-03-01T22:35:19.807Z"
+    "updated": "2026-03-01T22:35:19.807Z",
+    "sourceUrl": "https://github.com/prabha-oss/benai-skills-develop",
+    "installs": 1
   },
   {
     "name": "onboarding-cro",
@@ -1718,7 +1864,9 @@
     "excerpt": "---",
     "lines": 221,
     "size": 6337,
-    "updated": "2026-03-01T22:35:23.436Z"
+    "updated": "2026-03-01T22:35:23.436Z",
+    "sourceUrl": "https://github.com/adam-tntgrowth/marketingskills",
+    "installs": 1
   },
   {
     "name": "paid-ads",
@@ -1732,7 +1880,9 @@
     "excerpt": "---",
     "lines": 316,
     "size": 9927,
-    "updated": "2026-03-01T22:35:26.885Z"
+    "updated": "2026-03-01T22:35:26.885Z",
+    "sourceUrl": "https://github.com/tiago-blip/marketingskills",
+    "installs": 2
   },
   {
     "name": "react-components",
@@ -1750,7 +1900,7 @@
   },
   {
     "name": "form-cro",
-    "description": "When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use",
+    "description": "When the user wants to optimize any form that is NOT signup/registration \u2014 including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1760,7 +1910,9 @@
     "excerpt": "---",
     "lines": 430,
     "size": 10762,
-    "updated": "2026-03-01T22:35:34.821Z"
+    "updated": "2026-03-01T22:35:34.821Z",
+    "sourceUrl": "https://github.com/bonnierwemalika/marketingskills",
+    "installs": 2
   },
   {
     "name": "referral-program",
@@ -1774,7 +1926,9 @@
     "excerpt": "---",
     "lines": 256,
     "size": 7082,
-    "updated": "2026-03-01T22:35:40.906Z"
+    "updated": "2026-03-01T22:35:40.906Z",
+    "sourceUrl": "https://github.com/tiago-blip/marketingskills",
+    "installs": 2
   },
   {
     "name": "design-md",
@@ -1788,11 +1942,13 @@
     "excerpt": "---",
     "lines": 173,
     "size": 7644,
-    "updated": "2026-03-01T22:35:46.690Z"
+    "updated": "2026-03-01T22:35:46.690Z",
+    "sourceUrl": "https://github.com/laschmaada/stitch-skills",
+    "installs": 2
   },
   {
     "name": "free-tool-strategy",
-    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
+    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes \u2014 lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1802,7 +1958,9 @@
     "excerpt": "---",
     "lines": 179,
     "size": 5630,
-    "updated": "2026-03-01T22:35:52.607Z"
+    "updated": "2026-03-01T22:35:52.607Z",
+    "sourceUrl": "https://github.com/bentinson-contentology/marketingskills",
+    "installs": 2
   },
   {
     "name": "signup-flow-cro",
@@ -1816,7 +1974,9 @@
     "excerpt": "---",
     "lines": 360,
     "size": 10038,
-    "updated": "2026-03-01T22:35:55.932Z"
+    "updated": "2026-03-01T22:35:55.932Z",
+    "sourceUrl": "https://github.com/bentinson-contentology/marketingskills",
+    "installs": 1
   },
   {
     "name": "paywall-upgrade-cro",
@@ -1830,7 +1990,9 @@
     "excerpt": "---",
     "lines": 228,
     "size": 5581,
-    "updated": "2026-03-01T22:36:01.738Z"
+    "updated": "2026-03-01T22:36:01.738Z",
+    "sourceUrl": "https://github.com/piekenverdienen/agency-skills",
+    "installs": 2
   },
   {
     "name": "popup-cro",
@@ -1844,7 +2006,9 @@
     "excerpt": "---",
     "lines": 454,
     "size": 11501,
-    "updated": "2026-03-01T22:36:05.166Z"
+    "updated": "2026-03-01T22:36:05.166Z",
+    "sourceUrl": "https://github.com/adam-tntgrowth/marketingskills",
+    "installs": 2
   },
   {
     "name": "ab-test-setup",
@@ -1858,7 +2022,9 @@
     "excerpt": "---",
     "lines": 267,
     "size": 7144,
-    "updated": "2026-03-01T22:36:08.501Z"
+    "updated": "2026-03-01T22:36:08.501Z",
+    "sourceUrl": "https://github.com/adam-tntgrowth/marketingskills",
+    "installs": 2
   },
   {
     "name": "web-search",
@@ -1872,7 +2038,9 @@
     "excerpt": "---",
     "lines": 149,
     "size": 4270,
-    "updated": "2026-03-01T22:36:12.188Z"
+    "updated": "2026-03-01T22:36:12.188Z",
+    "sourceUrl": "https://github.com/naohainezha/skill",
+    "installs": 2
   },
   {
     "name": "stitch-loop",
@@ -1886,7 +2054,9 @@
     "excerpt": "---",
     "lines": 204,
     "size": 7317,
-    "updated": "2026-03-01T22:36:20.326Z"
+    "updated": "2026-03-01T22:36:20.326Z",
+    "sourceUrl": "https://github.com/codereaper1/stitch-skills",
+    "installs": 2
   },
   {
     "name": "python-executor",
@@ -1900,7 +2070,9 @@
     "excerpt": "---",
     "lines": 184,
     "size": 6346,
-    "updated": "2026-03-01T22:36:23.661Z"
+    "updated": "2026-03-01T22:36:23.661Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "tools-ui",
@@ -1914,7 +2086,9 @@
     "excerpt": "---",
     "lines": 171,
     "size": 3895,
-    "updated": "2026-03-01T22:36:27.066Z"
+    "updated": "2026-03-01T22:36:27.066Z",
+    "sourceUrl": "https://github.com/inference-sh-1/skills",
+    "installs": 1
   },
   {
     "name": "agent-ui",
@@ -1928,7 +2102,9 @@
     "excerpt": "---",
     "lines": 120,
     "size": 3529,
-    "updated": "2026-03-01T22:36:30.464Z"
+    "updated": "2026-03-01T22:36:30.464Z",
+    "sourceUrl": "https://github.com/inference-sh-1/skills",
+    "installs": 1
   },
   {
     "name": "chat-ui",
@@ -1942,7 +2118,9 @@
     "excerpt": "---",
     "lines": 140,
     "size": 3291,
-    "updated": "2026-03-01T22:36:33.808Z"
+    "updated": "2026-03-01T22:36:33.808Z",
+    "sourceUrl": "https://github.com/inference-sh-1/skills",
+    "installs": 1
   },
   {
     "name": "widgets-ui",
@@ -1956,7 +2134,9 @@
     "excerpt": "---",
     "lines": 173,
     "size": 4948,
-    "updated": "2026-03-01T22:36:36.962Z"
+    "updated": "2026-03-01T22:36:36.962Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "javascript-sdk",
@@ -1970,7 +2150,9 @@
     "excerpt": "---",
     "lines": 536,
     "size": 13171,
-    "updated": "2026-03-01T22:36:40.312Z"
+    "updated": "2026-03-01T22:36:40.312Z",
+    "sourceUrl": "https://github.com/1nfsh-s1/skills",
+    "installs": 2
   },
   {
     "name": "python-sdk",
@@ -1984,7 +2166,9 @@
     "excerpt": "---",
     "lines": 484,
     "size": 11211,
-    "updated": "2026-03-01T22:36:43.654Z"
+    "updated": "2026-03-01T22:36:43.654Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "enhance-prompt",
@@ -1998,7 +2182,9 @@
     "excerpt": "---",
     "lines": 205,
     "size": 6620,
-    "updated": "2026-03-01T22:36:51.512Z"
+    "updated": "2026-03-01T22:36:51.512Z",
+    "sourceUrl": "https://github.com/laschmaada/stitch-skills",
+    "installs": 2
   },
   {
     "name": "vue-best-practices",
@@ -2012,7 +2198,9 @@
     "excerpt": "---",
     "lines": 155,
     "size": 8795,
-    "updated": "2026-03-01T22:37:01.849Z"
+    "updated": "2026-03-01T22:37:01.849Z",
+    "sourceUrl": "https://github.com/rockcookies/skills",
+    "installs": 2
   },
   {
     "name": "vue-debug-guides",
@@ -2026,7 +2214,9 @@
     "excerpt": "---",
     "lines": 203,
     "size": 20580,
-    "updated": "2026-03-01T22:37:05.117Z"
+    "updated": "2026-03-01T22:37:05.117Z",
+    "sourceUrl": "https://github.com/andrianbalanescu/vue-skills",
+    "installs": 2
   },
   {
     "name": "vite",
@@ -2040,7 +2230,9 @@
     "excerpt": "---",
     "lines": 73,
     "size": 2463,
-    "updated": "2026-03-01T22:37:08.274Z"
+    "updated": "2026-03-01T22:37:08.274Z",
+    "sourceUrl": "https://github.com/iceywu/skills",
+    "installs": 2
   },
   {
     "name": "shadcn-ui",
@@ -2054,7 +2246,9 @@
     "excerpt": "---",
     "lines": 327,
     "size": 9117,
-    "updated": "2026-03-01T22:37:11.507Z"
+    "updated": "2026-03-01T22:37:11.507Z",
+    "sourceUrl": "https://github.com/hasinananwu/stitch-skills",
+    "installs": 2
   },
   {
     "name": "vitest",
@@ -2068,7 +2262,9 @@
     "excerpt": "---",
     "lines": 53,
     "size": 3308,
-    "updated": "2026-03-01T22:37:17.250Z"
+    "updated": "2026-03-01T22:37:17.250Z",
+    "sourceUrl": "https://github.com/fefogarcia/approved-skills",
+    "installs": 2
   },
   {
     "name": "next-cache-components",
@@ -2082,7 +2278,9 @@
     "excerpt": "---",
     "lines": 412,
     "size": 9362,
-    "updated": "2026-03-01T22:37:22.039Z"
+    "updated": "2026-03-01T22:37:22.039Z",
+    "sourceUrl": "https://github.com/samunderwood/agent-skills",
+    "installs": 5
   },
   {
     "name": "react-native-best-practices",
@@ -2101,7 +2299,9 @@
     "excerpt": "---",
     "lines": 238,
     "size": 10343,
-    "updated": "2026-03-01T22:37:25.416Z"
+    "updated": "2026-03-01T22:37:25.416Z",
+    "sourceUrl": "https://github.com/pyinx/ceo-skills-plugin",
+    "installs": 2
   },
   {
     "name": "vue",
@@ -2115,7 +2315,9 @@
     "excerpt": "---",
     "lines": 85,
     "size": 2448,
-    "updated": "2026-03-01T22:37:28.676Z"
+    "updated": "2026-03-01T22:37:28.676Z",
+    "sourceUrl": "https://github.com/marsidev/skills",
+    "installs": 2
   },
   {
     "name": "seo-geo",
@@ -2129,11 +2331,13 @@
     "excerpt": "---",
     "lines": 251,
     "size": 8348,
-    "updated": "2026-03-01T22:37:33.273Z"
+    "updated": "2026-03-01T22:37:33.273Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "release-skills",
-    "description": "Universal release workflow. Auto-detects version files and changelogs. Supports Node.js, Python, Rust, Claude Plugin, and generic projects. Use when user says \"release\", \"发布\", \"new version\", \"bump ver",
+    "description": "Universal release workflow. Auto-detects version files and changelogs. Supports Node.js, Python, Rust, Claude Plugin, and generic projects. Use when user says \"release\", \"\u53d1\u5e03\", \"new version\", \"bump ver",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2143,11 +2347,13 @@
     "excerpt": "---",
     "lines": 473,
     "size": 13336,
-    "updated": "2026-03-01T22:37:37.839Z"
+    "updated": "2026-03-01T22:37:37.839Z",
+    "sourceUrl": "https://github.com/xuanxuan1983/baoyu-xuanyi-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-article-illustrator",
-    "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type × Style two-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"gen",
+    "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type \u00d7 Style two-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"gen",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2157,7 +2363,9 @@
     "excerpt": "---",
     "lines": 156,
     "size": 5261,
-    "updated": "2026-03-01T22:37:43.484Z"
+    "updated": "2026-03-01T22:37:43.484Z",
+    "sourceUrl": "https://github.com/lizychy0329/skills",
+    "installs": 2
   },
   {
     "name": "nestjs-best-practices",
@@ -2171,7 +2379,9 @@
     "excerpt": "---",
     "lines": 131,
     "size": 4641,
-    "updated": "2026-03-01T22:37:49.508Z"
+    "updated": "2026-03-01T22:37:49.508Z",
+    "sourceUrl": "https://github.com/nutnut123qq/agent-nestjs-skills",
+    "installs": 5
   },
   {
     "name": "baoyu-cover-image",
@@ -2185,7 +2395,9 @@
     "excerpt": "---",
     "lines": 234,
     "size": 9211,
-    "updated": "2026-03-01T22:37:52.769Z"
+    "updated": "2026-03-01T22:37:52.769Z",
+    "sourceUrl": "https://github.com/dieterwang7/huateamassistant-baoyu-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-post-to-x",
@@ -2199,7 +2411,9 @@
     "excerpt": "---",
     "lines": 198,
     "size": 6892,
-    "updated": "2026-03-01T22:37:55.949Z"
+    "updated": "2026-03-01T22:37:55.949Z",
+    "sourceUrl": "https://github.com/prettyhe/baoyu-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-slide-deck",
@@ -2213,11 +2427,13 @@
     "excerpt": "---",
     "lines": 699,
     "size": 22497,
-    "updated": "2026-03-01T22:37:59.193Z"
+    "updated": "2026-03-01T22:37:59.193Z",
+    "sourceUrl": "https://github.com/siatwangmin/baoyu-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-xhs-images",
-    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"小红书图",
+    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"\u5c0f\u7ea2\u4e66\u56fe",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2227,7 +2443,9 @@
     "excerpt": "---",
     "lines": 495,
     "size": 19693,
-    "updated": "2026-03-01T22:38:02.426Z"
+    "updated": "2026-03-01T22:38:02.426Z",
+    "sourceUrl": "https://github.com/stonehah/qunz-skills",
+    "installs": 2
   },
   {
     "name": "remotion",
@@ -2241,7 +2459,9 @@
     "excerpt": "---",
     "lines": 394,
     "size": 12776,
-    "updated": "2026-03-01T22:38:05.622Z"
+    "updated": "2026-03-01T22:38:05.622Z",
+    "sourceUrl": "https://github.com/laschmaada/stitch-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-danger-x-to-markdown",
@@ -2255,11 +2475,13 @@
     "excerpt": "---",
     "lines": 209,
     "size": 7331,
-    "updated": "2026-03-01T22:38:09.046Z"
+    "updated": "2026-03-01T22:38:09.046Z",
+    "sourceUrl": "https://github.com/xuanxuan1983/baoyu-xuanyi-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-post-to-wechat",
-    "description": "Posts content to WeChat Official Account (微信公众号) via API or Chrome CDP. Supports article posting (文章) with HTML, markdown, or plain text input, and image-text posting (贴图, formerly 图文) with multiple i",
+    "description": "Posts content to WeChat Official Account (\u5fae\u4fe1\u516c\u4f17\u53f7) via API or Chrome CDP. Supports article posting (\u6587\u7ae0) with HTML, markdown, or plain text input, and image-text posting (\u8d34\u56fe, formerly \u56fe\u6587) with multiple i",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2269,7 +2491,9 @@
     "excerpt": "---",
     "lines": 378,
     "size": 13634,
-    "updated": "2026-03-01T22:38:12.419Z"
+    "updated": "2026-03-01T22:38:12.419Z",
+    "sourceUrl": "https://github.com/dieterwang7/huateamassistant-baoyu-skills",
+    "installs": 2
   },
   {
     "name": "pnpm",
@@ -2283,7 +2507,9 @@
     "excerpt": "---",
     "lines": 43,
     "size": 2957,
-    "updated": "2026-03-01T22:38:16.144Z"
+    "updated": "2026-03-01T22:38:16.144Z",
+    "sourceUrl": "https://github.com/g1joshi/agent-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-image-gen",
@@ -2297,7 +2523,9 @@
     "excerpt": "---",
     "lines": 205,
     "size": 8207,
-    "updated": "2026-03-01T22:38:19.563Z"
+    "updated": "2026-03-01T22:38:19.563Z",
+    "sourceUrl": "https://github.com/lixiao1982/baoyu-skills",
+    "installs": 1
   },
   {
     "name": "vueuse-functions",
@@ -2311,7 +2539,9 @@
     "excerpt": "---",
     "lines": 419,
     "size": 36952,
-    "updated": "2026-03-01T22:38:23.053Z"
+    "updated": "2026-03-01T22:38:23.053Z",
+    "sourceUrl": "https://github.com/andrianbalanescu/skills",
+    "installs": 2
   },
   {
     "name": "ai-social-media-content",
@@ -2325,11 +2555,13 @@
     "excerpt": "---",
     "lines": 251,
     "size": 7533,
-    "updated": "2026-03-01T22:38:26.542Z"
+    "updated": "2026-03-01T22:38:26.542Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "baoyu-comic",
-    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"知识漫画\", ",
+    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"\u77e5\u8bc6\u6f2b\u753b\", ",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2339,7 +2571,9 @@
     "excerpt": "---",
     "lines": 307,
     "size": 12690,
-    "updated": "2026-03-01T22:38:30.177Z"
+    "updated": "2026-03-01T22:38:30.177Z",
+    "sourceUrl": "https://github.com/xuanxuan1983/baoyu-xuanyi-skills",
+    "installs": 2
   },
   {
     "name": "pinia",
@@ -2353,7 +2587,9 @@
     "excerpt": "---",
     "lines": 60,
     "size": 2719,
-    "updated": "2026-03-01T22:38:33.521Z"
+    "updated": "2026-03-01T22:38:33.521Z",
+    "sourceUrl": "https://github.com/andrianbalanescu/skills",
+    "installs": 2
   },
   {
     "name": "speech-to-text",
@@ -2367,7 +2603,9 @@
     "excerpt": "---",
     "lines": 130,
     "size": 4003,
-    "updated": "2026-03-01T22:38:37.083Z"
+    "updated": "2026-03-01T22:38:37.083Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 1
   },
   {
     "name": "data-visualization",
@@ -2381,7 +2619,9 @@
     "excerpt": "---",
     "lines": 211,
     "size": 13382,
-    "updated": "2026-03-01T22:38:40.440Z"
+    "updated": "2026-03-01T22:38:40.440Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "video-prompting-guide",
@@ -2395,7 +2635,9 @@
     "excerpt": "---",
     "lines": 244,
     "size": 7987,
-    "updated": "2026-03-01T22:38:43.997Z"
+    "updated": "2026-03-01T22:38:43.997Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 2
   },
   {
     "name": "newsletter-curation",
@@ -2409,7 +2651,9 @@
     "excerpt": "---",
     "lines": 294,
     "size": 9597,
-    "updated": "2026-03-01T22:38:47.557Z"
+    "updated": "2026-03-01T22:38:47.557Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "ai-automation-workflows",
@@ -2423,7 +2667,9 @@
     "excerpt": "---",
     "lines": 405,
     "size": 10447,
-    "updated": "2026-03-01T22:38:51.024Z"
+    "updated": "2026-03-01T22:38:51.024Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "ai-voice-cloning",
@@ -2437,7 +2683,9 @@
     "excerpt": "---",
     "lines": 274,
     "size": 7535,
-    "updated": "2026-03-01T22:38:54.453Z"
+    "updated": "2026-03-01T22:38:54.453Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "product-hunt-launch",
@@ -2451,7 +2699,9 @@
     "excerpt": "---",
     "lines": 259,
     "size": 9259,
-    "updated": "2026-03-01T22:38:58.004Z"
+    "updated": "2026-03-01T22:38:58.004Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "prompt-engineering",
@@ -2465,7 +2715,9 @@
     "excerpt": "---",
     "lines": 340,
     "size": 9943,
-    "updated": "2026-03-01T22:39:01.454Z"
+    "updated": "2026-03-01T22:39:01.454Z",
+    "sourceUrl": "https://github.com/automindtechnologie-jpg/ultimate-skill.md",
+    "installs": 2
   },
   {
     "name": "ai-marketing-videos",
@@ -2479,7 +2731,9 @@
     "excerpt": "---",
     "lines": 293,
     "size": 8755,
-    "updated": "2026-03-01T22:39:04.937Z"
+    "updated": "2026-03-01T22:39:04.937Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "product-changelog",
@@ -2493,7 +2747,9 @@
     "excerpt": "---",
     "lines": 269,
     "size": 8587,
-    "updated": "2026-03-01T22:39:08.498Z"
+    "updated": "2026-03-01T22:39:08.498Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "technical-blog-writing",
@@ -2507,7 +2763,9 @@
     "excerpt": "---",
     "lines": 296,
     "size": 12444,
-    "updated": "2026-03-01T22:39:12.197Z"
+    "updated": "2026-03-01T22:39:12.197Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "ai-podcast-creation",
@@ -2521,7 +2779,9 @@
     "excerpt": "---",
     "lines": 290,
     "size": 8158,
-    "updated": "2026-03-01T22:39:15.702Z"
+    "updated": "2026-03-01T22:39:15.702Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "app-store-screenshots",
@@ -2535,7 +2795,9 @@
     "excerpt": "---",
     "lines": 267,
     "size": 8921,
-    "updated": "2026-03-01T22:39:19.213Z"
+    "updated": "2026-03-01T22:39:19.213Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "storyboard-creation",
@@ -2549,7 +2811,9 @@
     "excerpt": "---",
     "lines": 266,
     "size": 10291,
-    "updated": "2026-03-01T22:39:22.863Z"
+    "updated": "2026-03-01T22:39:22.863Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "customer-persona",
@@ -2563,7 +2827,9 @@
     "excerpt": "---",
     "lines": 255,
     "size": 10024,
-    "updated": "2026-03-01T22:39:27.438Z"
+    "updated": "2026-03-01T22:39:27.438Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "ai-product-photography",
@@ -2577,7 +2843,9 @@
     "excerpt": "---",
     "lines": 267,
     "size": 7984,
-    "updated": "2026-03-01T22:39:31.043Z"
+    "updated": "2026-03-01T22:39:31.043Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "ai-rag-pipeline",
@@ -2591,7 +2859,9 @@
     "excerpt": "---",
     "lines": 311,
     "size": 8229,
-    "updated": "2026-03-01T22:39:35.439Z"
+    "updated": "2026-03-01T22:39:35.439Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "mastra",
@@ -2605,7 +2875,9 @@
     "excerpt": "---",
     "lines": 174,
     "size": 6376,
-    "updated": "2026-03-01T22:39:38.947Z"
+    "updated": "2026-03-01T22:39:38.947Z",
+    "sourceUrl": "https://github.com/mastra-ai/skills",
+    "installs": 4690
   },
   {
     "name": "seo-content-brief",
@@ -2619,7 +2891,9 @@
     "excerpt": "---",
     "lines": 280,
     "size": 11238,
-    "updated": "2026-03-01T22:39:42.427Z"
+    "updated": "2026-03-01T22:39:42.427Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 2
   },
   {
     "name": "flux-image",
@@ -2633,7 +2907,9 @@
     "excerpt": "---",
     "lines": 94,
     "size": 2984,
-    "updated": "2026-03-01T22:39:45.778Z"
+    "updated": "2026-03-01T22:39:45.778Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "image-to-video",
@@ -2647,7 +2923,9 @@
     "excerpt": "---",
     "lines": 239,
     "size": 9268,
-    "updated": "2026-03-01T22:39:48.989Z"
+    "updated": "2026-03-01T22:39:48.989Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "explainer-video-guide",
@@ -2661,7 +2939,9 @@
     "excerpt": "---",
     "lines": 233,
     "size": 8870,
-    "updated": "2026-03-01T22:39:52.401Z"
+    "updated": "2026-03-01T22:39:52.401Z",
+    "sourceUrl": "https://github.com/neversight/skills_feed",
+    "installs": 2
   },
   {
     "name": "text-to-speech",
@@ -2675,7 +2955,9 @@
     "excerpt": "---",
     "lines": 135,
     "size": 4174,
-    "updated": "2026-03-01T22:39:55.790Z"
+    "updated": "2026-03-01T22:39:55.790Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "og-image-design",
@@ -2689,7 +2971,9 @@
     "excerpt": "---",
     "lines": 218,
     "size": 9707,
-    "updated": "2026-03-01T22:39:59.109Z"
+    "updated": "2026-03-01T22:39:59.109Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "landing-page-design",
@@ -2703,7 +2987,9 @@
     "excerpt": "---",
     "lines": 244,
     "size": 10018,
-    "updated": "2026-03-01T22:40:02.494Z"
+    "updated": "2026-03-01T22:40:02.494Z",
+    "sourceUrl": "https://github.com/neversight/skills.sh_feed",
+    "installs": 1
   },
   {
     "name": "email-design",
@@ -2717,7 +3003,9 @@
     "excerpt": "---",
     "lines": 241,
     "size": 10340,
-    "updated": "2026-03-01T22:40:05.893Z"
+    "updated": "2026-03-01T22:40:05.893Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   },
   {
     "name": "case-study-writing",
@@ -2731,6 +3019,8 @@
     "excerpt": "---",
     "lines": 236,
     "size": 8339,
-    "updated": "2026-03-01T22:40:09.447Z"
+    "updated": "2026-03-01T22:40:09.447Z",
+    "sourceUrl": "https://github.com/inferencesh/agent-skills",
+    "installs": 2
   }
 ]
