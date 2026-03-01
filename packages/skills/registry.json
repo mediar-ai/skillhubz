@@ -4690,5 +4690,21 @@
     "updated": "2026-03-01T22:51:48.099Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1817
+  },
+  {
+    "name": "superdesign",
+    "description": "> Superdesign is a design agent specialized in frontend UI/UX design. Use this skill before implementing any UI that requires design thinking. Common commands: superdesign create-project --title \"X\" (",
+    "author": "superdesigndev",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 84,
+    "size": 3774,
+    "updated": "2026-03-01T22:51:51.131Z",
+    "sourceUrl": "https://github.com/superdesigndev/superdesign-skill",
+    "installs": 1816
   }
 ]
