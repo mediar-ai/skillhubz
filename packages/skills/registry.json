@@ -1971,5 +1971,19 @@
     "lines": 536,
     "size": 13171,
     "updated": "2026-03-01T22:36:40.312Z"
+  },
+  {
+    "name": "python-sdk",
+    "description": "\"Python SDK for inference.sh - run AI apps, build agents, and integrate with 150+ models. Package: inferencesh (pip install inferencesh). Supports sync/async, streaming, file uploads. Build agents wit",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 484,
+    "size": 11211,
+    "updated": "2026-03-01T22:36:43.654Z"
   }
 ]
