@@ -2438,5 +2438,19 @@
     "lines": 274,
     "size": 7535,
     "updated": "2026-03-01T22:38:54.453Z"
+  },
+  {
+    "name": "product-hunt-launch",
+    "description": "\"Product Hunt launch optimization with specific specs, timing, and gallery strategy. Covers taglines, gallery images, maker comments, and launch day tactics. Use for: product launches, startup launche",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 259,
+    "size": 9259,
+    "updated": "2026-03-01T22:38:58.004Z"
   }
 ]
