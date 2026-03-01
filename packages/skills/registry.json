@@ -3502,5 +3502,21 @@
     "updated": "2026-03-01T22:46:01.179Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 4422
+  },
+  {
+    "name": "next-upgrade",
+    "description": "Upgrade Next.js to the latest version following official migration guides and codemods",
+    "author": "vercel-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 51,
+    "size": 2005,
+    "updated": "2026-03-01T22:46:04.446Z",
+    "sourceUrl": "https://github.com/vercel-labs/next-skills",
+    "installs": 4325
   }
 ]
