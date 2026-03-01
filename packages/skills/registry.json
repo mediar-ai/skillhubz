@@ -1243,5 +1243,19 @@
     "lines": 285,
     "size": 9956,
     "updated": "2026-03-01T22:33:10.148Z"
+  },
+  {
+    "name": "ai-image-generation",
+    "description": "\"Generate AI images with FLUX, Gemini, Grok, Seedream, Reve and 50+ models via inference.sh CLI. Models: FLUX Dev LoRA, FLUX.2 Klein LoRA, Gemini 3 Pro Image, Grok Imagine, Seedream 4.5, Reve, Imagine",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 140,
+    "size": 4554,
+    "updated": "2026-03-01T22:33:14.016Z"
   }
 ]
