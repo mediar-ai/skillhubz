@@ -6228,5 +6228,21 @@
     "updated": "2026-03-01T23:00:01.025Z",
     "sourceUrl": "https://github.com/cclank/news-aggregator-skill",
     "installs": 971
+  },
+  {
+    "name": "apify-lead-generation",
+    "description": "Generates B2B/B2C leads by scraping Google Maps, websites, Instagram, TikTok, Facebook, LinkedIn, YouTube, and Google Search. Use when user asks to find leads, prospects, businesses, build lead lists,",
+    "author": "apify",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 121,
+    "size": 4412,
+    "updated": "2026-03-01T23:00:05.361Z",
+    "sourceUrl": "https://github.com/apify/agent-skills",
+    "installs": 964
   }
 ]
