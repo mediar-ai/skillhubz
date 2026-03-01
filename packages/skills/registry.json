@@ -5522,5 +5522,21 @@
     "updated": "2026-03-01T22:57:19.895Z",
     "sourceUrl": "https://github.com/lionad-morotar/anti-render-skill",
     "installs": 1273
+  },
+  {
+    "name": "wordpress-pro",
+    "description": "Use when developing WordPress themes, plugins, customizing Gutenberg blocks, implementing WooCommerce features, or optimizing WordPress performance and security.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 93,
+    "size": 4122,
+    "updated": "2026-03-01T22:57:22.841Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 1271
   }
 ]
