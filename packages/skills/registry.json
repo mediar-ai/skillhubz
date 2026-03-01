@@ -3954,5 +3954,21 @@
     "updated": "2026-03-01T22:47:46.283Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2726
+  },
+  {
+    "name": "plan-harder",
+    "description": "> Use when user specfically says 'plan harder'.",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 145,
+    "size": 3678,
+    "updated": "2026-03-01T22:47:49.234Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2721
   }
 ]
