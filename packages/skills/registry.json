@@ -1271,5 +1271,19 @@
     "lines": 178,
     "size": 5354,
     "updated": "2026-03-01T22:33:17.444Z"
+  },
+  {
+    "name": "twitter-automation",
+    "description": "\"Automate Twitter/X with posting, engagement, and user management via inference.sh CLI. Apps: x/post-tweet, x/post-create (with media), x/post-like, x/post-retweet, x/dm-send, x/user-follow. Capabilit",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 155,
+    "size": 4405,
+    "updated": "2026-03-01T22:33:20.698Z"
   }
 ]
