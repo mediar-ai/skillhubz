@@ -3118,5 +3118,21 @@
     "updated": "2026-03-01T22:44:34.813Z",
     "sourceUrl": "https://github.com/jimliu/baoyu-skills",
     "installs": 4638
+  },
+  {
+    "name": "pitch-deck-visuals",
+    "description": "\"Investor pitch deck structure with slide-by-slide framework, visual design rules, and data presentation. Covers the 12-slide framework, chart types, team slides, and common investor turn-offs. Use fo",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 212,
+    "size": 12090,
+    "updated": "2026-03-01T22:44:38.125Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4628
   }
 ]
