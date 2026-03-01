@@ -5704,5 +5704,21 @@
     "updated": "2026-03-01T22:57:59.184Z",
     "sourceUrl": "https://github.com/apify/agent-skills",
     "installs": 1226
+  },
+  {
+    "name": "threejs-loaders",
+    "description": "Three.js asset loading - GLTF, textures, images, models, async patterns. Use when loading 3D models, textures, HDR environments, or managing loading progress.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 624,
+    "size": 14032,
+    "updated": "2026-03-01T22:58:03.297Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1216
   }
 ]
