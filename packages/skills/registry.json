@@ -5042,5 +5042,21 @@
     "updated": "2026-03-01T22:55:18.323Z",
     "sourceUrl": "https://github.com/sugarforever/01coder-agent-skills",
     "installs": 1564
+  },
+  {
+    "name": "self-learning",
+    "description": "\"Autonomous skill generator that learns new technologies from the web. Use when, users want to learn about a new library/framework/tool, need to create a skill for an unfamiliar technology, want to re",
+    "author": "philschmid",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 134,
+    "size": 4228,
+    "updated": "2026-03-01T22:55:21.182Z",
+    "sourceUrl": "https://github.com/philschmid/self-learning-skill",
+    "installs": 1545
   }
 ]
