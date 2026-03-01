@@ -4370,5 +4370,21 @@
     "updated": "2026-03-01T22:49:26.301Z",
     "sourceUrl": "https://github.com/calm-north/seojuice-skills",
     "installs": 2222
+  },
+  {
+    "name": "build-links",
+    "description": "> Design a link building campaign with prospect identification, asset creation, and outreach strategy. Use when the user asks about link building, backlinks, domain authority, how to get backlinks, ou",
+    "author": "calm-north",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 271,
+    "size": 10096,
+    "updated": "2026-03-01T22:49:30.818Z",
+    "sourceUrl": "https://github.com/calm-north/seojuice-skills",
+    "installs": 2217
   }
 ]
