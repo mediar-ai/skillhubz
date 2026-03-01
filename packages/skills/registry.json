@@ -1369,5 +1369,19 @@
     "lines": 413,
     "size": 10279,
     "updated": "2026-03-01T22:33:46.760Z"
+  },
+  {
+    "name": "supabase-postgres-best-practices",
+    "description": "Postgres performance optimization and best practices from Supabase. Use this skill when writing, reviewing, or optimizing Postgres queries, schema designs, or database configurations.",
+    "author": "supabase",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 65,
+    "size": 2577,
+    "updated": "2026-03-01T22:33:50.300Z"
   }
 ]
