@@ -4450,5 +4450,21 @@
     "updated": "2026-03-01T22:50:40.700Z",
     "sourceUrl": "https://github.com/clerk/skills",
     "installs": 2122
+  },
+  {
+    "name": "playwright-skill",
+    "description": "\"Complete browser automation with Playwright. Auto-detects dev servers, writes clean test scripts to /tmp. Test pages, fill forms, take screenshots, check responsive design, validate UX, test login ..",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 460,
+    "size": 13896,
+    "updated": "2026-03-01T22:50:52.556Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 2092
   }
 ]
