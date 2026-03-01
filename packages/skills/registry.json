@@ -3874,5 +3874,21 @@
     "updated": "2026-03-01T22:47:16.309Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 2976
+  },
+  {
+    "name": "slidev",
+    "description": "Create and present web-based slides for developers using Markdown, Vue components, code highlighting, animations, and interactive features. Use when building technical presentations, conference talks,",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 184,
+    "size": 8223,
+    "updated": "2026-03-01T22:47:19.107Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 2962
   }
 ]
