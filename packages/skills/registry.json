@@ -2270,5 +2270,19 @@
     "lines": 378,
     "size": 13634,
     "updated": "2026-03-01T22:38:12.419Z"
+  },
+  {
+    "name": "pnpm",
+    "description": "Node.js package manager with strict dependency resolution. Use when running pnpm specific commands, configuring workspaces, or managing dependencies with catalogs, patches, or overrides.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 43,
+    "size": 2957,
+    "updated": "2026-03-01T22:38:16.144Z"
   }
 ]
