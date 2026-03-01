@@ -9,7 +9,8 @@
     "e2e-test-recorder": 4,
     "notion-sync": 6,
     "screenshot-annotator": 3,
-    "expense-logger": 3
+    "expense-logger": 3,
+    "browser-lock-multi-agent-playwright-concurrency": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -26,5 +27,5 @@
   "searches": {
     "docs": 1
   },
-  "lastUpdated": "2026-02-23T10:30:36.909Z"
+  "lastUpdated": "2026-03-01T22:24:04.432Z"
 }
