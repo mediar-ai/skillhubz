@@ -3486,5 +3486,21 @@
     "updated": "2026-03-01T22:45:56.054Z",
     "sourceUrl": "https://github.com/jimliu/baoyu-skills",
     "installs": 4454
+  },
+  {
+    "name": "docker-expert",
+    "description": "\"Docker containerization expert with deep knowledge of multi-stage builds, image optimization, container security, Docker Compose orchestration, and production deployment patterns. Use PROACTIVELY f..",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 414,
+    "size": 14043,
+    "updated": "2026-03-01T22:46:01.179Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 4422
   }
 ]
