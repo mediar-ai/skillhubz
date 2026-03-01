@@ -1677,5 +1677,19 @@
     "lines": 106,
     "size": 2809,
     "updated": "2026-03-01T22:35:12.782Z"
+  },
+  {
+    "name": "competitor-alternatives",
+    "description": "\"When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user mentions 'alternative page,' 'vs page,' 'competitor comparison,' 'compari",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 257,
+    "size": 8213,
+    "updated": "2026-03-01T22:35:16.195Z"
   }
 ]
