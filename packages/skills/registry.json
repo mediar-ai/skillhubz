@@ -1215,5 +1215,19 @@
     "lines": 127,
     "size": 5451,
     "updated": "2026-03-01T22:33:02.870Z"
+  },
+  {
+    "name": "remotion-render",
+    "description": "\"Render videos from React/Remotion component code via inference.sh. Pass TSX code, get MP4. Supports all Remotion APIs: useCurrentFrame, useVideoConfig, spring, interpolate, AbsoluteFill, Sequence. Co",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 210,
+    "size": 8176,
+    "updated": "2026-03-01T22:33:06.033Z"
   }
 ]
