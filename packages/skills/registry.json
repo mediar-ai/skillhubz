@@ -6127,5 +6127,21 @@
     "updated": "2026-03-01T22:59:38.946Z",
     "sourceUrl": "https://github.com/cloudflare/skills",
     "installs": 989
+  },
+  {
+    "name": "web-quality-audit",
+    "description": "Comprehensive web quality audit covering performance, accessibility, SEO, and best practices. Use when asked to \"audit my site\", \"review web quality\", \"run lighthouse audit\", \"check page quality\", or ",
+    "author": "addyosmani",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 171,
+    "size": 6624,
+    "updated": "2026-03-01T22:59:41.688Z",
+    "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
+    "installs": 983
   }
 ]
