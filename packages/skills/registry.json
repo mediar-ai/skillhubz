@@ -2592,5 +2592,19 @@
     "lines": 311,
     "size": 8229,
     "updated": "2026-03-01T22:39:35.439Z"
+  },
+  {
+    "name": "mastra",
+    "description": "\"Comprehensive Mastra framework guide. Teaches how to find current documentation, verify API signatures, and build agents and workflows. Covers documentation lookup strategies (embedded docs, remote d",
+    "author": "mastra-ai",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 174,
+    "size": 6376,
+    "updated": "2026-03-01T22:39:38.947Z"
   }
 ]
