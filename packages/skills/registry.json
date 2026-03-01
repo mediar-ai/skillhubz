@@ -4386,5 +4386,21 @@
     "updated": "2026-03-01T22:49:30.818Z",
     "sourceUrl": "https://github.com/calm-north/seojuice-skills",
     "installs": 2217
+  },
+  {
+    "name": "optimize-for-ai",
+    "description": "> Optimize content for AI search engines — ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews. Use when the user asks about AI SEO, AISO, getting cited by AI, appearing in AI answers, answer eng",
+    "author": "calm-north",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 366,
+    "size": 17279,
+    "updated": "2026-03-01T22:49:34.070Z",
+    "sourceUrl": "https://github.com/calm-north/seojuice-skills",
+    "installs": 2212
   }
 ]
