@@ -4930,5 +4930,21 @@
     "updated": "2026-03-01T22:54:54.194Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 1631
+  },
+  {
+    "name": "microsoft-skill-creator",
+    "description": "Create agent skills for Microsoft technologies using Learn MCP tools. Use when users want to create a skill that teaches agents about any Microsoft technology, library, framework, or service (Azure, .",
+    "author": "github",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 218,
+    "size": 7068,
+    "updated": "2026-03-01T22:54:57.087Z",
+    "sourceUrl": "https://github.com/github/awesome-copilot",
+    "installs": 1612
   }
 ]
