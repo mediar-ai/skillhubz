@@ -4114,5 +4114,21 @@
     "updated": "2026-03-01T22:48:23.909Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2630
+  },
+  {
+    "name": "super-swarm-spark",
+    "description": "> Only to be triggered by explicit super-swarm-spark commands.",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 219,
+    "size": 7113,
+    "updated": "2026-03-01T22:48:28.085Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2589
   }
 ]
