@@ -4722,5 +4722,21 @@
     "updated": "2026-03-01T22:51:54.240Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1798
+  },
+  {
+    "name": "karpathy-guidelines",
+    "description": "Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiabl",
+    "author": "forrestchang",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 68,
+    "size": 2506,
+    "updated": "2026-03-01T22:54:08.798Z",
+    "sourceUrl": "https://github.com/forrestchang/andrej-karpathy-skills",
+    "installs": 1723
   }
 ]
