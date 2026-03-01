@@ -5474,5 +5474,21 @@
     "updated": "2026-03-01T22:57:06.556Z",
     "sourceUrl": "https://github.com/giulioco/skills",
     "installs": 1288
+  },
+  {
+    "name": "threejs-postprocessing",
+    "description": "Three.js post-processing - EffectComposer, bloom, DOF, screen effects. Use when adding visual effects, color grading, blur, glow, or creating custom screen-space shaders.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 603,
+    "size": 14427,
+    "updated": "2026-03-01T22:57:12.276Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1275
   }
 ]
