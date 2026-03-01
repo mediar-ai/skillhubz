@@ -1635,5 +1635,19 @@
     "lines": 354,
     "size": 12586,
     "updated": "2026-03-01T22:35:02.675Z"
+  },
+  {
+    "name": "schema-markup",
+    "description": "When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions \"schema markup,\" \"structured data,\" \"JSON-LD,\" \"rich snippets,\" \"schema.or",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 180,
+    "size": 5004,
+    "updated": "2026-03-01T22:35:06.204Z"
   }
 ]
