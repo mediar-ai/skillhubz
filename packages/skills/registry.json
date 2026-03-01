@@ -1411,5 +1411,19 @@
     "lines": 154,
     "size": 4002,
     "updated": "2026-03-01T22:33:56.963Z"
+  },
+  {
+    "name": "copywriting",
+    "description": "When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 253,
+    "size": 7171,
+    "updated": "2026-03-01T22:34:00.239Z"
   }
 ]
