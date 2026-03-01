@@ -1803,5 +1803,19 @@
     "lines": 179,
     "size": 5630,
     "updated": "2026-03-01T22:35:52.607Z"
+  },
+  {
+    "name": "signup-flow-cro",
+    "description": "When the user wants to optimize signup, registration, account creation, or trial activation flows. Also use when the user mentions \"signup conversions,\" \"registration friction,\" \"signup form optimizat",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 360,
+    "size": 10038,
+    "updated": "2026-03-01T22:35:55.932Z"
   }
 ]
