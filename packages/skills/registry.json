@@ -2027,5 +2027,19 @@
     "lines": 203,
     "size": 20580,
     "updated": "2026-03-01T22:37:05.117Z"
+  },
+  {
+    "name": "vite",
+    "description": "Vite build tool configuration, plugin API, SSR, and Vite 8 Rolldown migration. Use when working with Vite projects, vite.config.ts, Vite plugins, or building libraries/SSR apps with Vite.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 73,
+    "size": 2463,
+    "updated": "2026-03-01T22:37:08.274Z"
   }
 ]
