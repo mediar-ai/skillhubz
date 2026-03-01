@@ -4098,5 +4098,21 @@
     "updated": "2026-03-01T22:48:21.143Z",
     "sourceUrl": "https://github.com/ibelick/ui-skills",
     "installs": 2651
+  },
+  {
+    "name": "role-creator",
+    "description": "Create and install Codex custom agent roles in ~/.codex/config.toml, generate role config files, enforce supported keys, and guide users through required role inputs (model, reasoning effort, develope",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 207,
+    "size": 8322,
+    "updated": "2026-03-01T22:48:23.909Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2630
   }
 ]
