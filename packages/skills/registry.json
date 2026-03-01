@@ -3374,5 +3374,21 @@
     "updated": "2026-03-01T22:45:32.140Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4557
+  },
+  {
+    "name": "baoyu-compress-image",
+    "description": "Compresses images to WebP (default) or PNG with automatic tool selection. Use when user asks to \"compress image\", \"optimize image\", \"convert to webp\", or reduce image file size.",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 90,
+    "size": 3203,
+    "updated": "2026-03-01T22:45:35.509Z",
+    "sourceUrl": "https://github.com/jimliu/baoyu-skills",
+    "installs": 4546
   }
 ]
