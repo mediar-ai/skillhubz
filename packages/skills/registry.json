@@ -2368,5 +2368,19 @@
     "lines": 130,
     "size": 4003,
     "updated": "2026-03-01T22:38:37.083Z"
+  },
+  {
+    "name": "data-visualization",
+    "description": "\"Data visualization with chart selection, color theory, and annotation best practices. Covers chart types (bar, line, scatter, heatmap), axes rules, and storytelling with data. Use for: charts, graphs",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 211,
+    "size": 13382,
+    "updated": "2026-03-01T22:38:40.440Z"
   }
 ]
