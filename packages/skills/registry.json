@@ -4994,5 +4994,21 @@
     "updated": "2026-03-01T22:55:07.948Z",
     "sourceUrl": "https://github.com/apollographql/skills",
     "installs": 1596
+  },
+  {
+    "name": "sandbox-agent",
+    "description": "\"Deploy, configure, and integrate Sandbox Agent - a universal API for orchestrating AI coding agents (Claude Code, Codex, OpenCode, Amp) in sandboxed environments. Use when setting up sandbox-agent se",
+    "author": "rivet-dev",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 346,
+    "size": 9345,
+    "updated": "2026-03-01T22:55:10.891Z",
+    "sourceUrl": "https://github.com/rivet-dev/skills",
+    "installs": 1593
   }
 ]
