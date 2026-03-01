@@ -4866,5 +4866,21 @@
     "updated": "2026-03-01T22:54:36.734Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1662
+  },
+  {
+    "name": "m15-anti-pattern",
+    "description": "\"Use when reviewing code for anti-patterns. Keywords: anti-pattern, common mistake, pitfall, code smell, bad practice, code review, is this an anti-pattern, better way to do this, common mistake to av",
+    "author": "zhanghandong",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 161,
+    "size": 4768,
+    "updated": "2026-03-01T22:54:39.705Z",
+    "sourceUrl": "https://github.com/zhanghandong/rust-skills",
+    "installs": 1661
   }
 ]
