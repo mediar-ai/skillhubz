@@ -1607,5 +1607,19 @@
     "lines": 183,
     "size": 5776,
     "updated": "2026-03-01T22:34:55.892Z"
+  },
+  {
+    "name": "analytics-tracking",
+    "description": "When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions \"set up tracking,\" \"GA4,\" \"Google Analytics,\" \"conversion tracking,\" \"event trackin",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 310,
+    "size": 8098,
+    "updated": "2026-03-01T22:34:59.256Z"
   }
 ]
