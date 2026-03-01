@@ -1957,5 +1957,19 @@
     "lines": 173,
     "size": 4948,
     "updated": "2026-03-01T22:36:36.962Z"
+  },
+  {
+    "name": "javascript-sdk",
+    "description": "\"JavaScript/TypeScript SDK for inference.sh - run AI apps, build agents, integrate 150+ models. Package: @inferencesh/sdk (npm install). Full TypeScript support, streaming, file uploads. Build agents ",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 536,
+    "size": 13171,
+    "updated": "2026-03-01T22:36:40.312Z"
   }
 ]
