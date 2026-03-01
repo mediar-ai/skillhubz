@@ -3618,5 +3618,21 @@
     "updated": "2026-03-01T22:46:25.431Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 3710
+  },
+  {
+    "name": "unocss",
+    "description": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS. Use when configuring UnoCSS, writing utility rules, shortcuts, or working with presets like Wind, Icons, Attributify.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 65,
+    "size": 4235,
+    "updated": "2026-03-01T22:46:28.755Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 3604
   }
 ]
