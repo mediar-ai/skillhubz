@@ -3518,5 +3518,25 @@
     "updated": "2026-03-01T22:46:04.446Z",
     "sourceUrl": "https://github.com/vercel-labs/next-skills",
     "installs": 4325
+  },
+  {
+    "name": "convex",
+    "description": "Umbrella skill for all Convex development patterns. Routes to specific skills like convex-functions, convex-realtime, convex-agents, etc.",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "backend",
+      "database",
+      "realtime]",
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 63,
+    "size": 2030,
+    "updated": "2026-03-01T22:46:08.061Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 4005
   }
 ]
