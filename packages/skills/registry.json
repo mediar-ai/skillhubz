@@ -2410,5 +2410,19 @@
     "lines": 294,
     "size": 9597,
     "updated": "2026-03-01T22:38:47.557Z"
+  },
+  {
+    "name": "ai-automation-workflows",
+    "description": "\"Build automated AI workflows combining multiple models and services. Patterns: batch processing, scheduled tasks, event-driven pipelines, agent loops. Tools: inference.sh CLI, bash scripting, Python ",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "productivity",
+    "excerpt": "---",
+    "lines": 405,
+    "size": 10447,
+    "updated": "2026-03-01T22:38:51.024Z"
   }
 ]
