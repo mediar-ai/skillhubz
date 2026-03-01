@@ -6041,5 +6041,21 @@
     "updated": "2026-03-01T22:59:23.351Z",
     "sourceUrl": "https://github.com/intellectronica/agent-skills",
     "installs": 1021
+  },
+  {
+    "name": "building-ai-agent-on-cloudflare",
+    "description": "| Builds AI agents on Cloudflare using the Agents SDK with state management, real-time WebSockets, scheduled tasks, tool integration, and chat capabilities. Generates production-ready agent code deplo",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 392,
+    "size": 9285,
+    "updated": "2026-03-01T22:59:27.399Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 1011
   }
 ]
