@@ -4946,5 +4946,21 @@
     "updated": "2026-03-01T22:54:57.087Z",
     "sourceUrl": "https://github.com/github/awesome-copilot",
     "installs": 1612
+  },
+  {
+    "name": "n8n-workflow-patterns",
+    "description": "Proven workflow architectural patterns from real n8n workflows. Use when building new workflows, designing workflow structure, choosing workflow patterns, planning workflow architecture, or asking abo",
+    "author": "czlonkowski",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 412,
+    "size": 11367,
+    "updated": "2026-03-01T22:55:00.213Z",
+    "sourceUrl": "https://github.com/czlonkowski/n8n-skills",
+    "installs": 1602
   }
 ]
