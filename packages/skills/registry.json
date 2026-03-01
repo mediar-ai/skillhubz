@@ -1121,5 +1121,24 @@
     "lines": 115,
     "size": 3200,
     "updated": "2026-02-05T00:00:00Z"
+  },
+  {
+    "name": "browser-lock-multi-agent-playwright-concurrency",
+    "description": "Hook-based locking system that prevents multiple Claude Code agents from conflicting when sharing a single Playwright MCP browser instance. Only one agent uses the browser at a time; others wait their",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "playwright",
+      "mcp",
+      "concurrency",
+      "browser",
+      "hooks",
+      "multi-agent"
+    ],
+    "category": "developer-tools",
+    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts — only one agent can use",
+    "lines": 66,
+    "size": 2786,
+    "updated": "2026-03-01T22:14:08.996Z"
   }
 ]
