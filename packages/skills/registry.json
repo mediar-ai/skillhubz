@@ -4610,5 +4610,21 @@
     "updated": "2026-03-01T22:51:32.807Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1913
+  },
+  {
+    "name": "make-skill-template",
+    "description": "'Create new Agent Skills for GitHub Copilot from prompts or by duplicating this template. Use when asked to \"create a skill\", \"make a new skill\", \"scaffold a skill\", or when building specialized AI ca",
+    "author": "github",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 148,
+    "size": 5288,
+    "updated": "2026-03-01T22:51:35.959Z",
+    "sourceUrl": "https://github.com/github/awesome-copilot",
+    "installs": 1864
   }
 ]
