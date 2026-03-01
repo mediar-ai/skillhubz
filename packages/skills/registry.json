@@ -6025,5 +6025,21 @@
     "updated": "2026-03-01T22:59:13.375Z",
     "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
     "installs": 1041
+  },
+  {
+    "name": "nano-banana-pro",
+    "description": "Generate and edit images using Google's Nano Banana Pro (Gemini 3 Pro Image) API. Use when the user asks to generate, create, edit, modify, change, alter, or update images. Also use when user referenc",
+    "author": "intellectronica",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 98,
+    "size": 4308,
+    "updated": "2026-03-01T22:59:23.351Z",
+    "sourceUrl": "https://github.com/intellectronica/agent-skills",
+    "installs": 1021
   }
 ]
