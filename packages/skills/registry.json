@@ -2298,5 +2298,19 @@
     "lines": 205,
     "size": 8207,
     "updated": "2026-03-01T22:38:19.563Z"
+  },
+  {
+    "name": "vueuse-functions",
+    "description": "Apply VueUse composables where appropriate to build concise, maintainable Vue.js / Nuxt features.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 419,
+    "size": 36952,
+    "updated": "2026-03-01T22:38:23.053Z"
   }
 ]
