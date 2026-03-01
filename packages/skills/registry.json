@@ -4018,5 +4018,21 @@
     "updated": "2026-03-01T22:48:00.004Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 2700
+  },
+  {
+    "name": "vue-testing-best-practices",
+    "description": "Use for Vue.js testing. Covers Vitest, Vue Test Utils, component testing, mocking, testing patterns, and Playwright for E2E testing.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 30,
+    "size": 2107,
+    "updated": "2026-03-01T22:48:09.715Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 2666
   }
 ]
