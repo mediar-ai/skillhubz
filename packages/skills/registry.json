@@ -1229,5 +1229,19 @@
     "lines": 210,
     "size": 8176,
     "updated": "2026-03-01T22:33:06.033Z"
+  },
+  {
+    "name": "agent-browser",
+    "description": "\"Browser automation for AI agents via inference.sh. Navigate web pages, interact with elements using @e refs, take screenshots, record video. Capabilities: web scraping, form filling, clicking, typing",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 285,
+    "size": 9956,
+    "updated": "2026-03-01T22:33:10.148Z"
   }
 ]
