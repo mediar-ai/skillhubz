@@ -6073,5 +6073,21 @@
     "updated": "2026-03-01T22:59:30.200Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 999
+  },
+  {
+    "name": "playwright-expert",
+    "description": "Use when writing E2E tests with Playwright, setting up test infrastructure, or debugging flaky browser tests. Invoke for browser automation, E2E tests, Page Object Model, test flakiness, visual testin",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 81,
+    "size": 2832,
+    "updated": "2026-03-01T22:59:33.076Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 996
   }
 ]
