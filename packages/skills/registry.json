@@ -3938,5 +3938,21 @@
     "updated": "2026-03-01T22:47:35.675Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2785
+  },
+  {
+    "name": "read-github",
+    "description": "| Read and search GitHub repository documentation via gitmcp.io MCP service. **WHEN TO USE:** - User provides a GitHub URL - User mentions a specific repo in owner/repo format - User asks \"what does t",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 95,
+    "size": 2550,
+    "updated": "2026-03-01T22:47:46.283Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2726
   }
 ]
