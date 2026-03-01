@@ -1257,5 +1257,19 @@
     "lines": 140,
     "size": 4554,
     "updated": "2026-03-01T22:33:14.016Z"
+  },
+  {
+    "name": "ai-video-generation",
+    "description": "\"Generate AI videos with Google Veo, Seedance, Wan, Grok and 40+ models via inference.sh CLI. Models: Veo 3.1, Veo 3, Seedance 1.5 Pro, Wan 2.5, Grok Imagine Video, OmniHuman, Fabric, HunyuanVideo. Ca",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 178,
+    "size": 5354,
+    "updated": "2026-03-01T22:33:17.444Z"
   }
 ]
