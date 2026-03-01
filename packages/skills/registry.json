@@ -4834,5 +4834,21 @@
     "updated": "2026-03-01T22:54:27.949Z",
     "sourceUrl": "https://github.com/ehmo/platform-design-skills",
     "installs": 1692
+  },
+  {
+    "name": "notebooklm",
+    "description": "Use this skill to query your Google NotebookLM notebooks directly from Claude Code for source-grounded, citation-backed answers from Gemini. Browser automation, library management, persistent auth. Dr",
+    "author": "pleaseprompto",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 270,
+    "size": 9408,
+    "updated": "2026-03-01T22:54:31.342Z",
+    "sourceUrl": "https://github.com/pleaseprompto/notebooklm-skill",
+    "installs": 1687
   }
 ]
