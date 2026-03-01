@@ -3230,5 +3230,21 @@
     "updated": "2026-03-01T22:44:58.660Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4614
+  },
+  {
+    "name": "competitor-teardown",
+    "description": "\"Structured competitive analysis with feature matrices, SWOT, positioning maps, and UX review. Covers research frameworks, pricing comparison, review mining, and visual deliverables. Use for: market r",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 312,
+    "size": 10285,
+    "updated": "2026-03-01T22:45:02.178Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4612
   }
 ]
