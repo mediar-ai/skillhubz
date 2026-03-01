@@ -5784,5 +5784,21 @@
     "updated": "2026-03-01T22:58:19.644Z",
     "sourceUrl": "https://github.com/simonwong/agent-skills",
     "installs": 1165
+  },
+  {
+    "name": "java-architect",
+    "description": "Use when building enterprise Java applications with Spring Boot 3.x, microservices, or reactive programming. Invoke for WebFlux, JPA optimization, Spring Security, cloud-native patterns.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 86,
+    "size": 3472,
+    "updated": "2026-03-01T22:58:24.212Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 1158
   }
 ]
