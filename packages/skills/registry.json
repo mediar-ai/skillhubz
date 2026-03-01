@@ -5234,5 +5234,21 @@
     "updated": "2026-03-01T22:56:00.984Z",
     "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
     "installs": 1414
+  },
+  {
+    "name": "typescript-e2e-testing",
+    "description": "| Complete E2E (end-to-end) and integration testing skill for TypeScript/NestJS projects using Jest, real infrastructure via Docker, and GWT pattern. ALWAYS use this skill when user needs to: **SETUP*",
+    "author": "bmad-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 448,
+    "size": 16684,
+    "updated": "2026-03-01T22:56:06.596Z",
+    "sourceUrl": "https://github.com/bmad-labs/skills",
+    "installs": 1398
   }
 ]
