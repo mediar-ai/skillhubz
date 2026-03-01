@@ -5394,5 +5394,21 @@
     "updated": "2026-03-01T22:56:44.147Z",
     "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
     "installs": 1326
+  },
+  {
+    "name": "gemini-watermark-remover",
+    "description": "Remove the visible Gemini AI watermark from images using reverse alpha blending. Use when asked to strip Gemini watermarks, batch-process Gemini images, or build/modify a CLI script that removes the b",
+    "author": "rookie-ricardo",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 47,
+    "size": 1433,
+    "updated": "2026-03-01T22:56:50.063Z",
+    "sourceUrl": "https://github.com/rookie-ricardo/erduo-skills",
+    "installs": 1322
   }
 ]
