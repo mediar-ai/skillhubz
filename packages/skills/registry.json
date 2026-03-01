@@ -5672,5 +5672,21 @@
     "updated": "2026-03-01T22:57:50.933Z",
     "sourceUrl": "https://github.com/acedergren/oci-agent-skills",
     "installs": 1244
+  },
+  {
+    "name": "threejs-textures",
+    "description": "Three.js textures - texture types, UV mapping, environment maps, texture settings. Use when working with images, UV coordinates, cubemaps, HDR environments, or texture optimization.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 629,
+    "size": 13643,
+    "updated": "2026-03-01T22:57:53.800Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1233
   }
 ]
