@@ -3762,5 +3762,21 @@
     "updated": "2026-03-01T22:46:54.976Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 3144
+  },
+  {
+    "name": "ad-creative",
+    "description": "\"When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when the user mentions 'ad ",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 363,
+    "size": 13369,
+    "updated": "2026-03-01T22:46:58.120Z",
+    "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
+    "installs": 3103
   }
 ]
