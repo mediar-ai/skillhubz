@@ -4594,5 +4594,21 @@
     "updated": "2026-03-01T22:51:28.340Z",
     "sourceUrl": "https://github.com/vuejs-ai/skills",
     "installs": 1937
+  },
+  {
+    "name": "angular-http",
+    "description": "Implement HTTP data fetching in Angular v20+ using resource(), httpResource(), and HttpClient. Use for API calls, data loading with signals, request/response handling, and interceptors. Triggers on da",
+    "author": "analogjs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 367,
+    "size": 8735,
+    "updated": "2026-03-01T22:51:32.807Z",
+    "sourceUrl": "https://github.com/analogjs/angular-skills",
+    "installs": 1913
   }
 ]
