@@ -1817,5 +1817,19 @@
     "lines": 360,
     "size": 10038,
     "updated": "2026-03-01T22:35:55.932Z"
+  },
+  {
+    "name": "paywall-upgrade-cro",
+    "description": "When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the user mentions \"paywall,\" \"upgrade screen,\" \"upgrade modal,\" \"upsell,\" \"fe",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 228,
+    "size": 5581,
+    "updated": "2026-03-01T22:36:01.738Z"
   }
 ]
