@@ -1299,5 +1299,19 @@
     "lines": 90,
     "size": 2882,
     "updated": "2026-03-01T22:33:24.787Z"
+  },
+  {
+    "name": "nano-banana",
+    "description": "\"Generate images with Google Gemini native image models via inference.sh CLI. Models: Gemini 3 Pro Image, Gemini 2.5 Flash Image. Capabilities: text-to-image, image editing, multi-image input. Trigger",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 144,
+    "size": 4425,
+    "updated": "2026-03-01T22:33:28.231Z"
   }
 ]
