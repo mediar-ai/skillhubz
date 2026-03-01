@@ -2172,5 +2172,19 @@
     "lines": 131,
     "size": 4641,
     "updated": "2026-03-01T22:37:49.508Z"
+  },
+  {
+    "name": "baoyu-cover-image",
+    "description": "Generates article cover images with 5 dimensions (type, palette, rendering, text, mood) combining 9 color palettes and 6 rendering styles. Supports cinematic (2.35:1), widescreen (16:9), and square (1",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 234,
+    "size": 9211,
+    "updated": "2026-03-01T22:37:52.769Z"
   }
 ]
