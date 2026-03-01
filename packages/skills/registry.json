@@ -5554,5 +5554,21 @@
     "updated": "2026-03-01T22:57:27.015Z",
     "sourceUrl": "https://github.com/clerk/skills",
     "installs": 1270
+  },
+  {
+    "name": "web-perf",
+    "description": "Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (FCP, LCP, TBT, CLS, Speed Index), identifies render-blocking resources, network dependency chains, layout shifts, caching ",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 194,
+    "size": 7613,
+    "updated": "2026-03-01T22:57:29.900Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 1270
   }
 ]
