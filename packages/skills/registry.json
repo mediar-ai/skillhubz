@@ -6276,5 +6276,26 @@
     "updated": "2026-03-01T23:00:11.104Z",
     "sourceUrl": "https://github.com/planetscale/database-skills",
     "installs": 960
+  },
+  {
+    "name": "convex-cron-jobs",
+    "description": "Scheduled function patterns for background tasks including interval scheduling, cron expressions, job monitoring, retry strategies, and best practices for long-running tasks",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "cron",
+      "scheduling",
+      "background-jobs",
+      "automation]",
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 605,
+    "size": 13766,
+    "updated": "2026-03-01T23:00:14.152Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 957
   }
 ]
