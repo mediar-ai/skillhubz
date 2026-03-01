@@ -2228,5 +2228,19 @@
     "lines": 495,
     "size": 19693,
     "updated": "2026-03-01T22:38:02.426Z"
+  },
+  {
+    "name": "remotion",
+    "description": "Generate walkthrough videos from Stitch projects using Remotion with smooth transitions, zooming, and text overlays",
+    "author": "google-labs-code",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 394,
+    "size": 12776,
+    "updated": "2026-03-01T22:38:05.622Z"
   }
 ]
