@@ -6329,5 +6329,26 @@
     "updated": "2026-03-01T23:00:21.569Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 945
+  },
+  {
+    "name": "convex-file-storage",
+    "description": "Complete file handling including upload flows, serving files via URL, storing generated files from actions, deletion, and accessing file metadata from system tables",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "file-storage",
+      "uploads",
+      "images",
+      "files]",
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 468,
+    "size": 11674,
+    "updated": "2026-03-01T23:00:24.370Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 943
   }
 ]
