@@ -5961,5 +5961,21 @@
     "updated": "2026-03-01T22:58:54.205Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 1090
+  },
+  {
+    "name": "mobile-design",
+    "description": "\"Mobile-first design and engineering doctrine for iOS and Android apps. Covers touch interaction, performance, platform conventions, offline behavior, and mobile-specific decision-making. Teaches pr..",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 290,
+    "size": 9182,
+    "updated": "2026-03-01T22:58:59.873Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 1065
   }
 ]
