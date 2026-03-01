@@ -2214,5 +2214,19 @@
     "lines": 699,
     "size": 22497,
     "updated": "2026-03-01T22:37:59.193Z"
+  },
+  {
+    "name": "baoyu-xhs-images",
+    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"小红书图",
+    "author": "jimliu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 495,
+    "size": 19693,
+    "updated": "2026-03-01T22:38:02.426Z"
   }
 ]
