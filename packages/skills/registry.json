@@ -5720,5 +5720,21 @@
     "updated": "2026-03-01T22:58:03.297Z",
     "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
     "installs": 1216
+  },
+  {
+    "name": "search-for-service",
+    "description": "Search and browse the x402 bazaar marketplace for paid API services. Use when you or the user want to find available services, see what's available, discover APIs, or need an external service to accom",
+    "author": "coinbase",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 83,
+    "size": 3021,
+    "updated": "2026-03-01T22:58:06.041Z",
+    "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
+    "installs": 1210
   }
 ]
