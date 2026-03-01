@@ -2606,5 +2606,19 @@
     "lines": 174,
     "size": 6376,
     "updated": "2026-03-01T22:39:38.947Z"
+  },
+  {
+    "name": "seo-content-brief",
+    "description": "\"SEO content brief creation with keyword research, search intent analysis, and content structure. Covers SERP analysis, heading hierarchy, word count targets, and internal linking strategy. Use for: c",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 280,
+    "size": 11238,
+    "updated": "2026-03-01T22:39:42.427Z"
   }
 ]
