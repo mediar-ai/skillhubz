@@ -3922,5 +3922,21 @@
     "updated": "2026-03-01T22:47:32.645Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2812
+  },
+  {
+    "name": "planner",
+    "description": "> Create comprehensive, phased implementation plans with sprints and atomic tasks. Use when user says: \"make a plan\", \"create a plan\", \"plan this out\", \"plan the implementation\", \"help me plan\", \"desi",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 155,
+    "size": 4310,
+    "updated": "2026-03-01T22:47:35.675Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2785
   }
 ]
