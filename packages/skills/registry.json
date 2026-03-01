@@ -4818,5 +4818,21 @@
     "updated": "2026-03-01T22:54:24.053Z",
     "sourceUrl": "https://github.com/clerk/skills",
     "installs": 1693
+  },
+  {
+    "name": "macos-design-guidelines",
+    "description": "Apple Human Interface Guidelines for Mac. Use when building macOS apps with SwiftUI or AppKit, implementing menu bars, toolbars, window management, or keyboard shortcuts. Triggers on tasks involving M",
+    "author": "ehmo",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 966,
+    "size": 31205,
+    "updated": "2026-03-01T22:54:27.949Z",
+    "sourceUrl": "https://github.com/ehmo/platform-design-skills",
+    "installs": 1692
   }
 ]
