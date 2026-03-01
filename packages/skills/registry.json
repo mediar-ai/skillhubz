@@ -1691,5 +1691,19 @@
     "lines": 257,
     "size": 8213,
     "updated": "2026-03-01T22:35:16.195Z"
+  },
+  {
+    "name": "email-sequence",
+    "description": "When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also use when the user mentions \"email sequence,\" \"drip campaign,\" \"nurtur",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 310,
+    "size": 8124,
+    "updated": "2026-03-01T22:35:19.807Z"
   }
 ]
