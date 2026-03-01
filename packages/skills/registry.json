@@ -4082,5 +4082,21 @@
     "updated": "2026-03-01T22:48:18.250Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2657
+  },
+  {
+    "name": "baseline-ui",
+    "description": "Validates animation durations, enforces typography scale, checks component accessibility, and prevents layout anti-patterns in Tailwind CSS projects. Use when building UI components, reviewing CSS uti",
+    "author": "ibelick",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 86,
+    "size": 3529,
+    "updated": "2026-03-01T22:48:21.143Z",
+    "sourceUrl": "https://github.com/ibelick/ui-skills",
+    "installs": 2651
   }
 ]
