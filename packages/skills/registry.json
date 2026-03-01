@@ -1201,5 +1201,19 @@
     "lines": 62,
     "size": 4240,
     "updated": "2026-03-01T22:32:57.225Z"
+  },
+  {
+    "name": "agent-tools",
+    "description": "\"Run 150+ AI apps via inference.sh CLI - image generation, video creation, LLMs, search, 3D, Twitter automation. Models: FLUX, Veo, Gemini, Grok, Claude, Seedance, OmniHuman, Tavily, Exa, OpenRouter, ",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 127,
+    "size": 5451,
+    "updated": "2026-03-01T22:33:02.870Z"
   }
 ]
