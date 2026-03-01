@@ -4738,5 +4738,21 @@
     "updated": "2026-03-01T22:54:08.798Z",
     "sourceUrl": "https://github.com/forrestchang/andrej-karpathy-skills",
     "installs": 1723
+  },
+  {
+    "name": "playwright-best-practices",
+    "description": "Provides comprehensive guidance for writing, debugging, and maintaining Playwright tests in TypeScript. Use when writing Playwright tests, fixing flaky tests, debugging failures, implementing Page Obj",
+    "author": "currents-dev",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 236,
+    "size": 20681,
+    "updated": "2026-03-01T22:54:12.182Z",
+    "sourceUrl": "https://github.com/currents-dev/playwright-best-practices-skill",
+    "installs": 1719
   }
 ]
