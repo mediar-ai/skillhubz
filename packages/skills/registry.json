@@ -6212,5 +6212,21 @@
     "updated": "2026-03-01T22:59:58.063Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 972
+  },
+  {
+    "name": "news-aggregator-skill",
+    "description": "\"Comprehensive news aggregator that fetches, filters, and deeply analyzes real-time content from 8 major sources: Hacker News, GitHub Trending, Product Hunt, 36Kr, Tencent News, WallStreetCN, V2EX, an",
+    "author": "cclank",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 142,
+    "size": 8756,
+    "updated": "2026-03-01T23:00:01.025Z",
+    "sourceUrl": "https://github.com/cclank/news-aggregator-skill",
+    "installs": 971
   }
 ]
