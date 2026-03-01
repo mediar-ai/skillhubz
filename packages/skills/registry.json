@@ -1202,7 +1202,7 @@
       "multi-agent"
     ],
     "category": "developer-tools",
-    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts \u2014 only one agent can use",
+    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts — only one agent can use",
     "lines": 66,
     "size": 2786,
     "updated": "2026-03-01T22:14:08.996Z"
@@ -1518,7 +1518,7 @@
   },
   {
     "name": "copywriting",
-    "description": "When the user wants to write, rewrite, or improve marketing copy for any page \u2014 including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
+    "description": "When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1550,7 +1550,7 @@
   },
   {
     "name": "pptx",
-    "description": "\"Use this skill any time a .pptx file is involved in any way \u2014 as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
+    "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
     "author": "anthropics",
     "version": "1.0.0",
     "tags": [
@@ -1726,7 +1726,7 @@
   },
   {
     "name": "page-cro",
-    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page \u2014 including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
+    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1900,7 +1900,7 @@
   },
   {
     "name": "form-cro",
-    "description": "When the user wants to optimize any form that is NOT signup/registration \u2014 including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use",
+    "description": "When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1948,7 +1948,7 @@
   },
   {
     "name": "free-tool-strategy",
-    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes \u2014 lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
+    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -2337,7 +2337,7 @@
   },
   {
     "name": "release-skills",
-    "description": "Universal release workflow. Auto-detects version files and changelogs. Supports Node.js, Python, Rust, Claude Plugin, and generic projects. Use when user says \"release\", \"\u53d1\u5e03\", \"new version\", \"bump ver",
+    "description": "Universal release workflow. Auto-detects version files and changelogs. Supports Node.js, Python, Rust, Claude Plugin, and generic projects. Use when user says \"release\", \"发布\", \"new version\", \"bump ver",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2353,7 +2353,7 @@
   },
   {
     "name": "baoyu-article-illustrator",
-    "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type \u00d7 Style two-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"gen",
+    "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type × Style two-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"gen",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2433,7 +2433,7 @@
   },
   {
     "name": "baoyu-xhs-images",
-    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"\u5c0f\u7ea2\u4e66\u56fe",
+    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"小红书图",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2481,7 +2481,7 @@
   },
   {
     "name": "baoyu-post-to-wechat",
-    "description": "Posts content to WeChat Official Account (\u5fae\u4fe1\u516c\u4f17\u53f7) via API or Chrome CDP. Supports article posting (\u6587\u7ae0) with HTML, markdown, or plain text input, and image-text posting (\u8d34\u56fe, formerly \u56fe\u6587) with multiple i",
+    "description": "Posts content to WeChat Official Account (微信公众号) via API or Chrome CDP. Supports article posting (文章) with HTML, markdown, or plain text input, and image-text posting (贴图, formerly 图文) with multiple i",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2561,7 +2561,7 @@
   },
   {
     "name": "baoyu-comic",
-    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"\u77e5\u8bc6\u6f2b\u753b\", ",
+    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"知识漫画\", ",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -3022,5 +3022,21 @@
     "updated": "2026-03-01T22:40:09.447Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4662
+  },
+  {
+    "name": "linkedin-content",
+    "description": "\"LinkedIn post writing with hook formulas, formatting rules, and engagement patterns. Covers post types, algorithm signals, character limits, and content pillars. Use for: LinkedIn posts, professional",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 232,
+    "size": 9614,
+    "updated": "2026-03-01T22:44:18.609Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4654
   }
 ]
