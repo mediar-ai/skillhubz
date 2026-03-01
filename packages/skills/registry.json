@@ -5618,5 +5618,21 @@
     "updated": "2026-03-01T22:57:42.088Z",
     "sourceUrl": "https://github.com/clerk/skills",
     "installs": 1248
+  },
+  {
+    "name": "threejs-lighting",
+    "description": "Three.js lighting - light types, shadows, environment lighting. Use when adding lights, configuring shadows, setting up IBL, or optimizing lighting performance.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 482,
+    "size": 12027,
+    "updated": "2026-03-01T22:57:44.907Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1248
   }
 ]
