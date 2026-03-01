@@ -2718,5 +2718,19 @@
     "lines": 241,
     "size": 10340,
     "updated": "2026-03-01T22:40:05.893Z"
+  },
+  {
+    "name": "case-study-writing",
+    "description": "\"B2B case study writing with STAR framework, data visualization, and research. Covers structure, customer quotes, metrics presentation, and distribution formats. Use for: customer success stories, por",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 236,
+    "size": 8339,
+    "updated": "2026-03-01T22:40:09.447Z"
   }
 ]
