@@ -1831,5 +1831,19 @@
     "lines": 228,
     "size": 5581,
     "updated": "2026-03-01T22:36:01.738Z"
+  },
+  {
+    "name": "popup-cro",
+    "description": "When the user wants to create or optimize popups, modals, overlays, slide-ins, or banners for conversion purposes. Also use when the user mentions \"exit intent,\" \"popup conversions,\" \"modal optimizati",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 454,
+    "size": 11501,
+    "updated": "2026-03-01T22:36:05.166Z"
   }
 ]
