@@ -5362,5 +5362,21 @@
     "updated": "2026-03-01T22:56:36.843Z",
     "sourceUrl": "https://github.com/sergiodxa/agent-skills",
     "installs": 1345
+  },
+  {
+    "name": "threejs-materials",
+    "description": "Three.js materials - PBR, basic, phong, shader materials, material properties. Use when styling meshes, working with textures, creating custom shaders, or optimizing material performance.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 521,
+    "size": 13418,
+    "updated": "2026-03-01T22:56:41.260Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1335
   }
 ]
