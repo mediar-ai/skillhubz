@@ -1649,5 +1649,19 @@
     "lines": 180,
     "size": 5004,
     "updated": "2026-03-01T22:35:06.204Z"
+  },
+  {
+    "name": "writing-skills",
+    "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+    "author": "obra",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "devops",
+    "excerpt": "---",
+    "lines": 656,
+    "size": 22379,
+    "updated": "2026-03-01T22:35:09.412Z"
   }
 ]
