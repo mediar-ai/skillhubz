@@ -5442,5 +5442,21 @@
     "updated": "2026-03-01T22:56:57.717Z",
     "sourceUrl": "https://github.com/clerk/skills",
     "installs": 1314
+  },
+  {
+    "name": "send-usdc",
+    "description": "Send USDC to an Ethereum address or ENS name. Use when you or the user want to send money, pay someone, transfer USDC, tip, donate, or send funds to a wallet address or .eth name. Covers phrases like ",
+    "author": "coinbase",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 87,
+    "size": 3840,
+    "updated": "2026-03-01T22:57:03.295Z",
+    "sourceUrl": "https://github.com/coinbase/agentic-wallet-skills",
+    "installs": 1299
   }
 ]
