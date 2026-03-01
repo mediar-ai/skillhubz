@@ -1383,5 +1383,19 @@
     "lines": 65,
     "size": 2577,
     "updated": "2026-03-01T22:33:50.300Z"
+  },
+  {
+    "name": "pdf",
+    "description": "Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rota",
+    "author": "anthropics",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 315,
+    "size": 8035,
+    "updated": "2026-03-01T22:33:53.772Z"
   }
 ]
