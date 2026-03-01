@@ -4210,5 +4210,21 @@
     "updated": "2026-03-01T22:48:44.921Z",
     "sourceUrl": "https://github.com/ibelick/ui-skills",
     "installs": 2467
+  },
+  {
+    "name": "vue-pinia-best-practices",
+    "description": "\"Pinia stores, state management patterns, store setup, and reactivity with stores.\"",
+    "author": "vuejs-ai",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 22,
+    "size": 1158,
+    "updated": "2026-03-01T22:48:50.092Z",
+    "sourceUrl": "https://github.com/vuejs-ai/skills",
+    "installs": 2439
   }
 ]
