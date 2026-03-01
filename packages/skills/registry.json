@@ -4914,5 +4914,21 @@
     "updated": "2026-03-01T22:54:47.402Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1658
+  },
+  {
+    "name": "php-pro",
+    "description": "Use when building PHP applications with modern PHP 8.3+ features, Laravel, or Symfony frameworks. Invoke for strict typing, PHPStan level 9, async patterns with Swoole, PSR standards.",
+    "author": "jeffallan",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 86,
+    "size": 3432,
+    "updated": "2026-03-01T22:54:54.194Z",
+    "sourceUrl": "https://github.com/jeffallan/claude-skills",
+    "installs": 1631
   }
 ]
