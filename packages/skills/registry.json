@@ -4130,5 +4130,21 @@
     "updated": "2026-03-01T22:48:28.085Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2589
+  },
+  {
+    "name": "parallel-task-spark",
+    "description": "> Only to be triggered by explicit /parallel-task-spark commands.",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 153,
+    "size": 4787,
+    "updated": "2026-03-01T22:48:30.885Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2589
   }
 ]
