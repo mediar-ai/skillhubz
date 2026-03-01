@@ -2676,5 +2676,19 @@
     "lines": 135,
     "size": 4174,
     "updated": "2026-03-01T22:39:55.790Z"
+  },
+  {
+    "name": "og-image-design",
+    "description": "\"Open Graph and social sharing image design with platform specs, text placement, and branding. Covers OG meta tags, Twitter cards, LinkedIn previews, and dynamic generation. Use for: social sharing im",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 218,
+    "size": 9707,
+    "updated": "2026-03-01T22:39:59.109Z"
   }
 ]
