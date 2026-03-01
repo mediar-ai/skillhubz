@@ -2055,5 +2055,19 @@
     "lines": 327,
     "size": 9117,
     "updated": "2026-03-01T22:37:11.507Z"
+  },
+  {
+    "name": "vitest",
+    "description": "Vitest fast unit testing framework powered by Vite with Jest-compatible API. Use when writing tests, mocking, configuring coverage, or working with test filtering and fixtures.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 53,
+    "size": 3308,
+    "updated": "2026-03-01T22:37:17.250Z"
   }
 ]
