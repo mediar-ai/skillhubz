@@ -5924,5 +5924,21 @@
     "updated": "2026-03-01T22:58:48.269Z",
     "sourceUrl": "https://github.com/apify/agent-skills",
     "installs": 1096
+  },
+  {
+    "name": "deep-research",
+    "description": "Conduct enterprise-grade research with multi-source synthesis, citation tracking, and verification. Use when user needs comprehensive analysis requiring 10+ sources, verified claims, or comparison of ",
+    "author": "199-biotechnologies",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 857,
+    "size": 33062,
+    "updated": "2026-03-01T22:58:51.277Z",
+    "sourceUrl": "https://github.com/199-biotechnologies/claude-deep-research-skill",
+    "installs": 1094
   }
 ]
