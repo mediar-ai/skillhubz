@@ -1327,5 +1327,19 @@
     "lines": 166,
     "size": 5013,
     "updated": "2026-03-01T22:33:33.896Z"
+  },
+  {
+    "name": "vercel-react-native-skills",
+    "description": "React Native and Expo best practices for building performant mobile apps. Use when building React Native components, optimizing list performance, implementing animations, or working with native module",
+    "author": "vercel-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 122,
+    "size": 4439,
+    "updated": "2026-03-01T22:33:38.416Z"
   }
 ]
