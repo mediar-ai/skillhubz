@@ -3262,5 +3262,21 @@
     "updated": "2026-03-01T22:45:05.731Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4609
+  },
+  {
+    "name": "twitter-thread-creation",
+    "description": "\"Twitter/X thread writing with hook tweets, thread structure, and engagement optimization. Covers tweet formatting, character limits, media attachments, and posting strategies. Use for: Twitter thread",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 262,
+    "size": 8774,
+    "updated": "2026-03-01T22:45:08.911Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4607
   }
 ]
