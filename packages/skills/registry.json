@@ -3986,5 +3986,21 @@
     "updated": "2026-03-01T22:47:54.241Z",
     "sourceUrl": "https://github.com/am-will/codex-skills",
     "installs": 2700
+  },
+  {
+    "name": "openai-docs-skill",
+    "description": "Query the OpenAI developer documentation via the OpenAI Docs MCP server using CLI (curl/jq). Use whenever a task involves the OpenAI API (Responses, Chat Completions, Realtime, etc.), OpenAI SDKs, Cha",
+    "author": "am-will",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 47,
+    "size": 2068,
+    "updated": "2026-03-01T22:47:57.095Z",
+    "sourceUrl": "https://github.com/am-will/codex-skills",
+    "installs": 2700
   }
 ]
