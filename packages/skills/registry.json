@@ -5090,5 +5090,21 @@
     "updated": "2026-03-01T22:55:28.840Z",
     "sourceUrl": "https://github.com/github/awesome-copilot",
     "installs": 1529
+  },
+  {
+    "name": "nuxt-ui",
+    "description": "Use when building styled UI with @nuxt/ui v4 components - create forms with validation, implement data tables with sorting, build modal dialogs and overlays, configure Tailwind Variants theming. Use v",
+    "author": "onmax",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 95,
+    "size": 4286,
+    "updated": "2026-03-01T22:55:31.784Z",
+    "sourceUrl": "https://github.com/onmax/nuxt-skills",
+    "installs": 1528
   }
 ]
