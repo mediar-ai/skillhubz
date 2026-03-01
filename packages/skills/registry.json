@@ -5250,5 +5250,21 @@
     "updated": "2026-03-01T22:56:06.596Z",
     "sourceUrl": "https://github.com/bmad-labs/skills",
     "installs": 1398
+  },
+  {
+    "name": "ultrathink",
+    "description": "Display colorful ANSI art of the word \"ultrathink\". Use when the user says \"ultrathink\" or invokes /ultrathink.",
+    "author": "intellectronica",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 15,
+    "size": 734,
+    "updated": "2026-03-01T22:56:09.528Z",
+    "sourceUrl": "https://github.com/intellectronica/agent-skills",
+    "installs": 1390
   }
 ]
