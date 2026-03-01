@@ -3650,5 +3650,21 @@
     "updated": "2026-03-01T22:46:32.487Z",
     "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
     "installs": 3490
+  },
+  {
+    "name": "ai-seo",
+    "description": "\"When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine opt",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 399,
+    "size": 17187,
+    "updated": "2026-03-01T22:46:36.020Z",
+    "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
+    "installs": 3485
   }
 ]
