@@ -6009,5 +6009,21 @@
     "updated": "2026-03-01T22:59:09.269Z",
     "sourceUrl": "https://github.com/czlonkowski/n8n-skills",
     "installs": 1046
+  },
+  {
+    "name": "core-web-vitals",
+    "description": "Optimize Core Web Vitals (LCP, INP, CLS) for better page experience and search ranking. Use when asked to \"improve Core Web Vitals\", \"fix LCP\", \"reduce CLS\", \"optimize INP\", \"page experience optimizat",
+    "author": "addyosmani",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 442,
+    "size": 11588,
+    "updated": "2026-03-01T22:59:13.375Z",
+    "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
+    "installs": 1041
   }
 ]
