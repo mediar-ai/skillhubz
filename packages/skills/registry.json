@@ -2340,5 +2340,19 @@
     "lines": 307,
     "size": 12690,
     "updated": "2026-03-01T22:38:30.177Z"
+  },
+  {
+    "name": "pinia",
+    "description": "Pinia official Vue state management library, type-safe and extensible. Use when defining stores, working with state/getters/actions, or implementing store patterns in Vue apps.",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 60,
+    "size": 2719,
+    "updated": "2026-03-01T22:38:33.521Z"
   }
 ]
