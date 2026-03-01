@@ -1355,5 +1355,19 @@
     "lines": 387,
     "size": 14374,
     "updated": "2026-03-01T22:33:42.040Z"
+  },
+  {
+    "name": "seo-audit",
+    "description": "When the user wants to audit, review, or diagnose SEO issues on their site. Also use when the user mentions \"SEO audit,\" \"technical SEO,\" \"why am I not ranking,\" \"SEO issues,\" \"on-page SEO,\" \"meta tag",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 413,
+    "size": 10279,
+    "updated": "2026-03-01T22:33:46.760Z"
   }
 ]
