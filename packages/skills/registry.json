@@ -4626,5 +4626,21 @@
     "updated": "2026-03-01T22:51:35.959Z",
     "sourceUrl": "https://github.com/github/awesome-copilot",
     "installs": 1864
+  },
+  {
+    "name": "vue-jsx-best-practices",
+    "description": "JSX syntax in Vue (e.g., class vs className, JSX plugin config).",
+    "author": "vuejs-ai",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 13,
+    "size": 391,
+    "updated": "2026-03-01T22:51:38.870Z",
+    "sourceUrl": "https://github.com/vuejs-ai/skills",
+    "installs": 1861
   }
 ]
