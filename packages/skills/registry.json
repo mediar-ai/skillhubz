@@ -6111,5 +6111,21 @@
     "updated": "2026-03-01T22:59:35.984Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 993
+  },
+  {
+    "name": "workers-best-practices",
+    "description": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-pat",
+    "author": "cloudflare",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 128,
+    "size": 7044,
+    "updated": "2026-03-01T22:59:38.946Z",
+    "sourceUrl": "https://github.com/cloudflare/skills",
+    "installs": 989
   }
 ]
