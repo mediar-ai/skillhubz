@@ -5154,5 +5154,21 @@
     "updated": "2026-03-01T22:55:44.806Z",
     "sourceUrl": "https://github.com/jeffallan/claude-skills",
     "installs": 1469
+  },
+  {
+    "name": "e2e-testing",
+    "description": ">- End-to-end testing patterns with Playwright for full-stack Python/React applications. Use when writing E2E tests for complete user workflows (login, CRUD, navigation), critical path regression test",
+    "author": "hieutrtr",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "testing",
+    "excerpt": "---",
+    "lines": 419,
+    "size": 12126,
+    "updated": "2026-03-01T22:55:47.601Z",
+    "sourceUrl": "https://github.com/hieutrtr/ai1-skills",
+    "installs": 1458
   }
 ]
