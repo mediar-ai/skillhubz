@@ -2116,5 +2116,19 @@
     "lines": 85,
     "size": 2448,
     "updated": "2026-03-01T22:37:28.676Z"
+  },
+  {
+    "name": "seo-geo",
+    "description": "SEO & GEO (Generative Engine Optimization) for websites. Analyze keywords, generate schema markup, optimize for AI search engines (ChatGPT, Perplexity, Gemini, Copilot, Claude) and traditional search ",
+    "author": "resciencelab",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 251,
+    "size": 8348,
+    "updated": "2026-03-01T22:37:33.273Z"
   }
 ]
