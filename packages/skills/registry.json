@@ -3310,5 +3310,21 @@
     "updated": "2026-03-01T22:45:15.708Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4596
+  },
+  {
+    "name": "google-veo",
+    "description": "\"Generate videos with Google Veo models via inference.sh CLI. Models: Veo 3.1, Veo 3.1 Fast, Veo 3, Veo 3 Fast, Veo 2. Capabilities: text-to-video, cinematic output, high quality video generation. Tri",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 125,
+    "size": 3623,
+    "updated": "2026-03-01T22:45:19.058Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4587
   }
 ]
