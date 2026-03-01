@@ -2158,5 +2158,19 @@
     "lines": 156,
     "size": 5261,
     "updated": "2026-03-01T22:37:43.484Z"
+  },
+  {
+    "name": "nestjs-best-practices",
+    "description": "NestJS best practices and architecture patterns for building production-ready applications. This skill should be used when writing, reviewing, or refactoring NestJS code to ensure proper patterns for ",
+    "author": "kadajett",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 131,
+    "size": 4641,
+    "updated": "2026-03-01T22:37:49.508Z"
   }
 ]
