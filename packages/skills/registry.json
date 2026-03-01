@@ -3746,5 +3746,21 @@
     "updated": "2026-03-01T22:46:51.944Z",
     "sourceUrl": "https://github.com/askyourpdf/ai-pdf-filler",
     "installs": 3160
+  },
+  {
+    "name": "vue-router-best-practices",
+    "description": "\"Vue Router 4 patterns, navigation guards, route params, and route-component lifecycle interactions.\"",
+    "author": "antfu",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 24,
+    "size": 1476,
+    "updated": "2026-03-01T22:46:54.976Z",
+    "sourceUrl": "https://github.com/antfu/skills",
+    "installs": 3144
   }
 ]
