@@ -3778,5 +3778,21 @@
     "updated": "2026-03-01T22:46:58.120Z",
     "sourceUrl": "https://github.com/coreyhaines31/marketingskills",
     "installs": 3103
+  },
+  {
+    "name": "context7",
+    "description": "Retrieve up-to-date documentation for software libraries, frameworks, and components via the Context7 API. This skill should be used when looking up documentation for any programming library or framew",
+    "author": "intellectronica",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 86,
+    "size": 3166,
+    "updated": "2026-03-01T22:47:01.183Z",
+    "sourceUrl": "https://github.com/intellectronica/agent-skills",
+    "installs": 3082
   }
 ]
