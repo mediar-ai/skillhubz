@@ -5656,5 +5656,21 @@
     "updated": "2026-03-01T22:57:47.809Z",
     "sourceUrl": "https://github.com/waynesutton/convexskills",
     "installs": 1247
+  },
+  {
+    "name": "monitoring-operations",
+    "description": "Use when setting up metrics, alarms, or troubleshooting missing data in OCI Monitoring. Covers metric namespace confusion, alarm threshold gotchas, log collection setup, and common monitoring gaps.",
+    "author": "acedergren",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 184,
+    "size": 6178,
+    "updated": "2026-03-01T22:57:50.933Z",
+    "sourceUrl": "https://github.com/acedergren/oci-agent-skills",
+    "installs": 1244
   }
 ]
