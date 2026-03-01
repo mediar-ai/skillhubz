@@ -2690,5 +2690,19 @@
     "lines": 218,
     "size": 9707,
     "updated": "2026-03-01T22:39:59.109Z"
+  },
+  {
+    "name": "landing-page-design",
+    "description": "\"Landing page conversion optimization with layout rules, hero section design, and CTA psychology. Covers above-the-fold formula, social proof placement, mobile design, and F-pattern reading. Use for: ",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 244,
+    "size": 10018,
+    "updated": "2026-03-01T22:40:02.494Z"
   }
 ]
