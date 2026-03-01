@@ -1467,5 +1467,19 @@
     "lines": 591,
     "size": 20056,
     "updated": "2026-03-01T22:34:11.307Z"
+  },
+  {
+    "name": "xlsx",
+    "description": "\"Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .csv, or .tsv file (e.g., ad",
+    "author": "anthropics",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 292,
+    "size": 11455,
+    "updated": "2026-03-01T22:34:14.890Z"
   }
 ]
