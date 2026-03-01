@@ -1985,5 +1985,19 @@
     "lines": 484,
     "size": 11211,
     "updated": "2026-03-01T22:36:43.654Z"
+  },
+  {
+    "name": "enhance-prompt",
+    "description": "Transforms vague UI ideas into polished, Stitch-optimized prompts. Enhances specificity, adds UI/UX keywords, injects design system context, and structures output for better generation results.",
+    "author": "google-labs-code",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 205,
+    "size": 6620,
+    "updated": "2026-03-01T22:36:51.512Z"
   }
 ]
