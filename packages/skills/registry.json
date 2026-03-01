@@ -4466,5 +4466,21 @@
     "updated": "2026-03-01T22:50:52.556Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 2092
+  },
+  {
+    "name": "tanstack-start-best-practices",
+    "description": "TanStack Start best practices for full-stack React applications. Server functions, middleware, SSR, authentication, and deployment patterns. Activate when building full-stack apps with TanStack Start.",
+    "author": "deckardger",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 110,
+    "size": 4137,
+    "updated": "2026-03-01T22:51:04.637Z",
+    "sourceUrl": "https://github.com/deckardger/tanstack-agent-skills",
+    "installs": 2051
   }
 ]
