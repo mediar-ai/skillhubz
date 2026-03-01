@@ -1943,5 +1943,19 @@
     "lines": 140,
     "size": 3291,
     "updated": "2026-03-01T22:36:33.808Z"
+  },
+  {
+    "name": "widgets-ui",
+    "description": "\"Declarative UI widgets from JSON for React/Next.js from ui.inference.sh. Render rich interactive UIs from structured agent responses. Capabilities: forms, buttons, cards, layouts, inputs, selects, ch",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 173,
+    "size": 4948,
+    "updated": "2026-03-01T22:36:36.962Z"
   }
 ]
