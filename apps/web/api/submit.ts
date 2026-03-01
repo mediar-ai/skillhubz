@@ -12,6 +12,8 @@ interface SubmitRequest {
   content: string;
   authorName?: string;
   authorGithub?: string;
+  sourceUrl?: string;
+  installs?: number;
 }
 
 interface RegistryEntry {
@@ -25,6 +27,8 @@ interface RegistryEntry {
   lines: number;
   size: number;
   updated: string;
+  sourceUrl?: string;
+  installs?: number;
 }
 
 function slugify(name: string): string {
@@ -128,7 +132,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, description, category, tags, content, authorName, authorGithub } = req.body as SubmitRequest;
+    const { name, description, category, tags, content, authorName, authorGithub, sourceUrl, installs } = req.body as SubmitRequest;
 
     // Validate required fields
     if (!name || !description || !category || !content) {
@@ -171,6 +175,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       lines: content.split('\n').length,
       size: content.length,
       updated: new Date().toISOString(),
+      ...(sourceUrl && { sourceUrl }),
+      ...(typeof installs === 'number' && installs > 0 && { installs }),
     };
 
     // Add to registry
