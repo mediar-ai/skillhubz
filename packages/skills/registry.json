@@ -3214,5 +3214,21 @@
     "updated": "2026-03-01T22:44:55.184Z",
     "sourceUrl": "https://github.com/inference-sh-9/skills",
     "installs": 4615
+  },
+  {
+    "name": "ai-content-pipeline",
+    "description": "\"Build multi-step AI content creation pipelines combining image, video, audio, and text. Workflow examples: generate image -> animate -> add voiceover -> merge with music. Tools: FLUX, Veo, Kokoro TTS",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 253,
+    "size": 7569,
+    "updated": "2026-03-01T22:44:58.660Z",
+    "sourceUrl": "https://github.com/inference-sh-9/skills",
+    "installs": 4614
   }
 ]
