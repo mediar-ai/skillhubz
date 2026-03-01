@@ -2396,5 +2396,19 @@
     "lines": 244,
     "size": 7987,
     "updated": "2026-03-01T22:38:43.997Z"
+  },
+  {
+    "name": "newsletter-curation",
+    "description": "\"Newsletter curation with content sourcing, editorial structure, and subscriber growth strategies. Covers issue formatting, link roundups, commentary style, and sending cadence. Use for: email newslet",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 294,
+    "size": 9597,
+    "updated": "2026-03-01T22:38:47.557Z"
   }
 ]
