@@ -5940,5 +5940,26 @@
     "updated": "2026-03-01T22:58:51.277Z",
     "sourceUrl": "https://github.com/199-biotechnologies/claude-deep-research-skill",
     "installs": 1094
+  },
+  {
+    "name": "convex-realtime",
+    "description": "Patterns for building reactive apps including subscription management, optimistic updates, cache behavior, and paginated queries with cursor-based loading",
+    "author": "waynesutton",
+    "version": "1.0.0",
+    "tags": [
+      "[convex",
+      "realtime",
+      "subscriptions",
+      "optimistic-updates",
+      "pagination]",
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 444,
+    "size": 11924,
+    "updated": "2026-03-01T22:58:54.205Z",
+    "sourceUrl": "https://github.com/waynesutton/convexskills",
+    "installs": 1090
   }
 ]
