@@ -1593,5 +1593,19 @@
     "lines": 232,
     "size": 6805,
     "updated": "2026-03-01T22:34:52.497Z"
+  },
+  {
+    "name": "page-cro",
+    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
+    "author": "coreyhaines31",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 183,
+    "size": 5776,
+    "updated": "2026-03-01T22:34:55.892Z"
   }
 ]
