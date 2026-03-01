@@ -4354,5 +4354,21 @@
     "updated": "2026-03-01T22:49:22.170Z",
     "sourceUrl": "https://github.com/ibelick/ui-skills",
     "installs": 2229
+  },
+  {
+    "name": "audit",
+    "description": "> Run a comprehensive SEO audit on a website covering technical health, on-page optimization, content quality, and backlink profile. Use when the user asks for an SEO audit, site review, SEO health ch",
+    "author": "calm-north",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 322,
+    "size": 13226,
+    "updated": "2026-03-01T22:49:26.301Z",
+    "sourceUrl": "https://github.com/calm-north/seojuice-skills",
+    "installs": 2222
   }
 ]
