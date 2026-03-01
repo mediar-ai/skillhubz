@@ -2466,5 +2466,19 @@
     "lines": 340,
     "size": 9943,
     "updated": "2026-03-01T22:39:01.454Z"
+  },
+  {
+    "name": "ai-marketing-videos",
+    "description": "\"Create AI marketing videos for ads, promos, product launches, and brand content. Models: Veo, Seedance, Wan, FLUX for visuals, Kokoro for voiceover. Types: product demos, testimonials, explainers, so",
+    "author": "inference-sh-9",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 293,
+    "size": 8755,
+    "updated": "2026-03-01T22:39:04.937Z"
   }
 ]
