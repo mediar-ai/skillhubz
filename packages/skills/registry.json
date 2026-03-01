@@ -3810,5 +3810,21 @@
     "updated": "2026-03-01T22:47:04.137Z",
     "sourceUrl": "https://github.com/antfu/skills",
     "installs": 3076
+  },
+  {
+    "name": "neon-postgres",
+    "description": "Guides and best practices for working with Neon Serverless Postgres. Covers getting started, local development with Neon, choosing a connection method, Neon features, authentication (@neondatabase/aut",
+    "author": "neondatabase",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "security",
+    "excerpt": "---",
+    "lines": 187,
+    "size": 7396,
+    "updated": "2026-03-01T22:47:07.246Z",
+    "sourceUrl": "https://github.com/neondatabase/agent-skills",
+    "installs": 3063
   }
 ]
