@@ -4962,5 +4962,21 @@
     "updated": "2026-03-01T22:55:00.213Z",
     "sourceUrl": "https://github.com/czlonkowski/n8n-skills",
     "installs": 1602
+  },
+  {
+    "name": "seo",
+    "description": "Optimize for search engine visibility and ranking. Use when asked to \"improve SEO\", \"optimize for search\", \"fix meta tags\", \"add structured data\", \"sitemap optimization\", or \"search engine optimizatio",
+    "author": "addyosmani",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "data",
+    "excerpt": "---",
+    "lines": 514,
+    "size": 11207,
+    "updated": "2026-03-01T22:55:03.349Z",
+    "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
+    "installs": 1600
   }
 ]
