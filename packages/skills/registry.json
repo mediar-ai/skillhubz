@@ -4578,5 +4578,21 @@
     "updated": "2026-03-01T22:51:25.315Z",
     "sourceUrl": "https://github.com/analogjs/angular-skills",
     "installs": 1962
+  },
+  {
+    "name": "vue-options-api-best-practices",
+    "description": "\"Vue 3 Options API style (data(), methods, this context). Each reference shows Options API solution only.\"",
+    "author": "vuejs-ai",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 24,
+    "size": 1827,
+    "updated": "2026-03-01T22:51:28.340Z",
+    "sourceUrl": "https://github.com/vuejs-ai/skills",
+    "installs": 1937
   }
 ]
