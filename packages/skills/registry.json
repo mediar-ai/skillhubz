@@ -6366,5 +6366,21 @@
     "updated": "2026-03-01T23:00:28.617Z",
     "sourceUrl": "https://github.com/apollographql/skills",
     "installs": 940
+  },
+  {
+    "name": "manimce-best-practices",
+    "description": "| Trigger when: (1) User mentions \"manim\" or \"Manim Community\" or \"ManimCE\", (2) Code contains `from manim import *`, (3) User runs `manim` CLI commands, (4) Working with Scene, MathTex, Create(), or ",
+    "author": "adithya-s-k",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 152,
+    "size": 5926,
+    "updated": "2026-03-01T23:00:31.503Z",
+    "sourceUrl": "https://github.com/adithya-s-k/manim_skill",
+    "installs": 939
   }
 ]
