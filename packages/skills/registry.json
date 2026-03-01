@@ -2069,5 +2069,19 @@
     "lines": 53,
     "size": 3308,
     "updated": "2026-03-01T22:37:17.250Z"
+  },
+  {
+    "name": "next-cache-components",
+    "description": "Next.js 16 Cache Components - PPR, use cache directive, cacheLife, cacheTag, updateTag",
+    "author": "vercel-labs",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 412,
+    "size": 9362,
+    "updated": "2026-03-01T22:37:22.039Z"
   }
 ]
