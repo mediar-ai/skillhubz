@@ -4658,5 +4658,21 @@
     "updated": "2026-03-01T22:51:41.992Z",
     "sourceUrl": "https://github.com/boristane/agent-skills",
     "installs": 1857
+  },
+  {
+    "name": "typescript-expert",
+    "description": "TypeScript and JavaScript expert with deep knowledge of type-level programming, performance optimization, monorepo management, migration strategies, and modern tooling.",
+    "author": "sickn33",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 427,
+    "size": 14444,
+    "updated": "2026-03-01T22:51:45.104Z",
+    "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
+    "installs": 1850
   }
 ]
