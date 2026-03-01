@@ -1873,5 +1873,19 @@
     "lines": 149,
     "size": 4270,
     "updated": "2026-03-01T22:36:12.188Z"
+  },
+  {
+    "name": "stitch-loop",
+    "description": "Teaches agents to iteratively build websites using Stitch with an autonomous baton-passing loop pattern",
+    "author": "google-labs-code",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 204,
+    "size": 7317,
+    "updated": "2026-03-01T22:36:20.326Z"
   }
 ]
