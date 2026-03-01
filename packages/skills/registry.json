@@ -5860,5 +5860,21 @@
     "updated": "2026-03-01T22:58:33.788Z",
     "sourceUrl": "https://github.com/callstackincubator/agent-skills",
     "installs": 1126
+  },
+  {
+    "name": "obsidian-cli",
+    "description": "Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development with commands to reload plugins,",
+    "author": "kepano",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 107,
+    "size": 3177,
+    "updated": "2026-03-01T22:58:39.218Z",
+    "sourceUrl": "https://github.com/kepano/obsidian-skills",
+    "installs": 1115
   }
 ]
