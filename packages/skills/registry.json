@@ -5122,5 +5122,21 @@
     "updated": "2026-03-01T22:55:36.142Z",
     "sourceUrl": "https://github.com/op7418/youtube-clipper-skill",
     "installs": 1515
+  },
+  {
+    "name": "threejs-shaders",
+    "description": "Three.js shaders - GLSL, ShaderMaterial, uniforms, custom effects. Use when creating custom visual effects, modifying vertices, writing fragment shaders, or extending built-in materials.",
+    "author": "cloudai-x",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 643,
+    "size": 14056,
+    "updated": "2026-03-01T22:55:40.345Z",
+    "sourceUrl": "https://github.com/cloudai-x/threejs-skills",
+    "installs": 1482
   }
 ]
