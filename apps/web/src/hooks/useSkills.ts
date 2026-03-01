@@ -16,6 +16,8 @@ interface RegistrySkill {
   lines: number;
   size: number;
   updated: string;
+  sourceUrl?: string;
+  installs?: number;
 }
 
 interface TrackingStats {
@@ -26,7 +28,7 @@ interface TrackingStats {
 }
 
 function transformSkill(registrySkill: RegistrySkill, installs: Record<string, number>, stars: Record<string, number>): Skill {
-  const installCount = installs[registrySkill.name] || 0;
+  const installCount = installs[registrySkill.name] || registrySkill.installs || 0;
   const starCount = stars[registrySkill.name] || 0;
   return {
     id: registrySkill.name,
@@ -47,6 +49,7 @@ function transformSkill(registrySkill: RegistrySkill, installs: Record<string, n
     updatedAt: registrySkill.updated,
     verified: true,
     featured: ['gmail-reply', 'github-pr-review', 'slack-automator'].includes(registrySkill.name),
+    sourceUrl: registrySkill.sourceUrl,
   };
 }
 

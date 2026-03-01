@@ -14,6 +14,7 @@ export interface Skill {
   updatedAt: string;
   featured?: boolean;
   verified?: boolean;
+  sourceUrl?: string;
 }
 
 export interface Author {
