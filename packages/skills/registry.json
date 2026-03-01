@@ -6175,5 +6175,21 @@
     "updated": "2026-03-01T22:59:51.843Z",
     "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills",
     "installs": 977
+  },
+  {
+    "name": "best-practices",
+    "description": "Apply modern web development best practices for security, compatibility, and code quality. Use when asked to \"apply best practices\", \"security audit\", \"modernize code\", \"code quality review\", or \"chec",
+    "author": "addyosmani",
+    "version": "1.0.0",
+    "tags": [
+      "skills.sh"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 584,
+    "size": 12036,
+    "updated": "2026-03-01T22:59:55.192Z",
+    "sourceUrl": "https://github.com/addyosmani/web-quality-skills",
+    "installs": 974
   }
 ]
