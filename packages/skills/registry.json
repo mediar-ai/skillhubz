@@ -6486,5 +6486,28 @@
     "lines": 65,
     "size": 3512,
     "updated": "2026-03-04T02:32:49.492Z"
+  },
+  {
+    "name": "new-product-website",
+    "description": "End-to-end workflow for launching a new product landing page — scaffolding, theming, analytics, waitlist, domain, SEO, and deployment.",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "nextjs",
+      "landing-page",
+      "vercel",
+      "posthog",
+      "resend",
+      "waitlist",
+      "seo",
+      "deployment",
+      "react",
+      "tailwind"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 205,
+    "size": 6859,
+    "updated": "2026-03-04T02:33:06.049Z"
   }
 ]
