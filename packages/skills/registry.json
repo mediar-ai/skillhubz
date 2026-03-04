@@ -6382,5 +6382,25 @@
     "updated": "2026-03-01T23:00:31.503Z",
     "sourceUrl": "https://github.com/adithya-s-k/manim_skill",
     "installs": 939
+  },
+  {
+    "name": "whatsapp-web-decrypt",
+    "description": "Decrypt WhatsApp Web messages via live crypto.subtle interception with Playwright. Captures AES-CBC encrypted messages, parses protobuf output, extracts sender metadata. Also analyzes IndexedDB for co",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "whatsapp",
+      "decrypt",
+      "playwright",
+      "browser",
+      "indexeddb",
+      "crypto",
+      "reverse-engineering"
+    ],
+    "category": "security",
+    "excerpt": "Decrypt and read WhatsApp Web messages via live browser interception using Playwright. Intercepts `crypto.subtle.decrypt` to capture plaintext message",
+    "lines": 290,
+    "size": 11437,
+    "updated": "2026-03-04T01:57:22.519Z"
   }
 ]
