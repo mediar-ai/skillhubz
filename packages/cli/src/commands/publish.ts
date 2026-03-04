@@ -96,17 +96,17 @@ export async function publish(path?: string): Promise<void> {
     const data = await response.json();
 
     if (response.ok && data.success) {
-      spinner.succeed(chalk.green('Skill published!'));
+      spinner.succeed(chalk.green(data.updated ? 'Skill updated!' : 'Skill published!'));
       console.log();
       console.log(`  URL: ${chalk.cyan(data.skill.url)}`);
       console.log();
-      console.log(chalk.gray('Your skill is now live and available to everyone.'));
+      console.log(chalk.gray(data.updated ? 'Your skill has been updated.' : 'Your skill is now live and available to everyone.'));
     } else {
       spinner.fail(chalk.red(`Failed to publish: ${data.error || 'Unknown error'}`));
 
-      if (data.error?.includes('already exists')) {
+      if (response.status === 403) {
         console.log();
-        console.log(chalk.gray('A skill with this name already exists. Try a different name.'));
+        console.log(chalk.gray('This skill belongs to another author. Check the author field in manifest.json.'));
       }
 
       process.exit(1);

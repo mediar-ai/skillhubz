@@ -70,7 +70,7 @@ export function SubmitPage() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitResult, setSubmitResult] = useState<{ success: boolean; slug?: string; error?: string } | null>(null);
+  const [submitResult, setSubmitResult] = useState<{ success: boolean; slug?: string; error?: string; updated?: boolean } | null>(null);
 
   const steps: { id: Step; label: string; icon: React.ReactNode }[] = [
     { id: 'info', label: 'Basic Info', icon: <FileText size={18} /> },
@@ -142,7 +142,7 @@ export function SubmitPage() {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setSubmitResult({ success: true, slug: data.skill.slug });
+        setSubmitResult({ success: true, slug: data.skill.slug, updated: data.updated });
         trackSkillSubmitted(data.skill.slug, formData.category, true);
       } else {
         setSubmitResult({ success: false, error: data.error || 'Failed to submit skill' });
@@ -166,8 +166,8 @@ export function SubmitPage() {
             animate={{ opacity: 1, scale: 1 }}
           >
             <CheckCircle size={64} className={styles.successIcon} />
-            <h1>Skill Published!</h1>
-            <p>Your skill is now live on skillhu.bz</p>
+            <h1>{submitResult.updated ? 'Skill Updated!' : 'Skill Published!'}</h1>
+            <p>{submitResult.updated ? 'Your skill has been updated on skillhu.bz' : 'Your skill is now live on skillhu.bz'}</p>
             <div className={styles.successActions}>
               <Link to={`/skill/${submitResult.slug}`} className="btn btn-primary">
                 View Your Skill

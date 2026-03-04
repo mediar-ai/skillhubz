@@ -38,6 +38,13 @@ function slugify(name: string): string {
     .replace(/^-|-$/g, '');
 }
 
+function bumpPatch(version: string): string {
+  const parts = version.split('.');
+  if (parts.length !== 3) return '1.0.1';
+  const patch = parseInt(parts[2], 10);
+  return `${parts[0]}.${parts[1]}.${isNaN(patch) ? 1 : patch + 1}`;
+}
+
 function extractExcerpt(content: string): string {
   // Get first paragraph after the title
   const lines = content.split('\n');
@@ -148,49 +155,78 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Invalid skill name' });
     }
 
-    // Check if skill already exists
-    const existingSkill = await getFileContent(`${SKILLS_PATH}/${slug}/skill.md`, token);
-    if (existingSkill) {
-      return res.status(409).json({ error: 'A skill with this name already exists' });
-    }
+    // Get current registry and check if skill already exists (in parallel)
+    const [existingSkill, registryData] = await Promise.all([
+      getFileContent(`${SKILLS_PATH}/${slug}/skill.md`, token),
+      getFileContent(REGISTRY_PATH, token),
+    ]);
 
-    // Get current registry
-    const registryData = await getFileContent(REGISTRY_PATH, token);
     if (!registryData) {
       return res.status(500).json({ error: 'Failed to read registry' });
     }
 
     const registry: RegistryEntry[] = JSON.parse(registryData.content);
-
-    // Create new registry entry
     const author = authorGithub || authorName || 'anonymous';
-    const newEntry: RegistryEntry = {
-      name: slug,
-      description: description.slice(0, 200),
-      author,
-      version: '1.0.0',
-      tags: Array.isArray(tags) ? tags.slice(0, 10) : [],
-      category: normalizedCategory,
-      excerpt: extractExcerpt(content),
-      lines: content.split('\n').length,
-      size: content.length,
-      updated: new Date().toISOString(),
-      ...(sourceUrl && { sourceUrl }),
-      ...(typeof installs === 'number' && installs > 0 && { installs }),
-    };
+    const isUpdate = !!existingSkill;
 
-    // Add to registry
-    registry.push(newEntry);
+    // If skill exists, verify author matches
+    if (isUpdate) {
+      const existingEntry = registry.find((e) => e.name === slug);
+      if (existingEntry && existingEntry.author !== author) {
+        return res.status(403).json({ error: 'This skill belongs to a different author' });
+      }
+    }
 
-    // Create skill.md file
-    const skillCreated = await createOrUpdateFile(
+    if (isUpdate) {
+      // Update existing registry entry in-place
+      const idx = registry.findIndex((e) => e.name === slug);
+      if (idx !== -1) {
+        const existing = registry[idx];
+        registry[idx] = {
+          name: slug,
+          description: description.slice(0, 200),
+          author,
+          version: bumpPatch(existing.version),
+          tags: Array.isArray(tags) ? tags.slice(0, 10) : [],
+          category: normalizedCategory,
+          excerpt: extractExcerpt(content),
+          lines: content.split('\n').length,
+          size: content.length,
+          updated: new Date().toISOString(),
+          ...(existing.sourceUrl && { sourceUrl: existing.sourceUrl }),
+          ...(sourceUrl && { sourceUrl }),
+          ...(typeof existing.installs === 'number' && existing.installs > 0 && { installs: existing.installs }),
+        };
+      }
+    } else {
+      // Create new registry entry
+      const newEntry: RegistryEntry = {
+        name: slug,
+        description: description.slice(0, 200),
+        author,
+        version: '1.0.0',
+        tags: Array.isArray(tags) ? tags.slice(0, 10) : [],
+        category: normalizedCategory,
+        excerpt: extractExcerpt(content),
+        lines: content.split('\n').length,
+        size: content.length,
+        updated: new Date().toISOString(),
+        ...(sourceUrl && { sourceUrl }),
+        ...(typeof installs === 'number' && installs > 0 && { installs }),
+      };
+      registry.push(newEntry);
+    }
+
+    // Create or update skill.md file
+    const skillSaved = await createOrUpdateFile(
       `${SKILLS_PATH}/${slug}/skill.md`,
       content,
-      `Add skill: ${slug}`,
-      token
+      isUpdate ? `Update skill: ${slug}` : `Add skill: ${slug}`,
+      token,
+      existingSkill?.sha
     );
 
-    if (!skillCreated) {
+    if (!skillSaved) {
       return res.status(500).json({ error: 'Failed to create skill file' });
     }
 
@@ -198,7 +234,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const registryUpdated = await createOrUpdateFile(
       REGISTRY_PATH,
       JSON.stringify(registry, null, 2) + '\n',
-      `Add ${slug} to registry`,
+      isUpdate ? `Update ${slug} in registry` : `Add ${slug} to registry`,
       token,
       registryData.sha
     );
@@ -213,6 +249,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         slug,
         url: `https://skillhu.bz/skill/${slug}`,
       },
+      updated: isUpdate,
     });
   } catch (error) {
     console.error('Submit error:', error);
