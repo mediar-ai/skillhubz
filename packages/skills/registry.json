@@ -6550,5 +6550,24 @@
     "lines": 259,
     "size": 12087,
     "updated": "2026-03-04T02:33:22.719Z"
+  },
+  {
+    "name": "skill-publisher",
+    "description": "Publish a Claude Code skill to both skillhu.bz and skills.sh marketplaces with one command",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "claude-code",
+      "skills",
+      "publishing",
+      "marketplace",
+      "cli",
+      "automation"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 122,
+    "size": 3635,
+    "updated": "2026-03-04T02:34:59.297Z"
   }
 ]
