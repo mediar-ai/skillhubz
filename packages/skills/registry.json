@@ -6509,5 +6509,24 @@
     "lines": 205,
     "size": 6859,
     "updated": "2026-03-04T02:33:06.049Z"
+  },
+  {
+    "name": "skill-registry",
+    "description": "Scan, inventory, and track all Claude Code skills (local, global, project, published). Shows publish status on skillhu.bz and skills.sh, install counts, and authorship.",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "claude-code",
+      "skills",
+      "registry",
+      "inventory",
+      "management",
+      "tracking"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 209,
+    "size": 7441,
+    "updated": "2026-03-04T02:33:20.671Z"
   }
 ]
