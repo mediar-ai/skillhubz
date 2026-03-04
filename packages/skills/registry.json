@@ -6421,5 +6421,25 @@
     "lines": 65,
     "size": 2701,
     "updated": "2026-03-04T02:32:24.557Z"
+  },
+  {
+    "name": "x-video-post",
+    "description": "Post a video with text to X (Twitter) using hybrid Playwright + macOS-use workflow for reliable file uploads",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "x",
+      "twitter",
+      "video",
+      "social-media",
+      "playwright",
+      "macos-use",
+      "automation"
+    ],
+    "category": "content",
+    "excerpt": "---",
+    "lines": 72,
+    "size": 3197,
+    "updated": "2026-03-04T02:32:28.735Z"
   }
 ]
