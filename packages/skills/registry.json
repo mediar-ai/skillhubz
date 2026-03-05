@@ -6533,21 +6533,21 @@
     "name": "social-autoposter",
     "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, track engagement stats.",
     "author": "m13v",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "tags": [
       "social-media",
-      "automation",
       "reddit",
       "twitter",
       "linkedin",
-      "marketing",
-      "playwright"
+      "moltbook",
+      "automation",
+      "posting"
     ],
-    "category": "marketing",
+    "category": "automation",
     "excerpt": "---",
-    "lines": 192,
-    "size": 8052,
-    "updated": "2026-03-05T03:52:55.416Z"
+    "lines": 286,
+    "size": 14955,
+    "updated": "2026-03-05T05:14:34.090Z"
   },
   {
     "name": "skill-publisher",
