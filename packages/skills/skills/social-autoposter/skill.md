@@ -1,191 +1,285 @@
 ---
-name: playwright-mcp-setup
-description: Set up Playwright MCP with the Chrome extension for browser automation in Claude Code. Use when setting up Playwright MCP, troubleshooting browser connection, or configuring file upload permissions.
-allowed-tools: Bash, Read, Write, Edit, mcp__macos-use__*, mcp__playwright-extension__*
+name: social-autoposter
+description: "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, track engagement stats. Use when: 'post to social', 'social autoposter', 'find threads to comment on', 'audit social posts', 'update post stats', or after completing any task (mandatory per CLAUDE.md)."
 ---
 
-# Playwright MCP Setup — Full Guide
+# Social Autoposter Skill
 
-Complete setup guide for Playwright MCP with the Chrome extension in Claude Code. This enables Claude to control your existing Chrome browser (with your logged-in sessions) instead of launching a new headless browser.
+Automates finding, posting, and tracking social media comments across Reddit, X/Twitter, and LinkedIn. Designed to run on a schedule (cron-style) or on-demand after completing tasks.
 
-## Why Extension Mode?
+## Trigger phrases
 
-By default, Playwright MCP launches a fresh Chromium browser with no sessions. With extension mode, it connects to your real Chrome — keeping all logins, cookies, extensions, and profiles. This is essential for automating social media, authenticated dashboards, and any site where you're already logged in.
+- "post to social", "social autoposter", "find threads to comment on", "audit social posts", "update post stats"
+- Also triggered automatically by CLAUDE.md "After Completing Any Task" workflow
 
 ## Prerequisites
 
-- **Google Chrome** installed
-- **Claude Code** installed and working
+- **Database**: `~/social-autoposter/social_posts.db` (SQLite, also symlinked at `~/.claude/social_posts.db`) with `posts`, `threads`, `our_posts`, `thread_comments` tables
+- **Prompt DB**: `~/claude-prompt-db/prompts.db` for finding recent successful work
+- **Browser**: Playwright MCP for visiting platforms and posting
+- **Logged-in accounts**: Reddit (u/Deep_Ad1959), X (@m13v_), LinkedIn (Matthew Diakonov), Moltbook (matthew-autoposter, API key in `~/social-autoposter/.env`)
 
-## Step 1: Install the Playwright MCP Bridge Extension
+## Database Schema Reference
 
-1. Open Chrome and navigate to the Chrome Web Store
-2. Search for **"Playwright MCP Bridge"** or go directly to the extension page
-3. Click **"Add to Chrome"** to install
-4. The extension ID is: `mmlmfjhmonkocbjadbfplnigmagldckm`
+The `posts` table tracks everything we post:
 
-**Verify installation:** Check Chrome shows the extension icon in the toolbar, or navigate to `chrome://extensions` and confirm "Playwright MCP Bridge" is listed and enabled.
-
-## Step 2: Get the Extension Token
-
-1. Click the Playwright MCP Bridge extension icon in Chrome's toolbar, or navigate to:
-   ```
-   chrome-extension://mmlmfjhmonkocbjadbfplnigmagldckm/status.html
-   ```
-2. The page shows your token in the format:
-   ```
-   PLAYWRIGHT_MCP_EXTENSION_TOKEN=<your-token-here>
-   ```
-3. Copy the token value (the part after `=`)
-
-**How the token works:** On first load, the extension generates a random 32-byte base64url token and stores it in localStorage. This token authenticates the MCP server connection to prevent unauthorized access to your browser.
-
-## Step 3: Configure Claude Code
-
-### Option A: Official Playwright Plugin (Recommended)
-
-If you installed the official Playwright plugin via `/install-plugin playwright`, Claude Code automatically detects the extension and runs with `--extension` flag. The plugin config lives at:
 ```
-~/.claude/plugins/marketplaces/claude-plugins-official/external_plugins/playwright/.mcp.json
+id, platform, thread_url, thread_author, thread_author_handle,
+thread_title, thread_content, thread_engagement,
+our_url, our_content, our_account,
+posted_at, discovered_at,
+status ('active'|'inactive'|'deleted'|'removed'),
+status_checked_at, engagement_updated_at,
+upvotes, comments_count, views,
+source_turn_id, source_summary
 ```
 
-You may need to set the token as an environment variable. Add to your shell profile (`~/.zshrc` or `~/.bashrc`):
+---
+
+## Workflow 1: Find Postable Content
+
+Use this to discover what recent work is worth posting about.
+
+### Steps
+
+1. **Query prompt-db for recent successful turns:**
+   ```sql
+   SELECT id, timestamp, summary, tags, specificity_score
+   FROM turns
+   WHERE tags LIKE '%success%'
+     AND (tags LIKE '%feature%' OR tags LIKE '%deployment%' OR tags LIKE '%bug_fix%' OR tags LIKE '%security%')
+     AND specificity_score >= 3
+     AND timestamp >= datetime('now', '-24 hours')
+   ORDER BY specificity_score DESC, timestamp DESC
+   ```
+
+2. **Cross-reference against already-posted content:**
+   ```sql
+   SELECT source_turn_id, source_summary FROM posts
+   WHERE source_turn_id IS NOT NULL
+   ```
+   Skip any turn IDs already in the posts table. Also do fuzzy matching on `source_summary` to avoid duplicates with different turn IDs.
+
+3. **Rank candidates by postability:**
+   - Humor potential (funny edge cases, unexpected behaviors, relatable dev pain)
+   - Relatability (common problems other devs face)
+   - Novelty (something genuinely new or surprising)
+   - Thread fit (is there an active thread where this fits naturally?)
+
+4. **Apply the 60/30/10 content mix:**
+   - 60% humor: Make people laugh. Self-deprecating dev stories, funny bugs, unexpected outcomes
+   - 30% inspirational: Cool technical achievements, elegant solutions, "look what's possible"
+   - 10% promotional: Direct mentions of o6w.ai or products (only when it fits naturally)
+
+5. **Output a ranked list** of candidates with suggested tone for each.
+
+### Fallback: No New Work? Browse What's Trending
+
+If no new candidates are found from prompt-db (or none have a good angle), browse latest threads and find one where we genuinely have something to say.
+
+1. **Rate limit check first:**
+   ```sql
+   SELECT COUNT(*) FROM posts WHERE posted_at >= datetime('now', '-24 hours')
+   ```
+   If 4+ posts in the last 24 hours, **stop**. Max 4 posts per day.
+
+2. **Browse `/new` across our subreddits** (r/ClaudeAI, r/ClaudeCode, r/AI_Agents, r/ExperiencedDevs, r/macapps, r/vipassana). Scan titles, find interesting threads.
+
+3. **Pick the thread where Matthew has a genuine angle** — not just "I run 5 agents in parallel." Look for threads about debugging production issues, desktop app dev, meditation, dev tooling, workflow automation. Cross-check against existing `thread_url` values in the DB to avoid duplicates.
+
+4. **Check our last 5 comments for repetition:**
+   ```sql
+   SELECT our_content FROM posts ORDER BY id DESC LIMIT 5
+   ```
+   Do NOT repeat the same talking points. Vary the content.
+
+5. **If no thread fits naturally, stop.** Better to skip a run than force a bad comment.
+
+6. **Log with `source_summary = 'fallback: [topic]'`** so fallback posts can be tracked separately.
+
+---
+
+## Workflow 2: Post to Platforms
+
+Use this after finding candidates (Workflow 1) or when manually posting about completed work.
+
+### Steps
+
+1. **Check the database first** to avoid duplicate threads:
+   ```sql
+   SELECT url FROM threads WHERE platform = '{platform}'
+   SELECT thread_url FROM posts WHERE platform = '{platform}'
+   ```
+
+2. **Search for relevant active threads** on each platform:
+   - **Reddit**: Search relevant subreddits for recent posts matching the topic
+   - **X/Twitter**: Search for recent tweets/threads about the topic
+   - **LinkedIn**: Search for recent posts from relevant professionals
+
+3. **Read the thread before commenting:**
+   - Check thread tone (casual/technical/professional)
+   - Read top comments for length and style cues
+   - Note the thread age (don't comment on stale threads)
+
+4. **Draft the comment:**
+   - Match thread energy and length (2-3 sentences max, shorter if thread is casual)
+   - Be authentic and value-adding, not spammy
+   - Never list features. One key benefit relevant to the thread is enough
+   - Apply the content mix principle (humor > inspiration > promotion)
+
+5. **Post via Playwright MCP (with verification):**
+   - Navigate to the thread URL
+   - Find the reply/comment box
+   - Type the comment text
+   - Click the submit/reply button
+   - **VERIFY the post went through:**
+     - Wait 2-3 seconds after clicking submit
+     - Take a snapshot of the page
+     - Look for our comment text appearing in the thread (not just in the input box)
+     - If the comment is still in the input box or a spinner is showing, wait and retry the submit click
+     - If an error message appears (rate limit, "something went wrong", etc.), wait 10-30 seconds and retry
+     - Retry up to 3 times before marking as failed
+   - **Capture the URL of our posted comment:**
+     - On Reddit: look for the permalink of our new comment
+     - On X: the page URL after successful reply, or find our reply in the thread
+     - On LinkedIn: no stable URL available, note as posted
+   - If verification fails after retries, log the attempt with `status='failed'` and move to the next platform
+   - **CLOSE THE TAB when done** — after capturing the URL and verifying, you MUST call `browser_tabs` with `action: "close"` to close the tab. Do NOT use `browser_close` (it doesn't actually close the tab). Do NOT navigate back, do NOT leave tabs open. Call `browser_tabs close` after EVERY page visit — audits, searches, and posts. Before opening any new page, close the current one first. At the end of the entire run, call `browser_tabs close` one final time.
+
+6. **Log to database:**
+   ```sql
+   INSERT INTO posts (platform, thread_url, thread_author, thread_author_handle,
+     thread_title, thread_content, our_url, our_content, our_account,
+     source_turn_id, source_summary, status)
+   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active');
+   ```
+   Also insert into `threads` and `our_posts` tables for backward compatibility.
+
+7. **Sync to remote database** after finishing a posting session (if configured):
+   ```bash
+   bash ~/social-autoposter/syncfield.sh
+   ```
+   This ensures posts made via Playwright (outside shell scripts) are reflected in the production database.
+
+8. **Report back** with: what was posted, where (URLs), on which platforms.
+
+### Platform-specific notes
+
+**Reddit** (u/Deep_Ad1959, logged in via Google with matt@mediar.ai):
+- Use old.reddit.com for more reliable automation
+- Comment box is usually a textarea with class `usertext-edit`
+- Good subreddits: r/openclaw, r/ClaudeAI, r/aiagents, r/devops, r/macapps, r/SaaS
+
+**X/Twitter** (@m13v_):
+- Reply to existing tweets in relevant conversations
+- Keep replies concise (1-2 sentences ideal)
+- Use the reply box under the tweet
+
+**LinkedIn** (Matthew Diakonov):
+- Comment on posts from relevant professionals
+- More professional tone, but still brief
+- LinkedIn comments don't have stable URLs, so `our_url` may be null
+
+**Moltbook** (matthew-autoposter, API-based — no Playwright needed):
+- Reddit-style social network for AI agents. Uses pure REST API, not browser automation.
+- API base: `https://www.moltbook.com/api/v1`
+- Auth: `Authorization: Bearer $MOLTBOOK_API_KEY` (loaded from `~/social-autoposter/.env`)
+- **Create post**: `POST /api/v1/posts` with JSON body `{"title": "...", "content": "...", "type": "text", "submolt_name": "general"}`
+- **Create comment**: `POST /api/v1/posts/{post_id}/comments` with JSON body `{"content": "..."}`
+- **List posts**: `GET /api/v1/posts?limit=10` (for browsing trending threads)
+- **Get post**: `GET /api/v1/posts/{uuid}` (for verification and stats)
+- **Verification**: After posting, fetch the post by UUID and confirm `verification_status` is `"verified"`. If `"pending"`, wait 5s and retry (up to 3 times).
+- **Rate limit**: Max 1 Moltbook post per 30 minutes. Check: `SELECT COUNT(*) FROM posts WHERE platform='moltbook' AND posted_at >= datetime('now', '-30 minutes')`
+- **Tone**: Write as an agent, not a human. Use "my human" instead of "I". First-person agent perspective. Example: "my human runs 5 agents in parallel" not "I run 5 agents in parallel".
+- `our_url` format: `https://www.moltbook.com/post/{uuid}`
+
+---
+
+## Workflow 3: Audit & Update Stats
+
+Use this to check if existing posts are still live and capture engagement metrics.
+
+### Fast Method: `stats.sh` (Reddit + Moltbook, no browser needed)
+
+For Reddit and Moltbook posts, use the lightweight bash script instead of Playwright:
+
 ```bash
-export PLAYWRIGHT_MCP_EXTENSION_TOKEN="your-token-here"
+bash ~/.claude/skills/social-autoposter/stats.sh          # full output
+bash ~/.claude/skills/social-autoposter/stats.sh --quiet   # summary only
 ```
 
-### Option B: Manual MCP Server Configuration
+This script:
+- **Reddit**: Fetches comment scores and thread stats via Reddit's public JSON API (no auth needed). Detects deleted/removed comments.
+- **Moltbook**: Fetches post upvotes and comment counts via Moltbook REST API (uses `MOLTBOOK_API_KEY` from `.env`). Detects deleted posts via `is_deleted` field.
+- Updates `upvotes`, `comments_count`, `thread_engagement`, `engagement_updated_at` in the DB
+- Logs to `~/.claude/skills/social-autoposter/logs/stats-<timestamp>.log`
+- Runs automatically every 6 hours via `com.m13v.social-stats` launchd agent
 
-Add to your `~/.claude/settings.json` under `mcpServers`:
-```json
-{
-  "mcpServers": {
-    "playwright-extension": {
-      "command": "npx",
-      "args": ["@playwright/mcp@latest", "--extension"],
-      "env": {
-        "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "your-token-here"
-      }
-    }
-  }
-}
-```
+Use the Playwright-based audit below for X/Twitter posts (which require OAuth) or when you need to verify Reddit post visibility visually.
 
-Or in a project-level `.mcp.json`:
-```json
-{
-  "playwright-extension": {
-    "command": "npx",
-    "args": ["@playwright/mcp@latest", "--extension"],
-    "env": {
-      "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "your-token-here"
-    }
-  }
-}
-```
+### Full Method: Playwright Browser Audit (all platforms)
 
-## Step 4: Verify Connection
+#### Steps
 
-1. Restart Claude Code (or run `/mcp` to reconnect MCP servers)
-2. Chrome should show an info bar: **"Playwright MCP Bridge started debugging this browser"** with a Cancel button
-3. Test with a simple command like `browser_snapshot` — it should return the current page's accessibility tree
-
-If the info bar doesn't appear, check:
-- The extension is enabled in `chrome://extensions`
-- The token matches between your config and the extension's status page
-- Chrome is running
-
-## Step 5: Enable File Upload Support (Important!)
-
-By default, `browser_file_upload` and `fileChooser.setFiles()` fail with **"Not allowed"** due to Chrome's CDP security restriction on extensions (since Chrome 72). To fix this:
-
-1. Navigate to `chrome://extensions` in Chrome
-2. Find **"Playwright MCP Bridge"** and click **"Details"**
-3. Scroll down and enable **"Allow access to file URLs"** toggle
-4. **Restart Chrome** for the setting to take effect
-
-After this, file uploads work using `browser_run_code`:
-```javascript
-async (page) => {
-  const [fileChooser] = await Promise.all([
-    page.waitForEvent('filechooser', { timeout: 5000 }),
-    page.getByRole('button', { name: 'Upload' }).click()
-  ]);
-  await fileChooser.setFiles('/absolute/path/to/file.png');
-  return 'File uploaded';
-}
-```
-
-**Note:** The file path must be within Playwright MCP's allowed roots (typically the project directory). Copy files there first if needed.
-
-### Automating the File URL Toggle
-
-This setting **cannot** be enabled purely programmatically — Chrome protects extension preferences with HMAC-SHA256 validation in `Secure Preferences`. The only reliable approaches are:
-
-1. **Automate the UI with macOS accessibility tools** (e.g., macOS-use MCP):
-   ```
-   1. Open Chrome to chrome://extensions (Playwright can't access chrome:// URLs)
-   2. Find "Playwright MCP Bridge" heading, click its "Details" button
-   3. Find "Allow access to file URLs" toggle, click it
-   4. Restart Chrome
+1. **Query all posts with URLs:**
+   ```sql
+   SELECT id, platform, our_url, our_content, status, upvotes, views, comments_count,
+          status_checked_at, engagement_updated_at
+   FROM posts
+   WHERE our_url IS NOT NULL
+   ORDER BY posted_at DESC
    ```
 
-2. **Chrome enterprise policy** (for fleet deployment):
-   Deploy `ExtensionSettings` policy via MDM to pre-configure the setting.
+2. **Visit each URL via Playwright:**
+   - For X posts: Look for view count, likes, reposts, replies, bookmarks
+   - For Reddit comments (use old.reddit.com): Look for point count and child comments
+   - For LinkedIn: Skip if no URL
 
-**Where the setting is stored:** `~/Library/Application Support/Google/Chrome/<Profile>/Secure Preferences` under `extensions.settings.<extension_id>.newAllowFileAccess` (boolean). The file is HMAC-protected — direct edits are detected and reverted by Chrome.
+3. **Determine post status:**
+   - `active`: Post/comment is visible and accessible
+   - `deleted`: Returns 404 or "this tweet has been deleted"
+   - `removed`: Visible on the page but marked as removed by moderator
+   - `inactive`: Thread is locked or archived
 
-## Architecture
+4. **Update the database:**
+   ```sql
+   UPDATE posts SET
+     status = ?,
+     status_checked_at = datetime('now'),
+     upvotes = ?,
+     comments_count = ?,
+     views = ?,
+     engagement_updated_at = datetime('now')
+   WHERE id = ?
+   ```
 
-```
-Claude Code  -->  Playwright MCP Server (--extension flag)
-                       |
-                       | WebSocket (localhost only)
-                       v
-              Playwright MCP Bridge Extension (Chrome)
-                       |
-                       | Chrome DevTools Protocol (CDP)
-                       v
-                  Your Chrome Browser (tabs, pages)
-```
+5. **Report summary:**
+   - Total posts checked
+   - Posts by status (active/deleted/removed/inactive)
+   - Top performing posts by engagement
+   - Posts with declining engagement (may need follow-up)
 
-- **Playwright MCP Server**: Node.js process (`npx @playwright/mcp@latest --extension`) that exposes MCP tools
-- **Playwright MCP Bridge Extension**: Chrome extension that relays CDP commands to browser tabs
-- **Token**: Shared secret ensuring only authorized MCP servers connect
-- **Security**: WebSocket connections restricted to localhost (127.0.0.1 / [::1])
+---
 
-## Troubleshooting
+## Quick Reference: Content Rules
 
-### "Not allowed" on file upload
-Enable "Allow access to file URLs" in extension details (see Step 5). Restart Chrome.
+1. **Write like you're texting a coworker.** Lowercase is fine. Sentence fragments are fine. Never start with "Makes sense" or "The nuance here is" or "What everyone here is describing." If it sounds like a blog post, rewrite it.
+2. **First person, specific.** "I run 5 agents in parallel and my API bill is becoming a second rent payment" beats "Token costs scale linearly with concurrent agents." Always say "I" not "you" or "one."
+3. **Reply to top comments, not just OP.** Replying to a 200+ upvote comment puts you in front of more eyeballs and feels more natural than a buried top-level comment.
+4. **Only comment when you have a real angle from Matthew's work.** Our experience: running 5 Claude Code agents in parallel on a Swift/Rust/Flutter desktop app (OMI), CLAUDE.md-driven spec workflow, Playwright MCP for browser automation, dealing with token costs and rate limits daily. If the thread doesn't connect to something specific we've done, skip it.
+5. **No self-promotion unless it directly solves OP's problem.** No feature lists.
+6. **Add a relevant link at the end when we have one.** If the comment references code, a tool, or a repo that's ours and open source, drop the link casually at the end (e.g., "repo if anyone's curious: [url]"). Only when the link adds value to the reader — not every comment needs one. Common links: `https://github.com/BasedHardware/omi` (OMI app), `https://github.com/mediar-ai/mcp-server-macos-use` (macOS MCP server).
+7. **Comment on existing threads**: Don't create new posts unless explicitly asked. (Exception: Moltbook — we create original posts there since we're an agent with our own account.)
+8. **On Moltbook, write as an agent.** Use "my human" not "I". First-person agent perspective. "my human runs 5 agents in parallel and the API bill is becoming a second rent payment" not "I run 5 agents in parallel."
+8. **Log everything**: Every thread discovered and every comment posted goes in the database.
 
-### File chooser modal expires
-Don't use separate `browser_click` + `browser_file_upload` calls — the modal expires between tool calls. Use `browser_run_code` to do click + setFiles atomically.
+### Bad vs Good examples
 
-### "File access denied: path is outside allowed roots"
-Playwright MCP restricts file paths to the project directory. Copy the file into the project first:
-```bash
-cp ~/Downloads/photo.png ./photo.png
-```
+BAD: "Makes sense — Claude already tries to `| tail -n 50` on its own but by then the tokens are already in context. Intercepting at the proxy layer is the right call."
+GOOD: "gonna try this — I run 5 agents in parallel and my API bill is becoming a second rent payment"
 
-### Can't navigate to chrome:// URLs
-Playwright can't access `chrome://` pages (blocked by CDP). Use macOS accessibility tools or navigate manually.
+BAD: "What everyone here is describing is basically specification-driven development — write a detailed enough spec and Claude can one-shot the feature."
+GOOD: "I spend more time writing CLAUDE.md specs than I ever spent writing code. the irony is I'm basically doing waterfall now and shipping faster than ever."
 
-### Extension not detected / no debugging bar
-- Verify extension is installed and enabled at `chrome://extensions`
-- Check the token matches: compare `PLAYWRIGHT_MCP_EXTENSION_TOKEN` env var with the token shown at the extension's status page
-- Restart Claude Code (`/mcp` to reconnect)
-
-## Desktop App Onboarding Pattern
-
-If building a desktop app that needs to onboard users to Playwright MCP, here's a proven 4-phase flow:
-
-1. **Welcome** — explain browser access capability
-2. **Connect** — check Chrome installed, check extension installed (poll every 2s scanning Chrome profile directories for extension ID), open status.html, collect token
-3. **Verify** — run a test Playwright connection to confirm everything works
-4. **Done** — confirmation
-
-Detection logic:
-- **Chrome installed**: check for Chrome app at standard install path
-- **Extension installed**: scan Chrome profile directories for `Extensions/<extension_id>`
-- **Token validation**: 20+ chars, base64url format (`[A-Za-z0-9_-]+`)
+BAD: "The gap isn't the AI, it's that nobody wants to be the person who broke the sales pipeline by plugging in an agent that hallucinated a discount."
+GOOD: "we let an agent loose on our deploy pipeline last week. it worked perfectly. nobody trusts it anyway."
