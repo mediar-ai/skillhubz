@@ -6567,5 +6567,24 @@
     "lines": 122,
     "size": 3635,
     "updated": "2026-03-04T02:34:59.297Z"
+  },
+  {
+    "name": "playwright-mcp-setup",
+    "description": "Set up Playwright MCP with Chrome extension for browser automation in Claude Code — installation, token config, file upload fix",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "playwright",
+      "mcp",
+      "browser",
+      "chrome",
+      "automation",
+      "file-upload"
+    ],
+    "category": "integrations",
+    "excerpt": "---",
+    "lines": 197,
+    "size": 8455,
+    "updated": "2026-03-05T03:53:32.536Z"
   }
 ]
