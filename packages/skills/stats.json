@@ -25,7 +25,8 @@
     "expense-logger": 1
   },
   "searches": {
-    "docs": 1
+    "docs": 1,
+    "pdf": 1
   },
-  "lastUpdated": "2026-03-01T22:24:04.432Z"
+  "lastUpdated": "2026-03-06T03:28:01.436Z"
 }
