@@ -6586,5 +6586,24 @@
     "lines": 197,
     "size": 8455,
     "updated": "2026-03-05T03:53:32.536Z"
+  },
+  {
+    "name": "video-edit",
+    "description": "Edit long videos into short, story-driven clips using transcript analysis and ffmpeg",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "video",
+      "editing",
+      "ffmpeg",
+      "whisper",
+      "transcription",
+      "highlights"
+    ],
+    "category": "creative",
+    "excerpt": "---",
+    "lines": 106,
+    "size": 4860,
+    "updated": "2026-03-07T00:25:55.295Z"
   }
 ]
