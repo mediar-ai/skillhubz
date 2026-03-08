@@ -78,3 +78,19 @@ export function trackFiltersCleared() {
 export function trackFilterToggled(showFilters: boolean) {
   posthog.capture('filter_toggled', { show_filters: showFilters });
 }
+
+export function trackTextCopied(text: string, page: string) {
+  posthog.capture('text_copied', {
+    copied_text: text.slice(0, 500),
+    text_length: text.length,
+    page,
+  });
+}
+
+export function trackTextSelected(text: string, page: string) {
+  posthog.capture('text_selected', {
+    selected_text: text.slice(0, 500),
+    text_length: text.length,
+    page,
+  });
+}
