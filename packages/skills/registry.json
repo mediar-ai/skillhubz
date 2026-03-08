@@ -6602,5 +6602,26 @@
     "lines": 106,
     "size": 4860,
     "updated": "2026-03-07T00:25:55.295Z"
+  },
+  {
+    "name": "mac-network-doctor",
+    "description": "Diagnose and fix slow internet on macOS. Finds hidden bandwidth drains — VPNs, iCloud sync, Spotlight indexing, background updates.",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "macos",
+      "network",
+      "performance",
+      "icloud",
+      "spotlight",
+      "vpn",
+      "hotspot",
+      "bandwidth"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 84,
+    "size": 3773,
+    "updated": "2026-03-08T04:55:13.892Z"
   }
 ]
