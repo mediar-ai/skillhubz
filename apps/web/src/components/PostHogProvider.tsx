@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import posthog from 'posthog-js';
+import { trackTextCopied, trackTextSelected } from '../utils/analytics';
 
 const POSTHOG_KEY = import.meta.env.VITE_POSTHOG_KEY;
 const POSTHOG_HOST = import.meta.env.VITE_POSTHOG_HOST || 'https://eu.i.posthog.com';
@@ -31,6 +32,39 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
     const url = window.origin + location.pathname + location.search;
     posthog.capture('$pageview', { '$current_url': url });
   }, [location.pathname, location.search]);
+
+  const page = location.pathname;
+
+  // Track browser copy events (Cmd+C / Ctrl+C)
+  useEffect(() => {
+    const handleCopy = () => {
+      const text = window.getSelection()?.toString();
+      if (text && text.trim().length > 0) {
+        trackTextCopied(text.trim(), page);
+      }
+    };
+    document.addEventListener('copy', handleCopy);
+    return () => document.removeEventListener('copy', handleCopy);
+  }, [page]);
+
+  // Track text selection (debounced — fires when selection settles)
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    const handleSelectionChange = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        const text = window.getSelection()?.toString();
+        if (text && text.trim().length >= 10) {
+          trackTextSelected(text.trim(), page);
+        }
+      }, 1000);
+    };
+    document.addEventListener('selectionchange', handleSelectionChange);
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener('selectionchange', handleSelectionChange);
+    };
+  }, [page]);
 
   return <>{children}</>;
 }
