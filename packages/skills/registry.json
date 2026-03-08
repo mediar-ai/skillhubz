@@ -6491,24 +6491,21 @@
     "name": "new-product-website",
     "description": "End-to-end workflow for launching a new product landing page — scaffolding, theming, analytics, waitlist, domain, SEO, and deployment.",
     "author": "m13v",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "tags": [
       "nextjs",
-      "landing-page",
       "vercel",
-      "posthog",
       "resend",
+      "posthog",
+      "landing-page",
       "waitlist",
-      "seo",
-      "deployment",
-      "react",
-      "tailwind"
+      "seo"
     ],
     "category": "development",
     "excerpt": "---",
-    "lines": 205,
-    "size": 6859,
-    "updated": "2026-03-04T02:33:06.049Z"
+    "lines": 432,
+    "size": 14492,
+    "updated": "2026-03-08T04:24:34.328Z"
   },
   {
     "name": "skill-registry",
