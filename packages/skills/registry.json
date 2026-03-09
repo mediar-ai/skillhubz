@@ -6528,23 +6528,22 @@
   },
   {
     "name": "social-autoposter",
-    "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, track engagement stats, and run reply engagement loops.",
+    "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, track engagement stats.",
     "author": "m13v",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "tags": [
       "social-media",
       "reddit",
       "twitter",
       "linkedin",
       "automation",
-      "engagement",
-      "playwright"
+      "marketing"
     ],
     "category": "marketing",
     "excerpt": "---",
-    "lines": 361,
-    "size": 17683,
-    "updated": "2026-03-07T01:29:03.340Z"
+    "lines": 297,
+    "size": 11642,
+    "updated": "2026-03-09T20:20:05.919Z"
   },
   {
     "name": "skill-publisher",
