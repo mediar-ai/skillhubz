@@ -6622,5 +6622,25 @@
     "lines": 84,
     "size": 3773,
     "updated": "2026-03-08T04:55:13.892Z"
+  },
+  {
+    "name": "vipassana-matching",
+    "description": "Full Practice Buddy matching workflow — check submissions, research candidates, identify matches, send personalized intro emails via Resend, and manage the waitlist",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "vipassana",
+      "meditation",
+      "matching",
+      "email",
+      "resend",
+      "neon",
+      "postgres"
+    ],
+    "category": "operations",
+    "excerpt": "---",
+    "lines": 356,
+    "size": 10689,
+    "updated": "2026-03-10T03:13:24.779Z"
   }
 ]
