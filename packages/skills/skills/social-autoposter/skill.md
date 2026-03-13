@@ -37,7 +37,7 @@ Key fields you'll use throughout every workflow:
 - `subreddits` — list of subreddits to monitor and post in
 - `content_angle` — the user's unique perspective for writing authentic comments
 - `projects` — products/repos to mention naturally when relevant (each has `name`, `description`, `website`, `github`, `topics`)
-- `database` — path to SQLite DB (default: `~/social-autoposter/social_posts.db`)
+- `DATABASE_URL` in `~/social-autoposter/.env` — the live Neon Postgres database used by the helper scripts
 
 Use these values everywhere below instead of any hardcoded names or links.
 
