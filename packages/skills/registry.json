@@ -1202,7 +1202,7 @@
       "multi-agent"
     ],
     "category": "developer-tools",
-    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts \u2014 only one agent can use",
+    "excerpt": "Multiple Claude agents share a **single browser instance** via MCP Playwright. A hook-based locking system prevents conflicts — only one agent can use",
     "lines": 66,
     "size": 2786,
     "updated": "2026-03-01T22:14:08.996Z"
@@ -1518,7 +1518,7 @@
   },
   {
     "name": "copywriting",
-    "description": "When the user wants to write, rewrite, or improve marketing copy for any page \u2014 including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
+    "description": "When the user wants to write, rewrite, or improve marketing copy for any page — including homepage, landing pages, pricing pages, feature pages, about pages, or product pages. Also use when the user s",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1550,7 +1550,7 @@
   },
   {
     "name": "pptx",
-    "description": "\"Use this skill any time a .pptx file is involved in any way \u2014 as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
+    "description": "\"Use this skill any time a .pptx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations; reading, parsing, or extracting text from ",
     "author": "anthropics",
     "version": "1.0.0",
     "tags": [
@@ -1726,7 +1726,7 @@
   },
   {
     "name": "page-cro",
-    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page \u2014 including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
+    "description": "When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use when the user says \"C",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1900,7 +1900,7 @@
   },
   {
     "name": "form-cro",
-    "description": "When the user wants to optimize any form that is NOT signup/registration \u2014 including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use",
+    "description": "When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or checkout forms. Also use",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -1948,7 +1948,7 @@
   },
   {
     "name": "free-tool-strategy",
-    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes \u2014 lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
+    "description": "When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions \"engineering as marketing,\" \"free t",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -2337,7 +2337,7 @@
   },
   {
     "name": "release-skills",
-    "description": "Universal release workflow. Auto-detects version files and changelogs. Supports Node.js, Python, Rust, Claude Plugin, and generic projects. Use when user says \"release\", \"\u53d1\u5e03\", \"new version\", \"bump ver",
+    "description": "Universal release workflow. Auto-detects version files and changelogs. Supports Node.js, Python, Rust, Claude Plugin, and generic projects. Use when user says \"release\", \"发布\", \"new version\", \"bump ver",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2353,7 +2353,7 @@
   },
   {
     "name": "baoyu-article-illustrator",
-    "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type \u00d7 Style two-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"gen",
+    "description": "Analyzes article structure, identifies positions requiring visual aids, generates illustrations with Type × Style two-dimension approach. Use when user asks to \"illustrate article\", \"add images\", \"gen",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2433,7 +2433,7 @@
   },
   {
     "name": "baoyu-xhs-images",
-    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"\u5c0f\u7ea2\u4e66\u56fe",
+    "description": "Generates Xiaohongshu (Little Red Book) infographic series with 10 visual styles and 8 layouts. Breaks content into 1-10 cartoon-style images optimized for XHS engagement. Use when user mentions \"小红书图",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2481,7 +2481,7 @@
   },
   {
     "name": "baoyu-post-to-wechat",
-    "description": "Posts content to WeChat Official Account (\u5fae\u4fe1\u516c\u4f17\u53f7) via API or Chrome CDP. Supports article posting (\u6587\u7ae0) with HTML, markdown, or plain text input, and image-text posting (\u8d34\u56fe, formerly \u56fe\u6587) with multiple i",
+    "description": "Posts content to WeChat Official Account (微信公众号) via API or Chrome CDP. Supports article posting (文章) with HTML, markdown, or plain text input, and image-text posting (贴图, formerly 图文) with multiple i",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -2561,7 +2561,7 @@
   },
   {
     "name": "baoyu-comic",
-    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"\u77e5\u8bc6\u6f2b\u753b\", ",
+    "description": "Knowledge comic creator supporting multiple art styles and tones. Creates original educational comics with detailed panel layouts and sequential image generation. Use when user asks to create \"知识漫画\", ",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -3089,7 +3089,7 @@
   },
   {
     "name": "content-repurposing",
-    "description": "\"Content atomization \u2014 turn one piece of content into many formats. Covers blog-to-thread, blog-to-carousel, podcast-to-blog, video-to-quotes, and more. Use for: content marketing, social media, multi",
+    "description": "\"Content atomization — turn one piece of content into many formats. Covers blog-to-thread, blog-to-carousel, podcast-to-blog, video-to-quotes, and more. Use for: content marketing, social media, multi",
     "author": "inference-sh-9",
     "version": "1.0.0",
     "tags": [
@@ -3105,7 +3105,7 @@
   },
   {
     "name": "baoyu-infographic",
-    "description": "Generates professional infographics with 21 layout types and 20 visual styles. Analyzes content, recommends layout\u00d7style combinations, and generates publication-ready infographics. Use when user asks ",
+    "description": "Generates professional infographics with 21 layout types and 20 visual styles. Analyzes content, recommends layout×style combinations, and generates publication-ready infographics. Use when user asks ",
     "author": "jimliu",
     "version": "1.0.0",
     "tags": [
@@ -3765,7 +3765,7 @@
   },
   {
     "name": "ad-creative",
-    "description": "\"When the user wants to generate, iterate, or scale ad creative \u2014 headlines, descriptions, primary text, or full ad variations \u2014 for any paid advertising platform. Also use when the user mentions 'ad ",
+    "description": "\"When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when the user mentions 'ad ",
     "author": "coreyhaines31",
     "version": "1.0.0",
     "tags": [
@@ -4053,7 +4053,7 @@
   },
   {
     "name": "gemini-computer-use",
-    "description": "Build and run Gemini 2.5 Computer Use browser-control agents with Playwright. Use when a user wants to automate web browser tasks via the Gemini Computer Use model, needs an agent loop (screenshot \u2192 f",
+    "description": "Build and run Gemini 2.5 Computer Use browser-control agents with Playwright. Use when a user wants to automate web browser tasks via the Gemini Computer Use model, needs an agent loop (screenshot → f",
     "author": "am-will",
     "version": "1.0.0",
     "tags": [
@@ -4389,7 +4389,7 @@
   },
   {
     "name": "optimize-for-ai",
-    "description": "> Optimize content for AI search engines \u2014 ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews. Use when the user asks about AI SEO, AISO, getting cited by AI, appearing in AI answers, answer eng",
+    "description": "> Optimize content for AI search engines — ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews. Use when the user asks about AI SEO, AISO, getting cited by AI, appearing in AI answers, answer eng",
     "author": "calm-north",
     "version": "1.0.0",
     "tags": [
@@ -5029,7 +5029,7 @@
   },
   {
     "name": "china-stock-analysis",
-    "description": "A\u80a1\u4ef7\u503c\u6295\u8d44\u5206\u6790\u5de5\u5177\uff0c\u63d0\u4f9b\u80a1\u7968\u7b5b\u9009\u3001\u4e2a\u80a1\u6df1\u5ea6\u5206\u6790\u3001\u884c\u4e1a\u5bf9\u6bd4\u548c\u4f30\u503c\u8ba1\u7b97\u529f\u80fd\u3002\u57fa\u4e8e\u4ef7\u503c\u6295\u8d44\u7406\u8bba\uff0c\u4f7f\u7528akshare\u83b7\u53d6\u516c\u5f00\u8d22\u52a1\u6570\u636e\uff0c\u9002\u5408\u4f4e\u9891\u4ea4\u6613\u7684\u666e\u901a\u6295\u8d44\u8005\u3002",
+    "description": "A股价值投资分析工具，提供股票筛选、个股深度分析、行业对比和估值计算功能。基于价值投资理论，使用akshare获取公开财务数据，适合低频交易的普通投资者。",
     "author": "sugarforever",
     "version": "1.0.0",
     "tags": [
@@ -5109,7 +5109,7 @@
   },
   {
     "name": "youtube-clipper",
-    "description": "> YouTube \u89c6\u9891\u667a\u80fd\u526a\u8f91\u5de5\u5177\u3002\u4e0b\u8f7d\u89c6\u9891\u548c\u5b57\u5e55\uff0cAI \u5206\u6790\u751f\u6210\u7cbe\u7ec6\u7ae0\u8282\uff08\u51e0\u5206\u949f\u7ea7\u522b\uff09\uff0c \u7528\u6237\u9009\u62e9\u7247\u6bb5\u540e\u81ea\u52a8\u526a\u8f91\u3001\u7ffb\u8bd1\u5b57\u5e55\u4e3a\u4e2d\u82f1\u53cc\u8bed\u3001\u70e7\u5f55\u5b57\u5e55\u5230\u89c6\u9891\uff0c\u5e76\u751f\u6210\u603b\u7ed3\u6587\u6848\u3002 \u4f7f\u7528\u573a\u666f\uff1a\u5f53\u7528\u6237\u9700\u8981\u526a\u8f91 YouTube \u89c6\u9891\u3001\u751f\u6210\u77ed\u89c6\u9891\u7247\u6bb5\u3001\u5236\u4f5c\u53cc\u8bed\u5b57\u5e55\u7248\u672c\u65f6\u3002 \u5173\u952e\u8bcd\uff1a\u89c6\u9891\u526a\u8f91\u3001YouTube\u3001\u5b57\u5e55\u7ffb\u8bd1\u3001\u53cc\u8bed\u5b57\u5e55\u3001\u89c6\u9891\u4e0b\u8f7d\u3001clip video",
+    "description": "> YouTube 视频智能剪辑工具。下载视频和字幕，AI 分析生成精细章节（几分钟级别）， 用户选择片段后自动剪辑、翻译字幕为中英双语、烧录字幕到视频，并生成总结文案。 使用场景：当用户需要剪辑 YouTube 视频、生成短视频片段、制作双语字幕版本时。 关键词：视频剪辑、YouTube、字幕翻译、双语字幕、视频下载、clip video",
     "author": "op7418",
     "version": "1.0.0",
     "tags": [
@@ -5509,7 +5509,7 @@
   },
   {
     "name": "anti-render",
-    "description": "\u667a\u80fd\u8bc6\u522b\u4efb\u4f55\u9886\u57df\u7684\"\u7406\u60f3\u627f\u8bfa vs \u6b8b\u9177\u73b0\u5b9e\"\u5bf9\u6bd4\u9700\u6c42\uff0c\u751f\u6210\u7406\u60f3\u5316\u6e32\u67d3\u3001\u73b0\u5b9e\u4e3b\u4e49\u771f\u5b9e\u9762\u8c8c\u6216\u5bf9\u6bd4\u56fe\u7684\u4e09\u79cd\u89c6\u89c9\u98ce\u683c\u8f6c\u6362",
+    "description": "智能识别任何领域的\"理想承诺 vs 残酷现实\"对比需求，生成理想化渲染、现实主义真实面貌或对比图的三种视觉风格转换",
     "author": "lionad-morotar",
     "version": "1.0.0",
     "tags": [
@@ -6489,7 +6489,7 @@
   },
   {
     "name": "new-product-website",
-    "description": "End-to-end workflow for launching a new product landing page \u2014 scaffolding, theming, analytics, waitlist, domain, SEO, and deployment.",
+    "description": "End-to-end workflow for launching a new product landing page — scaffolding, theming, analytics, waitlist, domain, SEO, and deployment.",
     "author": "m13v",
     "version": "1.0.1",
     "tags": [
@@ -6528,9 +6528,9 @@
   },
   {
     "name": "social-autoposter",
-    "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, track engagement stats.",
+    "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, create original posts, track engagement stats.",
     "author": "m13v",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "tags": [
       "social-media",
       "reddit",
@@ -6541,9 +6541,9 @@
     ],
     "category": "marketing",
     "excerpt": "---",
-    "lines": 297,
-    "size": 11642,
-    "updated": "2026-03-09T20:20:05.919Z"
+    "lines": 302,
+    "size": 12452,
+    "updated": "2026-03-14T17:19:37.934Z"
   },
   {
     "name": "skill-publisher",
@@ -6566,7 +6566,7 @@
   },
   {
     "name": "playwright-mcp-setup",
-    "description": "Set up Playwright MCP with Chrome extension for browser automation in Claude Code \u2014 installation, token config, file upload fix",
+    "description": "Set up Playwright MCP with Chrome extension for browser automation in Claude Code — installation, token config, file upload fix",
     "author": "m13v",
     "version": "1.0.0",
     "tags": [
@@ -6604,7 +6604,7 @@
   },
   {
     "name": "mac-network-doctor",
-    "description": "Diagnose and fix slow internet on macOS. Finds hidden bandwidth drains \u2014 VPNs, iCloud sync, Spotlight indexing, background updates.",
+    "description": "Diagnose and fix slow internet on macOS. Finds hidden bandwidth drains — VPNs, iCloud sync, Spotlight indexing, background updates.",
     "author": "m13v",
     "version": "1.0.0",
     "tags": [
@@ -6625,7 +6625,7 @@
   },
   {
     "name": "vipassana-matching",
-    "description": "Full Practice Buddy matching workflow \u2014 check submissions, research candidates, identify matches, send personalized intro emails via Resend, and manage the waitlist",
+    "description": "Full Practice Buddy matching workflow — check submissions, research candidates, identify matches, send personalized intro emails via Resend, and manage the waitlist",
     "author": "m13v",
     "version": "1.0.0",
     "tags": [
