@@ -1,6 +1,6 @@
 ---
 name: social-autoposter
-description: "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, create original posts, track engagement stats. Use when: 'post to social', 'social autoposter', 'find threads to comment on', 'create a post', 'audit social posts', 'update post stats', or after completing any task (mandatory per CLAUDE.md)."
+description: "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, create original posts, track engagement stats. Use when: 'post to social', 'social autoposter', 'find threads to comment on', 'create a post', 'audit social posts', 'update post stats'."
 user_invocable: true
 ---
 
@@ -17,6 +17,9 @@ Automates finding, posting, and tracking social media comments and original post
 | `/social-autoposter stats` | Update engagement stats via API |
 | `/social-autoposter engage` | Scan and reply to responses on our posts |
 | `/social-autoposter audit` | Full browser audit of all posts |
+
+**View your posts live:** `https://s4l.ai/stats/[your_handle]`
+The handles come from `config.json → accounts.*.handle/username`. Each platform account has its own URL.
 
 ---
 
@@ -36,8 +39,8 @@ Key fields you'll use throughout every workflow:
 - `accounts.moltbook.username` — Moltbook username
 - `subreddits` — list of subreddits to monitor and post in
 - `content_angle` — the user's unique perspective for writing authentic comments
-- `projects` — products/repos to mention naturally when relevant (each has `name`, `description`, `website`, `github`, `topics`)
-- `DATABASE_URL` in `~/social-autoposter/.env` — the live Neon Postgres database used by the helper scripts
+- `projects` — products/repos to mention naturally when relevant (each has `name`, `description`, `website`, `github`, `links`, `topics`). The `links` object has per-platform URLs: `links.reddit`, `links.twitter`, `links.linkedin`, `links.github`, etc. **Always use `links[platform]` for the current platform** — e.g. `links.reddit` when posting on Reddit, `links.twitter` on X. Fall back to `website` or `github` only if `links[platform]` is absent.
+- `database` — unused (DB is Neon Postgres via `DATABASE_URL` in `.env`)
 
 Use these values everywhere below instead of any hardcoded names or links.
 
@@ -60,7 +63,7 @@ python3 ~/social-autoposter/scripts/update_stats.py --quiet
 ### 1. Rate limit check
 
 ```sql
-SELECT COUNT(*) FROM posts WHERE posted_at >= datetime('now', '-24 hours')
+SELECT COUNT(*) FROM posts WHERE posted_at >= NOW() - INTERVAL '24 hours'
 ```
 Max 40 posts per 24 hours. Stop if at limit.
 
@@ -123,7 +126,7 @@ Verify: fetch post by UUID, check `verification_status` is `"verified"`.
 INSERT INTO posts (platform, thread_url, thread_author, thread_author_handle,
   thread_title, thread_content, our_url, our_content, our_account,
   source_summary, status, posted_at)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', datetime('now'));
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', NOW());
 ```
 
 Use the account value from `config.json` for `our_account`.
@@ -144,7 +147,7 @@ Max 1 original post per 24 hours. Max 3 per week.
 
 ```sql
 SELECT platform, thread_title, posted_at FROM posts
-WHERE source_summary LIKE '%' || ? || '%' AND posted_at >= datetime('now', '-30 days')
+WHERE source_summary LIKE '%' || %s || '%' AND posted_at >= NOW() - INTERVAL '30 days'
 ORDER BY posted_at DESC;
 ```
 
@@ -180,7 +183,7 @@ Choose the single best subreddit from `config.json → subreddits` for this topi
 INSERT INTO posts (platform, thread_url, thread_author, thread_author_handle,
   thread_title, thread_content, our_url, our_content, our_account,
   source_summary, status, posted_at)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active', datetime('now'));
+VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', NOW());
 ```
 
 For original posts: `thread_url` = `our_url`, `thread_author` = our account from config.json.
@@ -200,6 +203,8 @@ After posting, you MUST:
 ```bash
 python3 ~/social-autoposter/scripts/update_stats.py
 ```
+
+After running, view updated stats at `https://s4l.ai/stats/[handle]`. The DB syncs to Neon Postgres via `syncfield.sh` (called automatically by `stats.sh`). Changes appear on the website within ~5 minutes.
 
 ---
 
@@ -223,8 +228,8 @@ Draft replies: 2-4 sentences, casual, expand the topic. Apply Tiered Reply Strat
 
 Post via browser (Reddit/X) or API (Moltbook). Update:
 ```sql
-UPDATE replies SET status='replied', our_reply_content=?, our_reply_url=?,
-  replied_at=datetime('now') WHERE id=?
+UPDATE replies SET status='replied', our_reply_content=%s, our_reply_url=%s,
+  replied_at=NOW() WHERE id=%s
 ```
 
 ### Phase C: X/Twitter replies (browser required)
@@ -285,7 +290,7 @@ GOOD body: Paragraphs, incomplete thoughts, personal details, casual tone, ends 
 
 **Tier 2 — Natural mention:** Conversation touches a topic matching one of the user's projects (from `config.json → projects[].topics`). Mention casually, link only if it adds value. Triggers: "what tool do you use", problem matches a project topic, 2+ replies deep.
 
-**Tier 3 — Direct ask:** They ask for link/try/source. Give it immediately using `projects[].website` or `projects[].github` from config.json.
+**Tier 3 — Direct ask:** They ask for link/try/source. Give it immediately using `projects[].links[current_platform]` from config.json (e.g. `links.reddit` on Reddit, `links.twitter` on X, `links.linkedin` on LinkedIn, `links.github` on GitHub). Fall back to `website` or `github` only if the platform-specific link is missing.
 
 ---
 
