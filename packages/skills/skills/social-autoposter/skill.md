@@ -1,25 +1,29 @@
 ---
 name: social-autoposter
-description: "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, create original posts, track engagement stats. Use when: 'post to social', 'social autoposter', 'find threads to comment on', 'create a post', 'audit social posts', 'update post stats'."
+description: "Automate social media posting across Reddit, X/Twitter, LinkedIn, Moltbook, and GitHub Issues. Find threads, post comments, track engagement stats, edit high-performing posts with project links. Use when: 'post to social', 'social autoposter', 'find threads', 'audit social posts', 'update post stats', 'engage replies'."
 user_invocable: true
 ---
 
 # Social Autoposter
 
-Automates finding, posting, and tracking social media comments and original posts across Reddit, X/Twitter, LinkedIn, and Moltbook.
+Automates finding, posting, and tracking social media comments and original posts across Reddit, X/Twitter, LinkedIn, Moltbook, and GitHub Issues.
 
 ## Quick Start
 
 | Command | What it does |
 |---------|-------------|
 | `/social-autoposter` | Comment run — find threads + post comment + log (cron-safe) |
+| `/social-autoposter github` | Find relevant GitHub issues + post helpful comments + log |
 | `/social-autoposter post` | Create an original post/thread (manual only, never cron) |
 | `/social-autoposter stats` | Update engagement stats via API |
 | `/social-autoposter engage` | Scan and reply to responses on our posts |
 | `/social-autoposter audit` | Full browser audit of all posts |
 
-**View your posts live:** `https://s4l.ai/stats/[your_handle]`
-The handles come from `config.json → accounts.*.handle/username`. Each platform account has its own URL.
+---
+
+## Browser Automation: MCP Playwright ONLY
+
+All browser interactions (posting, scraping views, auditing, replying) MUST use **MCP Playwright** (`browser_navigate`, `browser_run_code`, `browser_snapshot`, `browser_click`, etc.).
 
 ---
 
@@ -31,18 +35,15 @@ Before doing anything, read `~/social-autoposter/config.json`. Everything — ac
 cat ~/social-autoposter/config.json
 ```
 
-Key fields you'll use throughout every workflow:
-
+Key fields:
 - `accounts.reddit.username` — Reddit handle to post as
 - `accounts.twitter.handle` — X/Twitter handle
 - `accounts.linkedin.name` — LinkedIn display name
 - `accounts.moltbook.username` — Moltbook username
 - `subreddits` — list of subreddits to monitor and post in
 - `content_angle` — the user's unique perspective for writing authentic comments
-- `projects` — products/repos to mention naturally when relevant (each has `name`, `description`, `website`, `github`, `links`, `topics`). The `links` object has per-platform URLs: `links.reddit`, `links.twitter`, `links.linkedin`, `links.github`, etc. **Always use `links[platform]` for the current platform** — e.g. `links.reddit` when posting on Reddit, `links.twitter` on X. Fall back to `website` or `github` only if `links[platform]` is absent.
-- `database` — unused (DB is Neon Postgres via `DATABASE_URL` in `.env`)
-
-Use these values everywhere below instead of any hardcoded names or links.
+- `projects` — products/repos to mention naturally when relevant (each has `name`, `description`, `website`, `github`, `topics`)
+- `DATABASE_URL` in `~/social-autoposter/.env` — the live Neon Postgres database used by the helper scripts
 
 ---
 
@@ -62,10 +63,7 @@ python3 ~/social-autoposter/scripts/update_stats.py --quiet
 
 ### 1. Rate limit check
 
-```sql
-SELECT COUNT(*) FROM posts WHERE posted_at >= NOW() - INTERVAL '24 hours'
-```
-Max 40 posts per 24 hours. Stop if at limit.
+Skip this step — the find_threads.py script handles rate limiting automatically.
 
 ### 2. Find candidate threads
 
@@ -105,6 +103,7 @@ Follow Content Rules below. 2-3 sentences, first person, specific details from `
 **X/Twitter** (browser automation):
 - Navigate to tweet → reply box → type → Reply → verify → capture URL
 - Post as the handle in `config.json → accounts.twitter.handle`
+- Use platform value `'twitter'` (not `'x'`) when logging to DB
 
 **LinkedIn** (browser automation):
 - Navigate to post → comment box → type → Post → close tab
@@ -120,7 +119,7 @@ curl -s -X POST -H "Authorization: Bearer $MOLTBOOK_API_KEY" -H "Content-Type: a
 On Moltbook: write as agent ("my human" not "I"). Max 1 post per 30 min.
 Verify: fetch post by UUID, check `verification_status` is `"verified"`.
 
-### 7. Log + sync
+### 7. Log to database
 
 ```sql
 INSERT INTO posts (platform, thread_url, thread_author, thread_author_handle,
@@ -129,15 +128,11 @@ INSERT INTO posts (platform, thread_url, thread_author, thread_author_handle,
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', NOW());
 ```
 
-Use the account value from `config.json` for `our_account`.
-
-If `sync_script` is set in config.json, run it after logging.
-
 ---
 
 ## Workflow: Create Post (`/social-autoposter post`)
 
-**Manual only — never run from cron.** Original posts are high-stakes and need human review.
+**Manual only — never run from cron.**
 
 ### 1. Rate limit check
 
@@ -151,11 +146,11 @@ WHERE source_summary LIKE '%' || %s || '%' AND posted_at >= NOW() - INTERVAL '30
 ORDER BY posted_at DESC;
 ```
 
-**NEVER post the same or similar content to multiple subreddits.** This is the #1 AI detection red flag. Each post must be unique to its community.
+**NEVER post the same or similar content to multiple subreddits.**
 
 ### 3. Pick one target community
 
-Choose the single best subreddit from `config.json → subreddits` for this topic. Tailor the post to that community's culture and tone.
+Choose the single best subreddit from `config.json → subreddits` for this topic.
 
 ### 4. Draft the post
 
@@ -165,13 +160,11 @@ Choose the single best subreddit from `config.json → subreddits` for this topi
 - [ ] No markdown headers (##) or bold (**) in Reddit posts
 - [ ] No numbered/bulleted lists — write in paragraphs
 - [ ] No "Hi everyone" or "Hey r/subreddit" openings
-- [ ] Title doesn't use clickbait patterns ("What I wish I'd known", "A guide to")
+- [ ] Title doesn't use clickbait patterns
 - [ ] Contains at least one imperfection: incomplete thought, casual aside, informality
 - [ ] Reads like a real person writing on their phone, not an essay
-- [ ] Does NOT link to any project in the post body — earn attention first
+- [ ] Does NOT link to any project in the post body
 - [ ] Not too long — 2-4 short paragraphs max for Reddit
-
-**Read it out loud.** If it sounds like a blog post or a ChatGPT response, rewrite it.
 
 ### 5. Post it
 
@@ -186,25 +179,79 @@ INSERT INTO posts (platform, thread_url, thread_author, thread_author_handle,
 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 'active', NOW());
 ```
 
-For original posts: `thread_url` = `our_url`, `thread_author` = our account from config.json.
-
 ### 7. Mandatory engagement plan
 
-After posting, you MUST:
-- Check for comments within 2-4 hours
-- Reply to every substantive comment within 24 hours
-- Replies should be casual, conversational, expand the topic — NOT polished paragraphs
-- If someone accuses the post of being AI: respond genuinely, mention a specific personal detail
+After posting: reply to every substantive comment within 24 hours. Casual, conversational, not polished paragraphs.
+
+---
+
+## Workflow: GitHub Issues (`/social-autoposter github`)
+
+### 1. Rate limit check
+
+```sql
+SELECT COUNT(*) FROM posts WHERE platform='github_issues' AND posted_at >= NOW() - INTERVAL '24 hours'
+```
+Max 6 GitHub issue comments per 24 hours. Stop if at limit.
+
+### 2. Search for relevant issues
+
+```bash
+gh search issues "TOPIC" --limit 10 --state open --sort updated
+```
+
+Run 3-5 searches with different topic keywords from `content_angle` and `accounts.github.search_topics`.
+
+### 3. Read the issue
+
+```bash
+gh api repos/OWNER/REPO/issues/NUMBER --jq '.title,.body'
+gh api repos/OWNER/REPO/issues/NUMBER/comments --jq '.[].body' | head -200
+```
+
+### 4. Draft + post the comment
+
+3-6 sentences. Genuine technical help. First person, casual. No project links in the main comment.
+
+```bash
+gh issue comment NUMBER -R OWNER/REPO --body "YOUR COMMENT"
+```
+
+### 5. Log it
+
+```sql
+INSERT INTO posts (platform, thread_url, thread_author, thread_title, our_url,
+  our_content, our_account, source_summary, status, posted_at)
+VALUES ('github_issues', %s, %s, %s, %s, %s, %s, %s, 'active', NOW());
+```
+
+### 6. Pick next issue
+
+Repeat for up to 3 issues per run.
 
 ---
 
 ## Workflow: Stats (`/social-autoposter stats`)
 
+### Step 1: API stats
+
 ```bash
 python3 ~/social-autoposter/scripts/update_stats.py
 ```
 
-After running, view updated stats at `https://s4l.ai/stats/[handle]`. The DB syncs to Neon Postgres via `syncfield.sh` (called automatically by `stats.sh`). Changes appear on the website within ~5 minutes.
+Updates upvotes, comments_count, thread_engagement, detects deleted/removed for Reddit + Moltbook.
+
+### Step 2: Reddit view counts (browser required)
+
+Use MCP Playwright to scrape the Reddit user profile page with virtualized scroll collection.
+Navigate to `https://www.reddit.com/user/{username}/`, scroll to collect all view counts, save to `/tmp/reddit_views.json`, then run:
+```bash
+python3 ~/social-autoposter/scripts/scrape_reddit_views.py --from-json /tmp/reddit_views.json
+```
+
+### Step 3: X/Twitter stats (browser required)
+
+Scrape individual tweet pages. Use 8-second delays between pages. Target tweets by status ID to avoid reading parent thread stats instead of our reply's stats.
 
 ---
 
@@ -226,7 +273,7 @@ WHERE r.status='pending' ORDER BY r.discovered_at ASC LIMIT 10
 
 Draft replies: 2-4 sentences, casual, expand the topic. Apply Tiered Reply Strategy. Max 5 replies per run.
 
-Post via browser (Reddit/X) or API (Moltbook). Update:
+Post via browser (Reddit/X), API (Moltbook), or `gh issue comment` (GitHub Issues). Update:
 ```sql
 UPDATE replies SET status='replied', our_reply_content=%s, our_reply_url=%s,
   replied_at=NOW() WHERE id=%s
@@ -236,51 +283,94 @@ UPDATE replies SET status='replied', our_reply_content=%s, our_reply_url=%s,
 
 Navigate to `https://x.com/notifications/mentions`. Find replies to the handle in config.json. Respond to substantive ones (max 5). Log to `replies` table.
 
+### Phase D: Edit high-performing posts with project link
+
+Find posts that earned >2 upvotes but haven't had a link appended yet:
+
+```sql
+SELECT id, platform, our_url, our_content, thread_title, source_summary
+FROM posts
+WHERE status='active'
+  AND upvotes > 2
+  AND posted_at < NOW() - INTERVAL '6 hours'
+  AND link_edited_at IS NULL
+  AND our_url IS NOT NULL
+ORDER BY upvotes DESC
+```
+
+For each post:
+1. Pick the project from `config.json → projects[]` whose `topics` best match the thread. If no project fits, skip.
+2. Write 1 sentence + link:
+   - "fwiw I built something for this - [project.website]"
+   - "we open sourced the thing I mentioned if anyone wants to poke around [project.github]"
+   - "here's the repo if useful [project.github]"
+3. Edit the original comment to append `\n\n[link text]` at the bottom.
+
+**Platform-specific editing:**
+
+**Reddit** (browser):
+- Navigate to `old.reddit.com` comment permalink
+- Click "edit" under the comment
+- Append `\n\n[link text]` to existing content
+- Save, verify edit appeared
+
+**Moltbook** (API):
+```bash
+source ~/social-autoposter/.env
+curl -s -X PATCH -H "Authorization: Bearer $MOLTBOOK_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"content": "[original content]\n\n[link text]"}' \
+  "https://www.moltbook.com/api/v1/posts/[uuid]"
+```
+
+**X/Twitter:** Skip — editing not supported.
+**LinkedIn:** Skip — unreliable via automation.
+
+4. Update DB after successful edit:
+```sql
+UPDATE posts SET link_edited_at=NOW(), link_edit_content=%s WHERE id=%s
+```
+
+Max 5 edits per engage run.
+
 ---
 
 ## Workflow: Audit (`/social-autoposter audit`)
 
-Visit each post URL via browser. Check status (active/deleted/removed/inactive). Update engagement metrics. Report summary.
+### Step 1: API audit
+```bash
+python3 ~/social-autoposter/scripts/update_stats.py
+```
+
+### Step 2: X/Twitter audit (browser)
+Navigate to each tweet URL (8s delays, batches of 20). Mark deleted/removed. Extract views/likes/replies.
+
+### Step 3: Mark deleted/removed
+```sql
+UPDATE posts SET status='deleted', status_checked_at=NOW() WHERE id=%s
+UPDATE posts SET status='removed', status_checked_at=NOW() WHERE id=%s
+```
+
+### Step 4: Report summary
+Print totals: posts checked, updated, deleted, removed, errors per platform.
 
 ---
 
 ## Content Rules
 
-### Tone & Voice
-
-1. **Write like you're texting a coworker.** Lowercase fine. Sentence fragments fine. Never start with "Makes sense" or "The nuance here is." If it sounds like a blog post, rewrite it.
-2. **First person, specific.** Use concrete details from `content_angle` in config.json. Real numbers, real experiences, not generalizations.
+1. **Write like you're texting a coworker.** Lowercase fine. Sentence fragments fine.
+2. **First person, specific.** Concrete details from `content_angle`. Real numbers, real experiences.
 3. **Reply to top comments, not just OP.**
-4. **Only comment when there's a genuine angle from the user's work.** Use `content_angle` from config.json. If the thread doesn't connect, skip it.
-5. **No product links in top-level comments or original posts.** Earn attention first. Only link in deeper replies when someone asks.
+4. **Only comment when there's a genuine angle from the user's work.**
+5. **No product links in top-level comments or original posts.**
 6. **On Moltbook, write as an agent.** "my human" not "I".
 7. **Log everything.**
-
-### Anti-AI-Detection (applies to ALL content)
-
-8. **No em dashes (—).** Use commas, periods, or regular dashes (-) instead. Em dashes are the #1 "ChatGPT tell."
-9. **No markdown formatting in Reddit.** No headers (##), no bold (**text**), no numbered lists. Write in plain paragraphs.
+8. **No em dashes (—).** Use commas, periods, or regular dashes (-) instead.
+9. **No markdown formatting in Reddit.** No headers, no bold, no numbered lists.
 10. **Never cross-post.** One post per topic per community.
-11. **Space posts out.** Max 1 original post per day, max 3 per week. Don't spam.
-12. **Include imperfections.** Contractions, sentence fragments, casual asides, occasional lowercase.
-13. **Vary your openings.** Don't always start with credentials. Sometimes just jump into the topic.
-14. **Reply to comments on your posts.** Zero engagement on your own post = bot signal. Reply within 24h.
-
-### Bad vs Good (Comments)
-
-BAD: "Makes sense — Claude already tries to tail the output on its own but by then the tokens are already in context."
-GOOD: "gonna try this, I run 5 agents in parallel and my API bill is becoming a second rent payment"
-
-BAD: "What everyone here is describing is basically specification-driven development."
-GOOD: "I spend more time writing CLAUDE.md specs than I ever spent writing code. the irony is I'm basically doing waterfall now and shipping faster than ever."
-
-### Bad vs Good (Original Posts)
-
-BAD title: "What I Wish I'd Known Before My First Vipassana Retreat: A Complete Guide"
-GOOD title: "just did my 7th course, some things that surprised me"
-
-BAD body: Structured with headers, bold, numbered lists, "As a tech founder..."
-GOOD body: Paragraphs, incomplete thoughts, personal details, casual tone, ends with a genuine question
+11. **Space posts out.** Max 1 original post per day, max 3 per week.
+12. **Include imperfections.** Contractions, sentence fragments, casual asides.
+13. **Reply to comments on your posts within 24h.**
 
 ---
 
@@ -288,14 +378,38 @@ GOOD body: Paragraphs, incomplete thoughts, personal details, casual tone, ends 
 
 **Tier 1 — Default (no link):** Genuine engagement. Expand topic, ask follow-ups. Most replies.
 
-**Tier 2 — Natural mention:** Conversation touches a topic matching one of the user's projects (from `config.json → projects[].topics`). Mention casually, link only if it adds value. Triggers: "what tool do you use", problem matches a project topic, 2+ replies deep.
+**Tier 2 — Natural mention:** Conversation touches a topic matching `config.json → projects[].topics`. Mention casually, link only if it adds value.
 
-**Tier 3 — Direct ask:** They ask for link/try/source. Give it immediately using `projects[].links[current_platform]` from config.json (e.g. `links.reddit` on Reddit, `links.twitter` on X, `links.linkedin` on LinkedIn, `links.github` on GitHub). Fall back to `website` or `github` only if the platform-specific link is missing.
+**Tier 3 — Direct ask:** They ask for link/try/source. Give it immediately.
+
+---
+
+## Critical: No Parallel Posting
+
+**NEVER launch multiple agents or parallel tasks for posting.** All posting operations MUST be done sequentially in a single agent. Parallel agents cause duplicate posts and browser lock conflicts.
 
 ---
 
 ## Database Schema
 
-`posts`: id, platform, thread_url, thread_title, our_url, our_content, our_account, posted_at, status, upvotes, comments_count, views, source_summary
+`posts`: id, platform, thread_url, thread_title, our_url, our_content, our_account, posted_at, status, upvotes, comments_count, views, source_summary, link_edited_at, link_edit_content
+
+Platform values: `reddit`, `twitter`, `linkedin`, `moltbook`, `hackernews`, `github_issues`
+
+**Important:** Always use `'twitter'` (not `'x'`) for X/Twitter posts.
 
 `replies`: id, post_id, platform, their_author, their_content, our_reply_content, status (pending|replied|skipped|error), depth
+
+---
+
+## Platform Reference
+
+**Reddit:** Use `old.reddit.com`. No posting API — browser only.
+
+**X/Twitter:** Browser only. No public API for notifications. Editing not supported.
+
+**LinkedIn:** Browser only. Professional tone. No stable comment URLs.
+
+**Moltbook:** Full REST API. Base: `https://www.moltbook.com/api/v1`. Auth: `Bearer $MOLTBOOK_API_KEY`. Write as agent.
+
+**GitHub Issues:** Use `gh` CLI. No browser needed.
