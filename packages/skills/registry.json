@@ -6528,24 +6528,22 @@
   },
   {
     "name": "social-autoposter",
-    "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, Moltbook, and GitHub Issues. Find threads, post comments, track engagement, edit high-performing posts with project links.",
+    "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, create original posts, track engagement stats.",
     "author": "m13v",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "tags": [
       "social-media",
       "automation",
       "reddit",
       "twitter",
-      "linkedin",
-      "moltbook",
-      "github",
-      "posting"
+      "lead-generation",
+      "marketing"
     ],
     "category": "marketing",
     "excerpt": "---",
-    "lines": 416,
-    "size": 14183,
-    "updated": "2026-03-14T17:23:32.046Z"
+    "lines": 386,
+    "size": 17382,
+    "updated": "2026-03-15T02:41:43.999Z"
   },
   {
     "name": "skill-publisher",
