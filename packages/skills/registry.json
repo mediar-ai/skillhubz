@@ -6530,20 +6530,20 @@
     "name": "social-autoposter",
     "description": "Automate social media posting across Reddit, X/Twitter, LinkedIn, and Moltbook. Find threads, post comments, create original posts, track engagement stats.",
     "author": "m13v",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "tags": [
       "social-media",
-      "automation",
       "reddit",
       "twitter",
-      "lead-generation",
-      "marketing"
+      "automation",
+      "marketing",
+      "content"
     ],
     "category": "marketing",
     "excerpt": "---",
     "lines": 386,
-    "size": 17382,
-    "updated": "2026-03-15T02:41:43.999Z"
+    "size": 17427,
+    "updated": "2026-03-15T03:37:37.080Z"
   },
   {
     "name": "skill-publisher",
