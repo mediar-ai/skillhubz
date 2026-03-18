@@ -6750,7 +6750,7 @@
     "name": "whatsapp-macos",
     "description": "Control WhatsApp desktop (macOS) via MCP tools. Search contacts, send messages with delivery verification, read chats, start/quit app.",
     "author": "m13v",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "tags": [
       "whatsapp",
       "macos",
@@ -6761,8 +6761,8 @@
     ],
     "category": "communication",
     "excerpt": "---",
-    "lines": 79,
-    "size": 3821,
-    "updated": "2026-03-18T03:05:42.531Z"
+    "lines": 76,
+    "size": 3801,
+    "updated": "2026-03-18T03:18:59.031Z"
   }
 ]
