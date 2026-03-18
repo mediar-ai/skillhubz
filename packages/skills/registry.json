@@ -6745,5 +6745,24 @@
     "updated": "2026-03-06T12:00:00Z",
     "sourceUrl": "https://github.com/web-infra-dev/midscene-skills",
     "installs": 248
+  },
+  {
+    "name": "whatsapp-macos",
+    "description": "Control WhatsApp desktop (macOS) via MCP tools. Search contacts, send messages with delivery verification, read chats, start/quit app.",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "whatsapp",
+      "macos",
+      "mcp",
+      "messaging",
+      "accessibility",
+      "automation"
+    ],
+    "category": "communication",
+    "excerpt": "---",
+    "lines": 79,
+    "size": 3821,
+    "updated": "2026-03-18T03:05:42.531Z"
   }
 ]
