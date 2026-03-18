@@ -60,12 +60,7 @@ Each search result includes:
 
 ## Setup
 
-Install the MCP server:
-```bash
-npm install -g whatsapp-mcp-macos
-```
-
-Register in `~/.claude.json` under `mcpServers`:
+The MCP server must be registered in `~/.claude.json`:
 ```json
 "whatsapp": {
   "type": "stdio",
@@ -75,4 +70,6 @@ Register in `~/.claude.json` under `mcpServers`:
 }
 ```
 
-Requires: macOS 13+, WhatsApp desktop installed, accessibility permissions granted.
+Install via: `npm install -g whatsapp-mcp-macos`
+
+Requires: WhatsApp desktop installed, macOS accessibility permissions granted.
