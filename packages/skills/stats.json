@@ -12,9 +12,9 @@
     "expense-logger": 3,
     "browser-lock-multi-agent-playwright-concurrency": 1,
     "nano-banana-2": 1,
-    "find-skills": 2,
+    "find-skills": 1,
     "skill-creator": 1,
-    "pptx": 1,
+    "pptx": 2,
     "xlsx": 1,
     "brand-guidelines": 1,
     "deep-research": 2,
@@ -49,5 +49,5 @@
     "excalidraw": 1,
     "优化": 1
   },
-  "lastUpdated": "2026-03-21T22:48:56.368Z"
+  "lastUpdated": "2026-03-21T22:50:08.810Z"
 }
