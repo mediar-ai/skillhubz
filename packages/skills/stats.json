@@ -19,7 +19,8 @@
     "brand-guidelines": 1,
     "deep-research": 2,
     "frontend-design": 1,
-    "docx": 1
+    "docx": 1,
+    "superdesign": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -43,7 +44,7 @@
     "Skill Creator": 1,
     "github mcp": 1,
     "skill creator": 1,
-    "design": 2,
+    "design": 1,
     "everything-claude-code": 1,
     "nextjs": 1,
     "freeze": 1,
@@ -52,5 +53,5 @@
     "superpowers": 1,
     "using": 1
   },
-  "lastUpdated": "2026-03-22T22:01:44.108Z"
+  "lastUpdated": "2026-03-22T22:02:11.188Z"
 }
