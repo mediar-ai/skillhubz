@@ -6767,9 +6767,9 @@
   },
   {
     "name": "deep-research-pro",
-    "description": "Production-grade deep research with multi-agent orchestration, stuck-agent recovery, write-after-search reliability, and optional human checkpoints. 8-phase pipeline for comprehensive, citation-backed analysis.",
+    "description": "Production-grade deep research with multi-agent orchestration, stuck-agent recovery, write-after-search reliability, and human checkpoints",
     "author": "mediar-ai",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "tags": [
       "research",
       "deep-research",
@@ -6780,10 +6780,9 @@
       "web-search"
     ],
     "category": "research",
-    "excerpt": "Production-grade deep research engine with multi-agent orchestration, stuck-agent detection and auto-recovery, write-after-search reliability protocol, and optional human-in-the-loop checkpoints. 8-phase pipeline: Scope, Plan, Retrieve, Triangulate, Synthesize, Critique, Refine, Package.",
-    "lines": 426,
+    "excerpt": "---",
+    "lines": 427,
     "size": 14091,
-    "updated": "2026-03-25T12:00:00.000Z",
-    "installs": 0
+    "updated": "2026-03-26T00:34:32.165Z"
   }
 ]
