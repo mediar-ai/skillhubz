@@ -1,0 +1,155 @@
+[
+  {
+    "id": "gstack",
+    "name": "GStack",
+    "subtitle": "by Garry Tan",
+    "description": "Turn Claude Code into a virtual software development team. 15 opinionated skills that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA.",
+    "author": "garrytan",
+    "sourceUrl": "https://github.com/garrytan/gstack",
+    "stars": 16000,
+    "featured": true,
+    "installCommand": "git clone https://github.com/garrytan/gstack.git ~/.claude/skills/gstack && cd ~/.claude/skills/gstack && ./setup",
+    "skills": [
+      {
+        "name": "office-hours",
+        "role": "YC Partner",
+        "description": "Product discovery through 6 forcing questions before coding begins"
+      },
+      {
+        "name": "plan-ceo-review",
+        "role": "Founder / CEO",
+        "description": "Rethinks problem scope — finds the 10-star product hiding in your request"
+      },
+      {
+        "name": "plan-eng-review",
+        "role": "Engineering Manager",
+        "description": "Locks architecture via diagrams, test matrices, and failure mode analysis"
+      },
+      {
+        "name": "plan-design-review",
+        "role": "Senior Designer",
+        "description": "Rates design dimensions 0-10 with AI slop detection"
+      },
+      {
+        "name": "autoplan",
+        "role": "Review Pipeline",
+        "description": "Runs CEO, design, and eng reviews automatically in sequence"
+      },
+      {
+        "name": "ship",
+        "role": "Release Engineer",
+        "description": "Syncs main, runs tests, audits coverage, and opens pull requests"
+      },
+      {
+        "name": "land-and-deploy",
+        "role": "Deployment Engineer",
+        "description": "Merges PRs, waits for CI, deploys to production, verifies health"
+      },
+      {
+        "name": "review",
+        "role": "Staff Engineer",
+        "description": "Finds bugs that pass CI but fail in production — N+1 queries, race conditions, trust boundaries"
+      },
+      {
+        "name": "codex",
+        "role": "Second Opinion",
+        "description": "Cross-model code review via OpenAI Codex CLI with adversarial challenge mode"
+      },
+      {
+        "name": "cso",
+        "role": "Chief Security Officer",
+        "description": "OWASP Top 10 + STRIDE threat modeling with concrete exploit scenarios"
+      },
+      {
+        "name": "investigate",
+        "role": "Debugger",
+        "description": "Systematic root-cause debugging — no fixes without investigation"
+      },
+      {
+        "name": "browse",
+        "role": "QA Engineer",
+        "description": "Real Chromium browser control at ~100ms per command for testing"
+      },
+      {
+        "name": "qa",
+        "role": "QA Lead",
+        "description": "Tests app flows in real browser, finds bugs, fixes with atomic commits"
+      },
+      {
+        "name": "qa-only",
+        "role": "QA Reporter",
+        "description": "Same as /qa but report-only — no code changes"
+      },
+      {
+        "name": "retro",
+        "role": "Engineering Manager",
+        "description": "Weekly retrospectives with per-person breakdowns and shipping streaks"
+      },
+      {
+        "name": "document-release",
+        "role": "Technical Writer",
+        "description": "Updates all project docs to match recent changes"
+      },
+      {
+        "name": "design-consultation",
+        "role": "Design Partner",
+        "description": "Builds complete design systems with landscape research and mockups"
+      },
+      {
+        "name": "design-shotgun",
+        "role": "Design Explorer",
+        "description": "Generates multiple design variants with comparison boards"
+      },
+      {
+        "name": "design-review",
+        "role": "Designer-Engineer",
+        "description": "Design audit with implementation fixes and before/after screenshots"
+      },
+      {
+        "name": "benchmark",
+        "role": "Performance Engineer",
+        "description": "Page load, Core Web Vitals, and resource size baselines per PR"
+      },
+      {
+        "name": "canary",
+        "role": "SRE / Monitor",
+        "description": "Post-deployment monitoring for console errors and performance regressions"
+      },
+      {
+        "name": "connect-chrome",
+        "role": "Chrome Controller",
+        "description": "Launches your Chrome with Side Panel extension for live activity feed"
+      },
+      {
+        "name": "setup-browser-cookies",
+        "role": "Session Manager",
+        "description": "Imports cookies from real browsers into headless sessions"
+      },
+      {
+        "name": "setup-deploy",
+        "role": "Deploy Configurator",
+        "description": "One-time setup for /land-and-deploy — detects platform and deploy commands"
+      },
+      {
+        "name": "careful",
+        "role": "Safety Guardrails",
+        "description": "Warns before destructive commands like rm -rf, DROP TABLE, force-push"
+      },
+      {
+        "name": "freeze",
+        "role": "Edit Lock",
+        "description": "Restricts file edits to one directory while debugging"
+      },
+      {
+        "name": "guard",
+        "role": "Full Safety",
+        "description": "Combines /careful + /freeze for maximum safety"
+      },
+      {
+        "name": "unfreeze",
+        "role": "Lock Removal",
+        "description": "Removes freeze boundary to restore full edit access"
+      }
+    ]
+  }
+]
