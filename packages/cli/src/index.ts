@@ -20,6 +20,7 @@ program
   .description('Install a skill to ~/.claude/commands/')
   .option('-l, --local', 'Install to local .claude/commands/ instead of global')
   .option('-f, --force', 'Overwrite existing skill')
+  .option('-p, --pack', 'Install a skill pack (collection of skills)')
   .action(install);
 
 // Search for skills
