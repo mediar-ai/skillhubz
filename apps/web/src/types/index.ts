@@ -34,6 +34,25 @@ export interface Comment {
   replies?: Comment[];
 }
 
+export interface SkillPackSkill {
+  name: string;
+  role: string;
+  description: string;
+}
+
+export interface SkillPack {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  author: string;
+  sourceUrl: string;
+  stars: number;
+  featured: boolean;
+  installCommand: string;
+  skills: SkillPackSkill[];
+}
+
 // Category is free-form - any string is valid
 export type Category = string;
 
