@@ -17,6 +17,7 @@ import {
   Check,
 } from 'lucide-react';
 import { SkillCard } from '../components/SkillCard';
+import { PacksSection } from '../components/PacksSection';
 import { useSkills } from '../hooks/useSkills';
 import { CATEGORIES, type Category } from '../types';
 import {
@@ -266,6 +267,9 @@ export function HomePage() {
           </div>
         </motion.div>
       </section>
+
+      {/* Skill Packs */}
+      <PacksSection />
 
       {/* Categories Section */}
       <section className={styles.section}>
