@@ -10,7 +10,7 @@ try {
 }
 
 interface TrackingEvent {
-  event: 'install' | 'search' | 'list' | 'remove' | 'init' | 'publish';
+  event: 'install' | 'install_pack' | 'search' | 'list' | 'remove' | 'init' | 'publish';
   skill?: string;
   query?: string;
 }
