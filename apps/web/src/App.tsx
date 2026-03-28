@@ -7,6 +7,7 @@ import { DocsPage } from './pages/DocsPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 import { LicensePage } from './pages/LicensePage';
+import { PackDetailPage } from './pages/PackDetailPage';
 import { CrispChat } from './components/CrispChat';
 import { PostHogProvider } from './components/PostHogProvider';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/explore" element={<Navigate to="/#skills" replace />} />
           <Route path="/skill/:id" element={<SkillDetailPage />} />
+          <Route path="/packs/:id" element={<PackDetailPage />} />
           <Route path="/submit" element={<SubmitPage />} />
           <Route path="/docs" element={<DocsPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
