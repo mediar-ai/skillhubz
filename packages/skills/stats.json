@@ -7,7 +7,7 @@
     "form-filler": 3,
     "linkedin-scraper": 7,
     "e2e-test-recorder": 4,
-    "notion-sync": 6,
+    "notion-sync": 7,
     "screenshot-annotator": 3,
     "expense-logger": 3,
     "browser-lock-multi-agent-playwright-concurrency": 1,
@@ -21,8 +21,7 @@
     "frontend-design": 2,
     "docx": 1,
     "seo-geo": 1,
-    "deep-research-pro": 2,
-    "ai-automation-workflows": 1
+    "deep-research-pro": 2
   },
   "stars": {
     "gmail-reply": 6,
@@ -63,5 +62,5 @@
     "qa audit platform testing": 1,
     "cowork": 1
   },
-  "lastUpdated": "2026-03-30T18:37:27.776Z"
+  "lastUpdated": "2026-03-30T18:37:35.291Z"
 }
