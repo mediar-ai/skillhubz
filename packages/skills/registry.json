@@ -6748,13 +6748,13 @@
   },
   {
     "name": "whatsapp-macos",
-    "description": "Control WhatsApp desktop (macOS) via MCP tools. Search contacts, send messages with delivery verification, read chats, start/quit app.",
+    "description": "Control WhatsApp desktop (macOS Catalyst app) via native MCP tools. Send messages, read chats, search contacts, verify delivery.",
     "author": "m13v",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "tags": [
       "whatsapp",
-      "macos",
       "mcp",
+      "macos",
       "messaging",
       "accessibility",
       "automation"
@@ -6763,7 +6763,7 @@
     "excerpt": "---",
     "lines": 76,
     "size": 3801,
-    "updated": "2026-03-18T03:18:59.031Z"
+    "updated": "2026-04-03T18:22:17.415Z"
   },
   {
     "name": "deep-research-pro",
