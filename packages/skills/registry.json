@@ -6802,5 +6802,24 @@
     "lines": 520,
     "size": 19520,
     "updated": "2026-04-07T20:47:47.816Z"
+  },
+  {
+    "name": "seo-page-ui",
+    "description": "UI blueprint for rich SEO landing pages: animated SVGs, comparison tables, FAQ accordions, JSON-LD structured data, and a teal color palette.",
+    "author": "matthew-heartful",
+    "version": "1.0.0",
+    "tags": [
+      "seo",
+      "ui",
+      "nextjs",
+      "landing-page",
+      "svg-animation",
+      "structured-data"
+    ],
+    "category": "marketing",
+    "excerpt": "---",
+    "lines": 574,
+    "size": 21222,
+    "updated": "2026-04-07T20:51:41.857Z"
   }
 ]
