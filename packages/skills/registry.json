@@ -6821,5 +6821,24 @@
     "lines": 574,
     "size": 21222,
     "updated": "2026-04-07T20:51:41.857Z"
+  },
+  {
+    "name": "browser-cookies",
+    "description": "Export, save, and import cookies for isolated Playwright MCP browser agents to persist sessions across restarts",
+    "author": "matthew-heartful",
+    "version": "1.0.0",
+    "tags": [
+      "browser",
+      "cookies",
+      "playwright",
+      "mcp",
+      "automation",
+      "sessions"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 115,
+    "size": 4300,
+    "updated": "2026-04-09T00:07:13.593Z"
   }
 ]
