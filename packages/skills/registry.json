@@ -6840,5 +6840,23 @@
     "lines": 115,
     "size": 4300,
     "updated": "2026-04-09T00:07:13.593Z"
+  },
+  {
+    "name": "claude-usage-calc",
+    "description": "Calculate Claude Code token consumption, prompt counts, and list-price cost from local JSONL transcript logs with correct dedup and caveats.",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "claude-code",
+      "analytics",
+      "tokens",
+      "cost",
+      "usage"
+    ],
+    "category": "utilities",
+    "excerpt": "---",
+    "lines": 156,
+    "size": 7500,
+    "updated": "2026-04-11T21:00:14.708Z"
   }
 ]
