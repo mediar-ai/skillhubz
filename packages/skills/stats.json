@@ -13,7 +13,7 @@
     "browser-lock-multi-agent-playwright-concurrency": 1,
     "nano-banana-2": 1,
     "find-skills": 2,
-    "skill-creator": 1,
+    "skill-creator": 2,
     "pptx": 2,
     "xlsx": 1,
     "brand-guidelines": 1,
@@ -24,8 +24,7 @@
     "deep-research-pro": 2,
     "tool-design": 1,
     "debian-linux-triage": 1,
-    "github": 1,
-    "mcp-builder": 1
+    "github": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -72,5 +71,5 @@
     "css": 1,
     "sass": 1
   },
-  "lastUpdated": "2026-04-11T12:32:28.609Z"
+  "lastUpdated": "2026-04-11T12:32:55.549Z"
 }
