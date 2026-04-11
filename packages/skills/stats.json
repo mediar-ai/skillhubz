@@ -67,7 +67,8 @@
     "minimax": 1,
     "realtime": 1,
     "testing": 1,
-    "qdrant": 1
+    "qdrant": 1,
+    "find": 1
   },
-  "lastUpdated": "2026-04-10T07:28:02.004Z"
+  "lastUpdated": "2026-04-11T02:03:54.399Z"
 }
