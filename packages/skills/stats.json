@@ -12,7 +12,7 @@
     "expense-logger": 3,
     "browser-lock-multi-agent-playwright-concurrency": 1,
     "nano-banana-2": 1,
-    "find-skills": 2,
+    "find-skills": 3,
     "skill-creator": 1,
     "pptx": 2,
     "xlsx": 1,
@@ -25,8 +25,7 @@
     "tool-design": 1,
     "debian-linux-triage": 1,
     "github": 1,
-    "stream-coding": 1,
-    "logo-design-guide": 1
+    "stream-coding": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -73,5 +72,5 @@
     "css": 1,
     "sass": 1
   },
-  "lastUpdated": "2026-04-13T16:38:34.544Z"
+  "lastUpdated": "2026-04-13T16:41:36.402Z"
 }
