@@ -6489,23 +6489,22 @@
   },
   {
     "name": "new-product-website",
-    "description": "End-to-end workflow for launching a new product landing page — scaffolding, theming, analytics, waitlist, domain, SEO, and deployment.",
+    "description": "End-to-end workflow for launching a new product landing page with Next.js, PostHog, Resend, and Google Cloud Run",
     "author": "m13v",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "tags": [
       "nextjs",
-      "vercel",
-      "resend",
-      "posthog",
       "landing-page",
-      "waitlist",
-      "seo"
+      "cloud-run",
+      "seo",
+      "posthog",
+      "resend"
     ],
     "category": "development",
     "excerpt": "---",
-    "lines": 432,
-    "size": 14492,
-    "updated": "2026-03-08T04:24:34.328Z"
+    "lines": 1015,
+    "size": 35512,
+    "updated": "2026-04-16T03:19:20.646Z"
   },
   {
     "name": "skill-registry",
