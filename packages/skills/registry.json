@@ -6857,5 +6857,24 @@
     "lines": 156,
     "size": 7500,
     "updated": "2026-04-11T21:00:14.708Z"
+  },
+  {
+    "name": "client-website",
+    "description": "End-to-end workflow for creating client websites with Next.js, SEO components, structured data, and Google Cloud Run deployment",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "nextjs",
+      "client-website",
+      "seo",
+      "cloud-run",
+      "tailwind",
+      "structured-data"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 1681,
+    "size": 65954,
+    "updated": "2026-04-16T03:19:58.335Z"
   }
 ]
