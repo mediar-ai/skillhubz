@@ -6914,5 +6914,23 @@
     "lines": 1783,
     "size": 73643,
     "updated": "2026-04-17T18:49:33.148Z"
+  },
+  {
+    "name": "m13v-gsc-seo-page",
+    "description": "Generate SEO pages from Google Search Console queries, and onboard new products into the automated GSC/SERP pipeline with API-based domain registration, config wiring, launchd activation, backfill, an",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "seo",
+      "gsc",
+      "google-search-console",
+      "automation",
+      "launchd"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 317,
+    "size": 14820,
+    "updated": "2026-04-17T20:13:19.581Z"
   }
 ]
