@@ -27,7 +27,7 @@ function App() {
           <Route path="/license" element={<LicensePage />} />
         </Routes>
       </Layout>
-      <CrispChat />
+      {/* <CrispChat /> */}
     </PostHogProvider>
   );
 }
