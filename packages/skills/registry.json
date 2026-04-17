@@ -6876,5 +6876,25 @@
     "lines": 1681,
     "size": 65954,
     "updated": "2026-04-16T03:19:58.335Z"
+  },
+  {
+    "name": "m13v-client-website",
+    "description": "End-to-end workflow for creating or rebuilding a client Next.js website with SEO audit, real content/images, structured data, @seo/components guide pages, Cloud Run deploy, GSC registration via Site V",
+    "author": "matthew-heartful",
+    "version": "1.0.0",
+    "tags": [
+      "seo",
+      "nextjs",
+      "client-website",
+      "google-search-console",
+      "programmatic-seo",
+      "tailwind",
+      "cloud-run"
+    ],
+    "category": "marketing",
+    "excerpt": "---",
+    "lines": 1910,
+    "size": 77114,
+    "updated": "2026-04-17T18:32:48.206Z"
   }
 ]
