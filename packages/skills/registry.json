@@ -6932,5 +6932,23 @@
     "lines": 317,
     "size": 14820,
     "updated": "2026-04-17T20:13:19.581Z"
+  },
+  {
+    "name": "m13v-setup-client-website",
+    "description": "One-time onboarding for a new consumer site: Next.js scaffold, @m13v/seo-components install, route groups, Cloud Run deploy, dashboard registration. Hands off to m13v-gsc-seo-page for automated SEO pa",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "nextjs",
+      "seo",
+      "onboarding",
+      "cloud-run",
+      "tailwind"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 1576,
+    "size": 64115,
+    "updated": "2026-04-17T20:13:25.052Z"
   }
 ]
