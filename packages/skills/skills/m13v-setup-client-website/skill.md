@@ -205,43 +205,101 @@ Launch one subagent to generate 15-25 candidate domains. Constraints:
 
 Output: `research/domain-candidates.md` with one domain per line.
 
-### 1.5b. Check availability and price via Vercel CLI
+### 1.5b. Bulk discovery via Cloud Domains search
+
+Run Google Cloud Domains' keyword search against the top 3 SEO keywords from the research brief. This adds Google's own suggestions on top of the subagent list:
+
+```bash
+gcloud domains registrations search-domains "apartment security camera" --format=json
+```
+
+The `search-domains` response is cached and fast; use it for breadth. Append any attractive suggestions to `research/domain-candidates.md`.
+
+### 1.5c. Check availability and up-to-date price
 
 For every candidate, run:
 
 ```bash
-vercel domains price <candidate> 2>&1
+gcloud domains registrations get-register-parameters <candidate> --format=json 2>&1
 ```
 
-Parse the price and availability from stdout. Run candidates in parallel (GNU xargs with `-P 5`, or a small bash loop with `&`). Do NOT use `vercel domains buy` yet.
+This returns live availability and price (unlike `search-domains` which is cached). Parse `availability` (must be `AVAILABLE`) and `yearlyPrice.units` + `yearlyPrice.currencyCode`.
 
-Build a table of available domains and their first-year price. Filter:
+Run candidates in parallel with `xargs -P 5` or a bash loop. Build a table of available domains and first-year price. Filter:
 
-- Drop any domain that is unavailable or marked "premium" unless the user pre-approved premium pricing.
+- Drop any domain where `availability != AVAILABLE`.
 - Default price cap: **$50/yr**. Anything above goes in a separate "premium" list.
+- If `get-register-parameters` returns `TLD_NOT_SUPPORTED` for a candidate, move it to the **Vercel fallback list** (see 1.5e).
 
-### 1.5c. Present top picks to the user
+### 1.5d. Present top picks to the user
 
-Show the user a ranked short-list (5-10 entries) with columns: `domain`, `price/yr`, `tld`, `rationale` (why this one matches the product). Always include at least one `.com` if any `.com` is available.
+Show the user a ranked short-list (5-10 entries) with columns: `domain`, `price/yr`, `tld`, `registrar` (Cloud Domains vs Vercel fallback), `rationale`. Always include at least one `.com` if available.
 
 Wait for the user to pick one. Never pre-select. Never auto-buy.
 
-### 1.5d. Purchase via the Vercel dashboard (browser)
+### 1.5e. Purchase via Cloud Domains (primary path)
 
-**Do NOT use `vercel domains buy` directly.** The CLI skips the payment confirmation screen. Past incident (skl.bz, 2026-03-01): the card on file was declined and the CLI would have given no preview. Always let the user see the dashboard's "confirm payment" screen before committing.
+**Preconditions:**
 
-Flow:
+1. **Contact YAML** (one-time setup per user, reusable across purchases). If `~/.config/gcloud/domain-contacts.yaml` does not exist, create it with the user's WHOIS contact info and `chmod 600` it. Template:
+   ```yaml
+   allContacts:
+     email: i@m13v.com
+     phoneNumber: '+1.XXXXXXXXXX'
+     postalAddress:
+       regionCode: US
+       postalCode: 'XXXXX'
+       administrativeArea: CA
+       locality: San Francisco
+       addressLines: ['123 Example St']
+       recipients: ['Matthew Diakonov']
+   ```
+   Ask the user for the phone/address the first time; reuse thereafter.
+
+2. **GCP project** must be the client's project (create with `gcloud projects create CLIENT-prod --organization=<m13v.com org id>` and link billing account `010C41-B240B8-64AAC9` or `017016-D94EB9-9E7353` per the user's direction).
+
+3. **Cloud DNS zone** created and ready (register can create-and-attach in one step if the zone already exists in the same project):
+   ```bash
+   gcloud dns managed-zones create CLIENT-zone --dns-name="<domain>." --project=<CLIENT-project>
+   ```
+
+**Purchase flow:**
+
+1. **Dry-run / preview first** with `--validate-only`:
+   ```bash
+   gcloud domains registrations register <domain> \
+     --project=<CLIENT-project> \
+     --contact-data-from-file=~/.config/gcloud/domain-contacts.yaml \
+     --contact-privacy=private-contact-data \
+     --yearly-price="<price from 1.5c>" \
+     --cloud-dns-zone=CLIENT-zone \
+     --validate-only
+   ```
+   This returns the exact price + any required `--notices` (some TLDs require HSTS preload or similar).
+
+2. **Pause and ask the user to confirm.** Print literally: `About to register <domain> for $<price>/yr (renews at same). GCP project: <CLIENT-project>. Confirm?` Wait for an explicit yes.
+
+3. On yes, re-run the same command WITHOUT `--validate-only` and with `--quiet` (since contact/price/DNS are already supplied). Add `--notices=<notices>` if step 1 flagged any.
+
+4. Verify: `gcloud domains registrations list --project=<CLIENT-project>` should show the new registration in state `ACTIVE` (may take up to 5 minutes; `REGISTRATION_PENDING` is normal during that window).
+
+Domain purchases are **irreversible**. Per the global Ethics Check rule, step 2 is mandatory.
+
+### 1.5f. Purchase via Vercel (fallback path only)
+
+Use this path ONLY when Cloud Domains returned `TLD_NOT_SUPPORTED` for the user's pick (e.g. niche TLDs like `.cameras`, `.studio`). In that case:
 
 1. Use `playwright-extension` (real Chrome, attached to the user's logged-in session).
-2. Navigate to `https://vercel.com/matt-mediarais-projects/~/domains/buy` (or the dashboard's domain-buy URL for the correct team).
+2. Navigate to `https://vercel.com/matt-mediarais-projects/~/domains`.
 3. Enter the chosen domain. Wait for the dashboard's price + renewal preview.
-4. **Pause and ask the user to confirm.** Print: `About to buy <domain> for $<price> (renews at $<renewal>). Confirm?` and wait for an explicit yes.
+4. **Pause and ask the user to confirm.** Print: `About to buy <domain> for $<price> via Vercel (Cloud Domains doesn't support this TLD). Confirm?` and wait for an explicit yes.
 5. On yes, click "Buy" and wait for the success state.
-6. Verify: `vercel domains ls | grep <domain>` should show the new domain.
+6. Verify: `vercel domains ls | grep <domain>`.
+7. DNS wire-up: in this fallback path, DNS lives in Vercel (not Cloud DNS). Phase 6 must add an A record in Vercel pointing to the Cloud Run Load Balancer's static IP instead of using `gcloud dns record-sets`.
 
-Domain purchases are **irreversible**. Per the global Ethics Check rule, step 4 is mandatory.
+Past incident (skl.bz, 2026-03-01): the card on file was declined and the CLI would have given no preview. Dashboard is mandatory here.
 
-### 1.5e. Record in config.json
+### 1.5g. Record in config.json
 
 Add both domains to the project entry in `~/social-autoposter/config.json`:
 
@@ -250,15 +308,18 @@ Add both domains to the project entry in `~/social-autoposter/config.json`:
   "name": "CLIENT",
   "website": "https://<generic-domain>",
   "brand_domain": "https://<brand-domain>",
+  "registrar": "cloud-domains",
+  "gcp_project": "<CLIENT-project>",
+  "dns_zone": "CLIENT-zone",
   ...
 }
 ```
 
-`website` is the generic domain (the one the new site will deploy to). `brand_domain` is the original brand URL (kept for reference, may redirect later).
+`website` is the generic domain (the one the new site will deploy to). `brand_domain` is the original brand URL (kept for reference, may redirect later). `registrar` is `cloud-domains` for the primary path or `vercel` for the fallback path. `dns_zone` is empty when registrar is `vercel`.
 
-### 1.5f. Hand off to Phase 2
+### 1.5h. Hand off to Phase 2
 
-Phase 2 scaffolds under `~/<generic-slug>-website/` (derive the slug from the purchased domain, not the client name). Phase 5 deploy and Phase 6 DNS wire-up both use the generic domain as the primary.
+Phase 2 scaffolds under `~/<generic-slug>-website/` (derive the slug from the purchased domain, not the client name). Phase 5 deploy and Phase 6 DNS wire-up use the generic domain as the primary, and read `registrar` from `config.json` to decide which DNS backend to target (Cloud DNS vs Vercel DNS).
 
 ---
 
@@ -1686,6 +1747,125 @@ Prerequisites that this skill is responsible for (check before handing off):
 - The client repo is cloned at the path you will write into `landing_pages.repo`
 
 Everything else, including the exact commands, field semantics, and checklist, lives in `gsc-seo-page`. Do not duplicate that content here.
+
+---
+
+## Phase 10: Register in the Social Autoposter Pipeline
+
+Phase 9 wired the **SEO pipeline** (`/t/{slug}` page generation from GSC + SERP). Phase 10 wires the **posting / engagement / DM pipeline** so the Reddit, Twitter, LinkedIn, GitHub, Moltbook, and Octolens jobs in `~/social-autoposter/` can mention this product, match against its topics, and respect its voice.
+
+The canonical source is `~/social-autoposter/config.json` → `projects[]`. Each entry drives:
+
+- Which threads/posts across all platforms are scored as relevant (matched against `topics`, `twitter_topics`, `linkedin_topics`, `github_search_topics`)
+- What the engagement scripts can honestly say about the product (`description`, `features`, `differentiator`, `icp`)
+- What voice and banned phrases apply (`voice.tone`, `voice.never`)
+- Links inserted into replies (`website`, `github`, `links.*`, `booking_link`)
+
+### 10a. Build the project entry from the research brief
+
+The `research-brief.md` produced in **Phase 1f** already has every field Phase 10 needs. Map it like this:
+
+| `projects[]` field | Source in `research-brief.md` |
+|---|---|
+| `name` | client name (lowercase slug, matches `landing_pages.repo` basename) |
+| `description` | "Positioning angle" (one sentence) |
+| `differentiator` | "3 differentiators" condensed into one sentence |
+| `icp` | "ICP" section, primary persona description + JTBD |
+| `topics` | "5 messaging pillars" rewritten as search-friendly keyword phrases |
+| `twitter_topics` / `linkedin_topics` | same pillars re-tuned per platform (shorter for Twitter, more formal for LinkedIn) |
+| `features` | "Proof points" list, converted to capability statements |
+| `voice.tone` | derived from client intake (brand voice) + ICP language |
+| `voice.never` | "Banned clichés" list, verbatim |
+
+If a field has no good source in the brief, leave it out rather than invent. **Never fabricate features, stats, or differentiators** — every claim in `projects[]` is used verbatim in public replies across all platforms.
+
+### 10b. Inspect an existing entry as template
+
+Before writing, read one existing entry to match the schema exactly:
+
+```bash
+jq '.projects[] | select(.name == "fazm")' ~/social-autoposter/config.json
+```
+
+Copy the shape. Do not invent fields the pipeline does not already consume.
+
+### 10c. Idempotent append
+
+Write the entry to a temp JSON file, then merge:
+
+```bash
+NEW="/tmp/new-project.json"   # full entry for the client
+CFG="$HOME/social-autoposter/config.json"
+NAME=$(jq -r '.name' "$NEW")
+
+# 0. Validate new entry parses
+jq empty "$NEW" || { echo "invalid JSON in $NEW"; exit 1; }
+
+# 1. Backup
+cp "$CFG" "$CFG.bak.$(date +%Y%m%d-%H%M%S)"
+
+# 2. Abort if name already present (don't silently overwrite)
+if jq -e --arg n "$NAME" '.projects[] | select(.name == $n)' "$CFG" >/dev/null; then
+  echo "Project '$NAME' already in config.json — edit by hand or remove the existing entry first."
+  exit 1
+fi
+
+# 3. Append, validate, show diff, then write
+jq --argjson new "$(cat "$NEW")" '.projects += [$new]' "$CFG" > "$CFG.tmp"
+jq empty "$CFG.tmp" || { echo "merge produced invalid JSON"; rm "$CFG.tmp"; exit 1; }
+diff <(jq '.projects | map(.name)' "$CFG") <(jq '.projects | map(.name)' "$CFG.tmp")
+mv "$CFG.tmp" "$CFG"
+```
+
+Review the diff before `mv`. If it shows anything other than a single project-name addition, abort.
+
+### 10d. Merge with Phase 9's `landing_pages` block
+
+If Phase 9 already ran and added a partial entry with only `landing_pages` + `weight`, do not duplicate. Instead, detect the existing entry and merge Phase 10's fields into it:
+
+```bash
+jq --arg n "$NAME" --argjson new "$(cat "$NEW")" '
+  .projects |= map(if .name == $n then . + $new else . end)
+' "$CFG" > "$CFG.tmp" && mv "$CFG.tmp" "$CFG"
+```
+
+Phase 9 fields (`weight`, `landing_pages`) are never overwritten by Phase 10. Phase 10 fields (`description`, `topics`, `features`, `voice`, etc.) are never touched by Phase 9.
+
+### 10e. Smoke test
+
+After writing, confirm the posting pipeline can see the new project:
+
+```bash
+cd ~/social-autoposter && python3 -c "
+import json
+d = json.load(open('config.json'))
+p = next((x for x in d['projects'] if x['name'] == '$NAME'), None)
+assert p, 'not found'
+for k in ['description','topics','features','voice','website']:
+    assert k in p, f'missing {k}'
+print('ok:', p['name'], '-', p['description'][:80])
+"
+```
+
+Then do a single dry-run of one engagement script to make sure the new entry does not crash the matcher (replace `engage-reddit.sh` with whichever script is least expensive to dry-run):
+
+```bash
+bash ~/.claude/skills/social-autoposter/engage.sh --project "$NAME" --dry-run 2>&1 | tail -30
+```
+
+If the dry-run surfaces a schema mismatch, fix the new entry before letting real runs fire.
+
+### 10f. Exit criteria
+
+Phase 10 is done when all of these are true:
+
+- `jq '.projects[] | select(.name=="<client>")' config.json` returns a full entry (not just `landing_pages`)
+- `topics`, `twitter_topics`, `linkedin_topics`, and `features` all trace to the research brief
+- `voice.never` matches the brief's "Banned clichés" list verbatim
+- At least one engagement script dry-run completes without a schema error
+- `config.json.bak.*` backup exists in case of rollback
+
+Only after Phase 10 passes is the client actually "in the pipeline." Until then, they have a website but no posting, no engagement, no DM outreach, and no Octolens mention tracking.
 
 ---
 
