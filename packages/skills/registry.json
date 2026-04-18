@@ -6937,7 +6937,7 @@
     "name": "m13v-setup-client-website",
     "description": "One-time onboarding for a new consumer site: market research, SEO audit, Next.js 16 scaffold with @m13v/seo-components, images, structured data, Cloud Run deploy.",
     "author": "m13v",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "tags": [
       "seo",
       "nextjs",
@@ -6948,8 +6948,8 @@
     ],
     "category": "development",
     "excerpt": "---",
-    "lines": 1732,
-    "size": 71739,
-    "updated": "2026-04-18T00:08:56.374Z"
+    "lines": 1912,
+    "size": 80460,
+    "updated": "2026-04-18T00:18:24.943Z"
   }
 ]
