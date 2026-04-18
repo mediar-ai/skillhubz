@@ -34,9 +34,43 @@ Provide the client name, domain (if any), and existing site URL (if any). Exampl
 
 ## Phase 1: Audit and Research
 
-### 1a. SEO Audit (if existing site)
+Phase 1 runs two tracks concurrently:
 
-Run parallel SEO agents to baseline the current site:
+- **Outward track (1a):** understand the market the client sells into (competitors, search demand, industry developments, ICP).
+- **Inward track (1b-1e):** audit what the client already has (SEO baseline, content crawl, assets, screenshots).
+
+Both tracks feed **1f**, which produces a single `research-brief.md` that every downstream phase (copy, hero, CTAs, FAQ, case studies) is required to consume. Research that does not make it into the brief is decoration.
+
+### 1a. Market Research Fan-Out
+
+Launch these agents in parallel. They have no dependencies on each other or on the inward track, so batch them in a single message.
+
+```
+Launch 4 agents in parallel:
+- competitor-analysis: identify top 3-5 rivals by SERP + brand search.
+    Per rival, capture: positioning one-liner, pricing, primary CTAs,
+    hero copy, testimonial themes, messaging pillars, obvious gaps or
+    weaknesses.
+- keyword-research + serp-analysis (single agent, both skills): head
+    terms, long-tail clusters, search intent (informational /
+    commercial / transactional), SERP feature mix (AI Overviews, PAA,
+    video, local pack), difficulty, monthly volume.
+- deep-research-pro: industry developments in the last 90 days,
+    regulation, notable launches, funding, M&A, price moves, new
+    entrants, platform / distribution shifts. Cite sources.
+- general-purpose (ICP pass, with WebFetch): 1-2 primary personas with
+    jobs-to-be-done, top 3 pains, top 3 gains, objections, triggers,
+    and the language they actually use (verbatim pulls from Reddit
+    threads, review sites, forum posts, NOT marketing copy).
+```
+
+**Output:** four raw reports in `research/raw/` (`competitors.md`, `keywords.md`, `industry.md`, `icp.md`). Do not edit them down here, **1f** does the compression.
+
+**Budget guardrail:** if any single agent returns more than ~15k tokens, ask it to re-emit a tighter version capped at ~8k before moving on. Raw-output bloat is the main failure mode of this step.
+
+### 1b. SEO Audit (if existing site)
+
+Run parallel SEO agents to baseline the current site. This runs concurrently with 1a.
 
 ```
 Launch 5 agents in parallel:
@@ -49,7 +83,7 @@ Launch 5 agents in parallel:
 
 Record all scores. These become the "before" baseline and the fix list for the new site.
 
-### 1b. Crawl All Pages
+### 1c. Crawl All Pages
 
 Use an agent with WebFetch to discover and extract content from every page on the site:
 
@@ -65,7 +99,7 @@ Use an agent with WebFetch to discover and extract content from every page on th
 
 **Output:** Complete content inventory organized by page.
 
-### 1c. Extract Visual Assets
+### 1d. Extract Visual Assets
 
 Use the isolated browser to catalog images, videos, and embeds:
 
@@ -93,7 +127,7 @@ Use the isolated browser to catalog images, videos, and embeds:
 
 Download all identified images to `public/images/` with descriptive filenames.
 
-### 1d. Take Full Page Screenshots
+### 1e. Take Full Page Screenshots
 
 Capture full-page screenshots of every key page on the original site for visual reference:
 
@@ -103,6 +137,128 @@ For each page:
 2. browser_take_screenshot with fullPage: true
 3. Save as original-{pagename}-full.png
 ```
+
+### 1f. Synthesize Research Brief
+
+Once 1a-1e are all complete, run a **single** synthesizer pass (general-purpose agent, no fan-out) that reads every file in `research/raw/` plus the crawl inventory and produces `research/research-brief.md` using exactly this schema:
+
+```markdown
+# Research Brief: <client>
+
+## Positioning angle (one sentence)
+<single crisp sentence — what the client uniquely is, for whom, against whom>
+
+## 3 differentiators
+1. <differentiator>  — proof: <citation / source / datapoint>
+2. ...
+3. ...
+
+## 5 messaging pillars
+1. <pillar headline> — supporting evidence: <...>
+2. ...
+...
+
+## ICP (1-2 personas)
+For each persona:
+- Name + one-line description
+- Top 3 jobs-to-be-done
+- Top 3 pains (verbatim language from research)
+- Top 3 gains
+- Primary objection + the counter
+- Trigger event that starts the buying journey
+
+## Proof points
+Verifiable stats, awards, case-study numbers, named clients, certifications, press mentions. Anything that can appear on the site as evidence — with source.
+
+## Competitor landscape (one paragraph)
+Who the client is up against, how they're positioned, and the gap the client is walking into.
+
+## Banned clichés
+Phrases pulled from competitor copy that the new site must NOT reuse (e.g. "cutting-edge", "world-class", "one-stop-shop", plus any industry-specific filler found during 1a).
+
+## Industry signals (last 90 days)
+3-5 bullets. Only items that should change hero copy, FAQ, or CTAs. Everything else is cut.
+```
+
+**Hard rules for the synthesizer:**
+- Every claim must trace to a file in `research/raw/` or the crawl inventory. No invented stats.
+- Hero copy, CTAs, FAQ answers, and case-study selection in Phases 3+ **must** cite lines from this brief. If a later phase wants to say something not in the brief, it returns to 1a instead of making it up.
+- The brief is the artifact. The raw reports in `research/raw/` are scratch and can be deleted after 1f lands.
+
+---
+
+## Phase 1.5: Generic Domain Discovery and Purchase
+
+**Goal:** secure a generic, keyword-rich domain that describes the product category rather than the brand (pattern: Cyrano → `apartment-security-cameras.com`). The brand domain (e.g. `cyrano.ai`) still exists; the generic domain is what the new Next.js site ships under for SEO.
+
+Skip this phase only if the user explicitly opts out or the brand domain IS already the generic descriptive domain.
+
+### 1.5a. Brainstorm candidates
+
+Launch one subagent to generate 15-25 candidate domains. Constraints:
+
+- Describe the **product category** in English keywords; never include the brand name.
+- 3-6 words max; hyphens allowed.
+- Keyword-front-loaded (the searched keyword should be at the start, e.g. `apartment-security-cameras.com`, not `best.cameras.for.apartments.com`).
+- Mix TLDs: `.com` (preferred), `.io`, `.ai`, plus any niche TLD that fits the category (e.g. `.cameras`, `.tech`, `.studio`).
+- Seed the subagent with the Phase 1 research brief (`research/brief.md`) and the product's top 3 SEO keywords.
+
+Output: `research/domain-candidates.md` with one domain per line.
+
+### 1.5b. Check availability and price via Vercel CLI
+
+For every candidate, run:
+
+```bash
+vercel domains price <candidate> 2>&1
+```
+
+Parse the price and availability from stdout. Run candidates in parallel (GNU xargs with `-P 5`, or a small bash loop with `&`). Do NOT use `vercel domains buy` yet.
+
+Build a table of available domains and their first-year price. Filter:
+
+- Drop any domain that is unavailable or marked "premium" unless the user pre-approved premium pricing.
+- Default price cap: **$50/yr**. Anything above goes in a separate "premium" list.
+
+### 1.5c. Present top picks to the user
+
+Show the user a ranked short-list (5-10 entries) with columns: `domain`, `price/yr`, `tld`, `rationale` (why this one matches the product). Always include at least one `.com` if any `.com` is available.
+
+Wait for the user to pick one. Never pre-select. Never auto-buy.
+
+### 1.5d. Purchase via the Vercel dashboard (browser)
+
+**Do NOT use `vercel domains buy` directly.** The CLI skips the payment confirmation screen. Past incident (skl.bz, 2026-03-01): the card on file was declined and the CLI would have given no preview. Always let the user see the dashboard's "confirm payment" screen before committing.
+
+Flow:
+
+1. Use `playwright-extension` (real Chrome, attached to the user's logged-in session).
+2. Navigate to `https://vercel.com/matt-mediarais-projects/~/domains/buy` (or the dashboard's domain-buy URL for the correct team).
+3. Enter the chosen domain. Wait for the dashboard's price + renewal preview.
+4. **Pause and ask the user to confirm.** Print: `About to buy <domain> for $<price> (renews at $<renewal>). Confirm?` and wait for an explicit yes.
+5. On yes, click "Buy" and wait for the success state.
+6. Verify: `vercel domains ls | grep <domain>` should show the new domain.
+
+Domain purchases are **irreversible**. Per the global Ethics Check rule, step 4 is mandatory.
+
+### 1.5e. Record in config.json
+
+Add both domains to the project entry in `~/social-autoposter/config.json`:
+
+```json
+{
+  "name": "CLIENT",
+  "website": "https://<generic-domain>",
+  "brand_domain": "https://<brand-domain>",
+  ...
+}
+```
+
+`website` is the generic domain (the one the new site will deploy to). `brand_domain` is the original brand URL (kept for reference, may redirect later).
+
+### 1.5f. Hand off to Phase 2
+
+Phase 2 scaffolds under `~/<generic-slug>-website/` (derive the slug from the purchased domain, not the client name). Phase 5 deploy and Phase 6 DNS wire-up both use the generic domain as the primary.
 
 ---
 
@@ -1244,7 +1400,7 @@ Fix any TypeScript or build errors. All routes must compile and generate success
 
 ### 5b. Visual Comparison
 
-Use the isolated browser to take full-page screenshots of the new site and compare side-by-side with the originals from Phase 1d.
+Use the isolated browser to take full-page screenshots of the new site and compare side-by-side with the originals from Phase 1e.
 
 **Check for:**
 - [ ] Real logo (not text placeholder)
