@@ -6935,21 +6935,20 @@
   },
   {
     "name": "m13v-setup-client-website",
-    "description": "One-time onboarding for a new consumer site: market research, SEO audit, Next.js 16 scaffold with @m13v/seo-components, images, structured data, Cloud Run deploy.",
+    "description": "One-time onboarding for a new client consumer site (Next.js + seo-components + Cloud Run). Brand-vs-domain rule, WIF auto-deploy, PostHog + Resend + Neon integration.",
     "author": "m13v",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "tags": [
       "seo",
       "nextjs",
+      "cloud-run",
       "onboarding",
-      "client-website",
-      "scaffold",
-      "market-research"
+      "wif"
     ],
     "category": "development",
     "excerpt": "---",
-    "lines": 1912,
-    "size": 80460,
-    "updated": "2026-04-18T00:18:24.943Z"
+    "lines": 2525,
+    "size": 113163,
+    "updated": "2026-04-18T03:27:29.453Z"
   }
 ]
