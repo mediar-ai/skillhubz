@@ -18,7 +18,9 @@ Provide the client name, domain (if any), and existing site URL (if any). Exampl
 
 - **Google Cloud** project under the m13v.com org (or create a new one)
 - **GitHub** org or personal account
-- **PostHog** account for analytics
+- **PostHog** account (org: m13v) for analytics
+- **Resend** account (`i@m13v.com`) for transactional email
+- **Neon** account for Postgres (one project per client, pooled connection)
 - **Google Search Console** access
 - **Isolated browser MCP** for visual comparison
 
@@ -28,7 +30,9 @@ Provide the client name, domain (if any), and existing site URL (if any). Exampl
 - Tailwind CSS 4 (inline theme via `@theme`)
 - next/image for optimized images
 - Google Cloud Run for hosting (with HTTPS Load Balancer + Certificate Manager)
-- PostHog for analytics (CTA clicks, pageviews)
+- PostHog for analytics (pageviews, CTA clicks, newsletter subscribes)
+- Resend for transactional email (newsletter welcome, contact form, optional inbound webhook)
+- Neon (`@neondatabase/serverless`) for email + contact logs
 
 ---
 
@@ -99,9 +103,9 @@ Use an agent with WebFetch to discover and extract content from every page on th
 
 **Output:** Complete content inventory organized by page.
 
-### 1d. Extract Visual Assets
+### 1d. Extract Visual Assets (and Brand Identity)
 
-Use the isolated browser to catalog images, videos, and embeds:
+Use the isolated browser to catalog images, videos, and embeds **on the original brand domain** (e.g. `piastech.com`, `cyrano.ai`), not on the new generic SEO domain. The brand identity is the property of the brand domain.
 
 ```js
 // In isolated browser, navigate to each page and run:
@@ -116,7 +120,8 @@ Use the isolated browser to catalog images, videos, and embeds:
 ```
 
 **Key assets to identify and download:**
-- Logo (usually first image, top of page, ~200px wide)
+- **Brand wordmark / logo** (header top-left; may be SVG, PNG, or inline text — capture exact spelling, casing, and any logomark character like `π(a|s)`)
+- **Favicon** (`/favicon.ico`, `/favicon.png`, or any `<link rel="icon">` href)
 - Hero images or background photos
 - Client/team headshot photos (circular, 100-200px)
 - Product images (book covers, screenshots, etc.)
@@ -125,7 +130,37 @@ Use the isolated browser to catalog images, videos, and embeds:
 - Scheduling widgets (Calendly, Cal.com URLs)
 - Book cover strips / product galleries
 
-Download all identified images to `public/images/` with descriptive filenames.
+**Brand colors and fonts.** Dump the brand site's CSS custom properties and fonts so the new site can match the palette:
+
+```js
+// Run on the brand domain's homepage:
+() => {
+  const r = getComputedStyle(document.documentElement);
+  const b = getComputedStyle(document.body);
+  const varNames = ['--background','--foreground','--primary','--primary-foreground','--accent','--card','--secondary','--muted','--border'];
+  const vars = Object.fromEntries(varNames.map(n => [n, r.getPropertyValue(n).trim()]));
+  return {
+    bodyBg: b.backgroundColor,
+    bodyFg: b.color,
+    bodyFont: b.fontFamily,
+    vars,
+  };
+}
+```
+
+Also pull the brand site's CSS file and grep for hex/hsl color values if CSS vars aren't exposed:
+
+```bash
+curl -sL <brand-url>/assets/index.css | grep -oE '\-\-[a-z-]+:[^;]+;' | sort -u
+```
+
+Save the palette to `research/brand-identity.md` with: brand name exact spelling, logomark character (if any), primary/accent hex codes, body/heading fonts, favicon URL, and the logo image URL.
+
+Download all identified images to `public/images/` with descriptive filenames. Copy the favicon to `public/favicon.png` and convert to `src/app/favicon.ico` (multi-size `.ico`) with:
+
+```bash
+magick <favicon>.png -define icon:auto-resize=16,32,48 src/app/favicon.ico
+```
 
 ### 1e. Take Full Page Screenshots
 
@@ -195,15 +230,25 @@ Skip this phase only if the user explicitly opts out or the brand domain IS alre
 
 ### 1.5a. Brainstorm candidates
 
-Launch one subagent to generate 15-25 candidate domains. Constraints:
+Launch one subagent to generate **two tracks** of candidates, 15-25 per track. Both tracks describe the product category and never include the brand name.
 
-- Describe the **product category** in English keywords; never include the brand name.
+**Track A: Short brandable names (priority).** These are the preferred output.
+
+- **Length cap: under 8 characters for the stem** (TLD excluded). Total domain with TLD should stay ≤ 11 chars where possible. Examples: `s4l.ai` (stem 3, total 6), `fazm.ai` (stem 4, total 7), `mk0r.com` (stem 4, total 8), `fde10x.com` (stem 6, total 10). Shorter stems are better.
+- Derive from the product category keyword by vowel drops, consonant clusters, or playful contractions (e.g. `camera` → `cam`, `cmra`, `kmr`; `security` → `sec`, `scrty`).
+- **Digit substitution for availability.** Swap letters for visually or phonetically similar digits to find available domains: `o` ↔ `0`, `i/l` ↔ `1`, `e` ↔ `3`, `a` ↔ `4`, `s` ↔ `5`, `b` ↔ `6` or `8`, `t` ↔ `7`, `g/q` ↔ `9`. Pattern matches the user's own brands: `s4l.ai`, `mk0r.com`, `cl0ne.ai`, `t8r.tech`, `fde10x.com`.
+- TLDs ordered by preference: `.ai` (short, premium feel), `.io`, `.com`, `.co`, short-country TLDs like `.bz`, `.me`, `.to`.
+- Must still phonetically suggest the category (not random letter soup).
+
+**Track B: Keyword-rich descriptive names (fallback).** Use when Track A returns nothing available under the price cap.
+
 - 3-6 words max; hyphens allowed.
-- Keyword-front-loaded (the searched keyword should be at the start, e.g. `apartment-security-cameras.com`, not `best.cameras.for.apartments.com`).
+- Keyword-front-loaded (e.g. `apartment-security-cameras.com`, not `best.cameras.for.apartments.com`).
 - Mix TLDs: `.com` (preferred), `.io`, `.ai`, plus any niche TLD that fits the category (e.g. `.cameras`, `.tech`, `.studio`).
-- Seed the subagent with the Phase 1 research brief (`research/brief.md`) and the product's top 3 SEO keywords.
 
-Output: `research/domain-candidates.md` with one domain per line.
+Seed the subagent with the Phase 1 research brief (`research/brief.md`) and the product's top 3 SEO keywords.
+
+Output: `research/domain-candidates.md` with Track A on top, Track B below. One domain per line, grouped by track.
 
 ### 1.5b. Bulk discovery via Cloud Domains search
 
@@ -233,7 +278,13 @@ Run candidates in parallel with `xargs -P 5` or a bash loop. Build a table of av
 
 ### 1.5d. Present top picks to the user
 
-Show the user a ranked short-list (5-10 entries) with columns: `domain`, `price/yr`, `tld`, `registrar` (Cloud Domains vs Vercel fallback), `rationale`. Always include at least one `.com` if available.
+Show the user a ranked short-list (5-10 entries) with columns: `domain`, `length` (chars incl. TLD), `price/yr`, `tld`, `registrar` (Cloud Domains vs Vercel fallback), `track` (A=short, B=keyword-rich), `rationale`.
+
+**Ranking rules:**
+1. Track A candidates under 8 characters rank above Track B.
+2. Within Track A, ties broken by: `.ai` > `.io` > `.com` > others.
+3. Within Track B, `.com` beats everything else; ties broken by shorter length.
+4. Always include at least one `.com` if any `.com` is available across either track.
 
 Wait for the user to pick one. Never pre-select. Never auto-buy.
 
@@ -256,34 +307,48 @@ Wait for the user to pick one. Never pre-select. Never auto-buy.
    ```
    Ask the user for the phone/address the first time; reuse thereafter.
 
-2. **GCP project** must be the client's project (create with `gcloud projects create CLIENT-prod --organization=<m13v.com org id>` and link billing account `010C41-B240B8-64AAC9` or `017016-D94EB9-9E7353` per the user's direction).
+2. **GCP project: REUSE the shared social-autoposter project.** Do NOT create a new project per client. The default shared project is `piastest` (confirmed via the fde10x.com purchase, 2026-04-17). All client sites, domains, DNS zones, and Cloud Run services live here. Only create a new project if the user explicitly overrides.
 
-3. **Cloud DNS zone** created and ready (register can create-and-attach in one step if the zone already exists in the same project):
+   Before running any `gcloud` command in this phase, verify the active project:
    ```bash
-   gcloud dns managed-zones create CLIENT-zone --dns-name="<domain>." --project=<CLIENT-project>
+   gcloud config set project piastest
+   gcloud config get-value project  # must print "piastest"
    ```
+
+   **Known org-policy constraint on `piastest`:** `iam.disableServiceAccountKeyCreation` is enforced, which blocks `gcloud iam service-accounts keys create`. Phase 6 CI/CD must use Workload Identity Federation, not SA keys. See Phase 6 for the WIF binding pattern.
+
+3. **Cloud DNS zone** created in the shared project. Name the zone after the domain stem so zones from different clients don't collide:
+   ```bash
+   gcloud dns managed-zones create <STEM>-zone --dns-name="<domain>." --project=piastest
+   ```
+   (Example: `fde10x.com` → `fde10x-zone`.)
 
 **Purchase flow:**
 
-1. **Dry-run / preview first** with `--validate-only`:
+1. **Pick the right `--contact-privacy` value per TLD.** Do NOT hardcode `private-contact-data`.
+   - **`.com` (and other Squarespace-reseller TLDs): use `redacted-contact-data`.** Since Google Domains was spun off to Squarespace, new `.com` registrations reject `PRIVATE_CONTACT_DATA` with "does not support contact privacy type PRIVATE_CONTACT_DATA."
+   - **`.ai`, `.io`, and many others: use `private-contact-data`.**
+   - **When in doubt, run `--validate-only` first with `private-contact-data`.** If it errors, parse the allowed values from `contactSettings.privacy` in the error output and retry with the correct flag.
+
+2. **Dry-run / preview first** with `--validate-only`:
    ```bash
    gcloud domains registrations register <domain> \
-     --project=<CLIENT-project> \
+     --project=piastest \
      --contact-data-from-file=~/.config/gcloud/domain-contacts.yaml \
-     --contact-privacy=private-contact-data \
+     --contact-privacy=<redacted-contact-data OR private-contact-data per rule above> \
      --yearly-price="<price from 1.5c>" \
-     --cloud-dns-zone=CLIENT-zone \
+     --cloud-dns-zone=<STEM>-zone \
      --validate-only
    ```
    This returns the exact price + any required `--notices` (some TLDs require HSTS preload or similar).
 
-2. **Pause and ask the user to confirm.** Print literally: `About to register <domain> for $<price>/yr (renews at same). GCP project: <CLIENT-project>. Confirm?` Wait for an explicit yes.
+3. **Pause and ask the user to confirm.** Print literally: `About to register <domain> for $<price>/yr (renews at same). GCP project: piastest. Confirm?` Wait for an explicit yes.
 
-3. On yes, re-run the same command WITHOUT `--validate-only` and with `--quiet` (since contact/price/DNS are already supplied). Add `--notices=<notices>` if step 1 flagged any.
+4. On yes, re-run the same command WITHOUT `--validate-only` and with `--quiet` (since contact/price/DNS are already supplied). Add `--notices=<notices>` if step 2 flagged any.
 
-4. Verify: `gcloud domains registrations list --project=<CLIENT-project>` should show the new registration in state `ACTIVE` (may take up to 5 minutes; `REGISTRATION_PENDING` is normal during that window).
+5. Verify: `gcloud domains registrations list --project=piastest` should show the new registration in state `ACTIVE` (may take up to 5 minutes; `REGISTRATION_PENDING` is normal during that window).
 
-Domain purchases are **irreversible**. Per the global Ethics Check rule, step 2 is mandatory.
+Domain purchases are **irreversible**. Per the global Ethics Check rule, step 3 is mandatory.
 
 ### 1.5f. Purchase via Vercel (fallback path only)
 
@@ -301,25 +366,50 @@ Past incident (skl.bz, 2026-03-01): the card on file was declined and the CLI wo
 
 ### 1.5g. Record in config.json
 
-Add both domains to the project entry in `~/social-autoposter/config.json`:
+Add the project entry to `~/social-autoposter/config.json`. The full shape is owned by the downstream writer (with `weight`, `topics`, `twitter_topics`, `linkedin_topics`, `landing_pages`, `voice`, `icp`, `features`, `differentiator`, etc.). The two fields Phase 1.5 is responsible for:
 
 ```json
 {
-  "name": "CLIENT",
+  "name": "<stem>",
   "website": "https://<generic-domain>",
   "brand_domain": "https://<brand-domain>",
-  "registrar": "cloud-domains",
-  "gcp_project": "<CLIENT-project>",
-  "dns_zone": "CLIENT-zone",
-  ...
+  ...rest owned by downstream
 }
 ```
 
-`website` is the generic domain (the one the new site will deploy to). `brand_domain` is the original brand URL (kept for reference, may redirect later). `registrar` is `cloud-domains` for the primary path or `vercel` for the fallback path. `dns_zone` is empty when registrar is `vercel`.
+`website` is the generic domain (the one the new site deploys to). `brand_domain` is the original brand URL (kept for reference, may redirect later).
+
+Do NOT add `registrar`, `gcp_project`, or `dns_zone` fields. They are derivable: `gcp_project` is always `piastest`, DNS backend is Cloud DNS when the domain was bought via Cloud Domains and Vercel DNS only in the Vercel fallback path (rare). Downstream scripts don't read these fields.
+
+If the fallback Vercel path was used, note it in the session summary; Phase 6 will branch on the registrar at deploy time by probing (`gcloud domains registrations describe` succeeds = Cloud Domains, else Vercel).
 
 ### 1.5h. Hand off to Phase 2
 
-Phase 2 scaffolds under `~/<generic-slug>-website/` (derive the slug from the purchased domain, not the client name). Phase 5 deploy and Phase 6 DNS wire-up use the generic domain as the primary, and read `registrar` from `config.json` to decide which DNS backend to target (Cloud DNS vs Vercel DNS).
+Phase 2 scaffolds under `~/<stem>-website/` (derive the slug from the purchased domain's stem, e.g. `fde10x.com` → `~/fde10x-website/`). Phase 5 deploy and Phase 6 DNS wire-up use the generic domain as the primary target.
+
+### 1.5i. Brand identity persists (the generic domain is SEO-only)
+
+**Hard rule: the generic domain is a URL, not a rebrand.** When Phase 1.5 buys a keyword-rich domain (e.g. `fde10x.com`, `apartment-security-cameras.com`), that domain exists purely to rank on SEO keywords. The client's original brand is untouched and must be carried into the new site.
+
+| Carries over from the brand domain | Stays as the generic domain |
+|---|---|
+| Brand name (exact spelling, casing, any logomark character) | `metadataBase`, OpenGraph `url`, canonical URLs |
+| Brand logo + favicon | Support email addresses (`hello@<generic>.com`) |
+| Primary + accent colors | DB table names, internal slugs, PostHog site ID, env var names |
+| Heading + body font pairing | GSC property, robots.txt, sitemap URL |
+| Tagline / positioning (from the brand site hero) | Cloud Run service name, GCP project slug |
+
+Phase 3 (copy + design system), Phase 3a (Header), Phase 3b (Footer), Phase 3c (metadata + JSON-LD), and Phase 3.5 (email copy, PostHog name) **must** render the brand name from `research/brand-identity.md`, not the generic-domain stem. Email and URL strings keep the generic domain.
+
+Example: for Pias Tech on `fde10x.com`:
+- Header wordmark: `π(a|s) PIAS AI` (brand)
+- Footer copyright: `© 2026 PIAS AI. All rights reserved.` (brand)
+- Organization JSON-LD: `{ "name": "PIAS AI", "legalName": "PIAS - Policy-Informed Agentic Systems" }` (brand)
+- Support email: `hello@fde10x.com` (domain)
+- Metadata base: `https://fde10x.com` (domain)
+- Resend from: `"PIAS AI <matt@fde10x.com>"` (both: brand label + domain address)
+
+If the brand name and generic-domain stem happen to be the same (e.g. a client whose brand is literally `FDE10x`), this rule is a no-op. In every other case, use the brand name from `research/brand-identity.md` for every user-facing string and reserve the generic domain for technical identifiers.
 
 ---
 
@@ -349,6 +439,8 @@ Both entries will appear in `package.json`:
 ### 2c. Configure Theme (globals.css)
 
 The theme uses CSS custom properties in `:root` mapped into Tailwind 4 via `@theme inline`. Always define both the CSS variable AND the Tailwind mapping. Every client gets a primary color, a dark variant, and an accent color at minimum.
+
+**Source the values from `research/brand-identity.md`** (written in Phase 1d). Do not pick arbitrary colors. If the brand site uses `hsl(217 91% 50%)` as its primary, use `#3b82f6` here. If the brand site has no extractable palette, default to a neutral navy-and-white scheme and flag it for the user to confirm.
 
 ```css
 @import "tailwindcss";
@@ -451,6 +543,8 @@ All page routes (homepage, about, wins, faq, precall, AND `/t/` guide pages) go 
 ## Phase 3: Build All Pages (Design System & Component Blueprints)
 
 This section contains the exact design patterns, Tailwind class combinations, and component structures that produce a polished, professional website. Follow these blueprints precisely for every client site.
+
+**Before writing any page copy or metadata: re-read Phase 1.5i (brand identity persists).** Every user-facing string (Header wordmark, Footer copyright, metadata `title`/`siteName`/`template`, OpenGraph `siteName`, Organization JSON-LD `name`, WebSite JSON-LD `name`, email `from` labels, email subjects, page `title`s, `HtmlSitemap brandName` prop, page narrative copy) uses the **brand name** from `research/brand-identity.md`. The generic-domain stem only appears in URLs, email addresses, env vars, DB tables, and internal slugs. If you find yourself typing the stem into a `title` or JSON-LD `name`, you are making the rename mistake Phase 1.5i exists to prevent.
 
 ### 3a. Header Component Blueprint
 
@@ -1310,17 +1404,452 @@ Every page gets JSON-LD. Minimum set:
 
 ### 3p. SEO Infrastructure
 
-Create `src/app/sitemap.ts` listing ALL pages with tiered priorities:
+Use the `generateSitemap` helper from `@m13v/seo-components` (v0.12.0+). It walks `src/app` for `page.tsx` files, skips route groups/dynamic segments/api, and applies the default priority tiers. Do NOT hand-roll a sitemap or hardcode URLs.
+
+`src/app/sitemap.ts`:
+
+```ts
+import type { MetadataRoute } from "next";
+import { generateSitemap } from "@seo/components/server";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return generateSitemap({ baseUrl: "https://DOMAIN" });
+}
+```
+
+Default priority tiers (overridable via the `priorities` option):
 
 | Priority | Pages |
 |----------|-------|
 | 1.0 | Homepage |
-| 0.9 | Core conversion pages (how it works, wins, book a call) |
-| 0.8 | Secondary pages (about, faq, contact, blog, podcast) |
-| 0.6 | Resource pages (guides, trainings, tools, free resources) |
-| 0.3 | Legal pages (privacy policy, terms) |
+| 0.9 | Core conversion pages (how it works, wins, book, contact, pricing) |
+| 0.8 | Secondary pages (about, faq, blog, podcast, testimonials, case-studies) |
+| 0.6 | Resource pages (guides, trainings, tools, resources, `/t/`) |
+| 0.3 | Legal pages (privacy, terms, legal, cookies) |
+| 0.7 | Fallback for unmatched routes |
+
+Also create `src/app/sitemap/page.tsx` as a human-readable HTML sitemap using the `HtmlSitemap` component (served alongside `/sitemap.xml`):
+
+```tsx
+import type { Metadata } from "next";
+import { HtmlSitemap } from "@seo/components";
+import { walkPages } from "@seo/components/server";
+
+export const metadata: Metadata = {
+  title: "Sitemap — BRAND",
+  description: "Every page on BRAND, grouped by section.",
+};
+
+export default function SitemapPage() {
+  const pages = walkPages({ includeHome: false });
+  return <HtmlSitemap pages={pages} brandName="BRAND" />;
+}
+```
 
 Create `src/app/robots.ts` with sitemap reference.
+
+---
+
+## Phase 3.5: Integrations (PostHog + Resend + Neon)
+
+Every client site gets the same three integrations: PostHog for analytics, Resend for transactional email, and Neon for a lightweight relational store. The contract matches appmaker (`~/appmaker`). The pattern is fixed: port it verbatim, change only the brand strings and the `from` address.
+
+**Why these three:**
+- PostHog: required for `@seo/components` NewsletterSignup + TrackedCta. The NewsletterSignup component calls `window.posthog?.capture("newsletter_subscribed", ...)` on success, so PostHog must be globally attached before the component mounts.
+- Resend: `/api/newsletter` adds the subscriber to an audience and fires a welcome email. `/api/contact` replaces `mailto:` with a server-validated submission that also logs to Neon. Inbound webhook stores replies and forwards them to `i@m13v.com`.
+- Neon: `@neondatabase/serverless` for subscriber/email logs. No pool, no lifecycle. One `DATABASE_URL`, tagged-template SQL.
+
+### 3.5a. Install deps
+
+```bash
+npm install posthog-js posthog-node @neondatabase/serverless framer-motion
+```
+
+`framer-motion` is already required by NewsletterSignup; install it even if nothing else needs it yet.
+
+### 3.5b. PostHog client provider — `src/components/posthog-provider.tsx`
+
+Port this file verbatim from appmaker. The public `phc_` key is safe to hardcode (PostHog project keys are designed to be client-embedded). Change the hardcoded fallback to the new client's PostHog project key.
+
+```tsx
+"use client";
+import posthog from "posthog-js";
+import { PostHogProvider as PHProvider } from "posthog-js/react";
+import { useEffect } from "react";
+
+const POSTHOG_KEY =
+  process.env.NEXT_PUBLIC_POSTHOG_KEY ||
+  "phc_REPLACE_WITH_CLIENT_KEY";
+const POSTHOG_HOST =
+  process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
+const SITE_ID = process.env.NEXT_PUBLIC_POSTHOG_SITE_ID || "BRAND_SLUG";
+
+export function PostHogProvider({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    if (POSTHOG_KEY && typeof window !== "undefined") {
+      posthog.init(POSTHOG_KEY, {
+        api_host: POSTHOG_HOST,
+        person_profiles: "identified_only",
+        capture_pageview: true,
+        capture_pageleave: true,
+        disable_session_recording: false,
+        session_recording: { maskAllInputs: true, maskInputOptions: { password: true } },
+        loaded: (ph) => {
+          ph.group("site", SITE_ID);
+          ph.register({ site: SITE_ID });
+          window.dispatchEvent(new CustomEvent("posthog:loaded"));
+        },
+      });
+      (window as unknown as { posthog: typeof posthog }).posthog = posthog;
+    }
+  }, []);
+  if (!POSTHOG_KEY) return <>{children}</>;
+  return <PHProvider client={posthog}>{children}</PHProvider>;
+}
+
+export { posthog };
+```
+
+**Why the `site` group matters:** the m13v org has an 8-project cap on PostHog, so new client sites usually have to piggyback on an existing project (e.g. `m13v.com`). Calling `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })` in `loaded` tags every event with the site slug so PostHog insights can filter cleanly across shared projects. `NEXT_PUBLIC_POSTHOG_SITE_ID` must be a stable slug like `fde10x`, `assrt`, or `cyrano`.
+
+### 3.5c. Wrap the root layout
+
+In `src/app/layout.tsx` (the ROOT layout, not `(main)/layout.tsx`), wrap `{children}` with `<PostHogProvider>`. PostHog must initialise at the root so both marketing pages and guide pages get pageview tracking and `window.posthog` before any component that uses it.
+
+```tsx
+import { PostHogProvider } from "@/components/posthog-provider";
+// ... inside <body>:
+<PostHogProvider>{children}</PostHogProvider>
+```
+
+### 3.5d. TrackedCta component — `src/components/tracked-cta.tsx`
+
+```tsx
+"use client";
+import Link from "next/link";
+import { posthog } from "@/components/posthog-provider";
+
+export function TrackedCta({
+  href, page, location, label, className, children,
+}: {
+  href: string; page: string; location: string;
+  label?: string; className?: string; children: React.ReactNode;
+}) {
+  return (
+    <Link href={href} className={className} onClick={() => {
+      posthog?.capture("cta_clicked", {
+        page, location,
+        label: label ?? (typeof children === "string" ? children : undefined),
+        destination: href,
+      });
+    }}>
+      {children}
+    </Link>
+  );
+}
+```
+
+Swap every hand-rolled `<Link href="/contact">` CTA for `<TrackedCta href="/contact" page="home" location="hero">`. Pass unique `page` + `location` per instance so PostHog funnels can distinguish them.
+
+### 3.5e. NewsletterSignup — drop into `(main)/layout.tsx`
+
+```tsx
+import { NewsletterSignup } from "@seo/components";
+// ... inside the main layout return, after Footer:
+<NewsletterSignup
+  description="Short pitch (~10 words). What does the reader get?"
+  buttonLabel="Subscribe"
+  successMessage="Subscribed. Check your inbox."
+/>
+```
+
+The component POSTs to `/api/newsletter` by default. 2xx = success (shows success message); non-2xx expects JSON `{error: "..."}`. On success it calls `window.posthog.capture("newsletter_subscribed", ...)`.
+
+### 3.5f. Resend helper — `src/lib/resend-server.ts`
+
+Port verbatim from `~/appmaker/src/lib/resend-server.ts`. Change only the default `from` address to `<Brand Name> <matt@DOMAIN>`. The helper uses the REST API directly (no SDK), provides `sendEmail()` and `addToAudience()`, and fails soft when env vars are missing.
+
+### 3.5g. Neon helper — `src/lib/db.ts`
+
+```ts
+import { neon } from "@neondatabase/serverless";
+
+export function getSql() {
+  const url = process.env.DATABASE_URL;
+  if (!url) throw new Error("DATABASE_URL not set");
+  return neon(url);
+}
+```
+
+Use tagged templates at call sites: `` const sql = getSql(); await sql`INSERT INTO ...` ``. No pool, no connection lifecycle.
+
+### 3.5h. PostHog server helper — `src/lib/posthog-server.ts` (optional)
+
+Port verbatim from appmaker when any server route needs `captureServer()`. Not required for the minimum wiring.
+
+### 3.5i. `/api/newsletter` route — `src/app/api/newsletter/route.ts`
+
+Exact pattern from `~/appmaker/src/app/api/waitlist/route.ts`. Validates email → adds to Resend audience → sends welcome email → logs to Neon.
+
+```ts
+import { NextResponse } from "next/server";
+import { getSql } from "@/lib/db";
+
+export async function POST(req: Request) {
+  try {
+    const { email } = await req.json();
+    if (!email || !email.includes("@"))
+      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
+    if (!RESEND_API_KEY || !RESEND_AUDIENCE_ID)
+      return NextResponse.json({ error: "Server config error" }, { status: 500 });
+
+    const audRes = await fetch(
+      `https://api.resend.com/audiences/${RESEND_AUDIENCE_ID}/contacts`,
+      {
+        method: "POST",
+        headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ email, unsubscribed: false }),
+      }
+    );
+    if (!audRes.ok)
+      return NextResponse.json({ error: "Failed to subscribe" }, { status: 500 });
+
+    const emailRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: "Matt from BRAND <matt@DOMAIN>",
+        to: [email],
+        subject: "Welcome to BRAND",
+        html: `<p>Hey!</p><p>Thanks for signing up. Short blurb about what to expect.</p><p>Matt</p>`,
+      }),
+    });
+
+    try {
+      const data = await emailRes.json().catch(() => null);
+      const sql = getSql();
+      await sql`
+        INSERT INTO brand_emails (resend_id, direction, from_email, to_email, subject, status)
+        VALUES (${data?.id || null}, 'outbound', 'matt@DOMAIN', ${email}, 'Welcome email', 'sent')
+      `;
+    } catch (err) { console.error("newsletter log error:", err); }
+
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+  }
+}
+```
+
+Rename `brand_emails` to `<slug>_emails` (e.g. `fde10x_emails`) so multiple clients can share one Neon instance without collisions.
+
+### 3.5j. `/api/contact` route — `src/app/api/contact/route.ts`
+
+Replaces `mailto:hello@DOMAIN`. Validates, sends notification email to `i@m13v.com`, stores inquiry in Neon, returns `{ok: true}` for the client form handler to render a success state.
+
+```ts
+import { NextResponse } from "next/server";
+import { sendEmail } from "@/lib/resend-server";
+import { getSql } from "@/lib/db";
+
+export async function POST(req: Request) {
+  const { email, name, message } = await req.json();
+  if (!email?.includes("@") || !message?.trim())
+    return NextResponse.json({ error: "Missing fields" }, { status: 400 });
+
+  const result = await sendEmail({
+    to: "i@m13v.com",
+    subject: `[BRAND] Contact form: ${name || email}`,
+    text: `From: ${name || "(no name)"} <${email}>\n\n${message}`,
+  });
+
+  try {
+    const sql = getSql();
+    await sql`
+      INSERT INTO brand_contacts (email, name, message, resend_ok)
+      VALUES (${email}, ${name || null}, ${message}, ${result.ok})
+    `;
+  } catch (err) { console.error("contact log error:", err); }
+
+  if (!result.ok)
+    return NextResponse.json({ error: "Failed to send" }, { status: 500 });
+  return NextResponse.json({ ok: true });
+}
+```
+
+Update the contact page component to POST to this route instead of using `mailto:`.
+
+### 3.5k. Resend inbound webhook (optional, recommended) — `src/app/api/webhooks/resend/route.ts`
+
+Port `~/appmaker/src/app/api/webhooks/resend/route.ts`. Handles `email.received` events, logs to Neon, forwards to `i@m13v.com`. Needed only if the client uses `matt@DOMAIN` as a real inbound address.
+
+### 3.5l. Provision external services (one-time per client)
+
+Same pattern appmaker's `src/core/service-provisioning.ts` uses for VM apps: call the REST APIs with master provisioning keys from keychain, mint per-client resources, save the resulting credentials back to keychain.
+
+**Master keychain entries (reused for every client):**
+
+| Service | Keychain name | Scope |
+|---------|---------------|-------|
+| PostHog | `PostHog mk0r-provisioning` | Personal API key (m13v org, lists/reads projects) |
+| Neon | `Neon mk0r-provisioning` | Account key for `org-steep-sunset-62973058` |
+| Resend | `resend-mk0r-users` | Full-access account key |
+
+**Per-client keys saved back to keychain** (pattern `<service>-<slug>-*`):
+
+| Entry | Holds |
+|-------|-------|
+| `posthog-<slug>-project-key` | Project API token (`phc_...`) going into `NEXT_PUBLIC_POSTHOG_KEY` |
+| `resend-<slug>-api-key` | Scoped API key (`re_...`) |
+| `resend-<slug>-audience-id` | Audience UUID |
+| `neon-<slug>-pooled-url` | Pooled `DATABASE_URL` with `-pooler` |
+
+---
+
+**PostHog** — try to create a dedicated project, fall back to reusing an existing project with a `site` group.
+
+```bash
+PH_KEY=$(security find-generic-password -l "PostHog mk0r-provisioning" -w)
+ORG_ID="019cbb4d-d40a-0000-d0b7-54e1b67bad33"  # m13v org
+
+# Try to create a dedicated project
+curl -s -X POST -H "Authorization: Bearer $PH_KEY" -H "Content-Type: application/json" \
+  -d '{"name":"<SLUG>"}' \
+  "https://us.posthog.com/api/organizations/$ORG_ID/projects/"
+```
+
+If the response is `{"detail":"You have reached the maximum limit of allowed projects..."}`, the m13v plan cap was hit. **Fallback:** list existing projects and reuse one of the client-site projects (usually `m13v.com`). The provider code from 3.5b already isolates events with `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })`, so cross-site event pollution is avoided.
+
+```bash
+# Pick the api_token of whichever project hosts this client site.
+curl -s -H "Authorization: Bearer $PH_KEY" "https://us.posthog.com/api/projects/" \
+  | python3 -c "import json,sys; [print(f\"{p['id']:<7} {p['name']:<20} {p['api_token']}\") for p in json.load(sys.stdin).get('results',[])]"
+
+# Save the project token for later.
+security add-generic-password -U -a "i@m13v.com" -s "posthog-<SLUG>-project-key" -w "phc_..."
+```
+
+---
+
+**Neon** — one dedicated project per client (no shared instance; the free tier supports many projects per org).
+
+```bash
+NEON_KEY=$(security find-generic-password -l "Neon mk0r-provisioning" -w)
+ORG_ID="org-steep-sunset-62973058"
+
+# Create project
+curl -s -X POST -H "Authorization: Bearer $NEON_KEY" -H "Content-Type: application/json" \
+  -d "{\"project\":{\"name\":\"<SLUG>-prod\",\"region_id\":\"aws-us-east-2\",\"pg_version\":17,\"org_id\":\"$ORG_ID\"}}" \
+  "https://console.neon.tech/api/v2/projects" > /tmp/neon.json
+
+# Extract direct URI for DDL, project id for the pooled lookup
+DIRECT_URI=$(python3 -c "import json; print(json.load(open('/tmp/neon.json'))['connection_uris'][0]['connection_uri'])")
+PROJECT_ID=$(python3 -c "import json; print(json.load(open('/tmp/neon.json'))['project']['id'])")
+
+# Run the schema
+psql "$DIRECT_URI" -v ON_ERROR_STOP=1 <<'SQL'
+CREATE TABLE IF NOT EXISTS <slug>_emails (
+  id SERIAL PRIMARY KEY,
+  resend_id TEXT,
+  direction TEXT NOT NULL DEFAULT 'outbound',
+  from_email TEXT,
+  to_email TEXT,
+  subject TEXT,
+  body_text TEXT,
+  body_html TEXT,
+  status TEXT DEFAULT 'sent',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_<slug>_emails_created_at ON <slug>_emails(created_at DESC);
+
+CREATE TABLE IF NOT EXISTS <slug>_contacts (
+  id SERIAL PRIMARY KEY,
+  email TEXT NOT NULL,
+  name TEXT,
+  message TEXT,
+  resend_ok BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_<slug>_contacts_created_at ON <slug>_contacts(created_at DESC);
+SQL
+
+# Fetch the pooled URI (always use pooled for Cloud Run; the non-pooled one leaks connections under load)
+POOLED_URL=$(curl -s -H "Authorization: Bearer $NEON_KEY" \
+  "https://console.neon.tech/api/v2/projects/$PROJECT_ID/connection_uri?database_name=neondb&role_name=neondb_owner&pooled=true" \
+  | python3 -c "import json,sys; print(json.load(sys.stdin)['uri'])")
+
+security add-generic-password -U -a "i@m13v.com" -s "neon-<SLUG>-pooled-url" -w "$POOLED_URL"
+```
+
+**Extending the contact schema:** if the site's contact form collects extra fields (outcome, timeline, budget, role, etc.), add them as nullable columns to `<slug>_contacts` *and* extend the `/api/contact` INSERT. The baseline above is the minimum every client ships with.
+
+---
+
+**Resend** — one domain + one audience + one full-access API key per client. **The API key must be `full_access`.** `sending_access` alone cannot write to `/audiences/:id/contacts` and returns `401 restricted_api_key`; we verified this the hard way on fde10x.
+
+```bash
+RESEND_KEY=$(security find-generic-password -l "resend-mk0r-users" -w)
+
+# 1. Add domain
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
+  -d '{"name":"<DOMAIN>","region":"us-east-1"}' \
+  "https://api.resend.com/domains" > /tmp/resend_domain.json
+cat /tmp/resend_domain.json | python3 -m json.tool
+# Copy the DKIM value, SPF value, MX target, and the domain `id` from the response.
+# The DNS records go into the client's Cloud DNS zone in Phase 6e.
+
+# 2. Create audience
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
+  -d '{"name":"<SLUG> newsletter"}' \
+  "https://api.resend.com/audiences"
+# → {"id":"<audience-uuid>","name":"..."}
+
+# 3. Create a full-access API key
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
+  -d '{"name":"<SLUG>","permission":"full_access"}' \
+  "https://api.resend.com/api-keys"
+# → {"id":"...","token":"re_..."}
+
+# 4. Save both back to keychain
+security add-generic-password -U -a "i@m13v.com" -s "resend-<SLUG>-api-key" -w "re_..."
+security add-generic-password -U -a "i@m13v.com" -s "resend-<SLUG>-audience-id" -w "<audience-uuid>"
+
+# 5. After DNS records from Phase 6e are in place, trigger verification
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" \
+  "https://api.resend.com/domains/<DOMAIN_ID>/verify"
+# Then poll status until "verified":
+curl -s -H "Authorization: Bearer $RESEND_KEY" \
+  "https://api.resend.com/domains/<DOMAIN_ID>" | python3 -c "import json,sys; print(json.load(sys.stdin).get('status'))"
+```
+
+**Security note on `full_access`:** a full-access key can send from *any* domain in the account and mutate *any* audience. The blast radius is wider than a scoped key, but Resend's permission model has only `sending_access` vs `full_access`; since newsletter subscription needs audience writes, `full_access` is the only option. Keep the key in keychain and as a Cloud Run runtime env var; do not commit it to git.
+
+### 3.5m. Env var inventory (set during Phase 6 deploy)
+
+| Var | Build-time / Runtime | Where it goes |
+|-----|---------------------|---------------|
+| `NEXT_PUBLIC_POSTHOG_KEY` | Build-arg (Docker) | Baked into client bundle |
+| `NEXT_PUBLIC_POSTHOG_HOST` | Build-arg (Docker) | Baked into client bundle |
+| `NEXT_PUBLIC_POSTHOG_SITE_ID` | Build-arg (Docker) | Baked into client bundle; used by provider to set `site` group |
+| `RESEND_API_KEY` | Runtime | Cloud Run `--set-env-vars` |
+| `RESEND_AUDIENCE_ID` | Runtime | Cloud Run `--set-env-vars` |
+| `DATABASE_URL` | Runtime | Cloud Run `--set-env-vars` |
+
+Dockerfile must declare the two `NEXT_PUBLIC_*` vars as `ARG` and `ENV` in the builder stage so `next build` bakes them in. Runtime-only secrets go on the Cloud Run service, NOT the Dockerfile.
+
+**CRITICAL — strip trailing `\n` from every env var before setting.** Follow the global rule in `~/.claude/CLAUDE.md` (use `echo -n` and verify with `gcloud run services describe`). A single `\n` on `RESEND_API_KEY` will break signing and produce silent 401s.
+
+### 3.5n. Exit criteria
+
+- `NewsletterSignup` renders in dev; submitting a valid email returns 2xx and the success message
+- `/api/newsletter` POST (curl against local dev with real Resend creds) adds the contact to Resend audience AND writes a row to `<slug>_emails`
+- `/api/contact` POST lands a notification email in `i@m13v.com` AND writes a row to `<slug>_contacts`
+- `window.posthog` is non-undefined in the browser console on `/`
+- Clicking a `TrackedCta` fires a `cta_clicked` event visible in PostHog Live events
+- No trailing `\n` in any env var (verify with `gcloud run services describe ... --format='value(spec.template.spec.containers[0].env)'`)
 
 ---
 
@@ -1517,8 +2046,10 @@ COPY . .
 # into the client bundle. Runtime env vars on Cloud Run are too late.
 ARG NEXT_PUBLIC_POSTHOG_KEY
 ARG NEXT_PUBLIC_POSTHOG_HOST
+ARG NEXT_PUBLIC_POSTHOG_SITE_ID
 ENV NEXT_PUBLIC_POSTHOG_KEY=$NEXT_PUBLIC_POSTHOG_KEY
 ENV NEXT_PUBLIC_POSTHOG_HOST=$NEXT_PUBLIC_POSTHOG_HOST
+ENV NEXT_PUBLIC_POSTHOG_SITE_ID=$NEXT_PUBLIC_POSTHOG_SITE_ID
 
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
@@ -1549,12 +2080,22 @@ gcloud services enable run.googleapis.com dns.googleapis.com \
   --project=GCP_PROJECT_ID
 
 # Deploy (source-based: Cloud Build builds the Dockerfile automatically)
+# Use --set-env-vars (NOT --update-env-vars) so deletions also take effect.
+# Use --set-build-env-vars for NEXT_PUBLIC_* so the values bake into the client bundle.
+# CRITICAL: use --set-env-vars "KEY=value" with NO trailing newlines; every global env
+# var rule from ~/.claude/CLAUDE.md applies here.
 gcloud run deploy SERVICE_NAME \
   --source . \
   --region us-central1 \
   --project GCP_PROJECT_ID \
   --allow-unauthenticated \
+  --set-build-env-vars "NEXT_PUBLIC_POSTHOG_KEY=phc_...,NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com,NEXT_PUBLIC_POSTHOG_SITE_ID=<SLUG>" \
+  --set-env-vars "^|^RESEND_API_KEY=re_...|RESEND_AUDIENCE_ID=...|DATABASE_URL=postgresql://..." \
   --quiet
+
+# Verify env vars have no trailing \n
+gcloud run services describe SERVICE_NAME --project=GCP_PROJECT_ID --region=us-central1 \
+  --format="value(spec.template.spec.containers[0].env)" 2>&1 | tr ';' '\n' | grep -E "RESEND|DATABASE|POSTHOG"
 ```
 
 ### 6e. Set up HTTPS Load Balancer with custom domain
@@ -1620,9 +2161,76 @@ gcloud compute forwarding-rules create PROJECT_NAME-http-rule --global \
 gcloud run services update SERVICE_NAME \
   --ingress=internal-and-cloud-load-balancing \
   --region=us-central1 --project=GCP_PROJECT_ID
+
+# Resend domain DNS records (from Phase 3.5 external-service provisioning).
+# Without these, the welcome email + inbound webhook won't work.
+# Values come from Resend's "Add domain" dialog; paste them in.
+gcloud dns record-sets create "send.DOMAIN." --type=TXT --ttl=300 \
+  --rrdatas='"v=spf1 include:amazonses.com ~all"' \
+  --zone=DNS_ZONE --project=GCP_PROJECT_ID
+gcloud dns record-sets create "resend._domainkey.DOMAIN." --type=TXT --ttl=300 \
+  --rrdatas='"<DKIM value from Resend — usually 2 quoted chunks>"' \
+  --zone=DNS_ZONE --project=GCP_PROJECT_ID
+gcloud dns record-sets create "send.DOMAIN." --type=MX --ttl=300 \
+  --rrdatas="10 feedback-smtp.us-east-1.amazonses.com." \
+  --zone=DNS_ZONE --project=GCP_PROJECT_ID
+
+# Click "Verify" in the Resend dashboard after these propagate (~2-5 min).
 ```
 
-### 6f. Create GitHub Actions workflow for CI/CD
+### 6f. Create GitHub Actions workflow for CI/CD (WIF, not SA keys)
+
+**The shared project `piastest` enforces the org policy `iam.disableServiceAccountKeyCreation`.** You cannot create a service account JSON key. All CI/CD auth must go through Workload Identity Federation.
+
+**Pre-step: bind the deploy SA to the existing WIF pool** (one-time per new repo):
+
+```bash
+REPO="m13v/<STEM>-website"
+DEPLOY_SA="<STEM>-deployer@piastest.iam.gserviceaccount.com"
+
+# Create the deploy SA if it doesn't exist
+gcloud iam service-accounts create <STEM>-deployer \
+  --project=piastest \
+  --display-name="<STEM> Cloud Run deployer"
+
+# Grant the roles it needs
+for role in roles/run.admin roles/cloudbuild.builds.editor roles/storage.admin roles/iam.serviceAccountUser; do
+  gcloud projects add-iam-policy-binding piastest \
+    --member="serviceAccount:${DEPLOY_SA}" \
+    --role="${role}"
+done
+
+# Bind the SA to the repo via WIF
+gcloud iam service-accounts add-iam-policy-binding "${DEPLOY_SA}" \
+  --project=piastest \
+  --role="roles/iam.workloadIdentityUser" \
+  --member="principalSet://iam.googleapis.com/projects/882907665967/locations/global/workloadIdentityPools/github-pool/attribute.repository/${REPO}"
+```
+
+Existing WIF infrastructure in `piastest` (do not recreate):
+- Pool: `projects/882907665967/locations/global/workloadIdentityPools/github-pool`
+- Provider: `projects/882907665967/locations/global/workloadIdentityPools/github-pool/providers/github-provider`
+- Attribute mapping: `attribute.repository=assertion.repository; google.subject=assertion.sub`
+
+**CRITICAL: the provider has an `attributeCondition` that gates which GitHub orgs/repos may authenticate.** Binding the SA is not enough; if the repo owner isn't allowed by the condition, auth fails with `unauthorized_client: The given credential is rejected by the attribute condition` BEFORE the SA binding is ever checked. This caused the fde10x-website deploy to fail on 2026-04-17 until the condition was updated.
+
+Check the current condition:
+
+```bash
+gcloud iam workload-identity-pools providers describe github-provider \
+  --location=global --workload-identity-pool=github-pool --project=piastest \
+  --format="value(attributeCondition)"
+```
+
+If your repo owner is not covered, widen the condition to include `assertion.repository.startsWith('<owner>/')`:
+
+```bash
+gcloud iam workload-identity-pools providers update-oidc github-provider \
+  --location=global --workload-identity-pool=github-pool --project=piastest \
+  --attribute-condition="assertion.repository=='LINQLABS/piastest' || assertion.repository=='assrt-ai/assrt-freestyle' || assertion.repository=='assrt-ai/assrt' || assertion.repository.startsWith('m13v/')"
+```
+
+Always pass the FULL existing condition plus your new clause; this flag replaces, not appends. The `startsWith('<owner>/')` form future-proofs every subsequent `<owner>/*-website` repo under that owner.
 
 Create `.github/workflows/deploy-cloudrun.yml`:
 
@@ -1636,6 +2244,9 @@ on:
 
 env:
   REGION: us-central1
+  PROJECT_ID: piastest
+  SERVICE_ACCOUNT: <STEM>-deployer@piastest.iam.gserviceaccount.com
+  WIF_PROVIDER: projects/882907665967/locations/global/workloadIdentityPools/github-pool/providers/github-provider
 
 jobs:
   deploy:
@@ -1643,6 +2254,7 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: read
+      id-token: write  # REQUIRED for WIF
     concurrency:
       group: deploy-production
       cancel-in-progress: false
@@ -1652,16 +2264,17 @@ jobs:
       - id: auth
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          workload_identity_provider: ${{ env.WIF_PROVIDER }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
 
       - uses: google-github-actions/setup-gcloud@v2
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy SERVICE_NAME \
+          gcloud run deploy <STEM>-website \
             --source . \
             --region ${{ env.REGION }} \
-            --project ${{ secrets.GCP_PROJECT_ID }} \
+            --project ${{ env.PROJECT_ID }} \
             --quiet
 
       - name: Verify deployment
@@ -1673,9 +2286,7 @@ jobs:
           fi
 ```
 
-**GitHub repo secrets to add:**
-- `GCP_SA_KEY`: service account JSON key with Cloud Run Admin, Cloud Build Editor, and Storage Admin roles
-- `GCP_PROJECT_ID`: the GCP project ID
+**No GitHub repo secrets are needed for auth.** The `id-token: write` permission + WIF provider identity handle it. Do NOT create `GCP_SA_KEY` or `credentials_json` secrets. If the org policy is ever lifted for a new project, that alternative path is out of scope for this skill.
 
 ---
 
@@ -1710,7 +2321,8 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] Scheduling widget loads
 - [ ] Social media icons present in footer
 - [ ] JSON-LD structured data on every page (validate with Google Rich Results Test)
-- [ ] Sitemap accessible at /sitemap.xml
+- [ ] XML sitemap accessible at /sitemap.xml
+- [ ] HTML sitemap page accessible at /sitemap (rendered via `HtmlSitemap`)
 - [ ] robots.txt accessible at /robots.txt
 - [ ] Lighthouse desktop score >= 85
 - [ ] Lighthouse mobile score >= 70
@@ -1886,7 +2498,8 @@ Only after Phase 10 passes is the client actually "in the pipeline." Until then,
     app/
       globals.css            # Tailwind 4 theme with brand colors
       layout.tsx             # Root layout: fonts, metadata, JSON-LD ONLY (no Header/Footer)
-      sitemap.ts             # All pages with priorities
+      sitemap.ts             # One-liner: generateSitemap({ baseUrl })
+      sitemap/page.tsx       # Human-readable HTML sitemap via HtmlSitemap
       robots.ts              # Crawl directives
       (main)/                # Route group: all pages with site Header/Footer
         layout.tsx           # Adds Header + Footer around children
