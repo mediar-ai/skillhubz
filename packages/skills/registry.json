@@ -6937,7 +6937,7 @@
     "name": "m13v-setup-client-website",
     "description": "One-time onboarding for a new consumer site (Next.js + @m13v/seo-components + Cloud Run). Scaffolds the site, wires full tracking (PostHog cta_click + schedule_click + newsletter_subscribed, cal.com t",
     "author": "m13v",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "tags": [
       "nextjs",
       "cloudrun",
@@ -6951,6 +6951,6 @@
     "excerpt": "---",
     "lines": 2803,
     "size": 129460,
-    "updated": "2026-04-19T18:25:09.258Z"
+    "updated": "2026-04-19T18:26:28.289Z"
   }
 ]
