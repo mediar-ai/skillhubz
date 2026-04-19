@@ -19,7 +19,7 @@ Provide the client name, domain (if any), and existing site URL (if any). Exampl
 - **Google Cloud** project under the m13v.com org (or create a new one)
 - **GitHub** org or personal account
 - **PostHog** account (org: m13v) for analytics
-- **Resend** account (`i@m13v.com`) for transactional email
+- **Resend** account (`you@example.com`) for transactional email
 - **Neon** account for Postgres (one project per client, pooled connection)
 - **Google Search Console** access
 - **Isolated browser MCP** for visual comparison
@@ -295,7 +295,7 @@ Wait for the user to pick one. Never pre-select. Never auto-buy.
 1. **Contact YAML** (one-time setup per user, reusable across purchases). If `~/.config/gcloud/domain-contacts.yaml` does not exist, create it with the user's WHOIS contact info and `chmod 600` it. Template:
    ```yaml
    allContacts:
-     email: i@m13v.com
+     email: you@example.com
      phoneNumber: '+1.XXXXXXXXXX'
      postalAddress:
        regionCode: US
@@ -303,7 +303,7 @@ Wait for the user to pick one. Never pre-select. Never auto-buy.
        administrativeArea: CA
        locality: San Francisco
        addressLines: ['123 Example St']
-       recipients: ['Matthew Diakonov']
+       recipients: ['Your Name']
    ```
    Ask the user for the phone/address the first time; reuse thereafter.
 
@@ -407,7 +407,7 @@ Example: for Pias Tech on `fde10x.com`:
 - Organization JSON-LD: `{ "name": "PIAS AI", "legalName": "PIAS - Policy-Informed Agentic Systems" }` (brand)
 - Support email: `hello@fde10x.com` (domain)
 - Metadata base: `https://fde10x.com` (domain)
-- Resend from: `"PIAS AI <matt@fde10x.com>"` (both: brand label + domain address)
+- Resend from: `"PIAS AI <you@your-brand.com>"` (both: brand label + domain address)
 
 If the brand name and generic-domain stem happen to be the same (e.g. a client whose brand is literally `FDE10x`), this rule is a no-op. In every other case, use the brand name from `research/brand-identity.md` for every user-facing string and reserve the generic domain for technical identifiers.
 
@@ -443,6 +443,12 @@ The theme uses CSS custom properties in `:root` mapped into Tailwind 4 via `@the
 **Source the values from `research/brand-identity.md`** (written in Phase 1d). Do not pick arbitrary colors. If the brand site uses `hsl(217 91% 50%)` as its primary, use `#3b82f6` here. If the brand site has no extractable palette, default to a neutral navy-and-white scheme and flag it for the user to confirm.
 
 ```css
+/* REQUIRED: pre-register cascade layers so @m13v/seo-components (>=0.14.1)
+   library CSS lands in @layer seo-components (lowest priority) and can't
+   beat consumer Tailwind utilities. See feedback_seo_components_layer_order
+   memory. */
+@layer seo-components, theme, base, components, utilities;
+
 @import "tailwindcss";
 
 :root {
@@ -674,6 +680,7 @@ const companyLinks = [
   { href: "/contact", label: "Contact" },
   { href: "/blog", label: "Blog" },
   { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/sitemap", label: "Sitemap" },  /* REQUIRED: keeps the HTML sitemap discoverable */
 ];
 
 const resourceLinks = [
@@ -1452,11 +1459,11 @@ Create `src/app/robots.ts` with sitemap reference.
 
 ## Phase 3.5: Integrations (PostHog + Resend + Neon)
 
-Every client site gets the same three integrations: PostHog for analytics, Resend for transactional email, and Neon for a lightweight relational store. The contract matches appmaker (`~/appmaker`). The pattern is fixed: port it verbatim, change only the brand strings and the `from` address.
+Every client site gets the same three integrations: PostHog for analytics, Resend for transactional email, and Neon for a lightweight relational store. The contract matches a prior site (use your reference repo). The pattern is fixed: port it verbatim, change only the brand strings and the `from` address.
 
 **Why these three:**
-- PostHog: required for `@seo/components` NewsletterSignup + TrackedCta. The NewsletterSignup component calls `window.posthog?.capture("newsletter_subscribed", ...)` on success, so PostHog must be globally attached before the component mounts.
-- Resend: `/api/newsletter` adds the subscriber to an audience and fires a welcome email. `/api/contact` replaces `mailto:` with a server-validated submission that also logs to Neon. Inbound webhook stores replies and forwards them to `i@m13v.com`.
+- PostHog: required for `@seo/components` NewsletterSignup + TrackedCta. The NewsletterSignup component calls `window.posthog?.capture("newsletter_subscribed", ...)` on success, so PostHog must be globally attached before the component mounts. Use `<FullSiteAnalytics>` from `@m13v/seo-components` v0.16.0+ (see 3.5b); it initialises posthog-js, sets `window.posthog`, and installs the `SeoAnalyticsProvider` context in one component.
+- Resend: `/api/newsletter` adds the subscriber to an audience and fires a welcome email. `/api/contact` replaces `mailto:` with a server-validated submission that also logs to Neon. Inbound webhook stores replies and forwards them to `you@example.com`.
 - Neon: `@neondatabase/serverless` for subscriber/email logs. No pool, no lifecycle. One `DATABASE_URL`, tagged-template SQL.
 
 ### 3.5a. Install deps
@@ -1467,14 +1474,45 @@ npm install posthog-js posthog-node @neondatabase/serverless framer-motion
 
 `framer-motion` is already required by NewsletterSignup; install it even if nothing else needs it yet.
 
-### 3.5b. PostHog client provider — `src/components/posthog-provider.tsx`
+### 3.5b. PostHog analytics wiring: use `<FullSiteAnalytics>` from `@m13v/seo-components` v0.16.0+
 
-Port this file verbatim from appmaker. The public `phc_` key is safe to hardcode (PostHog project keys are designed to be client-embedded). Change the hardcoded fallback to the new client's PostHog project key.
+**Primary recommendation (NEW):** wire analytics with the canonical `<FullSiteAnalytics>` component from `@m13v/seo-components` v0.16.0+. It is an all-in-one that (a) initialises `posthog-js`, (b) sets `window.posthog` so any third-party or library component can capture events, and (c) provides the typed `SeoAnalyticsProvider` context that `@m13v/seo-components` internals (NewsletterSignup, TrackedCta, etc.) rely on. Use it unless the site already has a hand-rolled provider you cannot remove.
+
+**Why this exists:** three of four client sites (Fazm, Cyrano, Mediar) silently dropped `@m13v/seo-components` analytics events because `posthog-js` was loaded via ESM but nobody attached it to `window.posthog`. The library components call `window.posthog?.capture(...)`, which becomes a silent no-op when `window.posthog` is `undefined`. `<FullSiteAnalytics>` eliminates that failure mode.
+
+```tsx
+// src/app/layout.tsx (the ROOT layout, not (main)/layout.tsx)
+import { FullSiteAnalytics } from "@m13v/seo-components";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <FullSiteAnalytics
+          posthogKey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
+          posthogHost={process.env.NEXT_PUBLIC_POSTHOG_HOST}
+        >
+          {children}
+        </FullSiteAnalytics>
+      </body>
+    </html>
+  );
+}
+```
+
+If you also need to tag events with a `site` group (useful when the m13v org hits the 8-project PostHog cap and multiple client sites piggyback on one project), pass the extra props supported by `<FullSiteAnalytics>` (`siteId`, `loaded`, etc., see `@m13v/seo-components` README for the current API surface).
+
+**`NEXT_PUBLIC_POSTHOG_SITE_ID`** should still be a stable slug like `fde10x`, `assrt`, or `cyrano`, so shared projects can filter cleanly.
+
+### 3.5b-fallback. Hand-rolled PostHog provider (only if `<FullSiteAnalytics>` is unusable)
+
+Use this path only if the site has an existing custom provider you cannot replace, or if you need behaviour the canonical component does not yet expose. It MUST still do all three things: init posthog, attach `window.posthog`, and wrap children so library components work.
 
 ```tsx
 "use client";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider } from "posthog-js/react";
+import { SeoAnalyticsProvider } from "@m13v/seo-components";
 import { useEffect } from "react";
 
 const POSTHOG_KEY =
@@ -1500,21 +1538,38 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
           window.dispatchEvent(new CustomEvent("posthog:loaded"));
         },
       });
+      // MANDATORY: attach to window so @m13v/seo-components (NewsletterSignup,
+      // TrackedCta, etc.) can fire events. Without this line the library's
+      // window.posthog?.capture(...) calls become silent no-ops.
       (window as unknown as { posthog: typeof posthog }).posthog = posthog;
     }
   }, []);
   if (!POSTHOG_KEY) return <>{children}</>;
-  return <PHProvider client={posthog}>{children}</PHProvider>;
+  return (
+    <PHProvider client={posthog}>
+      <SeoAnalyticsProvider posthog={posthog}>{children}</SeoAnalyticsProvider>
+    </PHProvider>
+  );
 }
 
 export { posthog };
 ```
 
-**Why the `site` group matters:** the m13v org has an 8-project cap on PostHog, so new client sites usually have to piggyback on an existing project (e.g. `m13v.com`). Calling `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })` in `loaded` tags every event with the site slug so PostHog insights can filter cleanly across shared projects. `NEXT_PUBLIC_POSTHOG_SITE_ID` must be a stable slug like `fde10x`, `assrt`, or `cyrano`.
+**The one load-bearing line in the fallback path:**
 
-### 3.5c. Wrap the root layout
+```ts
+(window as unknown as { posthog: typeof posthogLib }).posthog = posthogLib;
+```
 
-In `src/app/layout.tsx` (the ROOT layout, not `(main)/layout.tsx`), wrap `{children}` with `<PostHogProvider>`. PostHog must initialise at the root so both marketing pages and guide pages get pageview tracking and `window.posthog` before any component that uses it.
+Any hand-rolled provider that initialises `posthog-js` MUST include this line after `posthog.init(...)`. It is the minimum to make `@m13v/seo-components` analytics work. `<FullSiteAnalytics>` does this for you.
+
+**Why the `site` group matters:** the m13v org has an 8-project cap on PostHog, so new client sites usually have to piggyback on an existing project (e.g. `m13v.com`). Calling `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })` in `loaded` tags every event with the site slug so PostHog insights can filter cleanly across shared projects.
+
+### 3.5c. Wrap the root layout (fallback path only)
+
+If you used `<FullSiteAnalytics>` in 3.5b, this step is already done: `<FullSiteAnalytics>` lives directly in `src/app/layout.tsx` wrapping `{children}`.
+
+If you used the hand-rolled `PostHogProvider` fallback, wrap `{children}` with it in `src/app/layout.tsx` (the ROOT layout, not `(main)/layout.tsx`). PostHog must initialise at the root so both marketing pages and guide pages get pageview tracking and `window.posthog` before any component that uses it.
 
 ```tsx
 import { PostHogProvider } from "@/components/posthog-provider";
@@ -1522,7 +1577,38 @@ import { PostHogProvider } from "@/components/posthog-provider";
 <PostHogProvider>{children}</PostHogProvider>
 ```
 
-### 3.5d. TrackedCta component — `src/components/tracked-cta.tsx`
+### 3.5c-verify. Verify `window.posthog` is set (MANDATORY)
+
+After deploying (or running dev locally), open DevTools console on `/` and type:
+
+```js
+window.posthog
+```
+
+It must return an object (the PostHog client instance), **not `undefined`**. If it is `undefined`:
+
+- `@m13v/seo-components` analytics (NewsletterSignup, TrackedCta, any library component that calls `window.posthog?.capture`) is silently broken.
+- Root cause is almost always: the provider initialised posthog-js via ESM but never assigned it to `window.posthog`. Either switch to `<FullSiteAnalytics>`, or add the load-bearing line shown in 3.5b-fallback.
+
+This is a regression guard for the exact bug that dropped analytics on three of four sites prior to `@m13v/seo-components` v0.16.0.
+
+### 3.5d. CTA capture — canonical event names the stats pipeline queries
+
+The stats pipeline at `~/social-autoposter/scripts/project_stats_json.py` queries PostHog for **two specific event names**, scoped by `properties.$host`:
+- `cta_click` (underscore, no "d" at the end)  — fired on any marketing CTA
+- `schedule_click` — fired on CTAs that route to a booking tool (Cal.com, Calendly, meetings.hubspot.com)
+
+Every CTA on a new client site MUST fire `cta_click`. Every Book-a-Call / schedule / demo CTA MUST fire both `cta_click` AND `schedule_click`. Do not invent new event names like `cta_clicked`; they will be invisible to the dashboard.
+
+**Canonical helper from `@m13v/seo-components` (v0.14+):**
+
+```ts
+import { trackScheduleClick } from "@seo/components";
+// Fires 'schedule_click' with { destination, site, section, text, component, page }
+trackScheduleClick({ destination, site: "<SLUG>", section, text, component });
+```
+
+**Standard CTA component** — `src/components/tracked-cta.tsx`:
 
 ```tsx
 "use client";
@@ -1530,18 +1616,15 @@ import Link from "next/link";
 import { posthog } from "@/components/posthog-provider";
 
 export function TrackedCta({
-  href, page, location, label, className, children,
+  href, page, section, label, className, children,
 }: {
-  href: string; page: string; location: string;
+  href: string; page: string; section: string;
   label?: string; className?: string; children: React.ReactNode;
 }) {
+  const text = label ?? (typeof children === "string" ? children : undefined);
   return (
     <Link href={href} className={className} onClick={() => {
-      posthog?.capture("cta_clicked", {
-        page, location,
-        label: label ?? (typeof children === "string" ? children : undefined),
-        destination: href,
-      });
+      posthog?.capture("cta_click", { page, section, text, href });
     }}>
       {children}
     </Link>
@@ -1549,7 +1632,75 @@ export function TrackedCta({
 }
 ```
 
-Swap every hand-rolled `<Link href="/contact">` CTA for `<TrackedCta href="/contact" page="home" location="hero">`. Pass unique `page` + `location` per instance so PostHog funnels can distinguish them.
+Swap every hand-rolled `<Link href="/contact">` for `<TrackedCta href="/contact" page="home" section="hero">`. Unique `page` + `section` per instance keeps PostHog funnels distinguishable.
+
+**Book-a-Call helper** (required for any CTA that points at `cal.com` / `calendly.com`) — `src/lib/booking.ts` + `src/components/BookCallLink.tsx`:
+
+```ts
+// src/lib/booking.ts
+"use client";
+import { trackScheduleClick } from "@seo/components";
+import { posthog } from "@/components/posthog-provider";
+
+export const BOOKING_URL = "https://cal.com/team/<TEAM>/<SLUG>"; // fill at scaffold time
+
+export function trackBookingClick(opts: { section?: string; text?: string; component?: string }) {
+  const page = typeof window !== "undefined" ? window.location.pathname : undefined;
+  posthog?.capture("cta_click", { page, href: BOOKING_URL, text: opts.text, section: opts.section });
+  trackScheduleClick({
+    destination: BOOKING_URL, site: "<SLUG>",
+    section: opts.section, text: opts.text,
+    component: opts.component ?? "BookCallLink",
+  });
+}
+```
+
+```tsx
+// src/components/BookCallLink.tsx
+"use client";
+import Link from "next/link";
+import { BOOKING_URL, trackBookingClick } from "@/lib/booking";
+
+export function BookCallLink({ children, className, section, onClick }: {
+  children: React.ReactNode; className?: string; section?: string; onClick?: () => void;
+}) {
+  const text = typeof children === "string" ? children : undefined;
+  return (
+    <Link
+      href={BOOKING_URL} target="_blank" rel="noopener noreferrer"
+      className={className}
+      onClick={() => { trackBookingClick({ section, text, component: "BookCallLink" }); onClick?.(); }}
+    >{children}</Link>
+  );
+}
+```
+
+For third-party components that don't accept an `onClick` prop (e.g. `ShimmerButton`, `InlineCta` from `@seo/components`), wrap them in a client-only capture span — `src/components/BookCallTracker.tsx`:
+
+```tsx
+"use client";
+import { trackBookingClick } from "@/lib/booking";
+export function BookCallTracker({ children, section, component }: {
+  children: React.ReactNode; section?: string; component?: string;
+}) {
+  return (
+    <span style={{ display: "contents" }}
+      onClickCapture={() => trackBookingClick({ section, component: component ?? "BookCallTracker" })}>
+      {children}
+    </span>
+  );
+}
+```
+
+Usage on SEO topic pages that embed library CTAs:
+
+```tsx
+<BookCallTracker section="topic-inline" component="InlineCta">
+  <InlineCta heading="..." body="..." linkText="Book the call" href={BOOKING_URL} />
+</BookCallTracker>
+```
+
+Every Book-a-Call CTA — header, hero, footer, FAQ, per-section, and any topic page — must be one of `<BookCallLink>` or wrapped in `<BookCallTracker>`. This is how the stats pipeline counts `schedule_click` per `$host`.
 
 ### 3.5e. NewsletterSignup — drop into `(main)/layout.tsx`
 
@@ -1567,7 +1718,7 @@ The component POSTs to `/api/newsletter` by default. 2xx = success (shows succes
 
 ### 3.5f. Resend helper — `src/lib/resend-server.ts`
 
-Port verbatim from `~/appmaker/src/lib/resend-server.ts`. Change only the default `from` address to `<Brand Name> <matt@DOMAIN>`. The helper uses the REST API directly (no SDK), provides `sendEmail()` and `addToAudience()`, and fails soft when env vars are missing.
+Port verbatim from `~/your-prior-site/src/lib/resend-server.ts`. Change only the default `from` address to `<Brand Name> <matt@DOMAIN>`. The helper uses the REST API directly (no SDK), provides `sendEmail()` and `addToAudience()`, and fails soft when env vars are missing.
 
 ### 3.5g. Neon helper — `src/lib/db.ts`
 
@@ -1585,11 +1736,11 @@ Use tagged templates at call sites: `` const sql = getSql(); await sql`INSERT IN
 
 ### 3.5h. PostHog server helper — `src/lib/posthog-server.ts` (optional)
 
-Port verbatim from appmaker when any server route needs `captureServer()`. Not required for the minimum wiring.
+Port verbatim from your reference repo when any server route needs `captureServer()`. Not required for the minimum wiring.
 
 ### 3.5i. `/api/newsletter` route — `src/app/api/newsletter/route.ts`
 
-Exact pattern from `~/appmaker/src/app/api/waitlist/route.ts`. Validates email → adds to Resend audience → sends welcome email → logs to Neon.
+Exact pattern from `~/your-prior-site/src/app/api/waitlist/route.ts`. Validates email → adds to Resend audience → sends welcome email → logs to Neon.
 
 ```ts
 import { NextResponse } from "next/server";
@@ -1621,7 +1772,7 @@ export async function POST(req: Request) {
       method: "POST",
       headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        from: "Matt from BRAND <matt@DOMAIN>",
+        from: "Your Name from BRAND <matt@DOMAIN>",
         to: [email],
         subject: "Welcome to BRAND",
         html: `<p>Hey!</p><p>Thanks for signing up. Short blurb about what to expect.</p><p>Matt</p>`,
@@ -1637,6 +1788,20 @@ export async function POST(req: Request) {
       `;
     } catch (err) { console.error("newsletter log error:", err); }
 
+    // Server-side belt-and-suspenders: also fire newsletter_subscribed from the
+    // server. NewsletterSignup fires it client-side, but a failed hydration or
+    // ad blocker would swallow that. Server-side guarantees the event lands.
+    try {
+      const { getPostHogServer } = await import("@/lib/posthog-server");
+      const ph = getPostHogServer();
+      ph?.capture({
+        distinctId: email,
+        event: "newsletter_subscribed",
+        properties: { source: "api/newsletter", site: "<SLUG>" },
+      });
+      await ph?.flush();
+    } catch (err) { console.error("newsletter posthog server-capture error:", err); }
+
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ error: "Internal error" }, { status: 500 });
@@ -1648,7 +1813,7 @@ Rename `brand_emails` to `<slug>_emails` (e.g. `fde10x_emails`) so multiple clie
 
 ### 3.5j. `/api/contact` route — `src/app/api/contact/route.ts`
 
-Replaces `mailto:hello@DOMAIN`. Validates, sends notification email to `i@m13v.com`, stores inquiry in Neon, returns `{ok: true}` for the client form handler to render a success state.
+Replaces `mailto:hello@DOMAIN`. Validates, sends notification email to `you@example.com`, stores inquiry in Neon, returns `{ok: true}` for the client form handler to render a success state.
 
 ```ts
 import { NextResponse } from "next/server";
@@ -1661,7 +1826,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
   const result = await sendEmail({
-    to: "i@m13v.com",
+    to: "you@example.com",
     subject: `[BRAND] Contact form: ${name || email}`,
     text: `From: ${name || "(no name)"} <${email}>\n\n${message}`,
   });
@@ -1684,11 +1849,11 @@ Update the contact page component to POST to this route instead of using `mailto
 
 ### 3.5k. Resend inbound webhook (optional, recommended) — `src/app/api/webhooks/resend/route.ts`
 
-Port `~/appmaker/src/app/api/webhooks/resend/route.ts`. Handles `email.received` events, logs to Neon, forwards to `i@m13v.com`. Needed only if the client uses `matt@DOMAIN` as a real inbound address.
+Port `~/your-prior-site/src/app/api/webhooks/resend/route.ts`. Handles `email.received` events, logs to Neon, forwards to `you@example.com`. Needed only if the client uses `matt@DOMAIN` as a real inbound address.
 
 ### 3.5l. Provision external services (one-time per client)
 
-Same pattern appmaker's `src/core/service-provisioning.ts` uses for VM apps: call the REST APIs with master provisioning keys from keychain, mint per-client resources, save the resulting credentials back to keychain.
+Same pattern your reference repo's provisioning module uses for VM apps: call the REST APIs with master provisioning keys from keychain, mint per-client resources, save the resulting credentials back to keychain.
 
 **Master keychain entries (reused for every client):**
 
@@ -1729,7 +1894,7 @@ curl -s -H "Authorization: Bearer $PH_KEY" "https://us.posthog.com/api/projects/
   | python3 -c "import json,sys; [print(f\"{p['id']:<7} {p['name']:<20} {p['api_token']}\") for p in json.load(sys.stdin).get('results',[])]"
 
 # Save the project token for later.
-security add-generic-password -U -a "i@m13v.com" -s "posthog-<SLUG>-project-key" -w "phc_..."
+security add-generic-password -U -a "you@example.com" -s "posthog-<SLUG>-project-key" -w "phc_..."
 ```
 
 ---
@@ -1781,7 +1946,7 @@ POOLED_URL=$(curl -s -H "Authorization: Bearer $NEON_KEY" \
   "https://console.neon.tech/api/v2/projects/$PROJECT_ID/connection_uri?database_name=neondb&role_name=neondb_owner&pooled=true" \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['uri'])")
 
-security add-generic-password -U -a "i@m13v.com" -s "neon-<SLUG>-pooled-url" -w "$POOLED_URL"
+security add-generic-password -U -a "you@example.com" -s "neon-<SLUG>-pooled-url" -w "$POOLED_URL"
 ```
 
 **Extending the contact schema:** if the site's contact form collects extra fields (outcome, timeline, budget, role, etc.), add them as nullable columns to `<slug>_contacts` *and* extend the `/api/contact` INSERT. The baseline above is the minimum every client ships with.
@@ -1814,8 +1979,8 @@ curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: applica
 # → {"id":"...","token":"re_..."}
 
 # 4. Save both back to keychain
-security add-generic-password -U -a "i@m13v.com" -s "resend-<SLUG>-api-key" -w "re_..."
-security add-generic-password -U -a "i@m13v.com" -s "resend-<SLUG>-audience-id" -w "<audience-uuid>"
+security add-generic-password -U -a "you@example.com" -s "resend-<SLUG>-api-key" -w "re_..."
+security add-generic-password -U -a "you@example.com" -s "resend-<SLUG>-audience-id" -w "<audience-uuid>"
 
 # 5. After DNS records from Phase 6e are in place, trigger verification
 curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" \
@@ -1846,9 +2011,10 @@ Dockerfile must declare the two `NEXT_PUBLIC_*` vars as `ARG` and `ENV` in the b
 
 - `NewsletterSignup` renders in dev; submitting a valid email returns 2xx and the success message
 - `/api/newsletter` POST (curl against local dev with real Resend creds) adds the contact to Resend audience AND writes a row to `<slug>_emails`
-- `/api/contact` POST lands a notification email in `i@m13v.com` AND writes a row to `<slug>_contacts`
-- `window.posthog` is non-undefined in the browser console on `/`
+- `/api/contact` POST lands a notification email in `you@example.com` AND writes a row to `<slug>_contacts`
+- `window.posthog` is non-undefined in the browser console on `/` (type `window.posthog` in DevTools — must return an object, not `undefined`; see 3.5c-verify)
 - Clicking a `TrackedCta` fires a `cta_clicked` event visible in PostHog Live events
+- Submitting the `NewsletterSignup` fires a `newsletter_subscribed` event visible in PostHog Live events (confirms `@m13v/seo-components` library analytics path works end-to-end)
 - No trailing `\n` in any env var (verify with `gcloud run services describe ... --format='value(spec.template.spec.containers[0].env)'`)
 
 ---
@@ -2044,12 +2210,22 @@ COPY . .
 
 # NEXT_PUBLIC_* vars must be present at build time because Next.js bakes them
 # into the client bundle. Runtime env vars on Cloud Run are too late.
-ARG NEXT_PUBLIC_POSTHOG_KEY
-ARG NEXT_PUBLIC_POSTHOG_HOST
-ARG NEXT_PUBLIC_POSTHOG_SITE_ID
-ENV NEXT_PUBLIC_POSTHOG_KEY=$NEXT_PUBLIC_POSTHOG_KEY
-ENV NEXT_PUBLIC_POSTHOG_HOST=$NEXT_PUBLIC_POSTHOG_HOST
-ENV NEXT_PUBLIC_POSTHOG_SITE_ID=$NEXT_PUBLIC_POSTHOG_SITE_ID
+#
+# Do NOT declare `ARG NEXT_PUBLIC_* / ENV NEXT_PUBLIC_*=$ARG` here. If the ARG
+# is not passed at `docker build` time (and `gcloud run deploy --source .`
+# does NOT pass `--set-build-env-vars` through to Dockerfile ARGs — that flag
+# is buildpacks-only), the ENV ends up as an empty string, and Next.js's env
+# load order puts process.env ABOVE .env.production, so the committed key is
+# silently stomped. The client bundle then ships with the variable undefined,
+# dead-code-eliminates the init call, and the site is dark in PostHog.
+# (This footgun bit fde10x-website on 2026-04-19.)
+#
+# Instead, commit a `.env.production` file at repo root (see 6c.env-production
+# below for the .gitignore exception). Next.js loads it automatically during
+# `npm run build` inside this image. That pattern works for the full set of
+# NEXT_PUBLIC_* values we care about here (all public — phc_ PostHog keys,
+# site id slugs, public API hosts). Real secrets never live in NEXT_PUBLIC_*
+# at all; they go through runtime env in 6d.
 
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
@@ -2071,6 +2247,32 @@ EXPOSE 8080
 CMD ["node", "server.js"]
 ```
 
+### 6c.env-production. Commit `.env.production` with the public client-side vars
+
+Allow the file into git with a targeted `.gitignore` exception:
+
+```
+# ~/.claude/skills/setup-client-website/templates/.gitignore append:
+# env files (can opt-in for committing if needed)
+.env*
+# NEXT_PUBLIC_POSTHOG_KEY is a phc_ ingestion key: public by design,
+# inlined into the client bundle anyway. Committing it lets the Docker
+# build pick it up without --build-arg plumbing.
+!.env.production
+```
+
+Contents of `.env.production` (single source of truth for build-time NEXT_PUBLIC_* values):
+
+```
+NEXT_PUBLIC_POSTHOG_KEY=phc_...
+NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+NEXT_PUBLIC_POSTHOG_SITE_ID=<SLUG>
+```
+
+**Rule:** only values that are safe in a public git repo go here. `phc_` PostHog ingestion keys are by design publicly embedded in the client bundle — an attacker can scrape them off the deployed site anyway. A `phx_` personal API key, a `re_` Resend API key, or any database URL is NOT in this file. Those live in Cloud Run runtime env only (see 6d).
+
+If the stem project (e.g. `piastest`) is shared between multiple sites, ensure each site uses its own `NEXT_PUBLIC_POSTHOG_SITE_ID` slug so shared PostHog projects can filter by `properties.site`.
+
 ### 6d. Deploy Cloud Run service
 
 ```bash
@@ -2079,23 +2281,39 @@ gcloud services enable run.googleapis.com dns.googleapis.com \
   compute.googleapis.com certificatemanager.googleapis.com \
   --project=GCP_PROJECT_ID
 
-# Deploy (source-based: Cloud Build builds the Dockerfile automatically)
+# Deploy (source-based: Cloud Build builds the Dockerfile automatically).
 # Use --set-env-vars (NOT --update-env-vars) so deletions also take effect.
-# Use --set-build-env-vars for NEXT_PUBLIC_* so the values bake into the client bundle.
 # CRITICAL: use --set-env-vars "KEY=value" with NO trailing newlines; every global env
 # var rule from ~/.claude/CLAUDE.md applies here.
+#
+# Do NOT pass --set-build-env-vars for NEXT_PUBLIC_*. That flag is buildpacks-only
+# and does NOT propagate to Dockerfile ARGs. NEXT_PUBLIC_* values come from the
+# committed .env.production file (see 6c.env-production). This flag path was
+# the root cause of the 2026-04-19 fde10x-website posthog-dark incident.
+#
+# --set-env-vars is for RUNTIME secrets: they never need to be baked into the
+# client bundle. Anything the server reads via process.env.X at request time
+# (database URL, Resend API key, anything server-side) goes here.
 gcloud run deploy SERVICE_NAME \
   --source . \
   --region us-central1 \
   --project GCP_PROJECT_ID \
   --allow-unauthenticated \
-  --set-build-env-vars "NEXT_PUBLIC_POSTHOG_KEY=phc_...,NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com,NEXT_PUBLIC_POSTHOG_SITE_ID=<SLUG>" \
   --set-env-vars "^|^RESEND_API_KEY=re_...|RESEND_AUDIENCE_ID=...|DATABASE_URL=postgresql://..." \
   --quiet
 
-# Verify env vars have no trailing \n
+# Verify runtime env vars have no trailing \n
 gcloud run services describe SERVICE_NAME --project=GCP_PROJECT_ID --region=us-central1 \
-  --format="value(spec.template.spec.containers[0].env)" 2>&1 | tr ';' '\n' | grep -E "RESEND|DATABASE|POSTHOG"
+  --format="value(spec.template.spec.containers[0].env)" 2>&1 | tr ';' '\n' | grep -E "RESEND|DATABASE"
+
+# Verify NEXT_PUBLIC_POSTHOG_KEY actually got baked into the client bundle
+# (not undefined, dead-code-eliminated away):
+curl -sS https://DOMAIN/ -o /tmp/home.html
+grep -oE '/_next/static/chunks/[^"\\]+\.js' /tmp/home.html | sort -u | while IFS= read -r url; do
+  if curl -sS "https://DOMAIN$url" | grep -qE 'phc_[A-Za-z0-9]{20,}'; then
+    echo "OK: phc_ baked in $url"; break
+  fi
+done
 ```
 
 ### 6e. Set up HTTPS Load Balancer with custom domain
@@ -2288,6 +2506,54 @@ jobs:
 
 **No GitHub repo secrets are needed for auth.** The `id-token: write` permission + WIF provider identity handle it. Do NOT create `GCP_SA_KEY` or `credentials_json` secrets. If the org policy is ever lifted for a new project, that alternative path is out of scope for this skill.
 
+### 6g. Wire Cal.com bookings into the central stats pipeline
+
+Bookings flow: `cal.com` (team webhook) → `https://social-autoposter-website.vercel.app/api/webhooks/cal` → Neon `cal_bookings` table → stats pipeline counts per `client_slug`.
+
+Three places to touch for a new client. Skip any that already match.
+
+**1) Add the client slug's keyword to the webhook's client_slug detection.** Edit `~/social-autoposter-website/src/app/api/webhooks/cal/route.ts`. The detection block is an ordered `if/else if`. Add the new client **above** any branch whose keyword might overlap (e.g. FD10X team calls include "mediar" in the title because they live under the Mediar team, so the `fd10x` branch must precede the `mediar` branch):
+
+```ts
+} else if (
+  eventSlug.includes("<SLUG>") ||
+  title.includes("<SLUG>") ||
+  // add brand aliases here if the title/slug use them (e.g. "pias" for fde10x)
+) {
+  clientSlug = "<SLUG>";
+}
+```
+
+Commit, push, and confirm the preview alias at `https://social-autoposter-website.vercel.app/api/webhooks/cal` returns `200` on `GET`.
+
+**2) Register the webhook at the cal.com team level** (NOT on the personal account — every event type in the team, including this client's, will inherit the team webhook). In the browser, `https://app.cal.com/settings/developer/webhooks` → **New** → pick the relevant team (often `Mediar`) → Subscriber URL `https://social-autoposter-website.vercel.app/api/webhooks/cal` → leave all default event triggers checked (`BOOKING_CREATED`, `BOOKING_CANCELLED`, `BOOKING_RESCHEDULED`, `BOOKING_REJECTED`, `BOOKING_REQUESTED`, plus the rest) → Enabled → Save. A secret is optional; the current handler does not verify signatures.
+
+**3) Add `"<SLUG>": "<SLUG>"` to `get_client_slug()`** in `~/social-autoposter/scripts/project_stats.py`:
+
+```python
+def get_client_slug(project_name):
+    """Map project name to cal_bookings client_slug."""
+    return {"Cyrano": "cyrano", "PieLine": "pieline", "fazm": "fazm", "S4L": "s4l",
+            "<SLUG>": "<SLUG>"}.get(project_name)
+```
+
+This file is locked with `chflags uchg` — temporarily unlock with `chflags nouchg`, edit, re-lock with `chflags uchg`.
+
+**Verification (one real booking then cancel):**
+
+```bash
+# After the webhook is registered, book any slot on https://cal.com/team/<TEAM>/<SLUG>
+# Then check the Neon cal_bookings row landed with client_slug=<SLUG>:
+export BOOKINGS_DATABASE_URL=$(grep '^BOOKINGS_DATABASE_URL=' ~/social-autoposter/.env | cut -d= -f2-)
+python3 - <<PY
+import re, psycopg2
+conn = psycopg2.connect("$BOOKINGS_DATABASE_URL"); cur = conn.cursor()
+cur.execute("SELECT cal_booking_id, client_slug, status FROM cal_bookings ORDER BY created_at DESC LIMIT 3")
+for r in cur.fetchall(): print(r)
+PY
+# Should include one row with client_slug='<SLUG>'. Cancel the booking when done.
+```
+
 ---
 
 ## Phase 7: Register for Tracking
@@ -2323,6 +2589,7 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] JSON-LD structured data on every page (validate with Google Rich Results Test)
 - [ ] XML sitemap accessible at /sitemap.xml
 - [ ] HTML sitemap page accessible at /sitemap (rendered via `HtmlSitemap`)
+- [ ] Sitemap link in Footer (under Company column) so humans can reach `/sitemap` without typing the URL
 - [ ] robots.txt accessible at /robots.txt
 - [ ] Lighthouse desktop score >= 85
 - [ ] Lighthouse mobile score >= 70
@@ -2334,7 +2601,11 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] HeadingAnchors injects `id` attributes on H2 elements (inspect DOM)
 - [ ] SeoComponentsStyles loads in `<head>` (check page source)
 - [ ] Build generates `.next/seo-guides-manifest.json` with correct page count
-- [ ] PostHog captures pageview and cta_click events
+- [ ] PostHog captures `pageview`, `cta_click`, `schedule_click`, `newsletter_subscribed` — validate with: `curl -sS https://DOMAIN/ -o /tmp/h.html && grep -oE '/_next/static/chunks/[^"\\]+\.js' /tmp/h.html | while read u; do curl -sS https://DOMAIN$u | grep -m1 -oE 'phc_[A-Za-z0-9]+' && break; done` (a hit proves the phc_ is baked into the client bundle)
+- [ ] `window.posthog` defined on every public page (DevTools console: `window.posthog` returns an object, not `undefined`)
+- [ ] Cal.com team webhook registered → verified with one real booking landing in Neon `cal_bookings` with the client's `client_slug`, then cancelled (see Phase 6g)
+- [ ] `scripts/project_stats.py` `get_client_slug()` maps the project name to the client's slug
+- [ ] `config.json` entry has `links.booking`, `posthog.project_id`, `posthog.api_key_env` — and stats pipeline dry-run shows non-zero pageviews / `cta_click` / bookings counts for the slug
 - [ ] Google Search Console ownership verified
 - [ ] Client added to SEO pages dashboard
 
@@ -2388,8 +2659,15 @@ The `research-brief.md` produced in **Phase 1f** already has every field Phase 1
 | `features` | "Proof points" list, converted to capability statements |
 | `voice.tone` | derived from client intake (brand voice) + ICP language |
 | `voice.never` | "Banned clichés" list, verbatim |
+| `links.booking` | the actual cal.com URL the site's Book CTAs point at (`https://cal.com/team/<TEAM>/<SLUG>`) — not a placeholder like `/contact` |
+| `posthog.project_id` | numeric PostHog project id this site writes to (usually the shared S4L project `330744` unless the site has a dedicated project) |
+| `posthog.api_key_env` | name of the env var holding the PostHog **personal** API key used to *read* stats (e.g. `POSTHOG_PERSONAL_API_KEY`). Stores the variable NAME, never the value — config.json is not for secrets. |
+
+`links.booking` and `posthog.{project_id,api_key_env}` are what `scripts/project_stats_json.py` reads to query pageviews + `cta_click` + `schedule_click` events filtered by `properties.$host`. Missing them means the client is dark on the Social Autoposter stats dashboard even if the site itself is firing events.
 
 If a field has no good source in the brief, leave it out rather than invent. **Never fabricate features, stats, or differentiators** — every claim in `projects[]` is used verbatim in public replies across all platforms.
+
+**Secrets reminder:** `config.json` is gitignored from the social-autoposter repo but is not a secrets store. Only put **references** to env vars there (`api_key_env`), never the key itself. Actual values live in `~/social-autoposter/.env` and in platform env (Vercel/Cloud Run).
 
 ### 10b. Inspect an existing entry as template
 
