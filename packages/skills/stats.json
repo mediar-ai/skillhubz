@@ -17,7 +17,7 @@
     "pptx": 2,
     "xlsx": 1,
     "brand-guidelines": 1,
-    "deep-research": 12,
+    "deep-research": 11,
     "frontend-design": 4,
     "docx": 1,
     "seo-geo": 1,
@@ -25,7 +25,8 @@
     "tool-design": 1,
     "debian-linux-triage": 1,
     "github": 1,
-    "stream-coding": 1
+    "stream-coding": 1,
+    "vercel-react-best-practices": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -75,5 +76,5 @@
     "browser automation": 1,
     "opentelemetry": 1
   },
-  "lastUpdated": "2026-04-19T14:31:04.483Z"
+  "lastUpdated": "2026-04-19T14:33:20.753Z"
 }
