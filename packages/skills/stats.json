@@ -11,7 +11,7 @@
     "screenshot-annotator": 3,
     "expense-logger": 3,
     "browser-lock-multi-agent-playwright-concurrency": 1,
-    "nano-banana-2": 1,
+    "nano-banana-2": 2,
     "find-skills": 3,
     "skill-creator": 1,
     "pptx": 2,
@@ -27,8 +27,7 @@
     "github": 1,
     "stream-coding": 1,
     "canvas-design": 1,
-    "ui-ux-pro-max": 1,
-    "ai-image-generation": 1
+    "ui-ux-pro-max": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -78,5 +77,5 @@
     "browser automation": 1,
     "opentelemetry": 1
   },
-  "lastUpdated": "2026-04-19T16:46:19.754Z"
+  "lastUpdated": "2026-04-19T16:46:26.085Z"
 }
