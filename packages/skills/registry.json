@@ -6935,22 +6935,20 @@
   },
   {
     "name": "m13v-setup-client-website",
-    "description": "One-time onboarding for a new consumer site (Next.js + @m13v/seo-components + Cloud Run). Scaffolds the site, wires full tracking (PostHog cta_click + schedule_click + newsletter_subscribed, cal.com t",
+    "description": "Onboarding flow for a new consumer website: research brief, generic domain purchase, visual reference brief, design brief gate, Next.js + @seo/components scaffold, Cloud Run deploy, design review gate",
     "author": "m13v",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "tags": [
       "nextjs",
-      "cloudrun",
-      "posthog",
-      "cal.com",
       "seo",
-      "tracking",
-      "onboarding"
+      "design-system",
+      "client-website",
+      "cloud-run"
     ],
-    "category": "operations",
+    "category": "development",
     "excerpt": "---",
-    "lines": 2803,
-    "size": 129460,
-    "updated": "2026-04-19T18:26:28.289Z"
+    "lines": 2917,
+    "size": 148295,
+    "updated": "2026-04-20T22:38:29.240Z"
   }
 ]
