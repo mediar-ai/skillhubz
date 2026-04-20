@@ -1,5 +1,5 @@
 ---
-name: setup-client-website
+name: m13v-setup-client-website
 description: "One-time onboarding for a new consumer site: SEO audit of the existing site, Next.js 16 scaffold, @m13v/seo-components install, route-group architecture, real images/video/structured data, Cloud Run deploy, dashboard registration, and SEO infrastructure wiring (withSeoContent, guide index, optional sidebar and AI chat). This skill stops at infrastructure; day-to-day SEO guide page generation is handled by the gsc-seo-page skill and seo/generate_page.py. Use when: 'set up client website', 'onboard new client site', 'new consumer site', 'recreate website', 'rebuild website', or when spinning up a fresh site that will later receive programmatic SEO pages."
 user_invocable: true
 ---
@@ -13,6 +13,18 @@ One-time onboarding flow for a new (or rebuilt) client/consumer site. Produces a
 ## Arguments
 
 Provide the client name, domain (if any), and existing site URL (if any). Example: `"Paperback Expert at paperbackexpert.com"`
+
+### Optional scope flags
+
+These are OFF by default. Only enable them if the invoker mentions the feature explicitly (e.g. "with book-a-call", "add a contact form"). If the scope flag is not mentioned, skip every phase marked `[opt-in: book-a-call]` etc. — do not half-scaffold placeholders.
+
+| Flag | Default | Triggers phases |
+|------|---------|-----------------|
+| `book-a-call` | off | 3.5d Book-a-Call helpers, 3.5l Cal.com event type creation, 6g Cal.com webhook wiring, Phase 8 booking-verification row, Phase 10a `booking_link` field |
+
+**When a flag is off:** do not add `<BookCallLink>`/`<BookCallTracker>`, do not create a Cal.com event type, do not add `booking_link` to `config.json`, and skip the booking-related Phase 8 checklist rows. The DM / dashboard pipeline must fall back to `links.install` (or whatever primary CTA the site has) when `booking_link` is absent.
+
+**Rationale:** free OSS tools, install-driven products, and open-source landing pages (ClaudeMeter, appmaker-style utilities) have no "book a call" conversion. Forcing Cal.com wiring on them created dead links + placeholder config that broke the stats pipeline.
 
 ## Prerequisites
 
@@ -219,6 +231,26 @@ Phrases pulled from competitor copy that the new site must NOT reuse (e.g. "cutt
 - Every claim must trace to a file in `research/raw/` or the crawl inventory. No invented stats.
 - Hero copy, CTAs, FAQ answers, and case-study selection in Phases 3+ **must** cite lines from this brief. If a later phase wants to say something not in the brief, it returns to 1a instead of making it up.
 - The brief is the artifact. The raw reports in `research/raw/` are scratch and can be deleted after 1f lands.
+
+### 1g. Visual Reference Brief (required for Phase 3)
+
+Phase 3 no longer prescribes how each section looks. It prescribes structure and tokens; visual treatment comes from this brief. Without `research/visual-references.md`, Phase 3 cannot start.
+
+**Pick 3-5 reference sites:**
+- 2 direct category competitors (the best-designed ones from Phase 1a, not the most prominent).
+- 2-3 design benchmarks from adjacent categories. Rotate so no two client sites share the same benchmark set. Pool: Linear, Raycast, Vercel, Anthropic, PostHog, Stripe, Resend, Rauno, Framer, Arc, Readwise, Granola, NYT Cooking, magazine editorial layouts (Apple newsroom, Stripe Press), brutalist/Swiss sites.
+
+**For each reference, capture in `research/visual-references.md`:**
+- Screenshot at `research/visual-references/<slug>.png` (full page via isolated browser).
+- Palette (3-5 hex codes; note which is background, ink, accent, signal).
+- Type stack (display, body, mono families and weights).
+- 2-3 distinctive motifs (e.g. section numbering with mono chip, live animated product mock in hero, paper grain overlay, hairline grid instead of cards, pull quotes with giant serif marks, floating persistent chip, scroll-reveal stagger, italic serif for emphasis, tilt-on-hover, copy-to-clipboard CTA, kinetic type).
+- Animation vocabulary (sheen, pulse, parallax, marquee, scroll-driven, spring).
+- One-line observation: what this reference does well that this client can borrow.
+
+**Close with a design thesis** (one paragraph): the visual identity for this client site. Must be specific enough that two agents reading it would produce the same palette family and the same 2-3 signature motifs. Example: *"Editorial, Swiss, on paper-cream `#F4EEE4` with ink `#121110` and signal orange `#E8471C`. Serif display (Instrument Serif, italic for emphasis), sans body (Geist), mono for meta and numbers (Geist Mono). Signature motifs: numbered section eyebrows with hairline rules, live-ticking product mock as the hero anchor, copy-to-clipboard install chip as primary CTA, pull quotes with 90px orange serif mark, floating persistent product chip that follows scroll."*
+
+**Exemplar to read first:** `~/.claude/skills/setup-client-website/exemplars/claude-meter-editorial.html`. This is ONE treatment (editorial, Swiss, paper-and-ink, product-first). Do not copy it. Read it as proof that Phase 3 output can be distinctive, product-first, and tactile, rather than the corporate baseline in Appendix A. Add a second and third exemplar to `exemplars/` over time so this skill accumulates visual range.
 
 ---
 
@@ -546,11 +578,35 @@ All page routes (homepage, about, wins, faq, precall, AND `/t/` guide pages) go 
 
 ---
 
-## Phase 3: Build All Pages (Design System & Component Blueprints)
+## Phase 3: Build All Pages (Structure fixed, Visual design bespoke)
 
-This section contains the exact design patterns, Tailwind class combinations, and component structures that produce a polished, professional website. Follow these blueprints precisely for every client site.
+**What this phase is now:** the section stack order, component scaffolding (Header, Footer, section wrapper, FAQ, inner page set), and SEO infra are fixed across every client site. The **visual treatment of each section is not prescribed and must be designed fresh** from `research/brand-identity.md`, `research/visual-references.md`, and the design brief you produce in Phase 3.0 below.
 
-**Before writing any page copy or metadata: re-read Phase 1.5i (brand identity persists).** Every user-facing string (Header wordmark, Footer copyright, metadata `title`/`siteName`/`template`, OpenGraph `siteName`, Organization JSON-LD `name`, WebSite JSON-LD `name`, email `from` labels, email subjects, page `title`s, `HtmlSitemap brandName` prop, page narrative copy) uses the **brand name** from `research/brand-identity.md`. The generic-domain stem only appears in URLs, email addresses, env vars, DB tables, and internal slugs. If you find yourself typing the stem into a `title` or JSON-LD `name`, you are making the rename mistake Phase 1.5i exists to prevent.
+**Client sites must look distinct from one another.** If your markup resembles another client site's markup, or reads as a generic corporate-agency template, you have failed Phase 3. Agents: read `exemplars/claude-meter-editorial.html` before writing markup, to calibrate what "distinctive, contemporary, product-first" looks like.
+
+**Appendix A** (at the end of this file, formerly Phase 3d/g/h/i class dumps) contains one reference treatment: "Corporate B2B Safe Baseline". It is ONE example, not the mandate. Do not copy its Tailwind classes verbatim. Use it only if the design brief concludes that corporate-safe is actually the right answer for this client (rare; usually only for legal, finance, healthcare).
+
+**Brand identity still persists** (re-read Phase 1.5i). Every user-facing string (Header wordmark, Footer copyright, metadata `title`/`siteName`/`template`, OpenGraph `siteName`, Organization JSON-LD `name`, WebSite JSON-LD `name`, email `from` labels, email subjects, page `title`s, `HtmlSitemap brandName` prop, page narrative copy) uses the **brand name** from `research/brand-identity.md`. The generic-domain stem only appears in URLs, email addresses, env vars, DB tables, and internal slugs. If you find yourself typing the stem into a `title` or JSON-LD `name`, you are making the rename mistake Phase 1.5i exists to prevent.
+
+### 3.0. Design Brief (gate, no markup before this lands)
+
+Before writing a single line of JSX for this site, produce `research/design-brief.md` answering all six items. If you can't fill an item, go back to Phase 1g and add another reference.
+
+1. **Design thesis**: one sentence that names the visual identity (e.g. "Editorial Swiss on paper with live product mock", "Terminal-green brutalist with ASCII dividers", "Soft pastel Memphis with kinetic marquee"). Must be specific enough that two agents would produce converging palettes and motifs.
+2. **Palette**: 4-6 hex codes with named roles: `background`, `ink`, `accent`, `signal`, optional `muted` and `rule`. Grounded in `research/brand-identity.md`. No arbitrary picks.
+3. **Type stack**: at least two families (display + body), usually three (display + body + mono). All-sans is a red flag unless the brief explicitly argues for it. Justify each family against the thesis.
+4. **Signature motifs (at least 2)**: pick from the Phase 1g observations or invent new ones. Examples: numbered section eyebrows, hairline grid (not cards), pull quotes with oversized serif marks, paper grain overlay, italic serif for emphasis, live animated product mock, floating persistent chip, tilt parallax, copy-to-clipboard chips, kinetic type, ASCII dividers, marquee ribbons, asymmetric layouts.
+5. **Interactive moment (at least 1)**: hero animation tied to product state, scroll-reveal stagger, tilt-on-hover, scroll-driven sheen, copy-to-clipboard feedback, live-ticking numbers. Static pages age badly; give the site one thing that moves and rewards attention.
+6. **What this site will NOT do**: list 3-5 patterns it deliberately rejects. Usually the list includes: "rounded-xl shadow-sm card grid", "centered-title + subtitle section headers", "gradient-text headlines", "generic hero with 'Primary Action' + 'Secondary Action' buttons". The point is to foreclose defaults.
+
+**Exit criteria for 3.0:** `research/design-brief.md` exists, every item has a concrete answer, the thesis is different from every prior client's thesis (spot-check by reading 2-3 older briefs in `~/.claude/skills/setup-client-website/exemplars/briefs/` if that directory has accumulated entries).
+
+### 3.1. Design DNA → Tailwind 4 theme tokens
+
+The design brief's palette and type stack feed directly into `globals.css` `:root` + `@theme inline` (set up in Phase 2c). Every section after this point consumes *only* theme tokens: no hex codes inline, no ad-hoc font-families inline. This is the one rigid rule: if you find yourself writing `style={{ color: "#E8471C" }}` in a section component, stop and add it to `:root` as a named variable first.
+
+Semantic token names should follow the brief's role names (e.g. `--paper`, `--ink`, `--accent`, `--signal`, `--rule`, `--muted`), not generic Tailwind defaults (`--primary-50`, `--gray-900`). Role-named tokens make the design brief and the CSS mutually readable.
+
 
 ### 3a. Header Component Blueprint
 
@@ -798,7 +854,11 @@ These are the exact section patterns used throughout the site. Each section foll
 
 On dark backgrounds, use `text-white` for h2 and `text-gray-300` for description.
 
-### 3d. Homepage Section Blueprints
+### 3d. Homepage Section Blueprints (REFERENCE EXAMPLE; structure fixed, classes not)
+
+> **Reading order:** the **section stack order below is fixed** for every client. The **Tailwind classes inside each section are ONE reference treatment**, not the mandate. After Phase 3.0 lands the design brief, reinterpret each of these seven sections in the visual identity the brief defines. Do not paste the classes verbatim. If your markup reads as a copy of this reference, it fails Phase 3.
+>
+> Treat this section the way a musician reads sheet music for a jazz standard: the chord changes are fixed (hero → strip → stats → benefits → process → testimonials → CTA), the voicing and phrasing are yours.
 
 The homepage follows this exact section order:
 
@@ -1066,7 +1126,9 @@ export function FAQItem({ question, answer }: { question: string; answer: string
 
 **Usage:** Render in a `<div className="space-y-4">` container within a `bg-gray-50` section. Always include JSON-LD FAQPage schema alongside.
 
-### 3g. Case Study / Wins Page Blueprint
+### 3g. Case Study / Wins Page Blueprint (REFERENCE EXAMPLE)
+
+> Same rule as 3d: **structure fixed, visual treatment bespoke**. Featured tier + additional tier is the pattern; the cards below are one rendering. If the design brief names "pull quotes with serif marks" as a motif, render case studies as pull quotes, not shadow cards. Always skip this page entirely if the client has no case studies to tell yet; a page with three fabricated wins is worse than no page.
 
 Two tiers: featured case studies (detailed cards) and additional testimonials (grid).
 
@@ -1168,7 +1230,9 @@ interface CaseStudy {
 </div>
 ```
 
-### 3h. Book a Call / Precall Page Blueprint
+### 3h. Book a Call / Precall Page Blueprint (REFERENCE EXAMPLE)
+
+> **Structure fixed, visual treatment bespoke.** The two-column scheduling + proof pattern is the pattern; classes below are one rendering. For product-led sites (Claude Meter, developer tools, self-serve SaaS), this page is often replaced by `/install` or `/signup` with a copy-to-clipboard chip; see the Claude Meter exemplar. Use your judgment from the design brief on whether book-a-call is actually the right CTA for this client.
 
 Two-column layout: left (2/3) has video + scheduling widget, right (1/3) has testimonials sidebar.
 
@@ -1239,7 +1303,9 @@ Two-column layout: left (2/3) has video + scheduling widget, right (1/3) has tes
 </section>
 ```
 
-### 3i. About Page Blueprint
+### 3i. About Page Blueprint (REFERENCE EXAMPLE)
+
+> **Structure fixed, visual treatment bespoke.** The section order below is the pattern. "Dark Hero + Glass Card" is one rendering; reinterpret in the brief's identity. Product-led / open-source sites may replace About entirely with a single "Why / Who built this" editorial page.
 
 Section order: Dark Hero, Stats Bar, Founder Story (prose with photo), Team Photo, Values Grid (2-col), "Who We Serve" Checklist Grid (3-col), Contact CTA (dark bg with glass card).
 
@@ -1462,9 +1528,13 @@ Create `src/app/robots.ts` with sitemap reference.
 Every client site gets the same three integrations: PostHog for analytics, Resend for transactional email, and Neon for a lightweight relational store. The contract matches a prior site (use your reference repo). The pattern is fixed: port it verbatim, change only the brand strings and the `from` address.
 
 **Why these three:**
-- PostHog: required for `@seo/components` NewsletterSignup + TrackedCta. The NewsletterSignup component calls `window.posthog?.capture("newsletter_subscribed", ...)` on success, so PostHog must be globally attached before the component mounts. Use `<FullSiteAnalytics>` from `@m13v/seo-components` v0.16.0+ (see 3.5b); it initialises posthog-js, sets `window.posthog`, and installs the `SeoAnalyticsProvider` context in one component.
+- PostHog: required for `@seo/components` NewsletterSignup + TrackedCta. The NewsletterSignup component calls `window.posthog?.capture("newsletter_subscribed", ...)` on success, so PostHog must be globally attached before the component mounts. **Default path: hand-rolled `PostHogProvider` in 3.5b (shared-project sites).** Only use `<FullSiteAnalytics>` if the site has its own dedicated PostHog project (3.5b-alt, rare).
 - Resend: `/api/newsletter` adds the subscriber to an audience and fires a welcome email. `/api/contact` replaces `mailto:` with a server-validated submission that also logs to Neon. Inbound webhook stores replies and forwards them to `you@example.com`.
 - Neon: `@neondatabase/serverless` for subscriber/email logs. No pool, no lifecycle. One `DATABASE_URL`, tagged-template SQL.
+
+**Scope note:** Phase 3.5d's Book-a-Call helpers and Phase 3.5l's Cal.com event type creation are `[opt-in: book-a-call]`. Skip both unless the invoker requested Book-a-Call — see "Optional scope flags" above.
+
+**Hard rule for all external IDs/keys:** every `phc_...`, audience UUID, Neon URL, Cal.com slug is pulled from keychain or live API response and substituted into the real file. **Never commit a placeholder string like `phc_REPLACE_ME_...` or `REPLACE_WITH_..._PROJECT_ID` into `.env.production` or `config.json`.** If the real value isn't available yet, stop Phase 3.5 here — do not proceed to Phase 6 with placeholders. Placeholders have shipped to production twice (fde10x 2026-04-19, claude-meter 2026-04-20) and silently dark-launched PostHog for the site.
 
 ### 3.5a. Install deps
 
@@ -1474,50 +1544,23 @@ npm install posthog-js posthog-node @neondatabase/serverless framer-motion
 
 `framer-motion` is already required by NewsletterSignup; install it even if nothing else needs it yet.
 
-### 3.5b. PostHog analytics wiring: use `<FullSiteAnalytics>` from `@m13v/seo-components` v0.16.0+
+### 3.5b. PostHog analytics wiring: hand-rolled provider with `site` group (default for client sites)
 
-**Primary recommendation (NEW):** wire analytics with the canonical `<FullSiteAnalytics>` component from `@m13v/seo-components` v0.16.0+. It is an all-in-one that (a) initialises `posthog-js`, (b) sets `window.posthog` so any third-party or library component can capture events, and (c) provides the typed `SeoAnalyticsProvider` context that `@m13v/seo-components` internals (NewsletterSignup, TrackedCta, etc.) rely on. Use it unless the site already has a hand-rolled provider you cannot remove.
+**Default path for every new client site** (matches `~/fde10x-website/src/components/posthog-provider.tsx`): a tiny hand-rolled client component that (a) initialises `posthog-js`, (b) sets `window.posthog` so legacy helpers find it, (c) calls `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })` so every event is tagged with the client slug, and (d) wraps children in `PHProvider` + `SeoAnalyticsProvider`.
 
-**Why this exists:** three of four client sites (Fazm, Cyrano, Mediar) silently dropped `@m13v/seo-components` analytics events because `posthog-js` was loaded via ESM but nobody attached it to `window.posthog`. The library components call `window.posthog?.capture(...)`, which becomes a silent no-op when `window.posthog` is `undefined`. `<FullSiteAnalytics>` eliminates that failure mode.
+**Why this is the default, not `<FullSiteAnalytics>`:** every client site piggybacks on a shared PostHog project (the m13v org has an 8-project hard cap, and creating a new project per client blows past it). To filter cleanly across shared projects, every event must carry a `site` group tag. `<FullSiteAnalytics>` (shipped by `@m13v/seo-components`) does not accept `siteId` / `loaded` / `group` props — it only wires the key + host + provider context. So any site sharing a PostHog project MUST use the hand-rolled provider below. Save `<FullSiteAnalytics>` for standalone projects that have their own dedicated PostHog project (rare — see 3.5l for when that applies).
 
-```tsx
-// src/app/layout.tsx (the ROOT layout, not (main)/layout.tsx)
-import { FullSiteAnalytics } from "@m13v/seo-components";
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <body>
-        <FullSiteAnalytics
-          posthogKey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
-          posthogHost={process.env.NEXT_PUBLIC_POSTHOG_HOST}
-        >
-          {children}
-        </FullSiteAnalytics>
-      </body>
-    </html>
-  );
-}
-```
-
-If you also need to tag events with a `site` group (useful when the m13v org hits the 8-project PostHog cap and multiple client sites piggyback on one project), pass the extra props supported by `<FullSiteAnalytics>` (`siteId`, `loaded`, etc., see `@m13v/seo-components` README for the current API surface).
-
-**`NEXT_PUBLIC_POSTHOG_SITE_ID`** should still be a stable slug like `fde10x`, `assrt`, or `cyrano`, so shared projects can filter cleanly.
-
-### 3.5b-fallback. Hand-rolled PostHog provider (only if `<FullSiteAnalytics>` is unusable)
-
-Use this path only if the site has an existing custom provider you cannot replace, or if you need behaviour the canonical component does not yet expose. It MUST still do all three things: init posthog, attach `window.posthog`, and wrap children so library components work.
+**Why bother attaching to `window.posthog`:** three of four client sites (Fazm, Cyrano, Mediar) silently dropped `@m13v/seo-components` analytics events because `posthog-js` was loaded via ESM but never attached to `window.posthog`. Library components call `window.posthog?.capture(...)`, which is a silent no-op when `window` is empty. The `(window as ...).posthog = posthog` line below is load-bearing.
 
 ```tsx
+// src/components/posthog-provider.tsx
 "use client";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider } from "posthog-js/react";
 import { SeoAnalyticsProvider } from "@m13v/seo-components";
 import { useEffect } from "react";
 
-const POSTHOG_KEY =
-  process.env.NEXT_PUBLIC_POSTHOG_KEY ||
-  "phc_REPLACE_WITH_CLIENT_KEY";
+const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 const POSTHOG_HOST =
   process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com";
 const SITE_ID = process.env.NEXT_PUBLIC_POSTHOG_SITE_ID || "BRAND_SLUG";
@@ -1555,27 +1598,44 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
 export { posthog };
 ```
 
-**The one load-bearing line in the fallback path:**
-
-```ts
-(window as unknown as { posthog: typeof posthogLib }).posthog = posthogLib;
-```
-
-Any hand-rolled provider that initialises `posthog-js` MUST include this line after `posthog.init(...)`. It is the minimum to make `@m13v/seo-components` analytics work. `<FullSiteAnalytics>` does this for you.
-
-**Why the `site` group matters:** the m13v org has an 8-project cap on PostHog, so new client sites usually have to piggyback on an existing project (e.g. `m13v.com`). Calling `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })` in `loaded` tags every event with the site slug so PostHog insights can filter cleanly across shared projects.
-
-### 3.5c. Wrap the root layout (fallback path only)
-
-If you used `<FullSiteAnalytics>` in 3.5b, this step is already done: `<FullSiteAnalytics>` lives directly in `src/app/layout.tsx` wrapping `{children}`.
-
-If you used the hand-rolled `PostHogProvider` fallback, wrap `{children}` with it in `src/app/layout.tsx` (the ROOT layout, not `(main)/layout.tsx`). PostHog must initialise at the root so both marketing pages and guide pages get pageview tracking and `window.posthog` before any component that uses it.
+Wire it in `src/app/layout.tsx` (the ROOT layout, not `(main)/layout.tsx`):
 
 ```tsx
 import { PostHogProvider } from "@/components/posthog-provider";
 // ... inside <body>:
 <PostHogProvider>{children}</PostHogProvider>
 ```
+
+**Env var contract for shared-project sites:**
+- `NEXT_PUBLIC_POSTHOG_KEY` — the **shared project's** `phc_...` token. Identical across every client site that piggybacks on the same project. Lookup in keychain: `posthog-<shared-project-slug>-project-key` (e.g. `posthog-fde10x-project-key` holds the shared `phc_...` used by fde10x, claude-meter, and any other site on that same PostHog project).
+- `NEXT_PUBLIC_POSTHOG_HOST` — `https://us.i.posthog.com`.
+- `NEXT_PUBLIC_POSTHOG_SITE_ID` — stable slug, differs per client (`fde10x`, `claude-meter`, `assrt`, …). Drives the `site` group tag.
+
+### 3.5b-alt. `<FullSiteAnalytics>` (only for standalone PostHog projects)
+
+Use this path only if the site has its own dedicated PostHog project (rare — happens when a brand was provisioned before the 8-project cap was hit, or the brand wants a fully isolated analytics surface). It skips the `site` group dance. Do **not** use this for any site that shares a PostHog project — library events won't be filterable by site.
+
+```tsx
+// src/app/layout.tsx
+import { FullSiteAnalytics } from "@m13v/seo-components";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <FullSiteAnalytics
+          posthogKey={process.env.NEXT_PUBLIC_POSTHOG_KEY}
+          posthogHost={process.env.NEXT_PUBLIC_POSTHOG_HOST}
+        >
+          {children}
+        </FullSiteAnalytics>
+      </body>
+    </html>
+  );
+}
+```
+
+`<FullSiteAnalytics>` handles `window.posthog` attachment and `SeoAnalyticsProvider` context internally, but does NOT accept `siteId`, `loaded`, or `group` props. If you later need site-group tagging, switch to the hand-rolled provider in 3.5b.
 
 ### 3.5c-verify. Verify `window.posthog` is set (MANDATORY)
 
@@ -1634,7 +1694,7 @@ export function TrackedCta({
 
 Swap every hand-rolled `<Link href="/contact">` for `<TrackedCta href="/contact" page="home" section="hero">`. Unique `page` + `section` per instance keeps PostHog funnels distinguishable.
 
-**Book-a-Call helper** (required for any CTA that points at `cal.com` / `calendly.com`) — `src/lib/booking.ts` + `src/components/BookCallLink.tsx`:
+**Book-a-Call helper** `[opt-in: book-a-call]` — skip this whole sub-section (through the end of 3.5d) unless the invoker asked for Book-a-Call. Sites without a Book CTA (free OSS tools, install-driven products) should not add `BookCallLink`/`BookCallTracker` at all. Required for any CTA that points at `cal.com` / `calendly.com` — `src/lib/booking.ts` + `src/components/BookCallLink.tsx`:
 
 ```ts
 // src/lib/booking.ts
@@ -1642,7 +1702,9 @@ Swap every hand-rolled `<Link href="/contact">` for `<TrackedCta href="/contact"
 import { trackScheduleClick } from "@seo/components";
 import { posthog } from "@/components/posthog-provider";
 
-export const BOOKING_URL = "https://cal.com/team/<TEAM>/<SLUG>"; // fill at scaffold time
+// Created via the Cal.com v2 API in Phase 3.5l (team/mediar is the shared team;
+// per-client slugs live under it so the Phase 6g webhook covers every client).
+export const BOOKING_URL = "https://cal.com/team/mediar/<SLUG>";
 
 export function trackBookingClick(opts: { section?: string; text?: string; component?: string }) {
   const page = typeof window !== "undefined" ? window.location.pathname : undefined;
@@ -1740,51 +1802,30 @@ Port verbatim from your reference repo when any server route needs `captureServe
 
 ### 3.5i. `/api/newsletter` route — `src/app/api/newsletter/route.ts`
 
-Exact pattern from `~/your-prior-site/src/app/api/waitlist/route.ts`. Validates email → adds to Resend audience → sends welcome email → logs to Neon.
+Use the `createNewsletterHandler` factory from `@seo/components/server` (v0.18.1+). It validates email, adds to the Resend audience, sends a welcome email that includes a "Book a 15-min call" primary CTA, and gives you an `onSignup` hook for Neon logging + server-side PostHog capture.
 
 ```ts
-import { NextResponse } from "next/server";
+import { createNewsletterHandler } from "@seo/components/server";
 import { getSql } from "@/lib/db";
 
-export async function POST(req: Request) {
-  try {
-    const { email } = await req.json();
-    if (!email || !email.includes("@"))
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
-
-    const RESEND_API_KEY = process.env.RESEND_API_KEY;
-    const RESEND_AUDIENCE_ID = process.env.RESEND_AUDIENCE_ID;
-    if (!RESEND_API_KEY || !RESEND_AUDIENCE_ID)
-      return NextResponse.json({ error: "Server config error" }, { status: 500 });
-
-    const audRes = await fetch(
-      `https://api.resend.com/audiences/${RESEND_AUDIENCE_ID}/contacts`,
-      {
-        method: "POST",
-        headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ email, unsubscribed: false }),
-      }
-    );
-    if (!audRes.ok)
-      return NextResponse.json({ error: "Failed to subscribe" }, { status: 500 });
-
-    const emailRes = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: "Your Name from BRAND <matt@DOMAIN>",
-        to: [email],
-        subject: "Welcome to BRAND",
-        html: `<p>Hey!</p><p>Thanks for signing up. Short blurb about what to expect.</p><p>Matt</p>`,
-      }),
-    });
-
+export const POST = createNewsletterHandler({
+  audienceId: process.env.RESEND_AUDIENCE_ID || "<hardcode-from-phase-6d>",
+  fromEmail: "Matt from BRAND <matt@DOMAIN>",
+  brand: "BRAND",
+  siteUrl: "https://DOMAIN",
+  // REQUIRED for attribution: the per-client Cal.com team event URL created in
+  // Phase 6g (`cal.com/team/mediar/<SLUG>`). Without this, welcome-email bookings
+  // land under a generic event type (e.g. 15min) and the stats pipeline can't
+  // attribute them to this client.
+  bookingUrl: "https://cal.com/team/mediar/<SLUG>",
+  // Rename `<slug>_emails` (e.g. `fde10x_emails`) so multiple clients can share
+  // one Neon instance without collisions.
+  onSignup: async (email, resendEmailId) => {
     try {
-      const data = await emailRes.json().catch(() => null);
       const sql = getSql();
       await sql`
-        INSERT INTO brand_emails (resend_id, direction, from_email, to_email, subject, status)
-        VALUES (${data?.id || null}, 'outbound', 'matt@DOMAIN', ${email}, 'Welcome email', 'sent')
+        INSERT INTO <slug>_emails (resend_id, direction, from_email, to_email, subject, status)
+        VALUES (${resendEmailId}, 'outbound', 'matt@DOMAIN', ${email}, 'Welcome email', 'sent')
       `;
     } catch (err) { console.error("newsletter log error:", err); }
 
@@ -1801,15 +1842,11 @@ export async function POST(req: Request) {
       });
       await ph?.flush();
     } catch (err) { console.error("newsletter posthog server-capture error:", err); }
-
-    return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ error: "Internal error" }, { status: 500 });
-  }
-}
+  },
+});
 ```
 
-Rename `brand_emails` to `<slug>_emails` (e.g. `fde10x_emails`) so multiple clients can share one Neon instance without collisions.
+`bookingUrl` is required for correct Cal.com attribution: without it, welcome-email bookings route through a generic event type and end up as `client_slug='unknown'` in `cal_bookings`. Skipping it is the bug class that let Liam's 2026-04-17 s4l booking go untracked.
 
 ### 3.5j. `/api/contact` route — `src/app/api/contact/route.ts`
 
@@ -1851,71 +1888,71 @@ Update the contact page component to POST to this route instead of using `mailto
 
 Port `~/your-prior-site/src/app/api/webhooks/resend/route.ts`. Handles `email.received` events, logs to Neon, forwards to `you@example.com`. Needed only if the client uses `matt@DOMAIN` as a real inbound address.
 
-### 3.5l. Provision external services (one-time per client)
+### 3.5l. Provision external services (shared-resource defaults)
 
-Same pattern your reference repo's provisioning module uses for VM apps: call the REST APIs with master provisioning keys from keychain, mint per-client resources, save the resulting credentials back to keychain.
+**Default provisioning model: reuse shared infrastructure, mint only the per-client subset resources.** Creating a new PostHog project, Neon DB, and Resend API key for every client was the historical pattern but hits org caps, bloats the keychain, and makes cross-site analytics a chore. Shipping a new client now means reusing the shared project/DB/key and only creating the narrow per-client slice (site group, prefixed tables, audience, event type).
 
 **Master keychain entries (reused for every client):**
 
 | Service | Keychain name | Scope |
 |---------|---------------|-------|
-| PostHog | `PostHog mk0r-provisioning` | Personal API key (m13v org, lists/reads projects) |
-| Neon | `Neon mk0r-provisioning` | Account key for `org-steep-sunset-62973058` |
-| Resend | `resend-mk0r-users` | Full-access account key |
+| PostHog | `PostHog mk0r-provisioning` | Personal API key (m13v org, lists projects, creates keys) |
+| Neon | `Neon mk0r-provisioning` | Account key for `org-steep-sunset-62973058` (only used if you need a net-new DB, which is rare) |
+| Resend | `resend-mk0r-users` | Full-access account key — this IS the runtime `RESEND_API_KEY` for every client site |
+| Cal.com | `cal-com-api-key` | Personal API key from https://app.cal.com/settings/developer/api-keys (never-expires) |
 
-**Per-client keys saved back to keychain** (pattern `<service>-<slug>-*`):
+**Shared runtime credentials (reused for every client):**
 
-| Entry | Holds |
-|-------|-------|
-| `posthog-<slug>-project-key` | Project API token (`phc_...`) going into `NEXT_PUBLIC_POSTHOG_KEY` |
-| `resend-<slug>-api-key` | Scoped API key (`re_...`) |
-| `resend-<slug>-audience-id` | Audience UUID |
-| `neon-<slug>-pooled-url` | Pooled `DATABASE_URL` with `-pooler` |
+| Keychain entry | What it holds | Env var on Cloud Run |
+|----------------|---------------|----------------------|
+| `posthog-<shared-project-slug>-project-key` | Shared project `phc_...` token (e.g. `posthog-fde10x-project-key`) | `NEXT_PUBLIC_POSTHOG_KEY` |
+| `neon-<shared-project-slug>-pooled-url` | Shared Neon pooled `DATABASE_URL` (e.g. `neon-fde10x-pooled-url`) | `DATABASE_URL` |
+| `resend-mk0r-users` | Master Resend full-access key | `RESEND_API_KEY` |
+
+**Per-client artifacts created by this phase** (the only new things):
+
+| Artifact | Shape | Where it lives |
+|----------|-------|----------------|
+| PostHog `site` group tag | String slug, tagged on every event via `ph.group("site", SITE_ID)` | Baked into bundle as `NEXT_PUBLIC_POSTHOG_SITE_ID` |
+| Neon tables `<slug>_emails`, `<slug>_contacts` | DDL run against the shared DB | Shared Neon project, isolated by table prefix |
+| Resend audience | UUID saved in keychain as `resend-<slug>-audience-id` | Runtime env var `RESEND_AUDIENCE_ID` |
+| Cal.com event type | Slug under team/mediar | URL `https://cal.com/team/mediar/<slug>` in booking button |
 
 ---
 
-**PostHog** — try to create a dedicated project, fall back to reusing an existing project with a `site` group.
+**PostHog** — reuse the shared project, isolate with a `site` group tag.
+
+The provider code in 3.5b already calls `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })` on load, so every event carries a `site` property. To filter in PostHog insights, add a `site = <SLUG>` property filter or group-by (PostHog's group analytics handles it natively).
+
+Do NOT try to create a new project — the m13v org is at its cap and it returns `You have reached the maximum limit of allowed projects`. Instead, pick which existing project to piggyback on (new client sites default to the same shared project as fde10x / claude-meter — the `phc_...` token lives in `posthog-fde10x-project-key`).
 
 ```bash
 PH_KEY=$(security find-generic-password -l "PostHog mk0r-provisioning" -w)
-ORG_ID="019cbb4d-d40a-0000-d0b7-54e1b67bad33"  # m13v org
 
-# Try to create a dedicated project
-curl -s -X POST -H "Authorization: Bearer $PH_KEY" -H "Content-Type: application/json" \
-  -d '{"name":"<SLUG>"}' \
-  "https://us.posthog.com/api/organizations/$ORG_ID/projects/"
-```
-
-If the response is `{"detail":"You have reached the maximum limit of allowed projects..."}`, the m13v plan cap was hit. **Fallback:** list existing projects and reuse one of the client-site projects (usually `m13v.com`). The provider code from 3.5b already isolates events with `ph.group("site", SITE_ID)` + `ph.register({ site: SITE_ID })`, so cross-site event pollution is avoided.
-
-```bash
-# Pick the api_token of whichever project hosts this client site.
+# List existing projects and their api_tokens so you know which phc_... to reuse.
 curl -s -H "Authorization: Bearer $PH_KEY" "https://us.posthog.com/api/projects/" \
   | python3 -c "import json,sys; [print(f\"{p['id']:<7} {p['name']:<20} {p['api_token']}\") for p in json.load(sys.stdin).get('results',[])]"
 
-# Save the project token for later.
-security add-generic-password -U -a "you@example.com" -s "posthog-<SLUG>-project-key" -w "phc_..."
+# The shared token is typically already stored as posthog-fde10x-project-key (same phc_
+# for every client that piggybacks). Copy its value into the new client's .env.production.
+security find-generic-password -l "posthog-fde10x-project-key" -w
 ```
+
+There is no new `posthog-<slug>-project-key` keychain entry — every client on the shared project uses the same `phc_...`. The only per-client value is `NEXT_PUBLIC_POSTHOG_SITE_ID`, which is just the client slug.
+
+**Rare exception: dedicated project.** If the client explicitly wants an isolated PostHog project (e.g. for customer-facing analytics exports), and there's room in the org cap, create one with the org API, then save a new `posthog-<slug>-project-key` entry. Most clients do NOT need this; use the shared pattern unless told otherwise.
 
 ---
 
-**Neon** — one dedicated project per client (no shared instance; the free tier supports many projects per org).
+**Neon** — reuse the shared DB, isolate with per-client table prefixes.
+
+Every client site writes to the same Neon project. Isolation is purely by table name: tables are named `<slug>_emails` and `<slug>_contacts` (e.g. `fde10x_emails`, `claude_meter_emails`). The shared `DATABASE_URL` lives in keychain under `neon-fde10x-pooled-url` (for historical naming reasons — this IS the shared URL, not an fde10x-specific one).
 
 ```bash
-NEON_KEY=$(security find-generic-password -l "Neon mk0r-provisioning" -w)
-ORG_ID="org-steep-sunset-62973058"
+SHARED_DB_URL=$(security find-generic-password -l "neon-fde10x-pooled-url" -w)
 
-# Create project
-curl -s -X POST -H "Authorization: Bearer $NEON_KEY" -H "Content-Type: application/json" \
-  -d "{\"project\":{\"name\":\"<SLUG>-prod\",\"region_id\":\"aws-us-east-2\",\"pg_version\":17,\"org_id\":\"$ORG_ID\"}}" \
-  "https://console.neon.tech/api/v2/projects" > /tmp/neon.json
-
-# Extract direct URI for DDL, project id for the pooled lookup
-DIRECT_URI=$(python3 -c "import json; print(json.load(open('/tmp/neon.json'))['connection_uris'][0]['connection_uri'])")
-PROJECT_ID=$(python3 -c "import json; print(json.load(open('/tmp/neon.json'))['project']['id'])")
-
-# Run the schema
-psql "$DIRECT_URI" -v ON_ERROR_STOP=1 <<'SQL'
+# Run DDL on the shared DB, table names prefixed with the new client's slug.
+psql "$SHARED_DB_URL" -v ON_ERROR_STOP=1 <<SQL
 CREATE TABLE IF NOT EXISTS <slug>_emails (
   id SERIAL PRIMARY KEY,
   resend_id TEXT,
@@ -1940,70 +1977,98 @@ CREATE TABLE IF NOT EXISTS <slug>_contacts (
 );
 CREATE INDEX IF NOT EXISTS idx_<slug>_contacts_created_at ON <slug>_contacts(created_at DESC);
 SQL
-
-# Fetch the pooled URI (always use pooled for Cloud Run; the non-pooled one leaks connections under load)
-POOLED_URL=$(curl -s -H "Authorization: Bearer $NEON_KEY" \
-  "https://console.neon.tech/api/v2/projects/$PROJECT_ID/connection_uri?database_name=neondb&role_name=neondb_owner&pooled=true" \
-  | python3 -c "import json,sys; print(json.load(sys.stdin)['uri'])")
-
-security add-generic-password -U -a "you@example.com" -s "neon-<SLUG>-pooled-url" -w "$POOLED_URL"
 ```
 
-**Extending the contact schema:** if the site's contact form collects extra fields (outcome, timeline, budget, role, etc.), add them as nullable columns to `<slug>_contacts` *and* extend the `/api/contact` INSERT. The baseline above is the minimum every client ships with.
+The new client's Cloud Run service gets `DATABASE_URL=<same shared pooled URL>`. No new Neon project, no new keychain entry.
+
+**Extending the contact schema:** if the site's contact form collects extra fields (outcome, timeline, budget, role, etc.), add them as nullable columns to `<slug>_contacts` *and* extend the `/api/contact` INSERT. Reference fde10x's schema for the `outcome` / `timeline` extension pattern.
+
+**Rare exception: dedicated project.** Only create a new Neon project if the client has a meaningful data-isolation requirement (regulated industry, customer-controlled data, very high write volume). For typical marketing-site usage (newsletter + contact form), the shared DB is correct.
 
 ---
 
-**Resend** — one domain + one audience + one full-access API key per client. **The API key must be `full_access`.** `sending_access` alone cannot write to `/audiences/:id/contacts` and returns `401 restricted_api_key`; we verified this the hard way on fde10x.
+**Resend** — reuse the shared full-access API key, create only a new audience per client.
+
+Every client site uses the same runtime `RESEND_API_KEY = resend-mk0r-users` (master full-access key). The only per-client resource is the audience (so newsletter subscribers from different sites don't mix). Domain setup is optional — do it only if the client wants a branded `from` address like `matt@<domain>`; otherwise send from the master account's default verified domain.
 
 ```bash
 RESEND_KEY=$(security find-generic-password -l "resend-mk0r-users" -w)
 
-# 1. Add domain
-curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
-  -d '{"name":"<DOMAIN>","region":"us-east-1"}' \
-  "https://api.resend.com/domains" > /tmp/resend_domain.json
-cat /tmp/resend_domain.json | python3 -m json.tool
-# Copy the DKIM value, SPF value, MX target, and the domain `id` from the response.
-# The DNS records go into the client's Cloud DNS zone in Phase 6e.
-
-# 2. Create audience
+# 1. Create the per-client audience (the only required call).
 curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
   -d '{"name":"<SLUG> newsletter"}' \
   "https://api.resend.com/audiences"
 # → {"id":"<audience-uuid>","name":"..."}
 
-# 3. Create a full-access API key
-curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
-  -d '{"name":"<SLUG>","permission":"full_access"}' \
-  "https://api.resend.com/api-keys"
-# → {"id":"...","token":"re_..."}
-
-# 4. Save both back to keychain
-security add-generic-password -U -a "you@example.com" -s "resend-<SLUG>-api-key" -w "re_..."
+# 2. Save the audience UUID back to keychain.
 security add-generic-password -U -a "you@example.com" -s "resend-<SLUG>-audience-id" -w "<audience-uuid>"
-
-# 5. After DNS records from Phase 6e are in place, trigger verification
-curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" \
-  "https://api.resend.com/domains/<DOMAIN_ID>/verify"
-# Then poll status until "verified":
-curl -s -H "Authorization: Bearer $RESEND_KEY" \
-  "https://api.resend.com/domains/<DOMAIN_ID>" | python3 -c "import json,sys; print(json.load(sys.stdin).get('status'))"
 ```
 
-**Security note on `full_access`:** a full-access key can send from *any* domain in the account and mutate *any* audience. The blast radius is wider than a scoped key, but Resend's permission model has only `sending_access` vs `full_access`; since newsletter subscription needs audience writes, `full_access` is the only option. Keep the key in keychain and as a Cloud Run runtime env var; do not commit it to git.
+The new client's Cloud Run service gets `RESEND_API_KEY=<resend-mk0r-users value>` + `RESEND_AUDIENCE_ID=<new-audience-uuid>`. No new per-client API key is created.
+
+**Why shared key is safe here:** the master full-access key was already scoped to the m13v account; adding another client site does not widen its blast radius (anyone with the key could already send from any domain and mutate any audience). The audience UUID is the actual isolation boundary between clients.
+
+**Optional: branded from-address.** If the client wants sends from `matt@<client-domain>` rather than a shared domain, add the domain + DNS records:
+
+```bash
+# Add domain (only if branded from-address is required)
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
+  -d '{"name":"<DOMAIN>","region":"us-east-1"}' \
+  "https://api.resend.com/domains" > /tmp/resend_domain.json
+cat /tmp/resend_domain.json | python3 -m json.tool
+# Copy the DKIM/SPF/MX records into the client's Cloud DNS zone in Phase 6e.
+
+# After DNS is live, trigger verification:
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" \
+  "https://api.resend.com/domains/<DOMAIN_ID>/verify"
+```
+
+There is no per-client API key (no `resend-<slug>-api-key` entry). The master key and the audience UUID are the only credentials the Cloud Run service needs.
+
+---
+
+**Cal.com** `[opt-in: book-a-call]` — skip this entire Cal.com block unless Book-a-Call was requested. One team event type per client under the shared `Mediar` team (`teamId=50498`). Clients inherit the team's webhook registration (Phase 6g), so a single webhook covers every client. The per-client event type URL becomes `https://cal.com/team/mediar/<slug>`, which is the value you put in `src/components/book-call-button.tsx` as `BOOKING_URL`.
+
+```bash
+CAL_KEY=$(security find-generic-password -l "cal-com-api-key" -w)
+TEAM_ID=50498  # Mediar team
+
+# 1. Check that the slug is not already taken (including hidden events)
+curl -s -H "Authorization: Bearer $CAL_KEY" -H "cal-api-version: 2024-06-14" \
+  "https://api.cal.com/v2/teams/$TEAM_ID/event-types" \
+  | python3 -c "import json,sys; [print(e['slug']) for e in json.load(sys.stdin).get('data', [])]"
+
+# 2. Create the per-client event (30m COLLECTIVE — matches mediar-next-day template)
+curl -s -X POST "https://api.cal.com/v2/teams/$TEAM_ID/event-types" \
+  -H "Authorization: Bearer $CAL_KEY" \
+  -H "cal-api-version: 2024-06-14" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "<Brand> Intro Call",
+    "slug": "<SLUG>",
+    "lengthInMinutes": 30,
+    "description": "30-minute intro call to discuss <one-line brand pitch>.",
+    "schedulingType": "COLLECTIVE"
+  }' | python3 -m json.tool
+# → {"status":"success","data":{"id":<event-id>,"slug":"<SLUG>", ...}}
+```
+
+**Collision gotcha:** the slug space is global across hidden + visible team events. If `create` returns `"Team event type with this slug already exists"`, use a short alias that matches the domain (we used `cl0ne` for `cl0ne.ai` because `clone` was taken by a legacy hidden event). Update `src/components/book-call-button.tsx` with whatever slug actually got created.
+
+**Cloudflare caveat:** all Cal.com API calls must go through `curl` (or a tool with a matching TLS fingerprint). Python `urllib` gets 403/1010 Cloudflare challenges. Same applies to the Resend create-domain call above.
 
 ### 3.5m. Env var inventory (set during Phase 6 deploy)
 
-| Var | Build-time / Runtime | Where it goes |
-|-----|---------------------|---------------|
-| `NEXT_PUBLIC_POSTHOG_KEY` | Build-arg (Docker) | Baked into client bundle |
-| `NEXT_PUBLIC_POSTHOG_HOST` | Build-arg (Docker) | Baked into client bundle |
-| `NEXT_PUBLIC_POSTHOG_SITE_ID` | Build-arg (Docker) | Baked into client bundle; used by provider to set `site` group |
-| `RESEND_API_KEY` | Runtime | Cloud Run `--set-env-vars` |
-| `RESEND_AUDIENCE_ID` | Runtime | Cloud Run `--set-env-vars` |
-| `DATABASE_URL` | Runtime | Cloud Run `--set-env-vars` |
+| Var | Build-time / Runtime | Source (shared or per-client) | Where it goes |
+|-----|---------------------|-------------------------------|---------------|
+| `NEXT_PUBLIC_POSTHOG_KEY` | Build-arg (Docker) | **Shared** — same `phc_...` across every client on the shared project (`posthog-fde10x-project-key` keychain entry) | Baked into client bundle |
+| `NEXT_PUBLIC_POSTHOG_HOST` | Build-arg (Docker) | **Shared** — `https://us.i.posthog.com` | Baked into client bundle |
+| `NEXT_PUBLIC_POSTHOG_SITE_ID` | Build-arg (Docker) | **Per-client** — the client slug (`fde10x`, `claude-meter`, `assrt`, …) | Baked into client bundle; drives `site` group tag |
+| `RESEND_API_KEY` | Runtime | **Shared** — master `resend-mk0r-users` full-access key | Cloud Run `--set-env-vars` |
+| `RESEND_AUDIENCE_ID` | Runtime | **Per-client** — UUID from `resend-<slug>-audience-id` keychain entry | Cloud Run `--set-env-vars` |
+| `DATABASE_URL` | Runtime | **Shared** — pooled URL from `neon-fde10x-pooled-url` keychain entry | Cloud Run `--set-env-vars` |
 
-Dockerfile must declare the two `NEXT_PUBLIC_*` vars as `ARG` and `ENV` in the builder stage so `next build` bakes them in. Runtime-only secrets go on the Cloud Run service, NOT the Dockerfile.
+Dockerfile must declare the three `NEXT_PUBLIC_*` vars as `ARG` and `ENV` in the builder stage so `next build` bakes them in. Runtime-only secrets go on the Cloud Run service, NOT the Dockerfile.
 
 **CRITICAL — strip trailing `\n` from every env var before setting.** Follow the global rule in `~/.claude/CLAUDE.md` (use `echo -n` and verify with `gcloud run services describe`). A single `\n` on `RESEND_API_KEY` will break signing and produce silent 401s.
 
@@ -2169,6 +2234,43 @@ Use the isolated browser to take full-page screenshots of the new site and compa
 - [ ] Color scheme matches client brand
 - [ ] Mobile responsive (test at 375px width)
 
+### 5b.5. Design Review (gate before deploy)
+
+The new site must pass an independent design review before Phase 6 (deploy). Structure check is not enough; the site must feel *like the design thesis promised*, not like yet another client template.
+
+**Run:**
+
+```bash
+# Take full-page screenshots of the live local build
+cd ~/CLIENT-website && npm run dev &
+# use isolated-browser to screenshot at /, /how-it-works, /precall (or the /install route if product-led), /faq, /t
+# save to review/screenshots/
+```
+
+Then spawn the `design-review` skill (or `design-shotgun` for a broader critique) with the screenshots AND these three artifacts attached: `research/visual-references.md`, `research/design-brief.md`, and `exemplars/claude-meter-editorial.html`. The prompt:
+
+> Review the attached new-client-site screenshots against the design brief and visual references. Does the site deliver the thesis? Does it use the signature motifs? Does it avoid every pattern listed under "what this site will NOT do"? Flag any section that reads as generic corporate template. Identify which reference the site is visually closest to, and whether that's the intended thesis. Output: pass / fail with 3-5 specific callouts.
+
+**Fail conditions (auto-reject):**
+- Any section renders as rounded-xl shadow cards when the brief called for hairline grid (or vice versa).
+- The homepage hero has no animated or interactive moment when the brief promised one.
+- Two or more sections use the same visual pattern as the Corporate B2B Safe Baseline (Appendix A) without intentional reason.
+- The site is visually indistinguishable from any existing `config.json` project (spot-check Mediar, Fazm, Assrt, Cyrano, FDE10X, Claude Meter).
+
+**On fail:** return to Phase 3, rework the failed sections against the brief. Do not deploy a site that fails this gate just because the build passes.
+
+### 5c. Analytics wiring audit
+
+After the `config.json` entry lands (Phase 10), run the wiring checker to confirm PostHog + `@m13v/seo-components` are wired correctly on every consumer site, including this new one. It catches the silent-failure bug class where `window.posthog` is never set and helpers like `NewsletterSignup` / `trackScheduleClick` no-op.
+
+```bash
+cd ~/social-autoposter && python3 scripts/check_analytics_wiring.py
+```
+
+- Exits `0` if all sites pass, `1` on any BROKEN project.
+- Preferred fix: mount `<FullSiteAnalytics>` from `@m13v/seo-components` (handles PostHog init + `window.posthog` mirror + `<SeoAnalyticsProvider>` in one component).
+- If the new site is BROKEN, step through 3.5b and 3.5c again before shipping.
+
 ---
 
 ## Phase 6: Deploy
@@ -2269,7 +2371,17 @@ NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 NEXT_PUBLIC_POSTHOG_SITE_ID=<SLUG>
 ```
 
-**Rule:** only values that are safe in a public git repo go here. `phc_` PostHog ingestion keys are by design publicly embedded in the client bundle — an attacker can scrape them off the deployed site anyway. A `phx_` personal API key, a `re_` Resend API key, or any database URL is NOT in this file. Those live in Cloud Run runtime env only (see 6d).
+**MANDATORY substitution — do NOT commit placeholders.** Before writing `.env.production`, pull real values:
+
+```bash
+PHC=$(security find-generic-password -l "posthog-fde10x-project-key" -w)  # shared project phc_
+test -n "$PHC" && grep -q "^phc_" <<< "$PHC" || { echo "phc_ key not found in keychain"; exit 1; }
+printf 'NEXT_PUBLIC_POSTHOG_KEY=%s\nNEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com\nNEXT_PUBLIC_POSTHOG_SITE_ID=<SLUG>\n' "$PHC" > .env.production
+```
+
+Literal strings like `phc_REPLACE_ME_...` or `<SLUG>` in `.env.production` will bake into the client bundle and silently 404 every PostHog event. If the keychain entry is missing or empty, STOP — do not deploy. All three lines (`KEY`, `HOST`, `SITE_ID`) are required; `NEXT_PUBLIC_POSTHOG_SITE_ID` is what drives the `site` group tag for shared-project filtering (see 3.5b).
+
+**Security rule:** only values that are safe in a public git repo go here. `phc_` PostHog ingestion keys are by design publicly embedded in the client bundle — an attacker can scrape them off the deployed site anyway. A `phx_` personal API key, a `re_` Resend API key, or any database URL is NOT in this file. Those live in Cloud Run runtime env only (see 6d).
 
 If the stem project (e.g. `piastest`) is shared between multiple sites, ensure each site uses its own `NEXT_PUBLIC_POSTHOG_SITE_ID` slug so shared PostHog projects can filter by `properties.site`.
 
@@ -2506,7 +2618,9 @@ jobs:
 
 **No GitHub repo secrets are needed for auth.** The `id-token: write` permission + WIF provider identity handle it. Do NOT create `GCP_SA_KEY` or `credentials_json` secrets. If the org policy is ever lifted for a new project, that alternative path is out of scope for this skill.
 
-### 6g. Wire Cal.com bookings into the central stats pipeline
+### 6g. Wire Cal.com bookings into the central stats pipeline `[opt-in: book-a-call]`
+
+**Skip this entire phase unless Book-a-Call was requested.** Sites without a Book CTA have nothing to wire: no event type exists (3.5l was skipped), no `BookCallLink` exists (3.5d was skipped), no `client_slug` entry is needed in the webhook or `project_stats.py`.
 
 Bookings flow: `cal.com` (team webhook) → `https://social-autoposter-website.vercel.app/api/webhooks/cal` → Neon `cal_bookings` table → stats pipeline counts per `client_slug`.
 
@@ -2603,9 +2717,9 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] Build generates `.next/seo-guides-manifest.json` with correct page count
 - [ ] PostHog captures `pageview`, `cta_click`, `schedule_click`, `newsletter_subscribed` — validate with: `curl -sS https://DOMAIN/ -o /tmp/h.html && grep -oE '/_next/static/chunks/[^"\\]+\.js' /tmp/h.html | while read u; do curl -sS https://DOMAIN$u | grep -m1 -oE 'phc_[A-Za-z0-9]+' && break; done` (a hit proves the phc_ is baked into the client bundle)
 - [ ] `window.posthog` defined on every public page (DevTools console: `window.posthog` returns an object, not `undefined`)
-- [ ] Cal.com team webhook registered → verified with one real booking landing in Neon `cal_bookings` with the client's `client_slug`, then cancelled (see Phase 6g)
-- [ ] `scripts/project_stats.py` `get_client_slug()` maps the project name to the client's slug
-- [ ] `config.json` entry has `links.booking`, `posthog.project_id`, `posthog.api_key_env` — and stats pipeline dry-run shows non-zero pageviews / `cta_click` / bookings counts for the slug
+- [ ] **[opt-in: book-a-call only]** Cal.com team webhook registered → verified with one real booking landing in Neon `cal_bookings` with the client's `client_slug`, then cancelled (see Phase 6g)
+- [ ] **[opt-in: book-a-call only]** `scripts/project_stats.py` `get_client_slug()` maps the project name to the client's slug
+- [ ] `config.json` entry has `posthog.project_id` (real numeric id, never `REPLACE_WITH_..._ID`), `posthog.api_key_env`; **if book-a-call in scope,** also has top-level `booking_link` (the real `https://cal.com/team/<TEAM>/<SLUG>` URL, never `/contact`/`/install`). Stats pipeline dry-run shows non-zero pageviews / `cta_click` counts (and non-zero bookings if book-a-call in scope)
 - [ ] Google Search Console ownership verified
 - [ ] Client added to SEO pages dashboard
 
@@ -2642,7 +2756,7 @@ The canonical source is `~/social-autoposter/config.json` → `projects[]`. Each
 - Which threads/posts across all platforms are scored as relevant (matched against `topics`, `twitter_topics`, `linkedin_topics`, `github_search_topics`)
 - What the engagement scripts can honestly say about the product (`description`, `features`, `differentiator`, `icp`)
 - What voice and banned phrases apply (`voice.tone`, `voice.never`)
-- Links inserted into replies (`website`, `github`, `links.*`, `booking_link`)
+- Links inserted into replies (`website`, `github`, `links.*`, and the top-level `booking_link` — that is the field the DM bot and dashboard actually read for the Book-a-Call URL)
 
 ### 10a. Build the project entry from the research brief
 
@@ -2659,11 +2773,11 @@ The `research-brief.md` produced in **Phase 1f** already has every field Phase 1
 | `features` | "Proof points" list, converted to capability statements |
 | `voice.tone` | derived from client intake (brand voice) + ICP language |
 | `voice.never` | "Banned clichés" list, verbatim |
-| `links.booking` | the actual cal.com URL the site's Book CTAs point at (`https://cal.com/team/<TEAM>/<SLUG>`) — not a placeholder like `/contact` |
+| `booking_link` (top-level, NOT `links.booking`) | **`[opt-in: book-a-call]`** — include ONLY if Book-a-Call is in scope. Then it's the actual cal.com URL the site's Book CTAs point at (`https://cal.com/team/<TEAM>/<SLUG>`) — not a placeholder like `/contact` or `/install`. If Book-a-Call is NOT in scope, omit the field entirely (do NOT set `null`, do NOT fake a URL); downstream consumers (`engage-dm-replies.sh`, `bin/server.js`, `scripts/dm_conversation.py`) must fall back to `links.install` or the primary CTA. `links.booking` is ignored at runtime. |
 | `posthog.project_id` | numeric PostHog project id this site writes to (usually the shared S4L project `330744` unless the site has a dedicated project) |
 | `posthog.api_key_env` | name of the env var holding the PostHog **personal** API key used to *read* stats (e.g. `POSTHOG_PERSONAL_API_KEY`). Stores the variable NAME, never the value — config.json is not for secrets. |
 
-`links.booking` and `posthog.{project_id,api_key_env}` are what `scripts/project_stats_json.py` reads to query pageviews + `cta_click` + `schedule_click` events filtered by `properties.$host`. Missing them means the client is dark on the Social Autoposter stats dashboard even if the site itself is firing events.
+`booking_link` is what `skill/engage-dm-replies.sh`, `bin/server.js`, and `scripts/dm_conversation.py` read when deciding which cal.com URL to share in DMs or render in the dashboard. `posthog.{project_id,api_key_env}` are what `scripts/project_stats_json.py` reads to query pageviews + `cta_click` + `schedule_click` events filtered by `properties.$host` (booking counts come from the `cal_bookings` table keyed on `client_slug`, not from `booking_link`). Missing any of these means the client is dark on the Social Autoposter stats dashboard or the DM bot has no link to share, even if the site itself is firing events.
 
 If a field has no good source in the brief, leave it out rather than invent. **Never fabricate features, stats, or differentiators** — every claim in `projects[]` is used verbatim in public replies across all platforms.
 
