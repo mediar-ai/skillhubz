@@ -6899,21 +6899,15 @@
   },
   {
     "name": "setup-client-website",
-    "description": "One-time onboarding for a new SEO-driven consumer site. Audits the existing site, scaffolds a Next.js 16 app with @m13v/seo-components, deploys to Cloud Run, and wires up the SEO infrastructure so gsc",
+    "description": "e2e direct skl.bz",
     "author": "m13v",
-    "version": "1.0.2",
-    "tags": [
-      "seo",
-      "nextjs",
-      "client-onboarding",
-      "cloud-run",
-      "scaffold"
-    ],
+    "version": "1.0.3",
+    "tags": [],
     "category": "marketing",
-    "excerpt": "---",
-    "lines": 3340,
-    "size": 191804,
-    "updated": "2026-04-25T03:13:02.710Z"
+    "excerpt": "Direct skl.bz",
+    "lines": 2,
+    "size": 20,
+    "updated": "2026-04-25T03:16:05.201Z"
   },
   {
     "name": "m13v-gsc-seo-page",
