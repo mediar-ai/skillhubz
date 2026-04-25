@@ -146,6 +146,34 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: 'Missing required fields: name, description, category, content' });
     }
 
+    // Resolve the canonical author from a Bearer token if present.
+    // Falls back to the request-body author for unauthenticated submissions
+    // (kept for backwards compat with older CLI versions; new CLI always sends a token).
+    const authHeader = req.headers.authorization || '';
+    const bearer = authHeader.toLowerCase().startsWith('bearer ') ? authHeader.slice(7).trim() : '';
+    let verifiedLogin: string | undefined;
+    if (bearer) {
+      try {
+        const ghRes = await fetch('https://api.github.com/user', {
+          headers: {
+            'Authorization': `Bearer ${bearer}`,
+            'Accept': 'application/vnd.github+json',
+            'User-Agent': 'skillhu-submit',
+          },
+        });
+        if (ghRes.ok) {
+          const ghUser = await ghRes.json();
+          if (typeof ghUser?.login === 'string') {
+            verifiedLogin = ghUser.login;
+          }
+        } else {
+          return res.status(401).json({ error: 'GitHub token rejected' });
+        }
+      } catch {
+        return res.status(502).json({ error: 'Could not verify GitHub identity' });
+      }
+    }
+
     // Normalize category (lowercase, hyphenated)
     const normalizedCategory = category.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
@@ -166,10 +194,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const registry: RegistryEntry[] = JSON.parse(registryData.content);
-    const author = authorGithub || authorName || 'anonymous';
+    // Prefer the GitHub-verified login. If no token was sent, fall back to the
+    // request-body claim (legacy unauthenticated path).
+    const author = verifiedLogin || authorGithub || authorName || 'anonymous';
     const isUpdate = !!existingSkill;
 
-    // If skill exists, verify author matches
+    // If skill exists, verify author matches.
+    // With a verified token, this is now a real ownership check.
     if (isUpdate) {
       const existingEntry = registry.find((e) => e.name === slug);
       if (existingEntry && existingEntry.author !== author) {
