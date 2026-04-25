@@ -194,9 +194,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const registry: RegistryEntry[] = JSON.parse(registryData.content);
-    // Prefer the GitHub-verified login. If no token was sent, fall back to the
-    // request-body claim (legacy unauthenticated path).
-    const author = verifiedLogin || authorGithub || authorName || 'anonymous';
+    // Author is the GitHub-verified login when a Bearer token was sent and validated.
+    // Without a verified token, drop any author claim from the body and record as
+    // 'anonymous' — the body's authorGithub field is no longer trusted.
+    const author = verifiedLogin || 'anonymous';
     const isUpdate = !!existingSkill;
 
     // If skill exists, verify author matches.
