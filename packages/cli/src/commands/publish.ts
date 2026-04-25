@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from 'fs';
 import { join, basename, dirname } from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
+import { getToken } from './auth.js';
 
 const SUBMIT_API_URL = 'https://skillhu.bz/api/submit';
 
@@ -75,6 +76,17 @@ export async function publish(path?: string): Promise<void> {
   }
   console.log();
 
+  const token = getToken();
+  if (!token) {
+    console.log(chalk.red('Not authenticated.'));
+    console.log();
+    console.log(`Authenticate with: ${chalk.cyan('gh auth login')}`);
+    console.log(`Or set: ${chalk.cyan('export GITHUB_TOKEN=ghp_...')}`);
+    console.log();
+    console.log(chalk.gray('Install gh from https://cli.github.com if needed.'));
+    process.exit(1);
+  }
+
   const spinner = ora('Publishing to skillhu.bz...').start();
 
   try {
@@ -82,6 +94,7 @@ export async function publish(path?: string): Promise<void> {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify({
         name,
