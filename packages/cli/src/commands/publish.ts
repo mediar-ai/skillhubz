@@ -4,7 +4,10 @@ import chalk from 'chalk';
 import ora from 'ora';
 import { getToken } from './auth.js';
 
-const SUBMIT_API_URL = 'https://skillhu.bz/api/submit';
+// Hit skl.bz directly. skillhu.bz 308-redirects here, and both fetch and curl
+// strip the Authorization header on cross-origin redirects, which would silently
+// downgrade an authenticated submit to anonymous.
+const SUBMIT_API_URL = 'https://skl.bz/api/submit';
 
 interface Manifest {
   name: string;
