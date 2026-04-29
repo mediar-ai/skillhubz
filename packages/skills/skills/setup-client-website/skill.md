@@ -20,6 +20,8 @@ We build a separate SEO site alongside the client's brand site because we own th
 
 **Self-serve CTAs on a book-a-call-only site.** When the research brief surfaces a self-serve product motion (pricing page, "Start free" tier, download button) but only `book-a-call` scope is enabled, do NOT link the self-serve CTA at the client's product app. Build an email-capture modal on our domain that collects the email, sends a welcome transactional via Resend containing the Book-a-Call link, and in the modal itself routes the user to `/precall` or `BookCallLink`. The client still gets the signup, we keep the funnel.
 
+**Hard rule, copy edition (`gated-redirect` on): the destination URL never appears in user-visible text either.** The anchor rule above closes the link surface (no `<a href>` to the brand). When `gated-redirect` is on, the destination URL must also be absent from: body copy in any `.tsx` under `src/`, FAQ Q&A objects, footer paragraphs, modal subtitles, `metadata.description`, OpenGraph descriptions, JSON-LD `sameAs` arrays in `layout.tsx`, alt text, and the welcome-email HTML template inside `src/app/api/signup/route.ts`. The bare brand name (`Jungle`, `Piastech`) may stay where it's needed for legal/entity disclosure (privacy and terms keep `<Brand> Inc.` as the operating entity), but the literal URL string (`app.<brand>.com`, `<brand>.com`, even fragments like `<brand>.com/terms-of-service`) does not. The welcome email body sent by Resend carries the access link in an `<a href={redirect}>`, which is unavoidable and fine; that email is post-gate, not pre-gate. Phase 8 audits this by grepping the whole `src/` tree (not just `src/app/(main)/`) for the brand and app URL stems and failing on any match outside the welcome-email payload. **A user-visible "Where am I being redirected?" FAQ Q&A that names the destination is the most common source of leak; do not generate one.**
+
 ## Arguments
 
 Provide the client name, domain (if any), and existing site URL (if any). Example: `"Paperback Expert at paperbackexpert.com"`
@@ -30,8 +32,9 @@ These are OFF by default. Only enable them if the invoker mentions the feature e
 
 | Flag | Default | Triggers phases |
 |------|---------|-----------------|
-| `book-a-call` | off | 3.5d Book-a-Call helpers, 3.5l Cal.com event type creation, 6g Cal.com webhook wiring, Phase 8 booking-verification row, Phase 10a `booking_link` field |
+| `book-a-call` | off | 3.5d Book-a-Call helpers, 3.5k.1 `/r/[code]` short-link redirect, 3.5l Cal.com event type creation, 6g Cal.com webhook wiring, Phase 8 booking-verification row, Phase 10a `booking_link` field |
 | `get-started` | off | 3.5d′ Get-Started helpers, Phase 8 get-started-verification row, Phase 10a `get_started_link` field |
+| `gated-redirect` | off | 3.5d″ EmailGateModal + `/api/signup` scaffold (with mandatory Resend audience upsert + `newsletter_subscribed` event), server-only `GET_STARTED_URL`, runtime envs `RESEND_API_KEY`+`RESEND_AUDIENCE_ID` on the deploy target (NOT just `.env.local`), Phase 8 destination-leak audit + audience-population audit + Email-Signups dashboard audit. Requires `get-started` to also be on. |
 
 **Get-Started covers every self-serve primary CTA:** downloads (Mac `.dmg`, App Store, `/download`), installs (`/install`, Chrome Web Store, browser extension listings), and signups (SaaS `app.<domain>` entry, waitlist, trial start). They all fire the same `get_started_click` PostHog event and roll into one "Get Started" column in the dashboard. Aliases like `download-link` or `signup-link` map to this flag.
 
@@ -41,6 +44,8 @@ These are OFF by default. Only enable them if the invoker mentions the feature e
 - Get-started off → no `<GetStartedLink>`/`<GetStartedCTA>`, no `get_started_link` in `config.json`. The stats pipeline counts `get_started_click` per-host, so a site that does not fire this event will simply show 0 — harmless.
 
 **Both flags can be on for the same site.** Fazm is the canonical example: it has a `booking_link` (Cal.com team URL for pilot calls) and a `get_started_link` (Mac app download). Assrt is another: `booking_link` for the pilot call plus `get_started_link` pointing at `app.assrt.ai` for self-serve signup.
+
+**Gated-redirect: when to turn it on.** The default `get-started` scaffold renders `<GetStartedLink href={GET_STARTED_URL} target="_blank">`, which puts the destination URL in the DOM (`href` attribute, hover status bar, "copy link"). That is fine when the destination IS our domain (Fazm: `fazm.cc/download`) or when we don't mind users bypassing email capture (Assrt: `app.assrt.ai` with no separate brand domain). Turn `gated-redirect` ON whenever **the get-started destination is on a different domain we want to keep hidden until the visitor submits an email**, typically when `brand_domain ≠ website` AND the brand_domain is the self-serve product app (e.g. `studyly.io` routes to `app.jungleai.com`). With this flag on, every Get-Started CTA opens an email-gate modal; `/api/signup` collects the email, sends a Resend welcome with the access link, and returns the redirect URL via JSON for `window.location.href`. The destination URL never appears in HTML, body copy, FAQ, JSON-LD, or `metadata.description`. Studyly is the canonical example.
 
 **Rationale:** free OSS tools and install-driven products (ClaudeMeter, appmaker-style utilities) have no "book a call" conversion — they need `get-started` instead. Enterprise pilot sites with no self-serve path need only `book-a-call`. Product-led sites with both a pilot offer and a self-serve entry point need both. Forcing either wiring on a site that does not match the conversion shape produces dead links and skewed funnel stats.
 
@@ -303,6 +308,8 @@ Verifiable stats, awards, case-study numbers, named clients, certifications, pre
 ## Competitor landscape (one paragraph)
 Who the client is up against, how they're positioned, and the gap the client is walking into.
 
+**Direct competitor root domains (5 to 7):** plain bullet list of bare domains, e.g. `scribemedia.com`, `forbesbooks.com`. These are lifted verbatim into the `competitor_domains` field of `config.json` in Phase 10a and drive DataForSEO `keywords_for_site` discovery (`seo/generate_keywords.py`). Drop marketplaces (reedsy, upwork, fiverr) and personal-brand pages; keep direct category competitors only.
+
 ## Banned clichés
 Phrases pulled from competitor copy that the new site must NOT reuse (e.g. "cutting-edge", "world-class", "one-stop-shop", plus any industry-specific filler found during 1a).
 
@@ -473,18 +480,21 @@ Domain purchases are **irreversible**. Per the global Ethics Check rule, step 3 
 
 ### 1.5f. Record in config.json
 
-Add the project entry to `~/social-autoposter/config.json`. The full shape is owned by the downstream writer (with `weight`, `topics`, `twitter_topics`, `linkedin_topics`, `landing_pages`, `voice`, `icp`, `features`, `differentiator`, etc.). The two fields Phase 1.5 is responsible for:
+Add the project entry to `~/social-autoposter/config.json`. The full shape is owned by the downstream writer (with `weight`, `description`, `platform`, `topics`, `twitter_topics`, `linkedin_topics`, `landing_pages`, `voice`, `icp`, `features`, `differentiator`, etc.). The fields Phase 1.5 is responsible for:
 
 ```json
 {
   "name": "<stem>",
   "website": "https://<generic-domain>",
   "brand_domain": "https://<brand-domain>",
+  "weight": 10,
   ...rest owned by downstream
 }
 ```
 
 `website` is the generic domain (the one the new site deploys to). `brand_domain` is the original brand URL (kept for reference, may redirect later).
+
+**`weight` default: `10`** (matches existing top-tier projects: fazm, mediar, assrt). Lower it only if the user explicitly asks the new site to be deprioritized vs existing projects. `weight` controls how often pickers (`pick_project.py`, `select_product.py`, `pick_thread_target.py`, `pick_top_pages.py`) sample this project for engagement and content runs; setting it lower than peers silently buries the new site.
 
 Add one field: `"gcp_project": "<slug>-prod"` so downstream scripts know where the Cloud Run service and DNS zone live. `registrar` and `dns_zone` are derivable (always Cloud Domains, always `<STEM>-zone`).
 
@@ -1616,8 +1626,11 @@ Every page gets JSON-LD. Minimum set:
 // FAQ page: FAQPage
 { "@type": "FAQPage", "mainEntity": [{ "@type": "Question", "name": "...", "acceptedAnswer": { "@type": "Answer", "text": "..." } }] }
 
-// Homepage: WebPage
-{ "@type": "WebPage", "name": "...", "url": "...", "description": "..." }
+// Homepage: WebPage (required on every page — enables speakable for AI Overview citations)
+{ "@type": "WebPage", "name": "...", "url": "...", "description": "...", "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".hero-description"] } }
+
+// SaaS/app sites (required when the site IS the product): SoftwareApplication
+{ "@type": "SoftwareApplication", "name": "...", "applicationCategory": "BusinessApplication", "operatingSystem": "macOS, Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" } }
 ```
 
 ### 3p. SEO Infrastructure (XML sitemap + robots + HTML sitemap: ALL THREE REQUIRED, DYNAMIC, NEVER OPTIONAL)
@@ -2016,6 +2029,72 @@ Every primary self-serve CTA — header, hero, footer, FAQ, per-section, and any
 
 **If both flags are on:** the two CTAs live side by side in the hero and in section footers (one primary, one secondary). See Fazm for the canonical layout — book-a-call for the pilot path, get-started for the self-serve path. Assrt follows the same pattern with a SaaS signup entry rather than a download.
 
+### 3.5d″. Gated-redirect scaffold `[opt-in: gated-redirect]`: replaces `<GetStartedLink>` when the destination must stay hidden
+
+Skip this entire sub-section unless `gated-redirect` is on. When it IS on, **do NOT scaffold `src/lib/get-started.ts` as a client module exporting `GET_STARTED_URL`**; any client component that imports it will ship the URL to the browser, defeating the gate. Instead:
+
+1. **Move the destination URL to the server.** Create `src/lib/redirect.ts` that defines `const APP_BASE = "https://<destination>"` and a server-only `buildRedirect(slug: string, email: string): string` that appends UTM params. This module is only ever imported from `src/app/api/signup/route.ts`. Never re-export `APP_BASE` from a `"use client"` file.
+
+2. **Build `src/components/EmailGateModal.tsx`.** A single dialog component with a state machine (`idle` → `submitting` → `success` → `error`), an `email` input, a Continue button, and one piece of copy that does NOT name the destination. Expose a global `window.__<slug>Gate = { open(slug) }` so any CTA on the page can trigger it without prop-drilling. Mount once via `<EmailGateModalRoot />` in `(main)/layout.tsx`. Studyly's `src/components/EmailGateModal.tsx` is the working reference.
+
+3. **Build `src/app/api/signup/route.ts`.** POST handler that takes `{ email, slug, path, referrer }`, validates the email, and does FOUR things, in order, all best-effort except the redirect. Reference: `~/studyly-website/src/app/api/signup/route.ts`.
+
+   1. Insert into Neon (`<table_prefix>_signups`).
+   2. **Upsert into the per-client Resend audience.** `POST https://api.resend.com/audiences/${RESEND_AUDIENCE_ID}/contacts` with `{ email, unsubscribed: false }`. **This step is mandatory.** Resend dedupes on email so it's idempotent. The route MUST guard on `RESEND_AUDIENCE_ID` being set and log loudly when it isn't (audience-empty was the studyly 2026-04-28 bug; gated-redirect routes silently skipped this step and no subscriber was retargettable).
+   3. Send Resend transactional welcome whose body contains the access link (the destination URL is fine HERE, post-gate).
+   4. Return `{ ok: true, redirect: <url> }` so the client can `window.location.href = redirect` after ~800ms.
+
+   **All four envs must be on the production runtime** (Cloud Run / Vercel): `DATABASE_URL`, `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, plus any per-client redirect-builder envs. `.env.local` is not enough; the deploy target reads its own env. After `gcloud run services update` or `vercel env add`, run a verify step (`gcloud run services describe ... --format="value(spec.template.spec.containers[0].env)"` or `vercel env pull`) and confirm `RESEND_AUDIENCE_ID` is present with NO trailing `\n`. The studyly bug shipped with the env entirely missing on Cloud Run; the route silently no-op'd the audience write for the first day after launch.
+
+4. **Replace every Get-Started CTA on the site with a button that fires `get_started_click` AT CLICK TIME and opens the modal.** The click event must be captured on the button itself, not deferred to post-submit, so the dashboard's "Get Started" column counts gate-open intent (not just successful conversions). EmailGateModal fires the second event (`newsletter_subscribed`) on successful submit, populating "Email Signups". Both events together = full gated-redirect funnel.
+
+   ```tsx
+   "use client";
+   export function GetStartedButton({ children, slug, className }: {
+     children: React.ReactNode; slug: string; className?: string;
+   }) {
+     return (
+       <button
+         type="button"
+         className={className}
+         onClick={() => {
+           window.posthog?.capture?.("get_started_click", {
+             slug,
+             path: location.pathname,
+             component: "GetStartedButton",
+           });
+           window.__<slug>Gate?.open(slug);
+         }}
+       >{children}</button>
+     );
+   }
+   ```
+
+   Reference: `~/studyly-website/src/components/GetStartedButton.tsx`. The Resend send and the actual redirect can fail without losing this funnel data point.
+
+4a. **EmailGateModal MUST fire `newsletter_subscribed` on successful `/api/signup` response.** This is the canonical PostHog event the dashboard reads for the "Email Signups" column (`scripts/funnel_per_day.py` and `scripts/project_stats_json.py` query `event = 'newsletter_subscribed'`). The gate IS an email capture; the redirect is incidental. Without this event, a gated-redirect site shows 0 in Email Signups forever.
+
+   ```tsx
+   // After fetch('/api/signup') succeeds, before window.location.href = data.redirect:
+   window.posthog?.capture?.("newsletter_subscribed", {
+     component: "EmailGateModal",
+     slug,
+     path: window.location.pathname,
+   });
+   ```
+
+   Reference: `~/studyly-website/src/components/EmailGateModal.tsx`.
+
+5. **Modal copy template (verified in studyly QA):**
+   - Title: `"Drop your email,\nwe'll send the link."`
+   - Subtitle: `"We'll email you a one-click access link and redirect you there now."` ← no destination domain.
+   - Submit button: `Continue` → `Sending…` → `Redirecting…`.
+   - Fine print: `"By continuing you agree to our terms and privacy policy. No spam."`
+
+6. **Privacy/Terms templates.** Use the operating entity name (`<Brand> Inc.`) for legal disclosure and never print the literal app URL. "We share your email with `<Brand> Inc.` so they can provision your account on the study app." NOT "…on app.<brand>.com." For governing terms link out to a `mailto:hello@<our-domain>` request channel rather than `<brand>.com/terms-of-service`.
+
+7. **`config.json` shape.** With `gated-redirect` on, `get_started_link` still holds the actual destination URL (the dashboard stats pipeline reads it for the "Get Started" funnel column and the DM bot uses it when the operator pastes the link manually). But `landing_pages.product_source[].description` should describe the gate flow without naming the URL, since the operator dashboard renders that field on internal pages.
+
 ### 3.5e. NewsletterSignup — drop into `(main)/layout.tsx`
 
 ```tsx
@@ -2142,6 +2221,28 @@ Update the contact page component to POST to this route instead of using `mailto
 ### 3.5k. Resend inbound webhook (optional, recommended) — `src/app/api/webhooks/resend/route.ts`
 
 Port `~/your-prior-site/src/app/api/webhooks/resend/route.ts`. Handles `email.received` events, logs to Neon, forwards to `you@example.com`. Needed only if the client uses `<SENDER_LOCAL>@DOMAIN` as a real inbound address.
+
+### 3.5k.1. Per-DM short-link redirect (book-a-call scoped) — `src/app/r/[code]/route.ts`
+
+**MANDATORY for any site with `booking_link` in `config.json`.** This is the redirect that closes the loop on which DM (or post, or pasted-anywhere link) produced a Cal.com booking. The DM bot mints `https://<website>/r/<code>` per outbound thread; the route looks the code up in the social-autoposter Neon `dms` table, increments a click counter, and 302s to Cal.com with `metadata[utm_content]=dm_<id>` so the existing `/api/webhooks/cal` handler fills `cal_bookings.utm_*` per DM.
+
+Skip this section only if `book-a-call` is off for this site.
+
+```ts
+// src/app/r/[code]/route.ts
+import { createDmShortLinkRedirectHandler } from "@seo/components/server";
+
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
+
+export const GET = createDmShortLinkRedirectHandler({ site: "<SLUG>" });
+```
+
+`<SLUG>` is the lowercase project slug (e.g. `pieline`, `assrt`, `fazm`) — must match the `name` field in `config.json` after lowercasing and replacing spaces with `-`. The slug is reported on the PostHog `dm_short_link_clicked` event and is how the dashboard splits clicks per site.
+
+The factory hits `https://app.s4l.ai/api/short-links/<code>` by default. Override per-environment via `SHORT_LINK_RESOLVER_URL` env var (rarely needed). Requires `NEXT_PUBLIC_POSTHOG_KEY` to be set on the deploy for PostHog click tracking; redirect itself works without it.
+
+No code changes required after scaffold — the route file is the entire integration. Verify post-deploy by minting a test code on a real DM (`python3 ~/social-autoposter/scripts/dm_short_links.py mint --dm-id N --json`) and curling the printed short URL with `-I` to confirm the 302 lands on Cal.com with `metadata[utm_content]=dm_N`.
 
 ### 3.5l. Provision external services (shared-resource defaults)
 
@@ -3018,6 +3119,9 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] **HTML sitemap page at /sitemap returns 200** — `src/app/sitemap/page.tsx` must exist and render `HtmlSitemap` from `@seo/components`. Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/sitemap` prints `200` (NOT 404); `curl -s https://DOMAIN/sitemap | grep -q "<html" && echo OK` prints `OK`. This is a human-readable page, not the XML feed — both MUST exist
 - [ ] Sitemap link in Footer (under Company column) so humans can reach `/sitemap` without typing the URL
 - [ ] **robots.txt returns 200 AND references the sitemap URL** — `src/app/robots.ts` must import `generateRobots` from `@seo/components/server`. Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/robots.txt` prints `200`, and `curl -s https://DOMAIN/robots.txt | grep -q "Sitemap: https://DOMAIN/sitemap.xml" && echo OK` prints `OK`
+- [ ] **robots.txt allows AI crawlers** — `curl -s https://DOMAIN/robots.txt | grep -qE 'User-agent: (GPTBot|ClaudeBot|PerplexityBot)' && echo OK || echo "FAIL: AI allowlist missing"` must print `OK`. Sites blocking AI crawlers lose citation eligibility in ChatGPT, Claude.ai, and Perplexity. If `generateRobots` from `@seo/components/server` is used correctly this is automatic — a failure here means a hand-rolled robots.ts is missing the allow rules
+- [ ] **XML sitemap uses the production domain in every `<loc>`** — `curl -s https://DOMAIN/sitemap.xml | grep -oE '<loc>[^<]+' | grep -v "https://DOMAIN" | head -5` must return no output. Any `<loc>` not starting with `https://DOMAIN` is a stale canonical pointing crawlers at a different origin (localhost, staging, old domain) — this silently attributes all SEO equity to the wrong site
+- [ ] **JSON-LD is present in served HTML** — `curl -s https://DOMAIN/ | grep -c 'application/ld+json'` must return `>= 1`. A count of 0 means the JSON-LD script was placed in `<body>` without a server component wrapper and Next.js did not render it, or the layout was deployed without the JSON-LD block entirely
 - [ ] **No hand-rolled sitemap/robots code** — `grep -r "walkPages\|fs.readdirSync" src/app/sitemap.ts src/app/robots.ts` returns no matches (the helpers are the implementation; if a site rolls its own walk logic, flag it for migration)
 - [ ] llms.txt accessible at /llms.txt (static file at `public/llms.txt`, returns 200 with the curated brief; `config.json`'s `llms_txt` field for this project points at `~/<repo>/public/llms.txt`)
 - [ ] Lighthouse desktop score >= 85
@@ -3077,7 +3181,44 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
   For each CTA with a solid background, the `color` MUST contrast with the `bg`. Any primary button where `color ≈ bg` (e.g. both near-black, both near-white) is broken and must be fixed in `globals.css` layering before shipping.
 - [ ] Build generates `.next/seo-guides-manifest.json` with correct page count
 - [ ] PostHog captures `pageview`, `cta_click`, `schedule_click`, `get_started_click`, `newsletter_subscribed` — validate with: `curl -sS https://DOMAIN/ -o /tmp/h.html && grep -oE '/_next/static/chunks/[^"\\]+\.js' /tmp/h.html | while read u; do curl -sS https://DOMAIN$u | grep -m1 -oE 'phc_[A-Za-z0-9]+' && break; done` (a hit proves the phc_ is baked into the client bundle). Only assert the event types that are in scope for this site (e.g. skip `schedule_click` if book-a-call is off; skip `get_started_click` if get-started is off).
+- [ ] **[opt-in: gated-redirect only] BLOCKING: Resend audience is being written to.** After launch, audience contact count must be > 0 within 24 hours of the first non-zero pageview, OR within 7 days of go-live, whichever comes first. Closes the studyly 2026-04-28 bug where the audience existed and the env var was set in `.env.local` but `RESEND_AUDIENCE_ID` was missing entirely on the deploy target's runtime, the route's audience-upsert step silently no-op'd, and the audience stayed at 0 contacts despite real signups landing in Neon. Verify with the master Resend key from keychain (`defaults.resend_master_key_keychain` in `~/social-autoposter/config.json`):
+   ```bash
+   RKEY=$(security find-generic-password -s "$(jq -r '.defaults.resend_master_key_keychain' ~/social-autoposter/config.json)" -w)
+   AID="<audience-uuid-from-resend>"
+   curl -s -H "Authorization: Bearer $RKEY" "https://api.resend.com/audiences/$AID/contacts" \
+     | python3 -c "import json,sys; d=json.load(sys.stdin); print('contacts=', len(d.get('data',[])))"
+   ```
+   Must print a positive integer once the site has had any real signups. Cross-check against `signups` table row count in Neon — they should match within ±1 (audience may dedupe a re-signup). A mismatch where Neon has rows and audience is empty means the runtime is missing `RESEND_AUDIENCE_ID` (re-run `gcloud run services describe <svc> --format="value(spec.template.spec.containers[0].env)"` or `vercel env pull`).
+- [ ] **[opt-in: gated-redirect only] BLOCKING: dashboard `Email Signups` column populates.** A successful submit must fire **two** PostHog events: `get_started_click` (from `GetStartedButton.onClick`, captures gate-open intent) and `newsletter_subscribed` (from `EmailGateModal` post-submit, populates the dashboard's Email Signups column). After the first real signup, run from `~/social-autoposter`:
+   ```bash
+   python3 scripts/project_stats_json.py --project <slug> --days 7 \
+     | python3 -c "import json,sys; f=json.load(sys.stdin)['projects'][0]['funnel']; print('email_signups=',f.get('email_signups'),'get_started_clicks=',f.get('get_started_clicks'))"
+   ```
+   Both must be ≥ 1. If `email_signups=0` while real signups exist in the Resend audience, EmailGateModal is missing the `newsletter_subscribed` capture.
 - [ ] **BLOCKING — analytics wiring audit passes.** Run `cd ~/social-autoposter && python3 scripts/check_analytics_wiring.py` and verify the new site shows `OK` (exit code 0 when every site passes). The audit catches two classes of silent failure: (a) hand-rolled provider that fails to assign `window.posthog` so library helpers no-op, and (b) CTA-shaped event names outside the canonical set (`cta_clicked` with a trailing d, `download_email_sent`, `waitlist_signup`, `contact_submitted`, `get_leads_signup`, `landing_cta_clicked`, etc.) that the cross-project dashboard will silently ignore. **Do not ship the site if this audit reports violations for it.** The historical failure mode is: the manual "click one CTA and see it in PostHog" check succeeds because the event name looks plausible, but the dashboard queries `cta_click` / `get_started_click` / `schedule_click` / `newsletter_subscribed` exclusively (see `~/social-autoposter/scripts/project_stats_json.py:238, 302-306`), so invented names are invisible forever.
+- [ ] **BLOCKING — deploy wiring audit passes.** Run `cd ~/social-autoposter && python3 scripts/check_deploy_wiring.py` and verify the new site shows `OK`. Closes the gap that left studyly without auto-deploy on 2026-04-28: a Cloud Run client site got registered in `config.json` with `production_trigger: "manual"` because Phase 6f (workflow + WIF) was skipped, and nothing in the pipeline noticed. The audit fails when (a) `target=cloudrun` and `production_trigger=push:main` but `.github/workflows/deploy-cloudrun.yml` is missing (push-to-main is a no-op), (b) the same target/trigger pair where the workflow exists but does not actually trigger on push to main, or (c) `production_trigger=manual` with no workflow at all (the studyly state). **Do not register a cloudrun site in `config.json` with `production_trigger: "push:main"` until 6f is complete and this audit returns 0.**
+- [ ] **[opt-in: gated-redirect only] BLOCKING: destination-leak audit passes.** With `gated-redirect` on, the brand and app domain must NOT appear in any user-visible source under `src/` outside the `/api/signup` welcome-email payload. Closes the studyly leak found 2026-04-28 where the destination `app.jungleai.com` was printed in 11+ places (homepage final CTA, `/faq` Q&A, `/about`, footer, `metadata.description`, OpenGraph, JSON-LD `sameAs`, three `/t/` topic pages, an `/alternative/` page, and `/privacy`/`/terms`) despite the anchor-level rule already being in place. Run from the website repo root, with `BRAND` set to the brand domain stem (e.g. `jungleai.com`) and `APP` set to the app subdomain (e.g. `app.jungleai.com`):
+
+   ```bash
+   BRAND="jungleai.com"   # set per client
+   APP="app.${BRAND}"
+   # 1. Source code: every .tsx, .ts, .css, .md under src/ must be clean of $APP and $BRAND, except the welcome-email block in src/app/api/signup/route.ts.
+   leaks=$(grep -rn -E "${APP}|${BRAND}" src/ \
+     --include='*.tsx' --include='*.ts' --include='*.css' --include='*.md' \
+     | grep -v "src/app/api/signup/route.ts" \
+     | grep -v "src/lib/redirect.ts" \
+     | grep -vE "// |/\* |\* @" )
+   if [ -n "$leaks" ]; then echo "FAIL leaks in source:"; echo "$leaks"; exit 1; fi
+   # 2. Rendered HTML for every static route: pull the page and grep the body.
+   for path in / /about /faq /privacy /terms $(ls src/app/\(main\)/t 2>/dev/null | xargs -I{} echo /t/{}); do
+     html=$(curl -sS "http://localhost:3000$path") || continue
+     count=$(printf "%s" "$html" | grep -ic "${APP}\|${BRAND}" || true)
+     if [ "$count" -gt 0 ]; then echo "FAIL leak on $path: $count matches"; exit 1; fi
+   done
+   echo OK
+   ```
+
+   **Failure mode this catches:** `metadata.description` mentions `app.<brand>.com` (renders into `<head>` and search snippets), `Organization` JSON-LD has `sameAs: ["https://<brand>.com"]` (visible in HTML source and indexed), a topic-page final CTA paragraph names the destination, the welcome-email footer template inside `route.ts` mentions the URL outside the actual access link. Each one independently defeats the gate.
 - [ ] `window.posthog` defined on every public page (DevTools console: `window.posthog` returns an object, not `undefined`)
 - [ ] **[opt-in: book-a-call only]** Cal.com team webhook registered → verified with one real booking landing in Neon `cal_bookings` with the client's `client_slug`, then cancelled (see Phase 6g)
 - [ ] **[opt-in: book-a-call only]** `scripts/project_stats.py` `get_client_slug()` maps the project name to the client's slug
@@ -3095,7 +3236,7 @@ Phase 8 verifies the site itself is healthy. Phase 9 is the hand-off: the pipeli
 Invoke `gsc-seo-page` > "Onboarding a New Product" and run its five steps, then run step 6 below from this skill.
 
 1. Register the domain in Google Search Console via the Site Verification + Search Console APIs (no browser).
-2. Add the product to `~/social-autoposter/config.json` with `weight` and the five `landing_pages` fields (`repo`, `github_repo`, `base_url`, `gsc_property`, `product_source`).
+2. Add the product to `~/social-autoposter/config.json` with `weight` (default `10`, matching top-tier projects; lower only if explicitly requested) and the five `landing_pages` fields (`repo`, `github_repo`, `base_url`, `gsc_property`, `product_source`).
 3. Activate the launchd jobs via `launchctl load` (labels are `<defaults.launchd_label_prefix>.social-gsc-seo` and `<defaults.launchd_label_prefix>.social-serp-seo`; the prefix is read from `~/social-autoposter/config.json`).
 4. Backfill GSC queries with `seo/fetch_gsc_queries.py --product ClientName`.
 5. Verify with `select_product.py --require-gsc`, inspect `gsc_queries` in Postgres, and force one `run_gsc_pipeline.sh` run.
@@ -3177,19 +3318,24 @@ The canonical source is `~/social-autoposter/config.json` → `projects[]`. Each
 - Which threads/posts across all platforms are scored as relevant (matched against `topics`, `twitter_topics`, `linkedin_topics`, `github_search_topics`)
 - What the engagement scripts can honestly say about the product (`description`, `features`, `differentiator`, `icp`)
 - What voice and banned phrases apply (`voice.tone`, `voice.never`)
-- Links inserted into replies (`website`, `github`, `links.*`, and the top-level `booking_link` — that is the field the DM bot and dashboard actually read for the Book-a-Call URL)
+- Links inserted into replies (`website`, `github`, and the top-level `booking_link` / `get_started_link`, which are the fields the DM bot and dashboard actually read). The legacy `links.*` map is documentation-only: no current code path under `~/social-autoposter/` reads `project["links"]` at runtime. Skip it for new client sites unless an existing entry shows a strong precedent; the real CTA URLs belong in top-level `booking_link` / `get_started_link`.
 
 ### 10a. Build the project entry from the research brief
 
 The `research-brief.md` produced in **Phase 1f** already has every field Phase 10 needs. Map it like this:
 
+**Mandatory fields for every new client site (do not skip):** `name`, `description`, `platform`, `weight`, `website`, `landing_pages.*`, `posthog.*`, plus at least one of `booking_link` / `get_started_link`. The dashboard, DM bot, and stats pipeline assume these are present; omitting them silently breaks the project's row.
+
 | `projects[]` field | Source in `research-brief.md` |
 |---|---|
 | `name` | client name (lowercase slug, matches `landing_pages.repo` basename) |
-| `description` | "Positioning angle" (one sentence) |
+| `description` | **Mandatory.** "Positioning angle" (one sentence). Read by `seo/generate_page.py` and `scripts/post_reddit.py` as the canonical one-line product pitch. Always include. |
+| `platform` | **Mandatory.** One short sentence describing the product surface and primary CTA shape (e.g. "macOS desktop app (download .dmg)", "Web app at app.<domain> (signup)", "Web. Gates traffic to app.<brand>.com (desktop, iOS, Google Play)."). Surfaced to operators on the dashboard and used by future filters. Always include. |
 | `differentiator` | "3 differentiators" condensed into one sentence |
 | `icp` | "ICP" section, primary persona description + JTBD |
-| `topics` | "5 messaging pillars" rewritten as search-friendly keyword phrases |
+| `topics` | "5 messaging pillars" rewritten as search-friendly keyword phrases. **Mix broader category heads with niche long-tail.** This field is dual-purpose: posting-eligibility matching AND DataForSEO `keyword_suggestions` seeds for SEO page discovery (`seo/generate_keywords.py:216`). Niche-only seed lists ("speak to write ghostwriting process") cause the SERP cron to return zero candidates because DataForSEO can only expand seeds with measurable volume; always include 3 to 5 broader heads ("ghostwriting services", "book ghostwriter") so the discovery funnel actually fills. See `gsc-seo-page` Step 2 for the full rationale |
+| `competitor_domains` | extracted from `research/raw/competitors.md` (Phase 1a output): 5 to 7 root domains of direct category competitors. Drop marketplaces (reedsy, upwork) and personal-brand pages. Read by `seo/generate_keywords.py` to steal keywords via DataForSEO `keywords_for_site`. **Single biggest lever for niche B2B funnels.** See `gsc-seo-page` Step 2 |
+| `min_keyword_volume` | optional per-product override of the default 20/mo MIN_VOLUME floor. Set to `5` for niche B2B services where most queries fall below 20/mo. Omit for high-traffic categories (consumer SaaS, broad B2B horizontals). See `gsc-seo-page` Step 2 |
 | `twitter_topics` / `linkedin_topics` | same pillars re-tuned per platform (shorter for Twitter, more formal for LinkedIn) |
 | `features` | "Proof points" list, converted to capability statements |
 | `voice.tone` | derived from client intake (brand voice) + ICP language |
@@ -3288,6 +3434,9 @@ Phase 10 is done when all of these are true:
 
 - `jq '.projects[] | select(.name=="<client>")' config.json` returns a full entry (not just `landing_pages`)
 - `topics`, `twitter_topics`, `linkedin_topics`, and `features` all trace to the research brief
+- `topics` includes at least 3 broader category heads in addition to niche long-tail phrases (so DataForSEO discovery has high-volume seeds to expand from)
+- `competitor_domains` has 5 to 7 root domains pulled from `research/raw/competitors.md` (or the field is intentionally omitted because the product has no direct competitors, which is rare and worth flagging)
+- `min_keyword_volume: 5` is set if the product is a niche B2B service (otherwise omit and rely on the default)
 - `voice.never` matches the brief's "Banned clichés" list verbatim
 - At least one engagement script dry-run completes without a schema error
 - `config.json.bak.*` backup exists in case of rollback
