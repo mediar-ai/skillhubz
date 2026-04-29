@@ -6899,21 +6899,23 @@
   },
   {
     "name": "setup-client-website",
-    "description": "One-time onboarding for a new SEO-driven consumer site. Audits the existing site, scaffolds a Next.js 16 app with @m13v/seo-components, deploys to Cloud Run, and wires up the SEO infrastructure so gsc",
+    "description": "One-time onboarding for a new consumer site: SEO audit, Next.js scaffold, @m13v/seo-components install, route-group architecture, real images/video/structured data, Cloud Run deploy, and full SEO infr",
     "author": "m13v",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "tags": [
       "seo",
       "nextjs",
-      "client-onboarding",
+      "website",
+      "onboarding",
+      "client",
       "cloud-run",
-      "scaffold"
+      "structured-data"
     ],
-    "category": "marketing",
+    "category": "development",
     "excerpt": "---",
-    "lines": 3340,
-    "size": 191804,
-    "updated": "2026-04-25T03:16:56.812Z"
+    "lines": 3489,
+    "size": 213021,
+    "updated": "2026-04-29T23:19:23.807Z"
   },
   {
     "name": "m13v-gsc-seo-page",
