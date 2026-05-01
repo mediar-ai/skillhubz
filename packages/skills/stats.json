@@ -31,7 +31,7 @@
     "web-design-guidelines": 1,
     "convex": 1,
     "api-security-best-practices": 1,
-    "threejs-materials": 1
+    "threejs-lighting": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -94,5 +94,5 @@
     "mobile design": 1,
     "swift data": 1
   },
-  "lastUpdated": "2026-05-01T19:55:46.366Z"
+  "lastUpdated": "2026-05-01T19:55:48.828Z"
 }
