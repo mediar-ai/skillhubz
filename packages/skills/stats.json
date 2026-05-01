@@ -30,7 +30,8 @@
     "ui-ux-pro-max": 1,
     "web-design-guidelines": 1,
     "convex": 1,
-    "api-security-best-practices": 1
+    "api-security-best-practices": 1,
+    "threejs-materials": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -91,8 +92,7 @@
     "enid": 1,
     "ProMotion": 1,
     "mobile design": 1,
-    "swift data": 1,
-    "threejs animation": 1
+    "swift data": 1
   },
-  "lastUpdated": "2026-05-01T19:54:38.097Z"
+  "lastUpdated": "2026-05-01T19:55:46.366Z"
 }
