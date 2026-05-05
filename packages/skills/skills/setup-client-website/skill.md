@@ -38,6 +38,8 @@ These are OFF by default. Only enable them if the invoker mentions the feature e
 
 **Get-Started covers every self-serve primary CTA:** downloads (Mac `.dmg`, App Store, `/download`), installs (`/install`, Chrome Web Store, browser extension listings), and signups (SaaS `app.<domain>` entry, waitlist, trial start). They all fire the same `get_started_click` PostHog event and roll into one "Get Started" column in the dashboard. Aliases like `download-link` or `signup-link` map to this flag.
 
+**Always-on (NOT behind a flag): inbound email.** Every client site sends from `matt@<domain>` (per `defaults.sender_local_part` in `~/social-autoposter/config.json`). Because that's a real human-named address, recipients WILL hit Reply. Every site MUST therefore wire Resend Inbound (Phase 3.5k) so replies route to `defaults.inbound_forward_email` (`i@m13v.com` by default). This is not optional regardless of which feature flags are on. Studyly 2026-05-05 shipped without inbound and we lost replies from 6 captured signups before noticing.
+
 **When a flag is off:** do not add the corresponding CTA components, do not add the corresponding field to `config.json`, and skip the related Phase 8 checklist rows.
 
 - Book-a-call off → no `<BookCallLink>`/`<BookCallTracker>`, no Cal.com event type, no `booking_link` in `config.json`.
@@ -1715,6 +1717,7 @@ curl -s -o /dev/null -w "sitemap:     %{http_code}\n" http://localhost:3000/site
 curl -s http://localhost:3000/sitemap.xml | grep -c "<url>"                                # > 0
 curl -s http://localhost:3000/robots.txt | grep -q "Sitemap: http.*sitemap.xml" && echo OK # OK
 curl -s http://localhost:3000/sitemap | grep -q "<html" && echo "HTML sitemap OK"          # HTML sitemap OK
+grep -lE "walkPages|fs\.readdirSync" src/app/sitemap.ts src/app/robots.ts || echo "OK no hand-roll"  # both must be one-line generateSitemap/generateRobots calls; matches = forbidden hand-roll (Cyrano + PieLine 2026-04-30)
 ```
 
 If any check fails, stop and fix before continuing. A missing sitemap (XML or HTML) is the #1 silent SEO + UX breakage across client sites — the c0nsl.com 2026-04-21 post-launch 404 on `/sitemap` was caused by skipping the HTML sitemap step.
@@ -2218,9 +2221,93 @@ export async function POST(req: Request) {
 
 Update the contact page component to POST to this route instead of using `mailto:`.
 
-### 3.5k. Resend inbound webhook (optional, recommended) — `src/app/api/webhooks/resend/route.ts`
+### 3.5k. Resend inbound webhook (MANDATORY) — `src/app/api/webhooks/resend/route.ts`
 
-Port `~/your-prior-site/src/app/api/webhooks/resend/route.ts`. Handles `email.received` events, logs to Neon, forwards to `you@example.com`. Needed only if the client uses `<SENDER_LOCAL>@DOMAIN` as a real inbound address.
+**Every client site MUST wire inbound.** The default `from` address is a real human address (`matt@<domain>` per `defaults.sender_local_part`), so users WILL hit Reply. Without inbound, replies bounce silently and you lose every "redirect broke", "I forgot my password", "can I get a refund" message that recipients send. Studyly 2026-05-05 shipped without inbound and burned 6 captured signups before someone noticed; do not repeat.
+
+The pipeline (mirrors fazm.ai, s4l.ai, assrt.ai, mk0r.com, cl0ne.ai, vipassana.cool):
+1. Apex `MX 10 inbound-smtp.us-east-1.amazonaws.com.` lands inbound mail at Resend (built on AWS SES).
+2. Resend POSTs an `email.received` event to `https://<domain>/api/webhooks/resend`.
+3. Webhook handler: (a) fetches the full body via `https://api.resend.com/emails/receiving/<id>`, (b) inserts into `<slug>_emails` (direction='inbound'), (c) forwards to `defaults.inbound_forward_email` (read from `~/social-autoposter/config.json`, currently `i@m13v.com`) so a human actually sees it.
+4. Same handler also receives delivery events (sent/delivered/opened/clicked/bounced) and updates the corresponding outbound row.
+
+**Steps (do all four in order, do not skip):**
+
+```bash
+# 1. Enable receiving on the Resend domain (additive to sending; idempotent).
+RESEND_KEY=$(security find-generic-password -l "$(jq -r '.defaults.resend_master_key_keychain' ~/social-autoposter/config.json)" -w)
+DOMAIN_ID=<from Phase 3.5 add-domain output>
+curl -s -X PATCH -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
+  -d '{"capabilities":{"receiving":"enabled"}}' \
+  "https://api.resend.com/domains/$DOMAIN_ID" | python3 -m json.tool
+
+# 2. Add the inbound MX on the apex (Phase 6e DNS block already includes this — see there for the gcloud command).
+
+# 3. Re-verify so Resend picks up the new MX:
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" \
+  "https://api.resend.com/domains/$DOMAIN_ID/verify"
+# Poll until the Receiving record reads status=verified:
+curl -s -H "Authorization: Bearer $RESEND_KEY" "https://api.resend.com/domains/$DOMAIN_ID" \
+  | python3 -c "import json,sys;d=json.load(sys.stdin);print([r for r in d['records'] if r['record']=='Receiving'])"
+
+# 4. Register the webhook endpoint with all delivery + receiving events:
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" -H "Content-Type: application/json" \
+  -d '{"endpoint":"https://<DOMAIN>/api/webhooks/resend","events":["email.received","email.sent","email.delivered","email.delivery_delayed","email.bounced","email.complained","email.opened","email.clicked"]}' \
+  "https://api.resend.com/webhooks" | python3 -m json.tool
+# → save the returned signing_secret to keychain as resend-<slug>-webhook-secret
+SIGNING_SECRET=<from response>
+security add-generic-password -U -a "you@example.com" -s "resend-<SLUG>-webhook-secret" -w "$SIGNING_SECRET"
+```
+
+**Webhook handler code:** Port `~/studyly-website/src/app/api/webhooks/resend/route.ts` verbatim. Only changes:
+- Replace every `studyly_emails` with `<slug>_emails`.
+- Replace the `endsWith("@studyly.io")` guard with the client domain.
+- Replace the `STUDYLY_INBOX_FORWARD || "i@m13v.com"` default with `<SLUG>_INBOX_FORWARD || <jq -r '.defaults.inbound_forward_email' from config.json>`.
+- Keep the `signups` lookup if the site uses gated-redirect; otherwise drop it (the reference table for inbound linkage is `<slug>_emails` itself).
+
+**Outbound logging.** Every `/api/signup`, `/api/newsletter`, and `/api/contact` route MUST also insert an `outbound` row into `<slug>_emails` so delivery events can update the same row by `resend_id`. Without this, opens/clicks/bounces have no row to update and silently no-op. Reference: `~/studyly-website/src/app/api/signup/route.ts` (the second `INSERT INTO studyly_emails (..., direction='outbound', ..., status='sent')` block after the `resend.emails.send` call).
+
+**`<slug>_emails` schema** (already required by Phase 3.5l shared-resource block; this section just clarifies the indices the inbound handler relies on):
+
+```sql
+CREATE TABLE IF NOT EXISTS <slug>_emails (
+  id BIGSERIAL PRIMARY KEY,
+  resend_id TEXT UNIQUE,
+  direction TEXT NOT NULL CHECK (direction IN ('inbound','outbound')),
+  from_email TEXT NOT NULL,
+  to_email TEXT NOT NULL,
+  subject TEXT,
+  body_text TEXT,
+  body_html TEXT,
+  status TEXT,
+  utm_source TEXT, utm_medium TEXT, utm_campaign TEXT,
+  signup_id BIGINT REFERENCES signups(id) ON DELETE SET NULL,  -- only if gated-redirect is on
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  delivered_at TIMESTAMPTZ, opened_at TIMESTAMPTZ, clicked_at TIMESTAMPTZ
+);
+CREATE INDEX IF NOT EXISTS idx_<slug>_emails_to ON <slug>_emails(to_email, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_<slug>_emails_from ON <slug>_emails(from_email, created_at DESC);
+```
+
+**Exit criterion (MANDATORY end-to-end test before Phase 9):**
+
+```bash
+# Send a real email FROM your i@m13v.com inbox TO matt@<DOMAIN>:
+/opt/homebrew/bin/python3.11 -c "
+import sys; sys.path.insert(0, '/Users/matthewdi/gmail-api')
+from gmail_dwd_client import gmail_for
+print(gmail_for('i@m13v.com').send_message(to='matt@<DOMAIN>', subject='inbound test', body='roundtrip test'))
+"
+# Within ~30s, verify ALL THREE of:
+# (a) Cloud Run logs show '[<Slug> Webhook] email.received <id>'
+PSQL=/opt/homebrew/bin/psql
+$PSQL "$(security find-generic-password -l "neon-<SLUG>-pooled-url" -w)" \
+  -c "SELECT direction, from_email, to_email, subject, status FROM <slug>_emails WHERE direction='inbound' ORDER BY created_at DESC LIMIT 1;"
+# (b) the row above shows direction='inbound', from='i@m13v.com', status='received'
+# (c) i@m13v.com inbox received a message subject-prefixed '[<Slug> Inbound]'
+```
+
+If any of (a/b/c) fail, do NOT proceed to Phase 9. Inbound is the ONLY way a real human sees customer replies; a silent failure here means lost revenue and lost trust.
 
 ### 3.5k.1. Per-DM short-link redirect (book-a-call scoped) — `src/app/r/[code]/route.ts`
 
@@ -2910,13 +2997,22 @@ gcloud dns record-sets create "send.DOMAIN." --type=TXT --ttl=300 \
   --rrdatas='"v=spf1 include:amazonses.com ~all"' \
   --zone=DNS_ZONE --project=GCP_PROJECT_ID
 gcloud dns record-sets create "resend._domainkey.DOMAIN." --type=TXT --ttl=300 \
-  --rrdatas='"<DKIM value from Resend — usually 2 quoted chunks>"' \
+  --rrdatas='"<DKIM value from Resend, usually 2 quoted chunks>"' \
   --zone=DNS_ZONE --project=GCP_PROJECT_ID
 gcloud dns record-sets create "send.DOMAIN." --type=MX --ttl=300 \
   --rrdatas="10 feedback-smtp.us-east-1.amazonses.com." \
   --zone=DNS_ZONE --project=GCP_PROJECT_ID
 
-# Click "Verify" in the Resend dashboard after these propagate (~2-5 min).
+# INBOUND MX on the apex (MANDATORY, see Phase 3.5k). Lands replies at Resend.
+# Resend Inbound is built on AWS SES; the MX target is the SES inbound endpoint.
+gcloud dns record-sets create "DOMAIN." --type=MX --ttl=300 \
+  --rrdatas="10 inbound-smtp.us-east-1.amazonaws.com." \
+  --zone=DNS_ZONE --project=GCP_PROJECT_ID
+
+# Trigger Resend re-verification after these propagate (~5-30s on Cloud DNS):
+RESEND_KEY=$(security find-generic-password -l "$(jq -r '.defaults.resend_master_key_keychain' ~/social-autoposter/config.json)" -w)
+curl -s -X POST -H "Authorization: Bearer $RESEND_KEY" \
+  "https://api.resend.com/domains/<DOMAIN_ID>/verify"
 ```
 
 ### 6f. Create GitHub Actions workflow for CI/CD (WIF, not SA keys)
@@ -3098,9 +3194,9 @@ clientname: {
 },
 ```
 
-### 7c. Google Search Console
+### 7c. Google Search Console (MANDATORY, runs here, not deferred)
 
-GSC domain registration, DNS TXT verification, and sitemap submission are handled programmatically via the Site Verification + Search Console APIs. See the `gsc-seo-page` skill, "Onboarding a New Product > Step 1", for the exact commands. Do that step now if you want the domain verified before the final checklist, or defer it to the hand-off in Phase 9. Do not use the browser flow.
+Run `gsc-seo-page` skill > "Onboarding a New Product > Step 1" now (DNS TXT verify + add property + submit sitemap, all via the SA). Do NOT skip to Phase 9 with this undone — Phase 9 assumes the property already exists, and a missing property silently lets the site ship with zero GSC data attached for weeks (studyly.io 2026-04-30). Self-check before moving on: `set -a && source ~/social-autoposter/.env && set +a && python3 -c "import os; from google.oauth2 import service_account; from googleapiclient.discovery import build; sc = build('searchconsole','v1',credentials=service_account.Credentials.from_service_account_file(os.path.expanduser(os.environ['GSC_SA_KEY_PATH']), scopes=['https://www.googleapis.com/auth/webmasters.readonly'])); assert f'sc-domain:DOMAIN' in {s['siteUrl'] for s in sc.sites().list().execute().get('siteEntry',[])}, 'SA cannot see property'; assert sc.sitemaps().list(siteUrl='sc-domain:DOMAIN').execute().get('sitemap'), 'no sitemap submitted'; print('OK_GSC')"` (replace `DOMAIN` with the bare domain twice). Browser flow forbidden unless the SA literally cannot DNS-verify (then use the `google-search-console` skill).
 
 ---
 
@@ -3114,15 +3210,11 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] Video embeds play
 - [ ] Scheduling widget loads
 - [ ] Social media icons present in footer
-- [ ] JSON-LD structured data on every page (validate with Google Rich Results Test)
-- [ ] **XML sitemap is dynamic and returns 200** — `src/app/sitemap.ts` must import `generateSitemap` from `@seo/components/server` (never hand-rolled, never static). Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/sitemap.xml` prints `200`, and `curl -s https://DOMAIN/sitemap.xml | grep -c "<url>"` returns a count equal to the number of public pages (not 0)
+- [ ] **JSON-LD structured data lands in served HTML on every page** (not just in source). Verify: `curl -s https://DOMAIN/ | grep -c 'application/ld+json'` returns at least 1 on the homepage (expect 2 or more when Organization, WebPage, and SoftwareApplication all ship). A `<script type="application/ld+json">` nested inside a client component or rendered in the wrong DOM position can fail to reach SSR output, leaving Google Rich Results Test reporting "no structured data" with no clue from the source code. Root cause of the mk0r 2026-04-29 incident where 5 schema types existed in source but 0 reached crawlers
+- [ ] **XML sitemap is dynamic and returns 200** — `src/app/sitemap.ts` must import `generateSitemap` from `@seo/components/server` (never hand-rolled, never static). Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/sitemap.xml` prints `200`, and `curl -s https://DOMAIN/sitemap.xml | grep -c "<url>"` returns a count equal to the number of public pages (not 0). **Also verify the canonical inside the feed:** `curl -s https://DOMAIN/sitemap.xml | grep -oE '<loc>[^<]+' | grep -v '<loc>https://DOMAIN/' | head -1` MUST print nothing (any output means at least one entry points at the wrong canonical, usually because `baseUrl` in `sitemap.ts` was hardcoded to a defunct prelaunch domain). Root cause of Cyrano + PieLine 2026-04-29 where sitemaps returned 200 with the right URL count, but every `<loc>` pointed at a stale domain that 307-redirected, sending mixed-canonical signals to Google for months
 - [ ] **HTML sitemap page at /sitemap returns 200** — `src/app/sitemap/page.tsx` must exist and render `HtmlSitemap` from `@seo/components`. Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/sitemap` prints `200` (NOT 404); `curl -s https://DOMAIN/sitemap | grep -q "<html" && echo OK` prints `OK`. This is a human-readable page, not the XML feed — both MUST exist
 - [ ] Sitemap link in Footer (under Company column) so humans can reach `/sitemap` without typing the URL
-- [ ] **robots.txt returns 200 AND references the sitemap URL** — `src/app/robots.ts` must import `generateRobots` from `@seo/components/server`. Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/robots.txt` prints `200`, and `curl -s https://DOMAIN/robots.txt | grep -q "Sitemap: https://DOMAIN/sitemap.xml" && echo OK` prints `OK`
-- [ ] **robots.txt allows AI crawlers** — `curl -s https://DOMAIN/robots.txt | grep -qE 'User-agent: (GPTBot|ClaudeBot|PerplexityBot)' && echo OK || echo "FAIL: AI allowlist missing"` must print `OK`. Sites blocking AI crawlers lose citation eligibility in ChatGPT, Claude.ai, and Perplexity. If `generateRobots` from `@seo/components/server` is used correctly this is automatic — a failure here means a hand-rolled robots.ts is missing the allow rules
-- [ ] **XML sitemap uses the production domain in every `<loc>`** — `curl -s https://DOMAIN/sitemap.xml | grep -oE '<loc>[^<]+' | grep -v "https://DOMAIN" | head -5` must return no output. Any `<loc>` not starting with `https://DOMAIN` is a stale canonical pointing crawlers at a different origin (localhost, staging, old domain) — this silently attributes all SEO equity to the wrong site
-- [ ] **JSON-LD is present in served HTML** — `curl -s https://DOMAIN/ | grep -c 'application/ld+json'` must return `>= 1`. A count of 0 means the JSON-LD script was placed in `<body>` without a server component wrapper and Next.js did not render it, or the layout was deployed without the JSON-LD block entirely
-- [ ] **No hand-rolled sitemap/robots code** — `grep -r "walkPages\|fs.readdirSync" src/app/sitemap.ts src/app/robots.ts` returns no matches (the helpers are the implementation; if a site rolls its own walk logic, flag it for migration)
+- [ ] **robots.txt returns 200 AND references the sitemap URL** — `src/app/robots.ts` must import `generateRobots` from `@seo/components/server`. Verify: `curl -s -o /dev/null -w "%{http_code}\n" https://DOMAIN/robots.txt` prints `200`, and `curl -s https://DOMAIN/robots.txt | grep -q "Sitemap: https://DOMAIN/sitemap.xml" && echo OK` prints `OK`. **Also verify the AI crawler allowlist actually landed:** `curl -s https://DOMAIN/robots.txt | grep -cE '^User-agent: (GPTBot|ClaudeBot|PerplexityBot)'` MUST return 3 (proves `generateRobots` was not overridden with `aiAllowlist: []` or replaced by a hand-rolled Disallow-by-default rule). A robots.txt that returns 200 and lists the sitemap can still ship without GPTBot/ClaudeBot/PerplexityBot entries, which silently blocks AI crawlers from learning the site exists. Root cause of the s4l, cl0ne, mk0r, studyly, mediar 2026-04-29 batch fix where five live sites were missing AI bot allowlists despite passing the previous version of this check
 - [ ] llms.txt accessible at /llms.txt (static file at `public/llms.txt`, returns 200 with the curated brief; `config.json`'s `llms_txt` field for this project points at `~/<repo>/public/llms.txt`)
 - [ ] Lighthouse desktop score >= 85
 - [ ] Lighthouse mobile score >= 70
@@ -3195,6 +3287,7 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
      | python3 -c "import json,sys; f=json.load(sys.stdin)['projects'][0]['funnel']; print('email_signups=',f.get('email_signups'),'get_started_clicks=',f.get('get_started_clicks'))"
    ```
    Both must be ≥ 1. If `email_signups=0` while real signups exist in the Resend audience, EmailGateModal is missing the `newsletter_subscribed` capture.
+- [ ] **BLOCKING: inbound email roundtrip works (Phase 3.5k exit criterion).** From `i@m13v.com`, send a real email to `matt@<DOMAIN>`. Within 60s verify (a) Cloud Run logs show `[<Slug> Webhook] email.received <id>`, (b) `<slug>_emails` has a fresh `direction='inbound'` row with `from_email='i@m13v.com'`, `status='received'`, and (c) `i@m13v.com` inbox has a forwarded message with subject prefix `[<Slug> Inbound]`. If any step fails, the receiving DNS/webhook/handler is broken and replies will silently bounce. Studyly 2026-05-05: 6 captured signups never made it to Jungle, but their replies to "did the redirect break?" had no inbox to land in. **Do not ship without this verification.**
 - [ ] **BLOCKING — analytics wiring audit passes.** Run `cd ~/social-autoposter && python3 scripts/check_analytics_wiring.py` and verify the new site shows `OK` (exit code 0 when every site passes). The audit catches two classes of silent failure: (a) hand-rolled provider that fails to assign `window.posthog` so library helpers no-op, and (b) CTA-shaped event names outside the canonical set (`cta_clicked` with a trailing d, `download_email_sent`, `waitlist_signup`, `contact_submitted`, `get_leads_signup`, `landing_cta_clicked`, etc.) that the cross-project dashboard will silently ignore. **Do not ship the site if this audit reports violations for it.** The historical failure mode is: the manual "click one CTA and see it in PostHog" check succeeds because the event name looks plausible, but the dashboard queries `cta_click` / `get_started_click` / `schedule_click` / `newsletter_subscribed` exclusively (see `~/social-autoposter/scripts/project_stats_json.py:238, 302-306`), so invented names are invisible forever.
 - [ ] **BLOCKING — deploy wiring audit passes.** Run `cd ~/social-autoposter && python3 scripts/check_deploy_wiring.py` and verify the new site shows `OK`. Closes the gap that left studyly without auto-deploy on 2026-04-28: a Cloud Run client site got registered in `config.json` with `production_trigger: "manual"` because Phase 6f (workflow + WIF) was skipped, and nothing in the pipeline noticed. The audit fails when (a) `target=cloudrun` and `production_trigger=push:main` but `.github/workflows/deploy-cloudrun.yml` is missing (push-to-main is a no-op), (b) the same target/trigger pair where the workflow exists but does not actually trigger on push to main, or (c) `production_trigger=manual` with no workflow at all (the studyly state). **Do not register a cloudrun site in `config.json` with `production_trigger: "push:main"` until 6f is complete and this audit returns 0.**
 - [ ] **[opt-in: gated-redirect only] BLOCKING: destination-leak audit passes.** With `gated-redirect` on, the brand and app domain must NOT appear in any user-visible source under `src/` outside the `/api/signup` welcome-email payload. Closes the studyly leak found 2026-04-28 where the destination `app.jungleai.com` was printed in 11+ places (homepage final CTA, `/faq` Q&A, `/about`, footer, `metadata.description`, OpenGraph, JSON-LD `sameAs`, three `/t/` topic pages, an `/alternative/` page, and `/privacy`/`/terms`) despite the anchor-level rule already being in place. Run from the website repo root, with `BRAND` set to the brand domain stem (e.g. `jungleai.com`) and `APP` set to the app subdomain (e.g. `app.jungleai.com`):
@@ -3224,7 +3317,7 @@ GSC domain registration, DNS TXT verification, and sitemap submission are handle
 - [ ] **[opt-in: book-a-call only]** `scripts/project_stats.py` `get_client_slug()` maps the project name to the client's slug
 - [ ] **[opt-in: get-started only]** one real click on the primary Get-Started CTA (download, install, or signup button) fires a `get_started_click` event visible in PostHog Activity for the site's `$host` within ~30 seconds (verifies `trackGetStartedClick` is reaching `window.posthog`, not silently no-op'ing). Use the HogQL API as a machine check, not just the UI: `curl -s -H "Authorization: Bearer $POSTHOG_PERSONAL_API_KEY" "$POSTHOG_HOST/api/projects/$POSTHOG_PROJECT_ID/query/" -H 'content-type: application/json' -d '{"query":{"kind":"HogQLQuery","query":"SELECT count() FROM events WHERE event = '"'"'get_started_click'"'"' AND properties.$host = '"'"'DOMAIN'"'"' AND timestamp > now() - interval 5 minute"}}'` must return `>= 1`. Same pattern for `newsletter_subscribed` on a test email submit and `schedule_click` on a book-a-call click. **Do not ship if any in-scope event returns 0.**
 - [ ] `config.json` entry has `posthog.project_id` (real numeric id, never `REPLACE_WITH_..._ID`), `posthog.api_key_env`; **if book-a-call in scope,** also has top-level `booking_link` (the real `https://cal.com/team/<TEAM>/<SLUG>` URL, never `/contact`/`/install`); **if get-started in scope,** also has top-level `get_started_link` (the real self-serve destination URL, not a placeholder). Stats pipeline dry-run shows non-zero pageviews / `cta_click` counts (and non-zero bookings if book-a-call in scope, and non-zero `get_started_clicks` after at least one real click if get-started in scope)
-- [ ] Google Search Console ownership verified
+- [ ] Google Search Console ownership verified — Phase 7c self-check (`OK_GSC`) passed
 - [ ] Client added to SEO pages dashboard
 
 ---
@@ -3235,7 +3328,7 @@ Phase 8 verifies the site itself is healthy. Phase 9 is the hand-off: the pipeli
 
 Invoke `gsc-seo-page` > "Onboarding a New Product" and run its five steps, then run step 6 below from this skill.
 
-1. Register the domain in Google Search Console via the Site Verification + Search Console APIs (no browser).
+1. (already done in Phase 7c — verify via `OK_GSC` self-check, do not re-register).
 2. Add the product to `~/social-autoposter/config.json` with `weight` (default `10`, matching top-tier projects; lower only if explicitly requested) and the five `landing_pages` fields (`repo`, `github_repo`, `base_url`, `gsc_property`, `product_source`).
 3. Activate the launchd jobs via `launchctl load` (labels are `<defaults.launchd_label_prefix>.social-gsc-seo` and `<defaults.launchd_label_prefix>.social-serp-seo`; the prefix is read from `~/social-autoposter/config.json`).
 4. Backfill GSC queries with `seo/fetch_gsc_queries.py --product ClientName`.
