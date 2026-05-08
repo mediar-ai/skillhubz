@@ -32,7 +32,7 @@
     "convex": 1,
     "api-security-best-practices": 1,
     "threejs-lighting": 1,
-    "vercel-react-best-practices": 1
+    "vercel-composition-patterns": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -109,5 +109,5 @@
     "gan generator evaluator": 1,
     "tailwind": 1
   },
-  "lastUpdated": "2026-05-08T04:08:57.230Z"
+  "lastUpdated": "2026-05-08T04:09:06.003Z"
 }
