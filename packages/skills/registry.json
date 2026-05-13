@@ -6989,5 +6989,24 @@
     "lines": 170,
     "size": 6043,
     "updated": "2026-05-07T02:37:42.299Z"
+  },
+  {
+    "name": "mk0r-cli",
+    "description": "Programmatic CLI for the appmaker/mk0r platform: list projects, exec inside E2B sandboxes, stream chat with the VM agent, toggle SOAX residential IP, manage schedules, copy files. Sticky default proje",
+    "author": "m13v",
+    "version": "1.0.0",
+    "tags": [
+      "cli",
+      "e2b",
+      "sandbox",
+      "ai-agent",
+      "appmaker",
+      "mk0r"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 161,
+    "size": 7447,
+    "updated": "2026-05-13T02:45:24.617Z"
   }
 ]
