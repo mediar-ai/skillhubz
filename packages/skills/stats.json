@@ -24,7 +24,7 @@
     "deep-research-pro": 2,
     "tool-design": 1,
     "debian-linux-triage": 1,
-    "github": 1,
+    "github": 2,
     "stream-coding": 1,
     "canvas-design": 1,
     "ui-ux-pro-max": 1,
@@ -35,8 +35,7 @@
     "baseline-ui": 1,
     "agent-browser": 2,
     "ui-animation": 1,
-    "xlsx-toolkit": 1,
-    "docker-expert": 1
+    "xlsx-toolkit": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -127,5 +126,5 @@
     "vibe-trading-mcp": 1,
     "nginx": 1
   },
-  "lastUpdated": "2026-05-13T15:05:15.245Z"
+  "lastUpdated": "2026-05-13T15:05:17.254Z"
 }
