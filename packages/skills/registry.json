@@ -6955,21 +6955,22 @@
   },
   {
     "name": "broadcast-newsletter",
-    "description": "End-to-end newsletter pipeline: investigate recent features, draft, send via API endpoint, and track delivery/open/click metrics.",
+    "description": "End-to-end newsletter pipeline: investigate recent features, draft with CTA rules, send via API endpoint with optional image/GIF embed, track delivery/open/click metrics.",
     "author": "m13v",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "tags": [
-      "email",
       "newsletter",
+      "email",
       "broadcast",
+      "resend",
       "crm",
-      "resend"
+      "marketing"
     ],
     "category": "marketing",
     "excerpt": "---",
-    "lines": 118,
-    "size": 3806,
-    "updated": "2026-04-30T16:54:58.146Z"
+    "lines": 191,
+    "size": 10045,
+    "updated": "2026-05-19T21:20:38.292Z"
   },
   {
     "name": "influencer-hiring",
