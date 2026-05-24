@@ -1,0 +1,17 @@
+{
+  "name": "x-twitter-scraper",
+  "description": "Use Xquik for X/Twitter tweet search, user lookup, profile tweets, follower export, media download, monitors, webhooks, posting workflows, and MCP-backed API exploration",
+  "author": "Xquik-dev",
+  "version": "1.0.0",
+  "tags": [
+    "x",
+    "twitter",
+    "social-media",
+    "api",
+    "web-scraping",
+    "automation",
+    "mcp"
+  ],
+  "category": "web-scraping",
+  "license": "MIT"
+}
