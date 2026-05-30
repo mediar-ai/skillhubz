@@ -7009,5 +7009,26 @@
     "lines": 161,
     "size": 7447,
     "updated": "2026-05-13T02:45:24.617Z"
+  },
+  {
+    "name": "x-twitter-scraper",
+    "description": "Use Xquik for X/Twitter tweet search, user lookup, profile tweets, follower export, media download, monitors, webhooks, posting workflows, and MCP-backed API exploration",
+    "author": "Xquik-dev",
+    "version": "1.0.0",
+    "tags": [
+      "x",
+      "twitter",
+      "social-media",
+      "api",
+      "web-scraping",
+      "automation",
+      "mcp"
+    ],
+    "category": "web-scraping",
+    "excerpt": "Use Xquik for X/Twitter tweet search, user lookup, profile tweets, follower export, media download, monitors, webhooks, posting workflows, and MCP-bac",
+    "lines": 122,
+    "size": 5722,
+    "updated": "2026-05-24T13:24:32Z",
+    "sourceUrl": "https://github.com/Xquik-dev/x-twitter-scraper"
   }
 ]
