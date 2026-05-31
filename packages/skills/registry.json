@@ -7030,5 +7030,25 @@
     "size": 5722,
     "updated": "2026-05-24T13:24:32Z",
     "sourceUrl": "https://github.com/Xquik-dev/x-twitter-scraper"
+  },
+  {
+    "name": "x-twitter-getxapi",
+    "description": "Use GetXAPI for X/Twitter tweet search, user lookup, profile tweets, replies, and media reads through a single REST surface",
+    "author": "getxapi",
+    "version": "1.0.0",
+    "tags": [
+      "x",
+      "twitter",
+      "social-media",
+      "api",
+      "web-scraping",
+      "automation"
+    ],
+    "category": "web-scraping",
+    "excerpt": "Use GetXAPI for X/Twitter tweet search, user lookup, profile tweets, replies, and media reads through a single REST surface.",
+    "lines": 64,
+    "size": 2760,
+    "updated": "2026-05-31T00:00:00Z",
+    "sourceUrl": "https://github.com/getxapi/getxapi-mcp"
   }
 ]
