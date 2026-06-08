@@ -38,7 +38,8 @@
     "xlsx-toolkit": 1,
     "setup-client-website": 1,
     "mcp-builder": 1,
-    "shadcn-ui": 1
+    "shadcn-ui": 1,
+    "specrate": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -161,8 +162,7 @@
     "photoshop": 1,
     "google search console": 1,
     "humanize": 1,
-    "posthog": 1,
-    "obsidian-bases": 1
+    "posthog": 1
   },
-  "lastUpdated": "2026-06-08T10:09:55.170Z"
+  "lastUpdated": "2026-06-08T10:11:08.766Z"
 }
