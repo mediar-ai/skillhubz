@@ -40,7 +40,8 @@
     "mcp-builder": 1,
     "shadcn-ui": 1,
     "specrate": 1,
-    "pptx-toolkit": 1
+    "pptx-toolkit": 1,
+    "product-marketing-context": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -169,8 +170,7 @@
     "langfuse": 1,
     "ultracode": 1,
     "book writing bestseller": 1,
-    "mobile app": 1,
-    "seo": 1
+    "mobile app": 1
   },
-  "lastUpdated": "2026-06-11T00:33:20.098Z"
+  "lastUpdated": "2026-06-11T00:34:13.725Z"
 }
