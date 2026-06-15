@@ -112,7 +112,7 @@
     "notion": 1,
     "obsidian": 3,
     "open cowork": 1,
-    "scraping": 2,
+    "scraping": 1,
     "raccoon": 1,
     "youtube": 1,
     "vivaldi": 1,
@@ -190,7 +190,8 @@
     "computer use": 1,
     "image prompt": 1,
     "humanizer": 1,
-    "gltf": 1
+    "gltf": 1,
+    "charts": 1
   },
-  "lastUpdated": "2026-06-15T16:08:27.404Z"
+  "lastUpdated": "2026-06-15T16:08:29.575Z"
 }
