@@ -193,11 +193,10 @@
     "humanizer": 1,
     "gltf": 1,
     "charts": 1,
-    "animation": 2,
+    "animation": 3,
     "slides": 1,
     "3d": 1,
-    "gcp": 1,
-    "gsap": 1
+    "gcp": 1
   },
-  "lastUpdated": "2026-06-18T10:49:28.261Z"
+  "lastUpdated": "2026-06-18T10:49:34.149Z"
 }
