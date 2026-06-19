@@ -18,7 +18,7 @@
     "xlsx": 1,
     "brand-guidelines": 1,
     "deep-research": 14,
-    "frontend-design": 7,
+    "frontend-design": 6,
     "docx": 1,
     "seo-geo": 1,
     "deep-research-pro": 2,
@@ -44,7 +44,8 @@
     "competitor-teardown": 1,
     "vercel-react-native-skills": 1,
     "remotion-best-practices": 1,
-    "golang-pro": 1
+    "golang-pro": 1,
+    "seo-audit": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -202,5 +203,5 @@
     "codex": 1,
     "goal": 1
   },
-  "lastUpdated": "2026-06-19T10:30:43.903Z"
+  "lastUpdated": "2026-06-19T10:30:51.846Z"
 }
