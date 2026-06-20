@@ -27,14 +27,14 @@
     "github": 2,
     "stream-coding": 1,
     "canvas-design": 1,
-    "ui-ux-pro-max": 3,
+    "ui-ux-pro-max": 2,
     "web-design-guidelines": 1,
     "convex": 1,
     "api-security-best-practices": 1,
     "threejs-lighting": 1,
     "baseline-ui": 1,
     "agent-browser": 2,
-    "ui-animation": 1,
+    "ui-animation": 2,
     "xlsx-toolkit": 1,
     "setup-client-website": 1,
     "mcp-builder": 1,
@@ -207,5 +207,5 @@
     "mac memory": 1,
     "email": 1
   },
-  "lastUpdated": "2026-06-20T22:31:41.355Z"
+  "lastUpdated": "2026-06-20T22:31:54.136Z"
 }
