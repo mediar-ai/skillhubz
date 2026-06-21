@@ -212,7 +212,8 @@
     "OpenAI account usage": 1,
     "github actions": 1,
     "llm orchestration": 1,
-    "deployment": 1
+    "deployment": 1,
+    "reverse engineer codebase spec": 1
   },
-  "lastUpdated": "2026-06-21T14:13:03.374Z"
+  "lastUpdated": "2026-06-21T17:59:18.319Z"
 }
