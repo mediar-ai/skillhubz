@@ -199,7 +199,7 @@
     "3d": 1,
     "gcp": 1,
     "motion": 1,
-    "grill": 1,
+    "grill": 2,
     "codex": 1,
     "goal": 2,
     "llm council": 1,
@@ -219,5 +219,5 @@
     "next.js react server components": 1,
     "fastapi-async-patterns": 1
   },
-  "lastUpdated": "2026-06-22T02:23:55.063Z"
+  "lastUpdated": "2026-06-22T06:37:07.120Z"
 }
