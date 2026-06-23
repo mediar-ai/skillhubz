@@ -118,7 +118,7 @@
     "raccoon": 1,
     "youtube": 1,
     "vivaldi": 1,
-    "mcp": 2,
+    "mcp": 3,
     "gan generator evaluator": 1,
     "tailwind": 2,
     "negotiation": 1,
@@ -225,5 +225,5 @@
     "beginner": 1,
     "style": 1
   },
-  "lastUpdated": "2026-06-23T07:52:44.202Z"
+  "lastUpdated": "2026-06-23T10:14:10.063Z"
 }
