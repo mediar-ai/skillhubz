@@ -202,7 +202,7 @@
     "motion": 1,
     "grill": 2,
     "codex": 1,
-    "goal": 2,
+    "goal": 3,
     "llm council": 1,
     "onboarding codebase": 1,
     "touchdesigner audio reactive vfx": 1,
@@ -236,5 +236,5 @@
     "first-mate": 1,
     "product image": 1
   },
-  "lastUpdated": "2026-06-28T15:28:17.137Z"
+  "lastUpdated": "2026-06-28T15:58:47.202Z"
 }
