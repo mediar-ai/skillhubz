@@ -1,0 +1,16 @@
+{
+  "name": "x-twitter-getxapi",
+  "description": "Use GetXAPI for X/Twitter tweet search, user lookup, profile tweets, replies, and media reads through a single REST surface",
+  "author": "getxapi",
+  "version": "1.0.0",
+  "tags": [
+    "x",
+    "twitter",
+    "social-media",
+    "api",
+    "web-scraping",
+    "automation"
+  ],
+  "category": "web-scraping",
+  "license": "MIT"
+}
