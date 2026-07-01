@@ -119,7 +119,7 @@
     "open cowork": 1,
     "scraping": 1,
     "raccoon": 1,
-    "youtube": 1,
+    "youtube": 2,
     "vivaldi": 1,
     "mcp": 2,
     "gan generator evaluator": 1,
@@ -241,8 +241,7 @@
     "illustration": 1,
     "tavily": 1,
     "last30days": 1,
-    "metal": 1,
-    "watch video": 1
+    "metal": 1
   },
-  "lastUpdated": "2026-07-01T15:50:08.590Z"
+  "lastUpdated": "2026-07-01T15:50:10.719Z"
 }
