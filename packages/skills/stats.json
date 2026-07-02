@@ -197,7 +197,7 @@
     "humanizer": 1,
     "gltf": 1,
     "charts": 1,
-    "animation": 4,
+    "animation": 3,
     "slides": 1,
     "3d": 1,
     "gcp": 1,
@@ -243,7 +243,8 @@
     "last30days": 1,
     "metal": 1,
     "seo": 1,
-    "finance": 1
+    "finance": 1,
+    "performance": 1
   },
-  "lastUpdated": "2026-07-02T19:48:13.599Z"
+  "lastUpdated": "2026-07-02T19:48:15.555Z"
 }
