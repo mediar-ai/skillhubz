@@ -124,7 +124,7 @@
     "vivaldi": 1,
     "mcp": 2,
     "gan generator evaluator": 1,
-    "tailwind": 2,
+    "tailwind": 3,
     "negotiation": 1,
     "agent-reach": 1,
     "pdf": 1,
@@ -257,8 +257,7 @@
     "pixel diff": 1,
     "redesign QA": 1,
     "responsive": 2,
-    "brainstorming": 1,
-    "tanstack": 1
+    "brainstorming": 1
   },
-  "lastUpdated": "2026-07-06T17:54:41.782Z"
+  "lastUpdated": "2026-07-06T17:54:46.861Z"
 }
