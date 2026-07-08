@@ -52,7 +52,8 @@
     "webapp-testing": 1,
     "devops-engineer": 1,
     "huggingface-paper-publisher": 1,
-    "r3f-interaction": 1
+    "r3f-interaction": 1,
+    "swarm-planner": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -262,8 +263,7 @@
     "responsive": 2,
     "brainstorming": 1,
     "scheduled-tasks": 1,
-    "stripe billing": 1,
-    "autonomous": 1
+    "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:45:38.610Z"
+  "lastUpdated": "2026-07-08T19:46:03.976Z"
 }
