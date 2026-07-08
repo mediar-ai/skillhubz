@@ -4,7 +4,7 @@
     "github-pr-review": 8,
     "slack-automator": 15,
     "pdf-data-extractor": 5,
-    "form-filler": 3,
+    "form-filler": 4,
     "linkedin-scraper": 7,
     "e2e-test-recorder": 4,
     "notion-sync": 6,
@@ -260,8 +260,7 @@
     "responsive": 2,
     "brainstorming": 1,
     "scheduled-tasks": 1,
-    "stripe billing": 1,
-    "automation": 1
+    "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:27:04.498Z"
+  "lastUpdated": "2026-07-08T19:27:28.153Z"
 }
