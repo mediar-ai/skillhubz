@@ -51,7 +51,7 @@
     "supabase-postgres-best-practices": 1,
     "webapp-testing": 1,
     "devops-engineer": 1,
-    "huggingface-evaluation": 1
+    "huggingface-model-trainer": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -263,5 +263,5 @@
     "scheduled-tasks": 1,
     "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:24:43.568Z"
+  "lastUpdated": "2026-07-08T19:24:49.544Z"
 }
