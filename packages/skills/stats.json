@@ -52,7 +52,7 @@
     "webapp-testing": 1,
     "devops-engineer": 1,
     "huggingface-paper-publisher": 1,
-    "multi-agent-patterns": 1
+    "hosted-agents": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -264,5 +264,5 @@
     "scheduled-tasks": 1,
     "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:29:40.424Z"
+  "lastUpdated": "2026-07-08T19:29:46.752Z"
 }
