@@ -44,7 +44,7 @@
     "competitor-teardown": 1,
     "vercel-react-native-skills": 1,
     "remotion-best-practices": 1,
-    "golang-pro": 1,
+    "golang-pro": 2,
     "fixing-motion-performance": 1,
     "fixing-metadata": 1,
     "clean-code": 1,
@@ -260,8 +260,7 @@
     "responsive": 2,
     "brainstorming": 1,
     "scheduled-tasks": 1,
-    "stripe billing": 1,
-    "integration": 1
+    "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:28:06.711Z"
+  "lastUpdated": "2026-07-08T19:28:29.949Z"
 }
