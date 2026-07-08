@@ -49,7 +49,7 @@
     "fixing-metadata": 1,
     "clean-code": 1,
     "supabase-postgres-best-practices": 1,
-    "webapp-testing": 2,
+    "webapp-testing": 1,
     "devops-engineer": 1
   },
   "stars": {
@@ -260,7 +260,8 @@
     "responsive": 2,
     "brainstorming": 1,
     "scheduled-tasks": 1,
-    "stripe billing": 1
+    "stripe billing": 1,
+    "integration": 1
   },
-  "lastUpdated": "2026-07-08T19:27:46.744Z"
+  "lastUpdated": "2026-07-08T19:28:06.711Z"
 }
