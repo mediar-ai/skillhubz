@@ -51,7 +51,7 @@
     "supabase-postgres-best-practices": 1,
     "webapp-testing": 1,
     "devops-engineer": 1,
-    "agent-ui": 1
+    "ai-video-generation": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -263,5 +263,5 @@
     "scheduled-tasks": 1,
     "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:25:57.536Z"
+  "lastUpdated": "2026-07-08T19:26:03.027Z"
 }
