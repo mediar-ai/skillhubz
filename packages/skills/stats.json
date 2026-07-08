@@ -4,7 +4,7 @@
     "github-pr-review": 8,
     "slack-automator": 15,
     "pdf-data-extractor": 5,
-    "form-filler": 4,
+    "form-filler": 3,
     "linkedin-scraper": 7,
     "e2e-test-recorder": 4,
     "notion-sync": 6,
@@ -50,7 +50,8 @@
     "clean-code": 1,
     "supabase-postgres-best-practices": 1,
     "webapp-testing": 1,
-    "devops-engineer": 1
+    "devops-engineer": 1,
+    "huggingface-tool-builder": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -262,5 +263,5 @@
     "scheduled-tasks": 1,
     "stripe billing": 1
   },
-  "lastUpdated": "2026-07-08T19:27:28.153Z"
+  "lastUpdated": "2026-07-08T19:27:36.211Z"
 }
