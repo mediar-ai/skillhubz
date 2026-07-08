@@ -21,7 +21,7 @@
     "frontend-design": 6,
     "docx": 1,
     "seo-geo": 1,
-    "deep-research-pro": 3,
+    "deep-research-pro": 2,
     "tool-design": 1,
     "debian-linux-triage": 1,
     "github": 2,
@@ -260,7 +260,8 @@
     "responsive": 2,
     "brainstorming": 1,
     "scheduled-tasks": 1,
-    "stripe billing": 1
+    "stripe billing": 1,
+    "technologist": 1
   },
-  "lastUpdated": "2026-07-08T19:26:08.346Z"
+  "lastUpdated": "2026-07-08T19:26:25.622Z"
 }
