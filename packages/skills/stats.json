@@ -248,7 +248,7 @@
     "tavily": 1,
     "last30days": 1,
     "metal": 1,
-    "seo": 1,
+    "seo": 2,
     "finance": 1,
     "image": 1,
     "feishu lark": 1,
@@ -274,5 +274,5 @@
     "ponytail": 1,
     "rune": 1
   },
-  "lastUpdated": "2026-07-10T09:09:56.856Z"
+  "lastUpdated": "2026-07-10T10:35:55.845Z"
 }
