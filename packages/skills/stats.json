@@ -54,7 +54,8 @@
     "huggingface-paper-publisher": 1,
     "r3f-interaction": 1,
     "swarm-planner": 1,
-    "postbridge-social-growth": 1
+    "postbridge-social-growth": 1,
+    "java-architect": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -287,8 +288,7 @@
     "blender": 2,
     "helm": 1,
     "text conversation": 1,
-    "strategy slide": 1,
-    "security": 1
+    "strategy slide": 1
   },
-  "lastUpdated": "2026-07-14T07:10:59.573Z"
+  "lastUpdated": "2026-07-14T07:14:48.985Z"
 }
