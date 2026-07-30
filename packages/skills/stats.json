@@ -81,7 +81,7 @@
     "skill creator": 1,
     "design": 5,
     "everything-claude-code": 1,
-    "nextjs": 2,
+    "nextjs": 3,
     "freeze": 1,
     "excalidraw": 1,
     "优化": 1,
@@ -333,8 +333,7 @@
     "fal.ai": 1,
     "vector svg": 1,
     "medical research intermittent fasting": 1,
-    "vm": 1,
-    "webgl": 1
+    "vm": 1
   },
-  "lastUpdated": "2026-07-30T20:05:54.256Z"
+  "lastUpdated": "2026-07-30T20:05:58.956Z"
 }
