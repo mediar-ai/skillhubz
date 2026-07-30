@@ -28,7 +28,7 @@
     "stream-coding": 1,
     "canvas-design": 1,
     "ui-ux-pro-max": 3,
-    "web-design-guidelines": 1,
+    "web-design-guidelines": 2,
     "convex": 1,
     "api-security-best-practices": 2,
     "threejs-lighting": 1,
@@ -56,8 +56,7 @@
     "swarm-planner": 1,
     "postbridge-social-growth": 1,
     "java-architect": 1,
-    "web-artifacts-builder": 1,
-    "superdesign": 1
+    "web-artifacts-builder": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -337,5 +336,5 @@
     "medical research intermittent fasting": 1,
     "vm": 1
   },
-  "lastUpdated": "2026-07-30T20:10:35.016Z"
+  "lastUpdated": "2026-07-30T20:10:36.822Z"
 }
