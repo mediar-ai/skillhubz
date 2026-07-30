@@ -130,7 +130,7 @@
     "vivaldi": 1,
     "mcp": 2,
     "gan generator evaluator": 1,
-    "tailwind": 3,
+    "tailwind": 2,
     "negotiation": 1,
     "agent-reach": 1,
     "pdf": 1,
@@ -333,7 +333,8 @@
     "fal.ai": 1,
     "vector svg": 1,
     "medical research intermittent fasting": 1,
-    "vm": 1
+    "vm": 1,
+    "components": 1
   },
-  "lastUpdated": "2026-07-30T20:05:39.723Z"
+  "lastUpdated": "2026-07-30T20:05:50.608Z"
 }
