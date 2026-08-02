@@ -328,7 +328,7 @@
     "ui ux visual design": 1,
     "react native": 1,
     "off-page seo": 1,
-    "raycast": 1,
+    "raycast": 2,
     "mcp server audit": 1,
     "nextjs ai sdk mcp supabase security playwright": 1,
     "discord image generation": 1,
@@ -340,8 +340,7 @@
     "supply chain": 1,
     "security": 1,
     "figma": 1,
-    "macos security startup launchd": 1,
-    "raycast extension": 1
+    "macos security startup launchd": 1
   },
-  "lastUpdated": "2026-08-02T16:35:53.556Z"
+  "lastUpdated": "2026-08-02T16:36:40.637Z"
 }
