@@ -18,7 +18,7 @@
     "xlsx": 1,
     "brand-guidelines": 1,
     "deep-research": 14,
-    "frontend-design": 6,
+    "frontend-design": 7,
     "docx": 1,
     "seo-geo": 2,
     "deep-research-pro": 2,
@@ -56,7 +56,7 @@
     "swarm-planner": 1,
     "postbridge-social-growth": 1,
     "java-architect": 1,
-    "web-artifacts-builder": 2,
+    "web-artifacts-builder": 1,
     "read-github": 1
   },
   "stars": {
@@ -345,5 +345,5 @@
     "github readme": 1,
     "html artifact": 1
   },
-  "lastUpdated": "2026-08-03T14:36:21.992Z"
+  "lastUpdated": "2026-08-03T14:36:24.017Z"
 }
