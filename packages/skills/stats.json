@@ -101,7 +101,7 @@
     "realtime": 1,
     "testing": 2,
     "qdrant": 1,
-    "css": 1,
+    "css": 2,
     "sass": 1,
     "obsidian MCP": 1,
     "browser automation": 1,
@@ -342,8 +342,7 @@
     "figma": 1,
     "macos security startup launchd": 1,
     "code quality": 1,
-    "github readme": 1,
-    "html generation": 1
+    "github readme": 1
   },
-  "lastUpdated": "2026-08-03T14:27:41.243Z"
+  "lastUpdated": "2026-08-03T14:27:42.939Z"
 }
