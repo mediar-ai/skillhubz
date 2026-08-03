@@ -72,7 +72,7 @@
     "expense-logger": 1
   },
   "searches": {
-    "docs": 1,
+    "docs": 2,
     "copywriting": 1,
     "learning": 1,
     "scrape": 1,
@@ -341,8 +341,7 @@
     "security": 1,
     "figma": 1,
     "macos security startup launchd": 1,
-    "code quality": 1,
-    "generate readme": 1
+    "code quality": 1
   },
-  "lastUpdated": "2026-08-03T06:15:45.072Z"
+  "lastUpdated": "2026-08-03T06:15:50.695Z"
 }
