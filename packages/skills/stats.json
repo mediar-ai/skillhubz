@@ -34,7 +34,7 @@
     "threejs-lighting": 1,
     "baseline-ui": 1,
     "agent-browser": 2,
-    "ui-animation": 2,
+    "ui-animation": 3,
     "xlsx-toolkit": 1,
     "setup-client-website": 1,
     "mcp-builder": 1,
@@ -46,7 +46,7 @@
     "remotion-best-practices": 1,
     "golang-pro": 1,
     "fixing-motion-performance": 1,
-    "fixing-metadata": 2,
+    "fixing-metadata": 1,
     "clean-code": 1,
     "supabase-postgres-best-practices": 1,
     "webapp-testing": 1,
@@ -345,5 +345,5 @@
     "github readme": 1,
     "html artifact": 1
   },
-  "lastUpdated": "2026-08-03T14:36:32.981Z"
+  "lastUpdated": "2026-08-03T14:36:35.011Z"
 }
