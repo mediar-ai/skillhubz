@@ -72,7 +72,7 @@
     "expense-logger": 1
   },
   "searches": {
-    "docs": 2,
+    "docs": 1,
     "copywriting": 1,
     "learning": 1,
     "scrape": 1,
@@ -336,12 +336,12 @@
     "vector svg": 1,
     "medical research intermittent fasting": 1,
     "vm": 1,
-    "documentation": 1,
+    "documentation": 2,
     "supply chain": 1,
     "security": 1,
     "figma": 1,
     "macos security startup launchd": 1,
     "code quality": 1
   },
-  "lastUpdated": "2026-08-03T06:15:50.695Z"
+  "lastUpdated": "2026-08-03T06:15:52.406Z"
 }
