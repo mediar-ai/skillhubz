@@ -210,7 +210,7 @@
     "slides": 1,
     "3d": 1,
     "gcp": 1,
-    "motion": 1,
+    "motion": 2,
     "grill": 2,
     "codex": 1,
     "goal": 3,
@@ -348,5 +348,5 @@
     "browserbase": 1,
     "content": 1
   },
-  "lastUpdated": "2026-08-05T03:26:10.044Z"
+  "lastUpdated": "2026-08-05T05:41:14.885Z"
 }
