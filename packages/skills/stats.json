@@ -135,7 +135,7 @@
     "tailwind": 3,
     "negotiation": 1,
     "agent-reach": 1,
-    "pdf": 1,
+    "pdf": 2,
     "multi-model": 1,
     "wordpress": 1,
     "rhel": 1,
@@ -351,5 +351,5 @@
     "ui-slop": 1,
     "teach": 1
   },
-  "lastUpdated": "2026-08-08T06:06:34.515Z"
+  "lastUpdated": "2026-08-08T14:18:13.398Z"
 }
