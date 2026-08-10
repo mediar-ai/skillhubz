@@ -171,7 +171,7 @@
     "minimalist ui design dashboard": 1,
     "readme": 3,
     "opsera": 1,
-    "react": 2,
+    "react": 1,
     "contract legal nda": 1,
     "impeccable": 3,
     "prompt": 1,
@@ -355,7 +355,8 @@
     "delegate coding agent": 1,
     "orchestrator": 1,
     "routing": 1,
-    "transitions motion": 1
+    "transitions motion": 1,
+    "playwright": 1
   },
-  "lastUpdated": "2026-08-10T11:41:05.064Z"
+  "lastUpdated": "2026-08-10T11:41:37.950Z"
 }
