@@ -207,7 +207,7 @@
     "humanizer": 1,
     "gltf": 1,
     "charts": 1,
-    "animation": 4,
+    "animation": 3,
     "slides": 1,
     "3d": 1,
     "gcp": 1,
@@ -354,7 +354,8 @@
     "react testing": 1,
     "delegate coding agent": 1,
     "orchestrator": 1,
-    "routing": 1
+    "routing": 1,
+    "transitions motion": 1
   },
-  "lastUpdated": "2026-08-10T07:34:26.352Z"
+  "lastUpdated": "2026-08-10T07:34:36.479Z"
 }
