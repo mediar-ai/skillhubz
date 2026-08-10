@@ -133,7 +133,7 @@
     "vivaldi": 1,
     "mcp": 2,
     "gan generator evaluator": 1,
-    "tailwind": 3,
+    "tailwind": 4,
     "negotiation": 1,
     "agent-reach": 1,
     "pdf": 1,
@@ -355,8 +355,7 @@
     "delegate coding agent": 1,
     "orchestrator": 1,
     "routing": 1,
-    "transitions motion": 1,
-    "webapp-testing": 1
+    "transitions motion": 1
   },
-  "lastUpdated": "2026-08-10T11:45:53.981Z"
+  "lastUpdated": "2026-08-10T11:46:01.853Z"
 }
