@@ -58,7 +58,8 @@
     "java-architect": 1,
     "web-artifacts-builder": 1,
     "read-github": 1,
-    "cold-email": 1
+    "cold-email": 1,
+    "vercel-react-best-practices": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -121,7 +122,7 @@
     "mobile design": 1,
     "swift data": 1,
     "AI deployment": 1,
-    "debugging": 2,
+    "debugging": 1,
     "sharepoint": 1,
     "seek australia": 1,
     "notion": 2,
@@ -358,5 +359,5 @@
     "transitions motion": 1,
     "product requirements": 1
   },
-  "lastUpdated": "2026-08-11T07:10:40.787Z"
+  "lastUpdated": "2026-08-11T07:11:13.853Z"
 }
