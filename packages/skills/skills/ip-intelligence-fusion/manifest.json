@@ -1,7 +1,7 @@
 {
   "name": "ip-intelligence-fusion",
-  "description": "Auditable 12-source IP ownership, reputation, routing, geolocation, proxy and risk assessment for public IPv4 and IPv6 addresses",
-  "version": "1.4.0",
+  "description": "IP地址归属、信誉与代理风控证据核查，覆盖电商、社媒、广告、SEO、调研、价格、AI、直播与运维场景",
+  "version": "1.4.2",
   "author": "GetIPProxy",
   "tags": [
     "ip-intelligence",
@@ -20,7 +20,14 @@
     "seo",
     "ai-accounts",
     "live-streaming",
-    "fraud-risk"
+    "fraud-risk",
+    "market-research",
+    "price-monitoring",
+    "brand-protection",
+    "website-testing",
+    "travel-comparison",
+    "browser-profiles",
+    "login-logs"
   ],
   "category": "security",
   "language": "markdown"

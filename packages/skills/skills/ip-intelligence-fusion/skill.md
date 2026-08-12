@@ -1,11 +1,11 @@
 ---
 name: ip-intelligence-fusion
-description: Investigate a supplied public IPv4 or IPv6 address across 12 sources and create auditable ownership, routing, geolocation, reputation, proxy/VPN/Tor, abuse, fraud, hosting, and network-risk evidence.
+description: Investigate a supplied public IPv4 or IPv6 address across 12 sources and create auditable ownership, routing, geolocation, reputation, proxy/VPN/Tor, abuse, fraud, hosting, and network-risk evidence for e-commerce, social, advertising, SEO, research, AI, live-streaming, and operations workflows.
 ---
 
-# IP Intelligence Fusion 1.4.0
+# IP地址归属、信誉、风控查询 1.4.2
 
-Use the complete implementation from https://github.com/GetIPProxy/ip-intelligence-fusion.
+Use the complete implementation from https://github.com/GetIPProxy/ip-intelligence-fusion. The Chinese README covers cross-border stores, account matrices, advertising QA, local SEO, market and price research, brand protection, website testing, travel comparison, AI accounts, live commerce, browser profiles, and proxy/log operations.
 
 ## Requirements
 
@@ -30,7 +30,7 @@ Use the complete implementation from https://github.com/GetIPProxy/ip-intelligen
 
 ## Where it helps
 
-Use the IP evidence to review network conditions for cross-border e-commerce stores, TikTok and social-media account operations, advertising and landing-page QA, local SEO, market research and price checks, AI accounts and team seats, cross-border live streaming, anti-detect browser profiles, proxy resources, login logs, and customer access IPs. It supports investigation and comparison; it does not guarantee account, advertising, streaming, or business outcomes.
+Use the IP evidence to review network conditions for cross-border e-commerce stores and store matrices, TikTok and social-media account matrices, advertising operations and landing-page QA, local SEO and SERP monitoring, market research, competitor observation and price checks, brand protection, website testing, travel and local-service comparison, AI accounts and team seats, cross-border live commerce, anti-detect browser or cloud-device profiles, proxy resources, supplier resources, login logs, and customer access IPs. It supports investigation and comparison; it does not guarantee account, advertising, streaming, or business outcomes.
 
 ## Interpretation
 
