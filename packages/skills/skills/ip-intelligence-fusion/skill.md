@@ -1,9 +1,9 @@
 ---
 name: ip-intelligence-fusion
-description: Investigate a supplied public IPv4 or IPv6 address and create an auditable multi-source ownership, routing, geolocation, proxy/VPN/Tor, abuse, fraud, hosting, reputation, and purity assessment.
+description: Investigate a supplied public IPv4 or IPv6 address across 12 sources and create auditable ownership, routing, geolocation, reputation, proxy/VPN/Tor, abuse, fraud, hosting, and network-risk evidence.
 ---
 
-# IP Intelligence Fusion
+# IP Intelligence Fusion 1.4.0
 
 Use the complete implementation from https://github.com/GetIPProxy/ip-intelligence-fusion.
 
@@ -11,7 +11,7 @@ Use the complete implementation from https://github.com/GetIPProxy/ip-intelligen
 
 - Require exactly one explicitly supplied public IPv4 or IPv6 address.
 - Reject hostnames and private, loopback, link-local, reserved, multicast, or unspecified addresses.
-- Use Python 3.9 or later.
+- Use Python 3.9 or later; no third-party Python packages are required.
 - Never request, reveal, or transmit API keys.
 - Treat unavailable evidence as unknown, never as zero risk.
 
@@ -22,10 +22,15 @@ Use the complete implementation from https://github.com/GetIPProxy/ip-intelligen
 3. Read `references/providers.md` when selecting or diagnosing sources.
 4. Run `python scripts/ip_intelligence.py <PUBLIC_IP> --report-dir <REPORT_DIR> --language en`.
 5. Use `--language zh-CN` when Chinese output is requested.
-6. Preserve every provider state: success, skipped, unavailable, or error.
-7. If read-only browser access exists, follow `references/public-pages.md` for validated official-page fallback.
-8. Never infer locked, missing, or unverified values.
-9. Deliver the JSON evidence file, self-contained HTML report, and a concise evidence brief.
+6. Choose `--profile fast`, `--profile resilient`, or the default `--profile comprehensive` to match latency and coverage needs; bounded transient retries are recorded in diagnostics.
+7. Preserve every provider state: success, skipped, unavailable, or error.
+8. If read-only browser access exists, follow `references/public-pages.md` for validated official-page fallback.
+9. Never infer locked, missing, or unverified values.
+10. Deliver the JSON evidence file, self-contained HTML report, and a concise evidence brief.
+
+## Where it helps
+
+Use the IP evidence to review network conditions for cross-border e-commerce stores, TikTok and social-media account operations, advertising and landing-page QA, local SEO, market research and price checks, AI accounts and team seats, cross-border live streaming, anti-detect browser profiles, proxy resources, login logs, and customer access IPs. It supports investigation and comparison; it does not guarantee account, advertising, streaming, or business outcomes.
 
 ## Interpretation
 
@@ -43,6 +48,6 @@ Use the complete implementation from https://github.com/GetIPProxy/ip-intelligen
 - If public-page evidence cannot be verified against the exact target IP, discard it.
 - Do not invent provider responses, files, scores, or capabilities.
 
-Full documentation, renderer, deterministic collector, and tests: https://github.com/GetIPProxy/ip-intelligence-fusion
+Full documentation, renderer, deterministic collector, offline HTML evidence matrix, and tests: https://github.com/GetIPProxy/ip-intelligence-fusion
 
 Support: hello@getipproxy.com
