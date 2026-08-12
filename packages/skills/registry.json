@@ -7066,5 +7066,43 @@
     "lines": 287,
     "size": 15538,
     "updated": "2026-07-11T07:47:12.433Z"
+  },
+  {
+    "name": "ip-intelligence-fusion",
+    "description": "IP地址归属、信誉与代理风控证据核查，覆盖电商、社媒、广告、SEO、调研、价格、AI、直播与运维场景。",
+    "author": "GetIPProxy",
+    "version": "1.4.2",
+    "tags": [
+      "ip-intelligence",
+      "security",
+      "reputation",
+      "proxy",
+      "vpn",
+      "tor",
+      "geolocation",
+      "asn",
+      "bgp",
+      "network",
+      "e-commerce",
+      "social-media",
+      "advertising",
+      "seo",
+      "ai-accounts",
+      "live-streaming",
+      "fraud-risk",
+      "market-research",
+      "price-monitoring",
+      "brand-protection",
+      "website-testing",
+      "travel-comparison",
+      "browser-profiles",
+      "login-logs"
+    ],
+    "category": "security",
+    "excerpt": "Use the complete IP Intelligence Fusion 1.4.2 implementation for auditable multi-source IP assessments and offline reports.",
+    "lines": 63,
+    "size": 3900,
+    "updated": "2026-08-13T03:00:00Z",
+    "sourceUrl": "https://github.com/GetIPProxy/ip-intelligence-fusion"
   }
 ]
