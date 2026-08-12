@@ -1,0 +1,20 @@
+{
+  "name": "ip-intelligence-fusion",
+  "description": "Auditable multi-source IP intelligence for public IPv4 and IPv6 addresses",
+  "version": "1.3.1",
+  "author": "GetIPProxy",
+  "tags": [
+    "ip-intelligence",
+    "security",
+    "reputation",
+    "proxy",
+    "vpn",
+    "tor",
+    "geolocation",
+    "asn",
+    "bgp",
+    "network"
+  ],
+  "category": "security",
+  "language": "markdown"
+}
