@@ -7085,5 +7085,24 @@
     "lines": 1711,
     "size": 84708,
     "updated": "2026-08-18T16:53:06.868Z"
+  },
+  {
+    "name": "valet-publish",
+    "description": "Get share links, publish and manage websites, artifacts and agents. No account needed.",
+    "author": "anonymous",
+    "version": "1.0.0",
+    "tags": [
+      "publishing",
+      "static-hosting",
+      "agents",
+      "deployment",
+      "mcp",
+      "skills"
+    ],
+    "category": "development",
+    "excerpt": "---",
+    "lines": 1139,
+    "size": 50421,
+    "updated": "2026-08-18T16:53:09.193Z"
   }
 ]
