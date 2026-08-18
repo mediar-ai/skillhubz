@@ -87,7 +87,7 @@
     "skill creator": 1,
     "design": 6,
     "everything-claude-code": 1,
-    "nextjs": 2,
+    "nextjs": 3,
     "freeze": 1,
     "excalidraw": 1,
     "优化": 1,
@@ -365,7 +365,7 @@
     "dropbox": 1,
     "ecommerce brand shopify": 1,
     "excalidraw animation education": 1,
-    "expo": 2,
+    "expo": 1,
     "ComfyUI": 1,
     "shader animation": 1,
     "wayfinder": 1,
@@ -393,5 +393,5 @@
     "ui design system": 1,
     "marketing expert": 1
   },
-  "lastUpdated": "2026-08-18T13:04:27.119Z"
+  "lastUpdated": "2026-08-18T13:04:27.884Z"
 }
