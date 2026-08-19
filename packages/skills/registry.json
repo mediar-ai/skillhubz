@@ -7109,18 +7109,19 @@
     "name": "faceless-so",
     "description": "All-in-One tool to grow your faceless channel. AI script to video with captions, TTS, B-roll, auto-post.",
     "author": "anonymous",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "tags": [
-      "video",
       "ai-video",
+      "faceless",
       "content",
       "marketing",
-      "faceless"
+      "tts",
+      "captions"
     ],
-    "category": "video",
-    "excerpt": "---",
-    "lines": 130,
-    "size": 7547,
-    "updated": "2026-08-19T21:47:57.908Z"
+    "category": "content",
+    "excerpt": "Turn a script, prompt, Reddit post, or blog into a Remotion short with TTS, captions, and B-roll, then auto-post to YouTube, TikTok, Instagram, X, Fac",
+    "lines": 30,
+    "size": 1238,
+    "updated": "2026-08-19T21:50:42.525Z"
   }
 ]
