@@ -7104,5 +7104,23 @@
     "lines": 1139,
     "size": 50421,
     "updated": "2026-08-18T16:53:09.193Z"
+  },
+  {
+    "name": "faceless-so",
+    "description": "All-in-One tool to grow your faceless channel. AI script to video with captions, TTS, B-roll, auto-post.",
+    "author": "anonymous",
+    "version": "1.0.0",
+    "tags": [
+      "video",
+      "ai-video",
+      "content",
+      "marketing",
+      "faceless"
+    ],
+    "category": "video",
+    "excerpt": "---",
+    "lines": 130,
+    "size": 7547,
+    "updated": "2026-08-19T21:47:55.514Z"
   }
 ]
