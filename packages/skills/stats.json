@@ -255,7 +255,7 @@
     "tavily": 1,
     "last30days": 1,
     "metal": 1,
-    "seo": 2,
+    "seo": 3,
     "finance": 1,
     "image": 1,
     "feishu lark": 1,
@@ -395,5 +395,5 @@
     "revenue attribution": 1,
     "data engineering": 1
   },
-  "lastUpdated": "2026-08-20T02:24:52.232Z"
+  "lastUpdated": "2026-08-20T07:37:03.214Z"
 }
