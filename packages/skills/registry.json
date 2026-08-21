@@ -7123,5 +7123,23 @@
     "lines": 30,
     "size": 1238,
     "updated": "2026-08-19T21:50:42.525Z"
+  },
+  {
+    "name": "bimi-svg-tiny-p-s-corpus-validator",
+    "description": "Evaluate an SVG against the public makeBIMI SVG Tiny P/S Test Corpus and separate evidence-bound profile findings from receiver-specific guidance.",
+    "author": "anonymous",
+    "version": "1.0.0",
+    "tags": [
+      "bimi",
+      "svg",
+      "email-authentication",
+      "validation",
+      "security"
+    ],
+    "category": "development",
+    "excerpt": "Use the public makeBIMI SVG Tiny P/S Test Corpus to evaluate an SVG against its evidence-bound fixture rules and to report the result clearly.",
+    "lines": 68,
+    "size": 3525,
+    "updated": "2026-08-21T06:23:58.826Z"
   }
 ]
