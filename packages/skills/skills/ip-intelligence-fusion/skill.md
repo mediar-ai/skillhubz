@@ -1,53 +1,113 @@
----
-name: ip-intelligence-fusion
-description: Investigate a supplied public IPv4 or IPv6 address across 12 sources and create auditable ownership, routing, geolocation, reputation, proxy/VPN/Tor, abuse, fraud, hosting, and network-risk evidence for e-commerce, social, advertising, SEO, research, AI, live-streaming, and operations workflows.
----
+# IP Intelligence Fusion
 
-# IP地址归属、信誉、风控查询 1.4.2
+Use this skill for a single public IPv4 or IPv6 address that the operator owns, that is publicly
+documented, or that the operator is explicitly authorized to investigate. The result is a
+time-stamped evidence report for human review. It is not an identity lookup, an automatic
+allow/deny decision, a location guarantee, or a platform-review tool.
 
-Use the complete implementation from https://github.com/GetIPProxy/ip-intelligence-fusion. The Chinese README covers cross-border stores, account matrices, advertising QA, local SEO, market and price research, brand protection, website testing, travel comparison, AI accounts, live commerce, browser profiles, and proxy/log operations.
+## Mandatory boundaries
 
-## Requirements
+- Accept exactly one public IP. Reject hostnames, private addresses, reserved addresses, batches,
+  customer login logs, account logs, cookies, device identifiers, and device fingerprints.
+- Treat an IP as potentially personal information when it is linked with a person, account,
+  customer, employee, or login record. Do not infer that command-line possession proves authority.
+- Supported work is limited to owned/public/authorized asset checks, public-information
+  verification, authorized security operations, abnormal-request triage, and provider delivery
+  acceptance testing.
+- Do not assist with unauthorized person investigation, bulk personal-IP collection, location
+  spoofing, account farming, bulk registration, platform-review evasion, CAPTCHA or login bypass,
+  access-control bypass, port scanning, exploitation, attacks, or proxy forwarding.
+- Do not log in, submit forms, handle CAPTCHA, defeat rate limits, or use a mirror when reading a
+  provider's public page. Stop when a page requires access beyond ordinary read-only viewing.
 
-- Require exactly one explicitly supplied public IPv4 or IPv6 address.
-- Reject hostnames and private, loopback, link-local, reserved, multicast, or unspecified addresses.
-- Use Python 3.9 or later; no third-party Python packages are required.
-- Never request, reveal, or transmit API keys.
-- Treat unavailable evidence as unknown, never as zero risk.
+## Network consent workflow
 
-## Workflow
+1. Validate that the user supplied one public IP. If no IP is present, ask for it. Do not resolve a
+   hostname on the user's behalf.
+2. Start with local-only processing. The default CLI mode must not call a remote service. It may
+   read a local evidence JSON file and render JSON, Markdown, or HTML.
+3. Before any external query, explain the target IP, providers/domains, fields sent, and that the
+   transfer may cross borders. Ask for explicit confirmation. This is an operational record, not
+   proof of legal authorization.
+4. Only after confirmation use `--external`. In an interactive terminal the CLI presents a `YES`
+   prompt. In a non-interactive process pass `--confirm-external` as well. `--self` requires both
+   flags; the IP discovery request is made only after confirmation.
+5. Use the default `fast` profile unless the user explicitly requests `--profile comprehensive`.
+   Do not silently expand the set of recipients.
+6. If confirmation is absent or refused, produce a local report with `not-requested` source states
+   where appropriate. Do not turn that state into `error`, zero risk, or a negative finding.
 
-1. Clone or install the complete repository so that scripts, references, and assets remain together.
-2. Read `references/methodology.md` before interpreting evidence.
-3. Read `references/providers.md` when selecting or diagnosing sources.
-4. Run `python scripts/ip_intelligence.py <PUBLIC_IP> --report-dir <REPORT_DIR> --language en`.
-5. Use `--language zh-CN` when Chinese output is requested.
-6. Choose `--profile fast`, `--profile resilient`, or the default `--profile comprehensive` to match latency and coverage needs; bounded transient retries are recorded in diagnostics.
-7. Preserve every provider state: success, skipped, unavailable, or error.
-8. If read-only browser access exists, follow `references/public-pages.md` for validated official-page fallback.
-9. Never infer locked, missing, or unverified values.
-10. Deliver the JSON evidence file, self-contained HTML report, and a concise evidence brief.
+Examples:
 
-## Where it helps
+```text
+Local-only JSON:
+python scripts/ip_intelligence.py 8.8.8.8 --format json
 
-Use the IP evidence to review network conditions for cross-border e-commerce stores and store matrices, TikTok and social-media account matrices, advertising operations and landing-page QA, local SEO and SERP monitoring, market research, competitor observation and price checks, brand protection, website testing, travel and local-service comparison, AI accounts and team seats, cross-border live commerce, anti-detect browser or cloud-device profiles, proxy resources, supplier resources, login logs, and customer access IPs. It supports investigation and comparison; it does not guarantee account, advertising, streaming, or business outcomes.
+Interactive external lookup:
+python scripts/ip_intelligence.py 8.8.8.8 --external --profile fast
 
-## Interpretation
+Non-interactive external lookup:
+python scripts/ip_intelligence.py 8.8.8.8 --external --confirm-external --format json
+```
 
-- Only upstream numeric scores participate in the weighted composite.
-- Keep boolean proxy, VPN, Tor, hosting, bot, blacklist, and abuse signals unscored.
-- Keep registry country separate from geolocation country.
-- Keep registry allocation prefix separate from announced BGP route prefix.
-- Hosting, VPN, proxy, or Tor classification is not proof of abuse.
-- Describe the result as an investigation aid, not an automatic allow/deny verdict.
+The removed `--include-raw` option must not be suggested or accepted.
 
-## Failure handling
+## Provider and evidence rules
 
-- If network access is blocked, generate the report using available evidence and retain provider failures.
-- If no numeric source succeeds, report numeric risk as unknown.
-- If public-page evidence cannot be verified against the exact target IP, discard it.
-- Do not invent provider responses, files, scores, or capabilities.
+The CLI request layer permits only audited HTTPS hosts and rejects credentials in URLs, user
+information, non-standard ports, and unapproved redirect destinations. The current domains and
+collection methods are listed in [references/providers.md](references/providers.md).
 
-Full documentation, renderer, deterministic collector, offline HTML evidence matrix, and tests: https://github.com/GetIPProxy/ip-intelligence-fusion
+IPinfo and AbuseIPDB credentials, when independently configured, are request headers. IPQualityScore,
+Scamalytics, and ipdata API adapters are disabled; those services can appear only as validated
+official public-page evidence. The old plaintext IP-API adapter is removed.
 
-Support: hello@getipproxy.com
+Public-page evidence must contain the exact target IP, an official HTTPS source URL, an observation
+time, and only the allowlisted normalized fields. Do not include raw responses, `fn`, email,
+abuse-contact, analysis, or personalized-hostname fields. Use the local evidence import only after
+the host has actually observed the official page.
+
+Keep these distinctions in every report:
+
+- `success`: validated structured evidence was returned;
+- `skipped`: an enabled provider needs a missing configured credential;
+- `not-requested`: external collection was disabled, or an API adapter is intentionally disabled;
+- `unavailable`: an experimental source could not be read or parsed;
+- `error`: an enabled source failed validation, transport, or upstream processing.
+
+Absence of evidence is not low risk. Numeric risk comes only from upstream numeric scores. Boolean
+proxy, VPN, Tor, hosting, abuse, and bot signals remain contextual or unscored. Preserve provider
+identity, consensus, alternatives, conflicts, and timestamps.
+
+## Report handling
+
+Generate the requested representation with the CLI. Reports may contain the complete IP, geographic
+region, organization/ISP, allocation or route prefixes, and network-risk labels. Set restrictive
+file permissions; do not place reports in public Issues, demo sites, public logs, or uncontrolled
+shared storage. Delete them under the operator's retention schedule.
+
+The JSON report must include `policy` metadata and the `data_policy` declaration. In external mode,
+record `external-confirmed` and the provider domains that actually started a request. Reports must
+not contain upstream raw payloads, contact details, credentials, or API keys. Never call an IP safe
+based only on this report and never present it as proof of abuse.
+
+## Completion brief
+
+Return a concise summary in the user's language containing the normalized target, risk score or
+`unknown`, confidence, contributing numeric sources, consensus facts, material conflicts, contextual
+signals, source-state counts, timestamp, and absolute paths to generated reports. State that the
+report is an aid for authorized human review, not a legal conclusion or an automatic platform
+decision.
+
+If a network is unavailable, preserve explicit provider failures and continue with local evidence.
+If a public page is blocked or changes layout, keep it unavailable and report the gap. Do not invent
+values or bypass the restriction.
+
+## Compliance reminder
+
+External requests may transmit an IP to a service provider outside China. The operator is responsible
+for checking authorization, notice, lawful basis, personal-information handling, data-export
+requirements, retention/deletion, and third-party terms. This skill and its MIT license are not
+legal advice and cannot establish compliance by themselves. Future support for customer or account
+logs requires a separate personal-information impact assessment and data-export design; it must not
+be added directly to v2.0.
