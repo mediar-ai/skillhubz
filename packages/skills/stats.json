@@ -402,7 +402,8 @@
     "ui ux design responsive": 1,
     "linear": 1,
     "no-mistakes": 1,
-    "claude code orchestrator subagents parallel": 1
+    "claude code orchestrator subagents parallel": 1,
+    "Next.js data fetching performance backend roundtrips": 1
   },
-  "lastUpdated": "2026-08-24T21:16:57.602Z"
+  "lastUpdated": "2026-08-25T09:55:01.331Z"
 }
