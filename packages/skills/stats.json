@@ -182,7 +182,7 @@
     "apify": 1,
     "adhd": 1,
     "alphaclaw": 1,
-    "photoshop": 1,
+    "photoshop": 2,
     "google search console": 1,
     "humanize": 2,
     "posthog": 1,
@@ -408,5 +408,5 @@
     "steve memo": 1,
     "three.js webgl 3d": 1
   },
-  "lastUpdated": "2026-08-26T10:28:54.105Z"
+  "lastUpdated": "2026-08-26T11:48:01.072Z"
 }
