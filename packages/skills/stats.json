@@ -211,7 +211,7 @@
     "humanizer": 1,
     "gltf": 1,
     "charts": 1,
-    "animation": 3,
+    "animation": 4,
     "slides": 1,
     "3d": 1,
     "gcp": 1,
@@ -412,5 +412,5 @@
     "LinkedIn content": 1,
     "apple human interface swiftui accessibility": 1
   },
-  "lastUpdated": "2026-08-28T10:01:50.037Z"
+  "lastUpdated": "2026-08-28T10:53:55.569Z"
 }
