@@ -414,7 +414,8 @@
     "meli slack": 1,
     "cloudflare r2": 1,
     "technical documentation": 1,
-    "unix socket daemon": 1
+    "unix socket daemon": 1,
+    "geospatial postgis python data pipeline": 1
   },
-  "lastUpdated": "2026-08-29T10:52:45.649Z"
+  "lastUpdated": "2026-08-29T13:03:45.982Z"
 }
