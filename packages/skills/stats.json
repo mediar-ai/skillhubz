@@ -414,7 +414,7 @@
     "meli slack": 1,
     "cloudflare r2": 1,
     "technical documentation": 1,
-    "json-rpc": 1
+    "unix socket daemon": 1
   },
-  "lastUpdated": "2026-08-29T10:52:43.899Z"
+  "lastUpdated": "2026-08-29T10:52:45.649Z"
 }
