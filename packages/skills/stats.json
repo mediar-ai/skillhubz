@@ -366,7 +366,7 @@
     "dropbox": 1,
     "ecommerce brand shopify": 1,
     "excalidraw animation education": 1,
-    "expo": 1,
+    "expo": 2,
     "ComfyUI": 1,
     "shader animation": 1,
     "wayfinder": 2,
@@ -417,8 +417,7 @@
     "unix socket daemon": 1,
     "postgis": 1,
     "pontail": 1,
-    "swiftui macos notes workflow session": 1,
-    "multi agent graph orchestration langgraph": 1
+    "swiftui macos notes workflow session": 1
   },
-  "lastUpdated": "2026-08-30T13:03:41.970Z"
+  "lastUpdated": "2026-08-30T13:03:51.521Z"
 }
