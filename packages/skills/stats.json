@@ -78,7 +78,7 @@
   },
   "searches": {
     "docs": 1,
-    "copywriting": 2,
+    "copywriting": 1,
     "learning": 1,
     "scrape": 1,
     "clipsai video editing trimming": 1,
@@ -256,7 +256,7 @@
     "tavily": 1,
     "last30days": 1,
     "metal": 1,
-    "seo": 3,
+    "seo": 4,
     "finance": 1,
     "image": 1,
     "feishu lark": 1,
@@ -420,5 +420,5 @@
     "swiftui macos notes workflow session": 1,
     "tauri": 1
   },
-  "lastUpdated": "2026-08-30T17:07:24.182Z"
+  "lastUpdated": "2026-08-30T17:10:24.765Z"
 }
