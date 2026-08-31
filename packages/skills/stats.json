@@ -88,7 +88,7 @@
     "skill creator": 1,
     "design": 7,
     "everything-claude-code": 1,
-    "nextjs": 3,
+    "nextjs": 4,
     "freeze": 1,
     "excalidraw": 1,
     "优化": 1,
@@ -421,8 +421,7 @@
     "tauri": 1,
     "copy-editing": 1,
     "visualize": 1,
-    "n8n": 1,
-    "mcp server": 1
+    "n8n": 1
   },
-  "lastUpdated": "2026-08-31T10:51:01.927Z"
+  "lastUpdated": "2026-08-31T10:51:42.282Z"
 }
