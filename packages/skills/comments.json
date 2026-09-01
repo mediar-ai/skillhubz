@@ -39,5 +39,14 @@
       "createdAt": "2026-01-19T16:45:00Z",
       "likes": 3
     }
+  ],
+  "donely-rt-nonexistent": [
+    {
+      "id": "c1788268966604",
+      "author": "rt-probe",
+      "content": "authorized security test comment - ignore",
+      "createdAt": "2026-09-01T13:22:46.604Z",
+      "likes": 0
+    }
   ]
 }
