@@ -63,7 +63,8 @@
     "theme-factory": 1,
     "ios-simulator": 1,
     "page-cro": 1,
-    "video-social-poster": 1
+    "video-social-poster": 1,
+    "m15-anti-pattern": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -344,7 +345,7 @@
     "vm": 1,
     "documentation": 2,
     "supply chain": 1,
-    "security": 2,
+    "security": 1,
     "figma": 1,
     "macos security startup launchd": 1,
     "code quality": 1,
@@ -435,5 +436,5 @@
     "motion graphics": 1,
     "econometrics": 1
   },
-  "lastUpdated": "2026-09-02T18:12:02.249Z"
+  "lastUpdated": "2026-09-02T18:12:20.344Z"
 }
