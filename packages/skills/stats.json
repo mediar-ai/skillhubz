@@ -278,7 +278,7 @@
     "ui ux": 1,
     "api performance": 1,
     "hiking": 1,
-    "code review": 1,
+    "code review": 2,
     "performance": 1,
     "nextjs doctor": 1,
     "ponytail": 2,
@@ -442,5 +442,5 @@
     "anti-slop lint code quality": 1,
     "interaction design": 1
   },
-  "lastUpdated": "2026-09-04T03:21:52.109Z"
+  "lastUpdated": "2026-09-04T05:14:18.479Z"
 }
