@@ -27,7 +27,7 @@
     "github": 3,
     "stream-coding": 1,
     "canvas-design": 1,
-    "ui-ux-pro-max": 5,
+    "ui-ux-pro-max": 4,
     "web-design-guidelines": 2,
     "convex": 1,
     "api-security-best-practices": 2,
@@ -64,7 +64,8 @@
     "ios-simulator": 1,
     "page-cro": 1,
     "video-social-poster": 1,
-    "m15-anti-pattern": 1
+    "m15-anti-pattern": 1,
+    "seo-audit": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -444,5 +445,5 @@
     "react dashboard micro interaction animation accessibility": 1,
     "agents": 1
   },
-  "lastUpdated": "2026-09-05T13:47:42.449Z"
+  "lastUpdated": "2026-09-05T13:47:50.368Z"
 }
