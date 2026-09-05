@@ -4,7 +4,7 @@
     "github-pr-review": 8,
     "slack-automator": 15,
     "pdf-data-extractor": 5,
-    "form-filler": 3,
+    "form-filler": 4,
     "linkedin-scraper": 7,
     "e2e-test-recorder": 4,
     "notion-sync": 6,
@@ -18,7 +18,7 @@
     "xlsx": 1,
     "brand-guidelines": 1,
     "deep-research": 14,
-    "frontend-design": 7,
+    "frontend-design": 6,
     "docx": 1,
     "seo-geo": 2,
     "deep-research-pro": 2,
@@ -444,5 +444,5 @@
     "react dashboard micro interaction animation accessibility": 1,
     "agents": 1
   },
-  "lastUpdated": "2026-09-05T13:46:44.973Z"
+  "lastUpdated": "2026-09-05T13:46:52.779Z"
 }
