@@ -240,7 +240,7 @@
     "fastapi-async-patterns": 1,
     "macos": 1,
     "codebase": 1,
-    "remotion": 2,
+    "remotion": 3,
     "video audio voiceover": 1,
     "beginner": 1,
     "style": 1,
@@ -446,5 +446,5 @@
     "agents": 1,
     "business operations inventory": 1
   },
-  "lastUpdated": "2026-09-06T10:32:36.534Z"
+  "lastUpdated": "2026-09-06T23:12:40.839Z"
 }
