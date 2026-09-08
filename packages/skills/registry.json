@@ -7141,5 +7141,23 @@
     "lines": 68,
     "size": 3525,
     "updated": "2026-08-21T06:23:58.826Z"
+  },
+  {
+    "name": "shar-production-metadata-validation",
+    "description": "Local read-only MCP skill that validates rights-aware AI-hybrid video-production metadata before delivery and returns deterministic releasable results.",
+    "author": "Ares3333333",
+    "version": "1.0.0",
+    "tags": [
+      "mcp",
+      "production-metadata",
+      "ai-video-production",
+      "rights-aware"
+    ],
+    "category": "mcp-servers",
+    "excerpt": "---",
+    "lines": 39,
+    "size": 1257,
+    "updated": "2026-09-08T18:03:49.235Z",
+    "sourceUrl": "https://github.com/SHARProduction/production-metadata-mcp"
   }
 ]
