@@ -279,7 +279,7 @@
     "ui ux": 1,
     "api performance": 1,
     "hiking": 1,
-    "code review": 2,
+    "code review": 3,
     "performance": 1,
     "nextjs doctor": 1,
     "ponytail": 2,
@@ -346,7 +346,7 @@
     "vm": 1,
     "documentation": 2,
     "supply chain": 1,
-    "security": 2,
+    "security": 1,
     "figma": 1,
     "macos security startup launchd": 1,
     "code quality": 1,
@@ -456,5 +456,5 @@
     "kindle": 1,
     "sqlite": 1
   },
-  "lastUpdated": "2026-09-14T18:29:34.638Z"
+  "lastUpdated": "2026-09-14T18:29:36.855Z"
 }
