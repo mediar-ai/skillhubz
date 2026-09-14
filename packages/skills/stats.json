@@ -421,7 +421,7 @@
     "postgis": 1,
     "pontail": 1,
     "swiftui macos notes workflow session": 1,
-    "tauri": 2,
+    "tauri": 1,
     "copy-editing": 1,
     "visualize": 1,
     "n8n": 1,
@@ -453,7 +453,8 @@
     "skill library": 1,
     "writing style voice": 1,
     "polish translation": 1,
-    "kindle": 1
+    "kindle": 1,
+    "rust": 1
   },
-  "lastUpdated": "2026-09-14T13:16:49.299Z"
+  "lastUpdated": "2026-09-14T13:16:52.229Z"
 }
