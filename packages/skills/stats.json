@@ -240,7 +240,7 @@
     "fastapi-async-patterns": 1,
     "macos": 1,
     "codebase": 1,
-    "remotion": 3,
+    "remotion": 4,
     "video audio voiceover": 1,
     "beginner": 1,
     "style": 1,
@@ -456,8 +456,7 @@
     "kindle": 1,
     "sqlite": 1,
     "audit": 1,
-    "better-ui": 1,
-    "youtube shorts": 1
+    "better-ui": 1
   },
-  "lastUpdated": "2026-09-15T09:21:23.741Z"
+  "lastUpdated": "2026-09-15T09:21:26.221Z"
 }
