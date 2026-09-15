@@ -116,7 +116,7 @@
     "opentelemetry": 1,
     "notebooklm": 1,
     "swift macos": 1,
-    "planning": 1,
+    "planning": 2,
     "swiftui": 3,
     "skill-creator": 1,
     "mcp-ui": 1,
@@ -457,8 +457,7 @@
     "sqlite": 1,
     "audit": 1,
     "better-ui": 1,
-    "geo aeo llm answer engine": 1,
-    "requirements scoping": 1
+    "geo aeo llm answer engine": 1
   },
-  "lastUpdated": "2026-09-15T17:48:45.644Z"
+  "lastUpdated": "2026-09-15T17:48:59.548Z"
 }
