@@ -280,7 +280,7 @@
     "ui ux": 1,
     "api performance": 1,
     "hiking": 1,
-    "code review": 3,
+    "code review": 2,
     "performance": 1,
     "nextjs doctor": 1,
     "ponytail": 2,
@@ -467,7 +467,8 @@
     "gsap": 1,
     "pytest skip report": 1,
     "video analysis": 1,
-    "cover letter": 1
+    "cover letter": 1,
+    "audit plan": 1
   },
-  "lastUpdated": "2026-09-21T09:40:19.317Z"
+  "lastUpdated": "2026-09-21T09:41:26.411Z"
 }
