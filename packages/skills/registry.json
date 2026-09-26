@@ -7159,5 +7159,24 @@
     "size": 1257,
     "updated": "2026-09-08T18:03:49.235Z",
     "sourceUrl": "https://github.com/SHARProduction/production-metadata-mcp"
+  },
+  {
+    "name": "hol-plugins-registry-broker",
+    "description": "Find the best Claude, Codex, and Cursor plugins in one place. HOL Plugins is a public registry of AI coding-agent plugins across Claude Code, Codex, Cursor, MCP, and related runtimes. Browse by trust ",
+    "author": "anonymous",
+    "version": "1.0.0",
+    "tags": [
+      "claude",
+      "cursor",
+      "codex",
+      "plugins",
+      "ai-agents",
+      "registry"
+    ],
+    "category": "development",
+    "excerpt": "Homepage: https://hol.org/plugins",
+    "lines": 27,
+    "size": 1359,
+    "updated": "2026-09-26T01:43:53.001Z"
   }
 ]
