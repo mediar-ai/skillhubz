@@ -217,7 +217,7 @@
     "gltf": 1,
     "charts": 1,
     "animation": 4,
-    "slides": 1,
+    "slides": 2,
     "3d": 1,
     "gcp": 1,
     "motion": 1,
@@ -477,8 +477,7 @@
     "data analysis": 1,
     "tutoring": 1,
     "computer-use": 1,
-    "gemini": 1,
-    "presentation": 1
+    "gemini": 1
   },
-  "lastUpdated": "2026-10-01T22:21:37.925Z"
+  "lastUpdated": "2026-10-01T22:21:40.056Z"
 }
