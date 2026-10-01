@@ -263,7 +263,7 @@
     "metal": 1,
     "seo": 4,
     "finance": 1,
-    "image": 2,
+    "image": 1,
     "feishu lark": 1,
     "yfinance": 1,
     "quantitative finance": 1,
@@ -476,7 +476,8 @@
     "UI UX design": 1,
     "data analysis": 1,
     "tutoring": 1,
-    "computer-use": 1
+    "computer-use": 1,
+    "gemini": 1
   },
-  "lastUpdated": "2026-10-01T11:19:44.164Z"
+  "lastUpdated": "2026-10-01T11:24:39.597Z"
 }
