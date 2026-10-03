@@ -32,7 +32,7 @@
     "convex": 1,
     "api-security-best-practices": 2,
     "threejs-lighting": 1,
-    "baseline-ui": 1,
+    "baseline-ui": 2,
     "agent-browser": 2,
     "ui-animation": 2,
     "xlsx-toolkit": 1,
@@ -479,8 +479,7 @@
     "computer-use": 1,
     "gemini": 1,
     "illustrator": 1,
-    "modal": 1,
-    "landing page": 1
+    "modal": 1
   },
-  "lastUpdated": "2026-10-03T00:29:35.569Z"
+  "lastUpdated": "2026-10-03T00:33:05.235Z"
 }
