@@ -199,7 +199,7 @@
     "book writing bestseller": 1,
     "mobile app": 1,
     "web performance optimization": 1,
-    "image generation": 2,
+    "image generation": 3,
     "heygen": 1,
     "video generation editing": 1,
     "diataxis": 1,
@@ -483,8 +483,7 @@
     "modal": 1,
     "research paper": 1,
     "owasp": 1,
-    "remotion audio": 1,
-    "youtube thumbnail": 1
+    "remotion audio": 1
   },
-  "lastUpdated": "2026-10-05T15:57:12.725Z"
+  "lastUpdated": "2026-10-05T15:57:15.447Z"
 }
