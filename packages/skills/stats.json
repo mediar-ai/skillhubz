@@ -259,7 +259,7 @@
     "product image": 1,
     "hunk": 1,
     "illustration": 1,
-    "tavily": 1,
+    "tavily": 2,
     "last30days": 1,
     "metal": 1,
     "seo": 4,
@@ -483,8 +483,7 @@
     "modal": 1,
     "research paper": 1,
     "owasp": 1,
-    "remotion audio": 1,
-    "click through rate": 1
+    "remotion audio": 1
   },
-  "lastUpdated": "2026-10-05T15:59:32.066Z"
+  "lastUpdated": "2026-10-05T15:59:36.649Z"
 }
