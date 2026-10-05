@@ -243,7 +243,7 @@
     "fastapi-async-patterns": 1,
     "macos": 1,
     "codebase": 1,
-    "remotion": 4,
+    "remotion": 5,
     "video audio voiceover": 1,
     "beginner": 1,
     "style": 1,
@@ -486,5 +486,5 @@
     "remotion audio": 1,
     "spider crawl": 1
   },
-  "lastUpdated": "2026-10-05T17:00:28.430Z"
+  "lastUpdated": "2026-10-05T17:16:50.451Z"
 }
