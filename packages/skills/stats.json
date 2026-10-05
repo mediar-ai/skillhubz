@@ -200,7 +200,7 @@
     "mobile app": 1,
     "web performance optimization": 1,
     "image generation": 2,
-    "heygen": 1,
+    "heygen": 2,
     "video generation editing": 1,
     "diataxis": 1,
     "android emulator": 1,
@@ -483,8 +483,7 @@
     "modal": 1,
     "research paper": 1,
     "owasp": 1,
-    "remotion audio": 1,
-    "ai presenter": 1
+    "remotion audio": 1
   },
-  "lastUpdated": "2026-10-05T15:56:13.395Z"
+  "lastUpdated": "2026-10-05T15:56:15.706Z"
 }
