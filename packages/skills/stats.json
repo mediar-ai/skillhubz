@@ -249,7 +249,7 @@
     "style": 1,
     "openapi": 1,
     "browser": 1,
-    "python testing": 2,
+    "python testing": 1,
     "brag": 1,
     "simplifier": 1,
     "expo ui": 1,
@@ -457,7 +457,7 @@
     "writing style voice": 1,
     "polish translation": 1,
     "kindle": 1,
-    "sqlite": 1,
+    "sqlite": 2,
     "audit": 1,
     "better-ui": 1,
     "geo aeo llm answer engine": 1,
@@ -484,5 +484,5 @@
     "research paper": 1,
     "owasp": 1
   },
-  "lastUpdated": "2026-10-05T14:57:09.995Z"
+  "lastUpdated": "2026-10-05T14:57:14.321Z"
 }
