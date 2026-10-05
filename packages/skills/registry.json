@@ -7178,5 +7178,23 @@
     "lines": 27,
     "size": 1359,
     "updated": "2026-09-26T01:43:53.001Z"
+  },
+  {
+    "name": "verify-bank-detail-change",
+    "description": "Jithox Payment Checks: verify new or changed supplier bank details before payment with the free, no-account, read-only Jithox MCP (check_payment_change, verify_iban). Setup: https://jithox.com/connect",
+    "author": "anonymous",
+    "version": "1.0.0",
+    "tags": [
+      "payments",
+      "iban",
+      "mcp",
+      "fraud-prevention",
+      "jithox"
+    ],
+    "category": "finance",
+    "excerpt": "---",
+    "lines": 49,
+    "size": 2735,
+    "updated": "2026-10-05T10:30:19.946Z"
   }
 ]
