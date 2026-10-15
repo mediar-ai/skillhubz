@@ -16,7 +16,7 @@
     "skill-creator": 5,
     "pptx": 2,
     "xlsx": 1,
-    "brand-guidelines": 1,
+    "brand-guidelines": 2,
     "deep-research": 14,
     "frontend-design": 7,
     "docx": 1,
@@ -321,7 +321,7 @@
     "agent": 2,
     "forum": 1,
     "blue team": 1,
-    "marketing": 3,
+    "marketing": 2,
     "modular code architecture refactoring": 1,
     "product design ideate": 1,
     "python": 1,
@@ -496,5 +496,5 @@
     "mobile navigation": 1,
     "no comments": 1
   },
-  "lastUpdated": "2026-10-15T05:13:33.460Z"
+  "lastUpdated": "2026-10-15T05:13:52.293Z"
 }
