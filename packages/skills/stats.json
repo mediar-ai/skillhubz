@@ -121,7 +121,7 @@
     "notebooklm": 1,
     "swift macos": 1,
     "planning": 1,
-    "swiftui": 4,
+    "swiftui": 3,
     "skill-creator": 1,
     "mcp-ui": 1,
     "convex": 3,
@@ -350,7 +350,7 @@
     "vm": 1,
     "documentation": 2,
     "supply chain": 1,
-    "security": 1,
+    "security": 2,
     "figma": 1,
     "macos security startup launchd": 1,
     "code quality": 1,
@@ -499,5 +499,5 @@
     "product search": 1,
     "product": 1
   },
-  "lastUpdated": "2026-10-15T23:50:12.129Z"
+  "lastUpdated": "2026-10-15T23:50:19.492Z"
 }
