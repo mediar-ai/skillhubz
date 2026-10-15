@@ -60,7 +60,7 @@
     "read-github": 1,
     "cold-email": 1,
     "vercel-react-best-practices": 1,
-    "theme-factory": 2,
+    "theme-factory": 1,
     "ios-simulator": 1,
     "page-cro": 1,
     "video-social-poster": 1,
@@ -69,7 +69,8 @@
     "remotion": 1,
     "desktop-computer-automation": 1,
     "copywriting": 1,
-    "landing-page-design": 1
+    "landing-page-design": 1,
+    "superdesign": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -499,5 +500,5 @@
     "product search": 1,
     "product": 1
   },
-  "lastUpdated": "2026-10-15T23:43:53.710Z"
+  "lastUpdated": "2026-10-15T23:43:57.681Z"
 }
