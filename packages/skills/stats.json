@@ -95,7 +95,7 @@
     "skill creator": 1,
     "design": 9,
     "everything-claude-code": 1,
-    "nextjs": 6,
+    "nextjs": 5,
     "freeze": 1,
     "excalidraw": 1,
     "优化": 1,
@@ -144,7 +144,7 @@
     "vivaldi": 1,
     "mcp": 2,
     "gan generator evaluator": 1,
-    "tailwind": 4,
+    "tailwind": 5,
     "negotiation": 1,
     "agent-reach": 1,
     "pdf": 1,
@@ -499,5 +499,5 @@
     "product search": 1,
     "product": 1
   },
-  "lastUpdated": "2026-10-16T23:14:37.920Z"
+  "lastUpdated": "2026-10-16T23:14:41.799Z"
 }
