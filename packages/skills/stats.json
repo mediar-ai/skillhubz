@@ -69,7 +69,8 @@
     "remotion": 1,
     "desktop-computer-automation": 1,
     "copywriting": 1,
-    "landing-page-design": 2
+    "landing-page-design": 2,
+    "typescript-expert": 1
   },
   "stars": {
     "gmail-reply": 6,
@@ -111,7 +112,7 @@
     "cowork": 1,
     "minimax": 1,
     "realtime": 1,
-    "testing": 4,
+    "testing": 3,
     "qdrant": 1,
     "css": 1,
     "sass": 1,
@@ -505,5 +506,5 @@
     "reverse engineer everything": 1,
     "tutorial": 1
   },
-  "lastUpdated": "2026-10-22T09:32:45.687Z"
+  "lastUpdated": "2026-10-22T09:35:02.573Z"
 }
