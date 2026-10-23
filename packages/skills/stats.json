@@ -221,7 +221,7 @@
     "charts": 1,
     "animation": 4,
     "slides": 1,
-    "3d": 1,
+    "3d": 2,
     "gcp": 1,
     "motion": 1,
     "grill": 4,
@@ -506,5 +506,5 @@
     "reverse engineer everything": 1,
     "tutorial": 1
   },
-  "lastUpdated": "2026-10-22T09:38:11.888Z"
+  "lastUpdated": "2026-10-23T01:42:02.476Z"
 }
