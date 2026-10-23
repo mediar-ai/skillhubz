@@ -219,7 +219,7 @@
     "humanizer": 2,
     "gltf": 1,
     "charts": 1,
-    "animation": 4,
+    "animation": 5,
     "slides": 1,
     "3d": 1,
     "gcp": 1,
@@ -300,7 +300,7 @@
     "accessibility audit": 1,
     "network": 1,
     "sales prospect research": 1,
-    "blender": 3,
+    "blender": 2,
     "helm": 1,
     "text conversation": 1,
     "strategy slide": 1,
@@ -506,5 +506,5 @@
     "reverse engineer everything": 1,
     "tutorial": 1
   },
-  "lastUpdated": "2026-10-23T01:42:26.438Z"
+  "lastUpdated": "2026-10-23T01:42:46.411Z"
 }
