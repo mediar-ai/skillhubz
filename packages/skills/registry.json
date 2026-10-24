@@ -7196,5 +7196,23 @@
     "lines": 49,
     "size": 2735,
     "updated": "2026-10-05T10:30:19.946Z"
+  },
+  {
+    "name": "x-article-toolkit-headline-writer",
+    "description": "Model-neutral agent skill (MIT) for writing, scoring and improving X Article headlines. Part of the 3-skill x-article-toolkit alongside hook-writer and cover-writer. Source: https://github.com/kenashe",
+    "author": "anonymous",
+    "version": "1.0.0",
+    "tags": [
+      "writing",
+      "content",
+      "x-articles",
+      "headlines",
+      "copywriting"
+    ],
+    "category": "writing",
+    "excerpt": "---",
+    "lines": 82,
+    "size": 7781,
+    "updated": "2026-10-24T14:04:39.712Z"
   }
 ]
