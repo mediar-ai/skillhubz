@@ -143,7 +143,7 @@
     "raccoon": 1,
     "youtube": 4,
     "vivaldi": 1,
-    "mcp": 3,
+    "mcp": 2,
     "gan generator evaluator": 1,
     "tailwind": 4,
     "negotiation": 1,
@@ -510,7 +510,8 @@
     "design to code": 1,
     "quiz": 1,
     "video": 1,
-    "cartoon": 1
+    "cartoon": 1,
+    "system design": 1
   },
-  "lastUpdated": "2026-10-30T09:18:36.059Z"
+  "lastUpdated": "2026-10-30T09:18:38.243Z"
 }
