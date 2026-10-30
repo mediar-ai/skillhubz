@@ -96,7 +96,7 @@
     "skill creator": 1,
     "design": 11,
     "everything-claude-code": 1,
-    "nextjs": 6,
+    "nextjs": 5,
     "freeze": 1,
     "excalidraw": 1,
     "优化": 1,
@@ -143,7 +143,7 @@
     "raccoon": 1,
     "youtube": 4,
     "vivaldi": 1,
-    "mcp": 2,
+    "mcp": 3,
     "gan generator evaluator": 1,
     "tailwind": 4,
     "negotiation": 1,
@@ -512,5 +512,5 @@
     "video": 1,
     "cartoon": 1
   },
-  "lastUpdated": "2026-10-30T09:18:33.194Z"
+  "lastUpdated": "2026-10-30T09:18:36.059Z"
 }
