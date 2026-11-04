@@ -352,7 +352,7 @@
     "documentation": 2,
     "supply chain": 1,
     "security": 2,
-    "figma": 1,
+    "figma": 2,
     "macos security startup launchd": 1,
     "code quality": 1,
     "github readme": 1,
@@ -523,5 +523,5 @@
     "react UI design playwright testing": 1,
     "pdfcn": 1
   },
-  "lastUpdated": "2026-11-03T07:44:19.647Z"
+  "lastUpdated": "2026-11-04T11:31:17.431Z"
 }
