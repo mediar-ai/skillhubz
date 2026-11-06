@@ -205,7 +205,7 @@ After the initial page reload (Step 2), WhatsApp decrypts all cached/visible mes
 - Crypto happens on the **main thread**, not Web Workers (3 workers exist but don't do message crypto)
 - `page.addInitScript()` is critical -- must run BEFORE page JS to force `extractable: true` on all key imports
 - Decrypted output is protobuf: field 1 (wire type 2) -> field 1 (wire type 2) = message text
-- Sender JID appears as string like `15555550123@s.whatsapp.net` or `123456@lid`
+- Sender JID appears as string like `15551234567@s.whatsapp.net` or `123456@lid`
 - AES-GCM operations are noise protocol frames (not message content)
 - Keys are session-specific (HKDF-SHA256 with 128-byte salt) -- captured keys only work for the session they were captured in
 
